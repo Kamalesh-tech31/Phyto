@@ -1,0 +1,2741 @@
+{
+  "dataset_name": "South_India_Crop_Disease_Prevention_Only",
+  "version": "1.0",
+  "purpose": "Prevention knowledge base only. Used after the disease model predicts a disease.",
+  "region": [
+    "Kerala",
+    "Tamil Nadu",
+    "India"
+  ],
+  "entries": [
+    {
+      "crop": "rice",
+      "disease": "Rice blast",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Prefer suitable resistant/tolerant varieties where locally recommended."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "rice",
+      "disease": "Sheath blight",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Avoid overly dense crop stands and excessive nitrogen."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "rice",
+      "disease": "Bacterial leaf streak",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Avoid unnecessary leaf injury and manage field sanitation."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "rice",
+      "disease": "Brown spot",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Maintain balanced plant nutrition and avoid crop stress.",
+        "Use clean seed and good nursery management."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "rice",
+      "disease": "Rice tungro virus",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Use locally recommended tolerant/resistant varieties where available.",
+        "Monitor vector populations and rogue clearly infected plants where appropriate."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "rice",
+      "disease": "False smut",
+      "prevention": [
+        "Use healthy planting material and maintain a clean nursery.",
+        "Avoid excessive nitrogen and maintain balanced nutrition.",
+        "Maintain appropriate plant spacing and avoid prolonged water stagnation.",
+        "Remove heavily infected plant material/residues where practical.",
+        "Use clean seed and field sanitation."
+      ],
+      "local_prevention": [
+        "Ensure drainage during heavy rain.",
+        "Do not use chemical control automatically from an old IPM PDF."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "7",
+          "printed_page": "2",
+          "note": "Disease list including sheath rot, rice tungro virus, brown spot, false smut, bacterial leaf streak and grassy stunt virus."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "rice (1).pdf",
+          "pdf_page": "12",
+          "printed_page": "7",
+          "note": "Rice IPM strategies: resistant varieties, seed treatment, timely planting, healthy nursery, residue/weed management, spacing and water management."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Damping off",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Tomato leaf curl virus",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Monitor whitefly populations with yellow traps.",
+        "Remove severely infected plants early when appropriate."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Early blight",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Improve canopy airflow and avoid unnecessarily prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Late blight",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Improve canopy airflow and avoid unnecessarily prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Bacterial wilt",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Use crop rotation with non-host crops where feasible.",
+        "Avoid moving contaminated soil/water between beds."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Fusarium wilt",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Bacterial spot",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Improve canopy airflow and avoid unnecessarily prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "tomato",
+      "disease": "Powdery mildew",
+      "prevention": [
+        "Use healthy seedlings and clean planting material.",
+        "Use raised nursery beds with good drainage.",
+        "Avoid overwatering and water stagnation.",
+        "Remove infected crop residues and alternate host material.",
+        "Maintain recommended spacing and balanced fertilizer.",
+        "Improve canopy airflow and avoid unnecessarily prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During Kerala/TN rainy periods, prioritize drainage and canopy airflow.",
+        "Avoid automatic chemical prescriptions from the historical IPM package."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Tomato IPM cultural practices: rotation, raised nursery beds, soil solarization, summer ploughing, residue destruction and balanced management."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "tomato.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Mechanical/biological IPM practices including damaged-fruit removal, yellow traps and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Damping off",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Use biologically treated/healthy seed or nursery material where locally recommended."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Wilt",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Use biologically treated/healthy seed or nursery material where locally recommended."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Anthracnose",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Maintain canopy airflow and remove badly affected leaves/fruits."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Bacterial spot",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Maintain canopy airflow and remove badly affected leaves/fruits."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Leaf spot",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Maintain canopy airflow and remove badly affected leaves/fruits."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Powdery mildew",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Maintain canopy airflow and remove badly affected leaves/fruits."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Stem rot",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Use biologically treated/healthy seed or nursery material where locally recommended."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Leaf curl",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Monitor sucking-pest vectors with yellow sticky traps.",
+        "Rogue severely affected plants where appropriate."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "chilli",
+      "disease": "Murda disease complex",
+      "prevention": [
+        "Remove volunteer plants and crop residues that can carry inoculum.",
+        "Use clean planting material.",
+        "Use raised nursery beds for drainage.",
+        "Maintain crop rotation and avoid repeated solanaceous cropping where possible.",
+        "Avoid waterlogging and excessive irrigation.",
+        "Monitor sucking-pest vectors with yellow sticky traps.",
+        "Rogue severely affected plants where appropriate."
+      ],
+      "local_prevention": [
+        "Use good drainage during monsoon conditions.",
+        "Avoid chemical recommendations without current label verification."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Chilli cultural practices: sanitation, rotation, raised nursery beds, solarization, summer ploughing, residue destruction and healthy seedlings."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "ChilliesCapsicum.pdf",
+          "pdf_page": "11",
+          "printed_page": "6",
+          "note": "Biological practices including Trichoderma seed treatment and conservation of natural enemies."
+        }
+      ]
+    },
+    {
+      "crop": "onion",
+      "disease": "Purple blotch / leaf blight",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Maintain timely planting and recommended spacing.",
+        "Keep the crop weed-free during early growth.",
+        "Avoid excessive moisture and improve field drainage.",
+        "Use crop rotation with suitable non-host crops.",
+        "Remove severely diseased plant material and field residues.",
+        "Avoid prolonged leaf wetness and improve airflow."
+      ],
+      "local_prevention": [
+        "Kerala/TN rainy-season plots should have clear drainage channels.",
+        "Prefer sanitation and cultural practices before chemical intervention."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "onion.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Onion IPM cultural/biological practices: crop rotation, neem cake, timely planting, weed control, Trichoderma seed treatment and predator conservation."
+        }
+      ]
+    },
+    {
+      "crop": "onion",
+      "disease": "Downy mildew",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Maintain timely planting and recommended spacing.",
+        "Keep the crop weed-free during early growth.",
+        "Avoid excessive moisture and improve field drainage.",
+        "Use crop rotation with suitable non-host crops.",
+        "Remove severely diseased plant material and field residues."
+      ],
+      "local_prevention": [
+        "Kerala/TN rainy-season plots should have clear drainage channels.",
+        "Prefer sanitation and cultural practices before chemical intervention."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "onion.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Onion IPM cultural/biological practices: crop rotation, neem cake, timely planting, weed control, Trichoderma seed treatment and predator conservation."
+        }
+      ]
+    },
+    {
+      "crop": "onion",
+      "disease": "Basal rot",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Maintain timely planting and recommended spacing.",
+        "Keep the crop weed-free during early growth.",
+        "Avoid excessive moisture and improve field drainage.",
+        "Use crop rotation with suitable non-host crops.",
+        "Remove severely diseased plant material and field residues.",
+        "Avoid water stagnation and root-zone injury."
+      ],
+      "local_prevention": [
+        "Kerala/TN rainy-season plots should have clear drainage channels.",
+        "Prefer sanitation and cultural practices before chemical intervention."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "onion.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Onion IPM cultural/biological practices: crop rotation, neem cake, timely planting, weed control, Trichoderma seed treatment and predator conservation."
+        }
+      ]
+    },
+    {
+      "crop": "onion",
+      "disease": "Neck rot",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Maintain timely planting and recommended spacing.",
+        "Keep the crop weed-free during early growth.",
+        "Avoid excessive moisture and improve field drainage.",
+        "Use crop rotation with suitable non-host crops.",
+        "Remove severely diseased plant material and field residues."
+      ],
+      "local_prevention": [
+        "Kerala/TN rainy-season plots should have clear drainage channels.",
+        "Prefer sanitation and cultural practices before chemical intervention."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "onion.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Onion IPM cultural/biological practices: crop rotation, neem cake, timely planting, weed control, Trichoderma seed treatment and predator conservation."
+        }
+      ]
+    },
+    {
+      "crop": "onion",
+      "disease": "Rust",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Maintain timely planting and recommended spacing.",
+        "Keep the crop weed-free during early growth.",
+        "Avoid excessive moisture and improve field drainage.",
+        "Use crop rotation with suitable non-host crops.",
+        "Remove severely diseased plant material and field residues."
+      ],
+      "local_prevention": [
+        "Kerala/TN rainy-season plots should have clear drainage channels.",
+        "Prefer sanitation and cultural practices before chemical intervention."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "onion.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Onion IPM cultural/biological practices: crop rotation, neem cake, timely planting, weed control, Trichoderma seed treatment and predator conservation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Foot/collar rot",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Anthracnose",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds.",
+        "Maintain canopy airflow and avoid prolonged wetness on foliage/fruits.",
+        "Handle fruit carefully to reduce wounds."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Mosaic",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds.",
+        "Avoid alternate host plants around the crop where feasible.",
+        "Monitor aphid/whitefly vectors and remove severely affected plants early."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Leaf curl",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds.",
+        "Avoid alternate host plants around the crop where feasible.",
+        "Monitor aphid/whitefly vectors and remove severely affected plants early."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Damping off",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Powdery mildew",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds.",
+        "Maintain canopy airflow and avoid prolonged wetness on foliage/fruits.",
+        "Handle fruit carefully to reduce wounds."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "papaya",
+      "disease": "Fruit rot",
+      "prevention": [
+        "Maintain proper drainage.",
+        "Use healthy planting material and a clean nursery.",
+        "Avoid planting in persistently waterlogged sites.",
+        "Remove and destroy badly infected plant material.",
+        "Keep the orchard/field clean and control weeds.",
+        "Maintain canopy airflow and avoid prolonged wetness on foliage/fruits.",
+        "Handle fruit carefully to reduce wounds."
+      ],
+      "local_prevention": [
+        "During monsoon, drainage is a first-line preventive action.",
+        "Do not automatically apply historical pesticide recipes."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "papaya.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Papaya IPM cultural/mechanical practices: avoid alternate hosts, use suitable varieties, nursery solarization, drainage, removal of infected leaves/plants and sanitation."
+        }
+      ]
+    },
+    {
+      "crop": "pineapple",
+      "disease": "Fruit rot",
+      "prevention": [
+        "Select healthy planting material (slips, suckers or crowns).",
+        "Maintain good drainage and avoid waterlogging.",
+        "Remove and destroy infected residues.",
+        "Use appropriate weed management and avoid dense, poorly ventilated conditions.",
+        "Manage irrigation and fertilizer carefully rather than pushing excessive growth.",
+        "Avoid mechanical injury to planting material and fruit.",
+        "Use sanitation during planting and harvesting."
+      ],
+      "local_prevention": [
+        "Good drainage is particularly important under Kerala-like high-rainfall conditions."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "pineapple.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Pineapple cultural practices: healthy planting material, irrigation/fertilizer management, weed control, residue destruction and synchronization."
+        }
+      ]
+    },
+    {
+      "crop": "pineapple",
+      "disease": "Root rot",
+      "prevention": [
+        "Select healthy planting material (slips, suckers or crowns).",
+        "Maintain good drainage and avoid waterlogging.",
+        "Remove and destroy infected residues.",
+        "Use appropriate weed management and avoid dense, poorly ventilated conditions.",
+        "Manage irrigation and fertilizer carefully rather than pushing excessive growth.",
+        "Avoid mechanical injury to planting material and fruit.",
+        "Use sanitation during planting and harvesting."
+      ],
+      "local_prevention": [
+        "Good drainage is particularly important under Kerala-like high-rainfall conditions."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "pineapple.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Pineapple cultural practices: healthy planting material, irrigation/fertilizer management, weed control, residue destruction and synchronization."
+        }
+      ]
+    },
+    {
+      "crop": "pineapple",
+      "disease": "Pineapple wilt",
+      "prevention": [
+        "Select healthy planting material (slips, suckers or crowns).",
+        "Maintain good drainage and avoid waterlogging.",
+        "Remove and destroy infected residues.",
+        "Use appropriate weed management and avoid dense, poorly ventilated conditions.",
+        "Manage irrigation and fertilizer carefully rather than pushing excessive growth.",
+        "Monitor mealybug populations because the uploaded IPM package associates wilt with mealybug transmission.",
+        "Remove badly affected plants and manage vectors through IPM."
+      ],
+      "local_prevention": [
+        "Good drainage is particularly important under Kerala-like high-rainfall conditions."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "pineapple.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Pineapple cultural practices: healthy planting material, irrigation/fertilizer management, weed control, residue destruction and synchronization."
+        }
+      ]
+    },
+    {
+      "crop": "pineapple",
+      "disease": "Leaf spot",
+      "prevention": [
+        "Select healthy planting material (slips, suckers or crowns).",
+        "Maintain good drainage and avoid waterlogging.",
+        "Remove and destroy infected residues.",
+        "Use appropriate weed management and avoid dense, poorly ventilated conditions.",
+        "Manage irrigation and fertilizer carefully rather than pushing excessive growth."
+      ],
+      "local_prevention": [
+        "Good drainage is particularly important under Kerala-like high-rainfall conditions."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "pineapple.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Pineapple cultural practices: healthy planting material, irrigation/fertilizer management, weed control, residue destruction and synchronization."
+        }
+      ]
+    },
+    {
+      "crop": "pineapple",
+      "disease": "Stem/corm rot",
+      "prevention": [
+        "Select healthy planting material (slips, suckers or crowns).",
+        "Maintain good drainage and avoid waterlogging.",
+        "Remove and destroy infected residues.",
+        "Use appropriate weed management and avoid dense, poorly ventilated conditions.",
+        "Manage irrigation and fertilizer carefully rather than pushing excessive growth.",
+        "Avoid mechanical injury to planting material and fruit.",
+        "Use sanitation during planting and harvesting."
+      ],
+      "local_prevention": [
+        "Good drainage is particularly important under Kerala-like high-rainfall conditions."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "pineapple.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Pineapple cultural practices: healthy planting material, irrigation/fertilizer management, weed control, residue destruction and synchronization."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Damping off",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Phomopsis blight",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing.",
+        "Improve airflow and avoid prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Little leaf",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing.",
+        "Monitor insect vectors and remove severely affected plants early where appropriate."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Bacterial wilt",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing.",
+        "Avoid moving contaminated soil and irrigation water between beds."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Cercospora leaf spot",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing.",
+        "Improve airflow and avoid prolonged leaf wetness."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Root and collar rot",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "brinjal",
+      "disease": "Spotted wilt virus",
+      "prevention": [
+        "Use clean planting material and raised nursery beds.",
+        "Maintain good drainage and avoid excess irrigation.",
+        "Use crop rotation with non-host crops where practical.",
+        "Remove infected residues and alternate hosts.",
+        "Maintain balanced fertilizer and recommended spacing.",
+        "Monitor insect vectors and remove severely affected plants early where appropriate."
+      ],
+      "local_prevention": [
+        "During monsoon, prioritize drainage and sanitation.",
+        "Use current official pesticide guidance only if chemical control is required."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Brinjal IPM: sanitation, crop rotation, raised beds/drainage, solarization, summer ploughing, residue destruction and balanced fertilization."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "brinjal.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Biological control/conservation and biopesticide practices."
+        }
+      ]
+    },
+    {
+      "crop": "okra",
+      "disease": "Wilt",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Use timely planting and recommended spacing.",
+        "Maintain field sanitation and remove alternate host weeds.",
+        "Use crop rotation with non-host crops where possible.",
+        "Avoid excess irrigation and improve drainage.",
+        "Avoid waterlogging and reduce soil movement from infected areas to clean areas."
+      ],
+      "local_prevention": [
+        "High humidity/monsoon periods call for strong drainage and sanitation."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "okra.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Okra IPM: field sanitation, timely planting, balanced fertilizer, rotation/non-host crops, avoid excess water, and less-susceptible varieties."
+        }
+      ]
+    },
+    {
+      "crop": "okra",
+      "disease": "Pod spot",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Use timely planting and recommended spacing.",
+        "Maintain field sanitation and remove alternate host weeds.",
+        "Use crop rotation with non-host crops where possible.",
+        "Avoid excess irrigation and improve drainage."
+      ],
+      "local_prevention": [
+        "High humidity/monsoon periods call for strong drainage and sanitation."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "okra.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Okra IPM: field sanitation, timely planting, balanced fertilizer, rotation/non-host crops, avoid excess water, and less-susceptible varieties."
+        }
+      ]
+    },
+    {
+      "crop": "okra",
+      "disease": "Collar rot",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Use timely planting and recommended spacing.",
+        "Maintain field sanitation and remove alternate host weeds.",
+        "Use crop rotation with non-host crops where possible.",
+        "Avoid excess irrigation and improve drainage.",
+        "Avoid waterlogging and reduce soil movement from infected areas to clean areas."
+      ],
+      "local_prevention": [
+        "High humidity/monsoon periods call for strong drainage and sanitation."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "okra.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Okra IPM: field sanitation, timely planting, balanced fertilizer, rotation/non-host crops, avoid excess water, and less-susceptible varieties."
+        }
+      ]
+    },
+    {
+      "crop": "okra",
+      "disease": "Yellow vein mosaic",
+      "prevention": [
+        "Use clean seed and healthy seedlings.",
+        "Use timely planting and recommended spacing.",
+        "Maintain field sanitation and remove alternate host weeds.",
+        "Use crop rotation with non-host crops where possible.",
+        "Avoid excess irrigation and improve drainage.",
+        "Monitor whitefly populations with yellow sticky traps.",
+        "Remove severely affected plants early where appropriate."
+      ],
+      "local_prevention": [
+        "High humidity/monsoon periods call for strong drainage and sanitation."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "okra.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Okra IPM: field sanitation, timely planting, balanced fertilizer, rotation/non-host crops, avoid excess water, and less-susceptible varieties."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Late blight",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues.",
+        "Increase field scouting during cool, humid or rainy periods.",
+        "Avoid prolonged leaf wetness and dense canopy conditions."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Early blight",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Bacterial wilt",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues.",
+        "Avoid contaminated irrigation water and soil movement.",
+        "Keep volunteer solanaceous plants under control."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Black scurf",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Common scab",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues.",
+        "Maintain appropriate soil moisture during tuber initiation and avoid soil conditions that favor scab."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Leaf spot complex",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "potato",
+      "disease": "Potato virus disease",
+      "prevention": [
+        "Plant disease-free seed tubers.",
+        "Use locally recommended resistant/tolerant varieties when available.",
+        "Use crop rotation with non-solanaceous crops.",
+        "Maintain suitable planting and harvesting timing.",
+        "Avoid excessive moisture and maintain good drainage.",
+        "Remove diseased plants/tubers and crop residues."
+      ],
+      "local_prevention": [
+        "Kerala hill/monsoon production requires special attention to drainage and late-blight monitoring."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "potato (1).pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Potato IPM: deep ploughing, disease-free whole seed, resistant varieties, planting/harvesting timing, crop rotation and timely crop management."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Fusarium wilt",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Prefer locally recommended less-susceptible/resistant cultivars in endemic areas.",
+        "Avoid moving infected soil/planting material between fields."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Yellow Sigatoka",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Remove severely infected lower leaves where appropriate and maintain canopy airflow."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Black Sigatoka",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Remove severely infected lower leaves where appropriate and maintain canopy airflow."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Anthracnose",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Bacterial soft rot",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Avoid wounds and waterlogging; use hardened healthy planting material."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Banana bunchy top disease",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Use clean planting material and monitor/remove symptomatic plants.",
+        "Control insect vectors through integrated monitoring rather than indiscriminate spraying."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Banana streak disease",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Use clean planting material and monitor/remove symptomatic plants.",
+        "Control insect vectors through integrated monitoring rather than indiscriminate spraying."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "banana",
+      "disease": "Banana bract mosaic",
+      "prevention": [
+        "Use healthy, disease-free suckers or tissue-culture plants.",
+        "Remove and destroy severely infected plants/material.",
+        "Maintain good drainage, especially during rainy periods.",
+        "Keep plantations free of weeds and post-harvest residues.",
+        "Use crop rotation where agronomically feasible.",
+        "Use clean planting material and monitor/remove symptomatic plants.",
+        "Control insect vectors through integrated monitoring rather than indiscriminate spraying."
+      ],
+      "local_prevention": [
+        "KAU/TNAU material supports drainage, sanitation and healthy planting material as important local measures."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Banana disease list: Fusarium wilt, Mycosphaerella leaf spots, yellow/black Sigatoka, anthracnose, bacterial soft rot and viral diseases."
+        },
+        {
+          "source_type": "uploaded_pdf",
+          "source": "banana (1).pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Banana IPM: deep ploughing, rotation, healthy suckers, proper planting practices, weed control, neem/cultural practices and residue destruction."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU Banana Expert System",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Healthy planting material, sanitation, rotation and drainage are emphasized."
+        }
+      ]
+    },
+    {
+      "crop": "coconut",
+      "disease": "Bud rot",
+      "prevention": [
+        "Maintain adequate drainage and avoid persistent waterlogging.",
+        "Remove and destroy badly affected tissues where appropriate.",
+        "Maintain balanced nutrition and avoid severe plant stress.",
+        "Keep the palm basin and surrounding area reasonably clean.",
+        "Use healthy planting material.",
+        "Increase monitoring before and during rainy periods."
+      ],
+      "local_prevention": [
+        "Kerala coconut gardens should prioritize drainage and regular crown inspection during monsoon."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "coconut (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Coconut IPM cultural practices include healthy seed nuts, spacing, irrigation/drainage, mulching, intercropping, sanitation and weed management."
+        }
+      ]
+    },
+    {
+      "crop": "coconut",
+      "disease": "Stem bleeding",
+      "prevention": [
+        "Maintain adequate drainage and avoid persistent waterlogging.",
+        "Remove and destroy badly affected tissues where appropriate.",
+        "Maintain balanced nutrition and avoid severe plant stress.",
+        "Keep the palm basin and surrounding area reasonably clean.",
+        "Use healthy planting material."
+      ],
+      "local_prevention": [
+        "Kerala coconut gardens should prioritize drainage and regular crown inspection during monsoon."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "coconut (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Coconut IPM cultural practices include healthy seed nuts, spacing, irrigation/drainage, mulching, intercropping, sanitation and weed management."
+        }
+      ]
+    },
+    {
+      "crop": "coconut",
+      "disease": "Leaf rot",
+      "prevention": [
+        "Maintain adequate drainage and avoid persistent waterlogging.",
+        "Remove and destroy badly affected tissues where appropriate.",
+        "Maintain balanced nutrition and avoid severe plant stress.",
+        "Keep the palm basin and surrounding area reasonably clean.",
+        "Use healthy planting material.",
+        "Maintain canopy hygiene and remove badly damaged tissues when recommended."
+      ],
+      "local_prevention": [
+        "Kerala coconut gardens should prioritize drainage and regular crown inspection during monsoon."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "coconut (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Coconut IPM cultural practices include healthy seed nuts, spacing, irrigation/drainage, mulching, intercropping, sanitation and weed management."
+        }
+      ]
+    },
+    {
+      "crop": "coconut",
+      "disease": "Basal stem/root disease complex",
+      "prevention": [
+        "Maintain adequate drainage and avoid persistent waterlogging.",
+        "Remove and destroy badly affected tissues where appropriate.",
+        "Maintain balanced nutrition and avoid severe plant stress.",
+        "Keep the palm basin and surrounding area reasonably clean.",
+        "Use healthy planting material."
+      ],
+      "local_prevention": [
+        "Kerala coconut gardens should prioritize drainage and regular crown inspection during monsoon."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "coconut (1).pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Coconut IPM cultural practices include healthy seed nuts, spacing, irrigation/drainage, mulching, intercropping, sanitation and weed management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Maydis leaf blight",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging.",
+        "Scout leaves regularly during humid weather and manage heavily affected residues."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Post-flowering stalk rot",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Downy mildew",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging.",
+        "Scout leaves regularly during humid weather and manage heavily affected residues."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Sheath blight",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Rust",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging.",
+        "Scout leaves regularly during humid weather and manage heavily affected residues."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Head smut",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "maize",
+      "disease": "Charcoal rot",
+      "prevention": [
+        "Use resistant/tolerant varieties where locally recommended.",
+        "Practice crop rotation and avoid continuous maize where feasible.",
+        "Use timely sowing and balanced fertilizer.",
+        "Remove crop residues/stubbles where disease carryover is a concern.",
+        "Maintain proper irrigation and avoid unnecessary water stress or waterlogging.",
+        "Avoid severe drought stress followed by excessive irrigation; maintain balanced nutrition."
+      ],
+      "local_prevention": [
+        "In South Indian humid conditions, regular leaf scouting after rains is useful."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "maize.pdf",
+          "pdf_page": "8",
+          "printed_page": "3",
+          "note": "Maize IPM: deep summer ploughing, crop rotation, resistant varieties, timely sowing, irrigation and crop residue management."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Powdery mildew",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness.",
+        "Monitor during flowering and new flush when humid/cool conditions favor disease."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Anthracnose",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness.",
+        "Remove infected foliage/fruits and improve airflow before wet periods."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Dieback",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Sooty mould",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness.",
+        "Monitor sap-sucking insect populations that produce honeydew and manage them through IPM."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Bacterial canker",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Stem rot",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "mango",
+      "disease": "Red rust",
+      "prevention": [
+        "Keep the orchard clean and avoid dense, poorly ventilated canopies.",
+        "Prune dead/diseased branches where appropriate and remove them from the orchard.",
+        "Remove infected/mummified fruits and fallen debris.",
+        "Maintain balanced irrigation and nutrition.",
+        "Avoid unnecessary canopy wetness."
+      ],
+      "local_prevention": [
+        "Tamil Nadu mango-growing districts have current extension reporting for anthracnose; use current local advisories when chemical control is considered."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "mango.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Mango IPM: deep ploughing, orchard sanitation, avoid dense planting, pruning/weed removal, removal of infested fruits and diseased foliage."
+        },
+        {
+          "source_type": "official_web_supplement",
+          "source": "TNAU pest forecast/crop protection",
+          "pdf_page": null,
+          "printed_page": null,
+          "note": "Recent TNAU material reports mango anthracnose and sooty mould management in Tamil Nadu."
+        }
+      ]
+    },
+    {
+      "crop": "guava",
+      "disease": "Guava wilt",
+      "prevention": [
+        "Maintain clean cultivation and orchard sanitation.",
+        "Avoid waterlogging and maintain drainage.",
+        "Use healthy planting material.",
+        "Remove and destroy severely infected branches/plants where appropriate.",
+        "Maintain balanced nutrition and avoid plant stress.",
+        "Avoid moving contaminated soil or irrigation water into clean areas.",
+        "Use soil and root-zone management practices that support healthy plants."
+      ],
+      "local_prevention": [
+        "Use drip irrigation where practical to reduce unnecessary leaf wetness and conserve water.",
+        "The uploaded PDF specifically supports avoiding waterlogging; drip is a supplementary local-practical suggestion."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "guava.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Guava disease management includes sanitation/uprooting for wilt, clean cultivation, avoiding water logging and organic/green manure support."
+        }
+      ]
+    },
+    {
+      "crop": "guava",
+      "disease": "Fruit rot",
+      "prevention": [
+        "Maintain clean cultivation and orchard sanitation.",
+        "Avoid waterlogging and maintain drainage.",
+        "Use healthy planting material.",
+        "Remove and destroy severely infected branches/plants where appropriate.",
+        "Maintain balanced nutrition and avoid plant stress.",
+        "Improve canopy airflow and remove infected fruits/leaves."
+      ],
+      "local_prevention": [
+        "Use drip irrigation where practical to reduce unnecessary leaf wetness and conserve water.",
+        "The uploaded PDF specifically supports avoiding waterlogging; drip is a supplementary local-practical suggestion."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "guava.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Guava disease management includes sanitation/uprooting for wilt, clean cultivation, avoiding water logging and organic/green manure support."
+        }
+      ]
+    },
+    {
+      "crop": "guava",
+      "disease": "Dieback",
+      "prevention": [
+        "Maintain clean cultivation and orchard sanitation.",
+        "Avoid waterlogging and maintain drainage.",
+        "Use healthy planting material.",
+        "Remove and destroy severely infected branches/plants where appropriate.",
+        "Maintain balanced nutrition and avoid plant stress.",
+        "Improve canopy airflow and remove infected fruits/leaves."
+      ],
+      "local_prevention": [
+        "Use drip irrigation where practical to reduce unnecessary leaf wetness and conserve water.",
+        "The uploaded PDF specifically supports avoiding waterlogging; drip is a supplementary local-practical suggestion."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "guava.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Guava disease management includes sanitation/uprooting for wilt, clean cultivation, avoiding water logging and organic/green manure support."
+        }
+      ]
+    },
+    {
+      "crop": "guava",
+      "disease": "Leaf spot",
+      "prevention": [
+        "Maintain clean cultivation and orchard sanitation.",
+        "Avoid waterlogging and maintain drainage.",
+        "Use healthy planting material.",
+        "Remove and destroy severely infected branches/plants where appropriate.",
+        "Maintain balanced nutrition and avoid plant stress.",
+        "Improve canopy airflow and remove infected fruits/leaves."
+      ],
+      "local_prevention": [
+        "Use drip irrigation where practical to reduce unnecessary leaf wetness and conserve water.",
+        "The uploaded PDF specifically supports avoiding waterlogging; drip is a supplementary local-practical suggestion."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "guava.pdf",
+          "pdf_page": "9",
+          "printed_page": "4",
+          "note": "Guava disease management includes sanitation/uprooting for wilt, clean cultivation, avoiding water logging and organic/green manure support."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Rust",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Anthracnose",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Male inflorescence rot",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition.",
+        "Handle fruit/inflorescences carefully to reduce wounds and secondary infection.",
+        "Avoid prolonged wetness around developing fruit."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Soft/fruit rot",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition.",
+        "Handle fruit/inflorescences carefully to reduce wounds and secondary infection.",
+        "Avoid prolonged wetness around developing fruit."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Dieback",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition.",
+        "Prune below clearly diseased tissue and protect pruning wounds using current locally approved guidance."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Leaf spot",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    },
+    {
+      "crop": "jackfruit",
+      "disease": "Pink disease",
+      "prevention": [
+        "Keep the orchard clean and remove diseased plant parts.",
+        "Prune and destroy affected twigs/branches where appropriate.",
+        "Avoid wounds and improve canopy airflow.",
+        "Remove fallen/rotting fruit and plant debris that can support pathogen build-up.",
+        "Maintain balanced irrigation and nutrition."
+      ],
+      "local_prevention": [
+        "Kerala humidity and monsoon make sanitation, drainage and canopy airflow especially important."
+      ],
+      "sources": [
+        {
+          "source_type": "uploaded_pdf",
+          "source": "Jackfruit.pdf",
+          "pdf_page": "10",
+          "printed_page": "5",
+          "note": "Jackfruit disease management includes post-pruning protection and Bordeaux/copper-based measures in the historical IPM package; orchard sanitation and pruning are core preventive practices."
+        }
+      ]
+    }
+  ],
+  "general_prevention": [
+    {
+      "practice": "Drainage-first monsoon management",
+      "prevention": "In Kerala/Tamil Nadu humid and rainy periods, prevent standing water around susceptible crops, maintain field drains, avoid repeated saturation and improve airflow.",
+      "source_type": "official_web_supplement",
+      "source": "Kerala Agricultural University advisory / Crop Protection",
+      "note": "KAU material emphasizes drainage for disease-risk reduction; this is especially relevant to rainy-season field conditions."
+    },
+    {
+      "practice": "Remove and destroy infected plant material",
+      "prevention": "Collect badly infected leaves, shoots, fruits or whole plants where appropriate and dispose of them away from the healthy crop rather than leaving them in the field.",
+      "source_type": "uploaded_pdf + official_web_supplement",
+      "source": "Multiple uploaded IPM packages; KAU/TNAU crop-protection material",
+      "note": "This is repeatedly used as an IPM sanitation measure."
+    },
+    {
+      "practice": "Use healthy planting material",
+      "prevention": "Start with disease-free seed, seedlings, suckers, slips, crowns or other planting material; avoid visibly diseased material.",
+      "source_type": "uploaded_pdf + official_web_supplement",
+      "source": "Multiple uploaded IPM packages; TNAU banana expert system",
+      "note": "Especially important for soil-borne and planting-material-borne diseases."
+    },
+    {
+      "practice": "Avoid excessive canopy humidity",
+      "prevention": "Use appropriate spacing, pruning where agronomically suitable, weed control and airflow management. Prefer irrigation practices that do not keep foliage wet for long periods.",
+      "source_type": "model_supplement",
+      "source": "General agronomic guidance",
+      "note": "Supplementary practical advice; not a verbatim extraction from a single uploaded PDF."
+    }
+  ]
+}

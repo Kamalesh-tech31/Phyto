@@ -13,7 +13,15 @@ export type ScanStep =
 
 export type SeverityLevel = 'mild' | 'moderate' | 'severe';
 export type ConfidenceLevel = 'high' | 'medium' | 'low';
-export type DiseaseId = 'healthy' | 'early_blight' | 'late_blight' | 'uncertain';
+export type DiseaseId =
+  | 'healthy'
+  | 'early_blight'
+  | 'late_blight'
+  | 'uncertain'
+  | 'rice_blast'
+  | 'chilli_damping'
+  | 'unknown_disease'
+  | string;
 
 export interface QualityCheckResult {
   sharpness: 'sharp' | 'blurry' | 'fair';

@@ -1,0 +1,459 @@
+{
+  "dataset_name": "Restricted_22_Class_Prevention_KB",
+  "version": "2.0",
+  "scope": {
+    "crops": [
+      "tomato",
+      "potato",
+      "corn",
+      "rice"
+    ],
+    "total_classes": 22,
+    "disease_and_healthy_classes": 17,
+    "pest_classes": 5,
+    "healthy_classes": 3,
+    "actual_non_healthy_classes": 19,
+    "note": "Exactly 22 frozen model labels: 17 tomato/potato/corn/rice disease-or-healthy labels + 5 pest labels. Rice has no Healthy class in the frozen list."
+  },
+  "important_constraint": "This KB contains only the frozen 4-crop/22-class model scope. It does not contain prevention entries for any other crop.",
+  "model_class_verification": {
+    "status": "pending_actual_dataset_folder_check",
+    "reason": "The frozen labels supplied by the team are used here, but the actual PlantVillage/IP102/rice-dataset folder names were not available in this conversation. Do not rename model classes until the actual folders are inspected.",
+    "required_before_training": [
+      "List actual PlantVillage folder names.",
+      "List actual IP102 folder names.",
+      "List actual rice-disease dataset folder names.",
+      "Resolve aliases such as Yellow leaf curl virus vs Tomato leaf curl virus only in a mapping layer.",
+      "Do not assign scientific pest names until the actual IP102 folder identity is verified."
+    ]
+  },
+  "display_policy": {
+    "purpose": "Compact side-feature prevention guidance after prediction.",
+    "do_not_show": [
+      "government schemes",
+      "long disease explanations",
+      "training information",
+      "large source lists"
+    ],
+    "preferred_display": "3-5 concise prevention bullets, with optional 'Local tip' line."
+  },
+  "entries": [
+    {
+      "crop": "tomato",
+      "class_name": "Early blight",
+      "class_type": "disease",
+      "prevention": [
+        "Start with healthy seedlings and clean planting material.",
+        "Remove and destroy infected leaves and crop debris promptly.",
+        "Maintain adequate plant spacing and airflow; avoid prolonged leaf wetness.",
+        "Avoid overhead irrigation where practical and keep foliage as dry as possible.",
+        "Rotate tomato with non-host crops rather than repeatedly planting tomato in the same bed."
+      ],
+      "local_prevention": [
+        "Prioritize sanitation and canopy drying during humid South-Indian weather."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Late blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy planting material and avoid introducing infected transplants.",
+        "Remove infected plant material promptly and destroy crop residues after harvest.",
+        "Maintain spacing and airflow to reduce prolonged leaf wetness.",
+        "Avoid unnecessary overhead irrigation and improve drainage.",
+        "Monitor closely during cool, wet and highly humid periods."
+      ],
+      "local_prevention": [
+        "In humid monsoon conditions, drainage and rapid drying of foliage are particularly important."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Leaf mold",
+      "class_type": "disease",
+      "prevention": [
+        "Reduce humidity around foliage through adequate spacing, pruning and good airflow.",
+        "Avoid overhead watering and reduce prolonged leaf wetness.",
+        "Remove and destroy infected leaves and fallen debris.",
+        "Sanitize stakes, tools and protected-cultivation structures where relevant.",
+        "Use resistant varieties when available and appropriate."
+      ],
+      "local_prevention": [
+        "Especially relevant to protected/high-humidity cultivation."
+      ],
+      "notes": [],
+      "sources": [
+        "https://ipm.cahnr.uconn.edu/tomato-leaf-mold/"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Septoria leaf spot",
+      "class_type": "disease",
+      "prevention": [
+        "Remove and destroy infected leaves and crop debris.",
+        "Use adequate spacing and pruning to improve air circulation.",
+        "Water at the base rather than wetting foliage.",
+        "Use mulch to reduce soil splash onto lower leaves.",
+        "Rotate away from tomato and manage solanaceous weeds where practical."
+      ],
+      "local_prevention": [
+        "TNAU specifically lists removal/destruction of affected plant parts and clean seed treatment as management measures."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Bacterial spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use clean, disease-free seed and healthy transplants.",
+        "Remove and destroy infected plant material and crop debris.",
+        "Avoid working through wet foliage because bacterial spread is favored by water.",
+        "Avoid overhead irrigation and reduce leaf wetness.",
+        "Maintain spacing and airflow and control volunteer plants/weeds."
+      ],
+      "local_prevention": [
+        "Use sanitation and water-management measures first; avoid spreading contaminated material between plants."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Yellow leaf curl virus",
+      "class_type": "disease",
+      "prevention": [
+        "Use virus-free, healthy transplants and resistant/tolerant varieties where available.",
+        "Control whitefly populations and reduce nearby weed/host reservoirs.",
+        "Remove severely infected plants when incidence is low enough for roguing to be useful.",
+        "Remove old tomato crop residues and volunteers promptly after harvest.",
+        "Avoid establishing new tomato plantings immediately beside heavily infected older crops."
+      ],
+      "local_prevention": [
+        "The disease is virus-associated; prevention focuses on healthy planting material, whitefly management and sanitation rather than curing infected plants."
+      ],
+      "notes": [],
+      "sources": [
+        "https://ipm.ucanr.edu/agriculture/tomato/tomato-yellow-leaf-curl/",
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ]
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Continue using healthy planting material and clean tools.",
+        "Maintain balanced nutrition, adequate spacing and good drainage.",
+        "Avoid prolonged leaf wetness and unnecessary plant stress.",
+        "Scout plants regularly so early disease symptoms can be addressed promptly."
+      ],
+      "local_prevention": [
+        "No disease-specific intervention is required for a healthy prediction."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ]
+    },
+    {
+      "crop": "potato",
+      "class_name": "Early blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy seed tubers and maintain good field sanitation.",
+        "Remove or manage infected crop residues after harvest.",
+        "Maintain balanced plant nutrition and avoid prolonged plant stress.",
+        "Use adequate spacing and irrigation practices that minimize extended leaf wetness.",
+        "Rotate crops where practical rather than continuous potato cultivation."
+      ],
+      "local_prevention": [
+        "Prefer cultural and sanitation measures before any chemical intervention."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ]
+    },
+    {
+      "crop": "potato",
+      "class_name": "Late blight",
+      "class_type": "disease",
+      "prevention": [
+        "Plant healthy, disease-free seed tubers.",
+        "Avoid leaving infected volunteer potatoes or cull piles near the field.",
+        "Maintain good field drainage and avoid prolonged leaf wetness.",
+        "Remove infected foliage/residue appropriately to reduce inoculum.",
+        "During cool, wet weather, increase field scouting and act early on confirmed disease."
+      ],
+      "local_prevention": [
+        "Late blight risk rises under cool, wet conditions; field sanitation and healthy seed are foundational."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ]
+    },
+    {
+      "crop": "potato",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Use certified/healthy seed tubers.",
+        "Maintain drainage, balanced nutrition and appropriate spacing.",
+        "Rotate crops where practical and remove volunteer/cull potatoes.",
+        "Scout regularly for early disease and pest signs."
+      ],
+      "local_prevention": [],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Gray leaf spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use hybrids with suitable resistance/tolerance where available.",
+        "Rotate away from continuous corn where practical.",
+        "Manage infected residue to reduce the local inoculum source.",
+        "Avoid unnecessarily dense canopies and prolonged leaf wetness.",
+        "Increase scouting under warm, humid conditions."
+      ],
+      "local_prevention": [
+        "Humid South-Indian conditions can favor foliar disease development; prioritize canopy drying and residue management."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Common rust",
+      "class_type": "disease",
+      "prevention": [
+        "Use resistant/tolerant hybrids where available.",
+        "Maintain adequate spacing and airflow.",
+        "Avoid excessive canopy humidity and prolonged leaf wetness.",
+        "Scout regularly during favorable humid conditions.",
+        "Maintain balanced crop nutrition and avoid unnecessary plant stress."
+      ],
+      "local_prevention": [
+        "General integrated foliar-disease prevention; do not infer a chemical treatment from the class alone."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Northern leaf blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use hybrids with resistance/tolerance where available.",
+        "Rotate away from continuous corn where practical.",
+        "Reduce or properly manage infected corn residue.",
+        "Maintain adequate field airflow and avoid prolonged leaf wetness.",
+        "Scout early when humid/wet conditions persist."
+      ],
+      "local_prevention": [
+        "Resistance plus cultural practices are the main preventive foundation."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/northern-corn-leaf-blight/"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Use healthy seed and suitable resistant/tolerant hybrids.",
+        "Maintain balanced nutrition, drainage and appropriate plant density.",
+        "Manage crop residue and avoid continuous corn where practical.",
+        "Scout regularly for foliar disease and insect damage."
+      ],
+      "local_prevention": [],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/",
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/northern-corn-leaf-blight/"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Bacterial leaf blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy seed and resistant/tolerant varieties where recommended.",
+        "Avoid excessive nitrogen application and maintain balanced nutrition.",
+        "Manage field water carefully and avoid prolonged unnecessary standing water when disease is developing.",
+        "Maintain clean field sanitation and remove heavily infected material where practical.",
+        "Use integrated disease-management guidance from the local agriculture department."
+      ],
+      "local_prevention": [
+        "Drainage/water management is particularly important when bacterial blight is developing."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2305956&lang=2&reg=48",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Brown spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy, quality seed and avoid carrying infected seed into the next crop.",
+        "Maintain balanced plant nutrition, especially avoiding nutrient stress.",
+        "Manage water so the crop does not undergo prolonged moisture stress.",
+        "Remove or properly manage infected crop residues and volunteer rice.",
+        "Use locally recommended tolerant/resistant varieties where available."
+      ],
+      "local_prevention": [
+        "Brown spot can be associated with nutrient and water stress; maintaining crop vigor is a key preventive measure."
+      ],
+      "notes": [],
+      "sources": [
+        "https://databases.nbair.res.in/rice/subpestdetails.php?user_id=101",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Leaf smut",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy, clean seed and avoid planting visibly infected seed lots.",
+        "Maintain balanced nutrition and avoid excessive nitrogen.",
+        "Remove/manage infected residues after harvest.",
+        "Use suitable tolerant/resistant varieties when locally recommended.",
+        "Maintain good field sanitation and avoid carrying infected material between fields."
+      ],
+      "local_prevention": [
+        "The provided official rice IPM material supports integrated sanitation, healthy seed and balanced crop management; no unsupported chemical prescription is included."
+      ],
+      "notes": [],
+      "sources": [
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Brown planthopper",
+      "class_type": "pest",
+      "prevention": [
+        "Avoid excessive nitrogen fertilization and very dense planting.",
+        "Use balanced fertilizer, especially split nitrogen applications.",
+        "Maintain appropriate field water management; drainage/alternate wetting and drying can reduce outbreak conditions.",
+        "Prefer resistant/tolerant varieties where available.",
+        "Use synchronized planting and avoid unnecessary continuous rice cultivation."
+      ],
+      "local_prevention": [
+        "Do not recommend routine broad-spectrum spraying; preserve natural enemies and use threshold-based IPM."
+      ],
+      "notes": [],
+      "sources": [
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Asiatic rice borer",
+      "class_type": "pest",
+      "prevention": [
+        "Use synchronized planting where practical.",
+        "Avoid very close planting and prolonged water stagnation.",
+        "Use locally recommended resistant/tolerant varieties where available.",
+        "Remove/destroy egg masses and heavily infested plant parts when feasible.",
+        "Use pheromone traps and biological control as part of an IPM programme."
+      ],
+      "local_prevention": [
+        "The label is preserved exactly as supplied by the model plan; the source used for prevention is the Indian rice yellow stem-borer/Scirpophaga incertulas guidance."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/rice/crop_prot_crop_insectpest%20_cereals_paddy_4.html"
+      ]
+    },
+    {
+      "crop": "rice",
+      "class_name": "Rice leaf roller",
+      "class_type": "pest",
+      "prevention": [
+        "Avoid excessive nitrogen and overly dense crop canopies.",
+        "Conserve natural enemies and avoid unnecessary broad-spectrum insecticide use.",
+        "Monitor leaf-folding damage regularly and use threshold-based IPM.",
+        "Use biological-control options such as parasitoids where locally recommended.",
+        "Maintain field sanitation and synchronized crop management where practical."
+      ],
+      "local_prevention": [
+        "The class label is preserved exactly; prevention follows rice leaf-folder IPM guidance."
+      ],
+      "notes": [],
+      "sources": [
+        "https://epubs.icar.org.in/index.php/OIJR/article/view/109810",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Corn borer",
+      "class_type": "pest",
+      "prevention": [
+        "Use locally recommended resistant/tolerant hybrids where available.",
+        "Destroy or properly manage crop residues after harvest to reduce carry-over.",
+        "Scout early for egg masses and larval damage.",
+        "Maintain field sanitation and avoid leaving heavily infested residues.",
+        "Use pheromone/monitoring tools and biological control where available."
+      ],
+      "local_prevention": [
+        "The exact IP102 class identity should be verified against the actual dataset folder before adding a species-specific scientific name."
+      ],
+      "notes": [],
+      "sources": [
+        "https://epubs.icar.org.in/index.php/IndFarm/article/view/116540"
+      ]
+    },
+    {
+      "crop": "corn",
+      "class_name": "Armyworm",
+      "class_type": "pest",
+      "prevention": [
+        "Scout maize early and frequently for larvae and fresh feeding damage.",
+        "Remove and destroy visible larval infestations where practical.",
+        "Maintain field sanitation and manage weeds that can provide shelter/host sites.",
+        "Use biological and botanical IPM options where locally recommended.",
+        "Avoid unnecessary insecticide use so natural enemies are conserved."
+      ],
+      "local_prevention": [
+        "This prevention entry is intentionally IPM-focused and does not prescribe a chemical dose. The exact IP102 label should be verified before assigning a scientific name."
+      ],
+      "notes": [],
+      "sources": [
+        "https://nibsm.org/images/newdata/Technical-Bulletin-Maize.pdf",
+        "https://epubs.icar.org.in/index.php/IndFarm/article/view/116540"
+      ]
+    }
+  ]
+}

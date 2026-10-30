@@ -1,0 +1,143 @@
+{
+  "dataset_name": "Restricted_22_Class_Severe_Scheme_KB",
+  "version": "2.0",
+  "scope": {
+    "crops": [
+      "tomato",
+      "potato",
+      "corn",
+      "rice"
+    ],
+    "scheme_display_trigger": [
+      "severe",
+      "critical"
+    ],
+    "important_rule": "No government scheme is displayed for low/moderate disease severity. A disease class alone is never sufficient to establish eligibility."
+  },
+  "decision_rules": [
+    "Only evaluate this KB when the existing model/system provides severity = severe or critical.",
+    "Severity must come from the application's existing severity output; do not infer severity from disease name.",
+    "A severe disease prediction does not automatically mean crop loss or insurance eligibility.",
+    "Check state, crop, notified crop/area/season, enrollment/insurance status and other scheme gates.",
+    "Show at most 1-2 highly relevant schemes in the compact UI.",
+    "Use 'Potentially relevant' / 'Eligibility requires verification' instead of claiming guaranteed eligibility.",
+    "If no scheme passes the hard gates, show no scheme card."
+  ],
+  "schemes": [
+    {
+      "scheme_id": "IN-PMFBY",
+      "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "jurisdiction": "India",
+      "applies_to_model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "display_when": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Potential crop-loss insurance pathway when the crop, area, season and loss are covered under the current notification and the farmer has the required insurance/enrollment status.",
+      "hard_gates": [
+        "current state notification",
+        "notified crop",
+        "notified area/insurance unit",
+        "applicable season",
+        "insurance/enrollment conditions",
+        "covered cause/loss conditions"
+      ],
+      "disease_is_not_enough": true,
+      "official_link": "https://pmfby.gov.in/",
+      "tn_official_verification_portal": "https://www.tnagrisnet.tn.gov.in/CIS/login/tender_docs",
+      "source_note": "Tamil Nadu's official PMFBY tender repository lists current notified crop/coverage annexures and participating insurance arrangements; current notification must be checked before showing a crop-specific claim pathway."
+    },
+    {
+      "scheme_id": "KL-STATE-CROP-INSURANCE",
+      "scheme_name": "Kerala Restructured State Crop Insurance Scheme",
+      "jurisdiction": "Kerala",
+      "applies_to_model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "display_when": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Potential crop-loss compensation pathway for covered crops when the scheme's loss conditions and enrollment requirements are met.",
+      "hard_gates": [
+        "AIMS registration",
+        "insured farmer",
+        "qualifying complete crop damage",
+        "current scheme conditions"
+      ],
+      "special_disease_rule": "For pest/disease loss, the cited 2025 Kerala order specifically states compensation for paddy; do not generalize this disease-loss provision to tomato, potato or corn.",
+      "important_loss_rule": "The cited order states partial damage is not taken into account and paddy compensation is provided in full when crop loss is more than 50%.",
+      "official_link": "https://keralaagriculture.gov.in/wp-content/uploads/2025/05/document-559.pdf",
+      "application_portal": "https://aims.kerala.gov.in/",
+      "source_note": "Official Kerala 2025 order: AIMS registration is mandatory; applications are submitted through AIMS within the specified period after calamity; complete-damage and paddy pest/disease provisions are defined in the order."
+    },
+    {
+      "scheme_id": "KL-CONTINGENCY-PEST-DISEASE",
+      "scheme_name": "Kerala Contingency Programme for Natural Calamities and Pest & Disease Endemic",
+      "jurisdiction": "Kerala",
+      "applies_to_model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "display_when": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Departmental emergency-support pathway when a pest/disease endemic or natural calamity response is officially activated.",
+      "hard_gates": [
+        "departmental activation",
+        "affected area/eligible component",
+        "current implementation instructions"
+      ],
+      "official_link": "https://keralaagriculture.gov.in/wp-content/uploads/2025/07/Final-Annual-Plan-2025-26.pdf",
+      "source_note": "Kerala's Annual Plan includes a contingency programme for natural calamities and pest/disease endemic with crop-health and affected-farmer support components."
+    },
+    {
+      "scheme_id": "TN-PMFBY",
+      "scheme_name": "PMFBY - Tamil Nadu implementation",
+      "jurisdiction": "Tamil Nadu",
+      "applies_to_model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "display_when": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Tamil Nadu has an official PMFBY implementation/tender system with cropwise and seasonwise notified coverage; exact crop eligibility must be checked in the current notification.",
+      "hard_gates": [
+        "current Tamil Nadu PMFBY notification",
+        "notified crop",
+        "notified insurance unit",
+        "season",
+        "insurance/enrollment conditions"
+      ],
+      "official_link": "https://www.tnagrisnet.tn.gov.in/CIS/login/tender_docs",
+      "source_note": "The Tamil Nadu official repository publishes notified crop/coverage annexures and PMFBY tender documents for current implementation."
+    }
+  ],
+  "no_scheme_rule": "If severity is low or moderate, or if a severe/critical case does not satisfy a scheme's hard gates, return an empty recommendation list rather than showing a generic scheme.",
+  "ui_output_rule": {
+    "maximum_cards": 2,
+    "card_fields": [
+      "scheme_name",
+      "why_relevant",
+      "important_condition",
+      "official_link"
+    ],
+    "cta_label": "Check official scheme details",
+    "disclaimer": "Potentially relevant. Final eligibility and claim approval must be verified with the official department/portal."
+  }
+}

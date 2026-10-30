@@ -17,7 +17,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [torchActive, setTorchActive] = useState(false);
-  const [selectedSample, setSelectedSample] = useState<'early_blight' | 'late_blight' | 'healthy' | 'blurry'>('early_blight');
+  const [selectedSample, setSelectedSample] = useState<string>('early_blight');
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -33,20 +33,19 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   };
 
   const handleShutterClick = () => {
-    // If the user clicks the main shutter, we can either trigger the camera or use the chosen sample preset
     if (cameraInputRef.current) {
       cameraInputRef.current.click();
     }
   };
 
-  const handleSampleClick = (sampleType: 'early_blight' | 'late_blight' | 'healthy' | 'blurry') => {
+  const handleSampleClick = (sampleType: string) => {
     setSelectedSample(sampleType);
     onImageSelected(`sample:${sampleType}`, sampleType);
   };
 
   return (
     <div className="flex flex-col px-5 pt-3 pb-24 max-w-md mx-auto">
-      {/* Title & Farmer-friendly description matching Reference #1 */}
+      {/* Title & Farmer-friendly description */}
       <div className="mb-4">
         <h1 className="font-editorial text-[32px] font-bold text-[#162a45] leading-tight tracking-tight">
           {t.check_crop_title}
@@ -73,7 +72,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         className="hidden"
       />
 
-      {/* Main Viewfinder Card - Visual Language identical to Reference #1 */}
+      {/* Main Viewfinder Card */}
       <div className="relative w-full aspect-[4/4.5] bg-[#172b1d] rounded-3xl p-4 flex flex-col justify-between overflow-hidden shadow-sm">
         {/* Top Badges */}
         <div className="relative z-20 flex items-center justify-between pointer-events-none">
@@ -99,44 +98,52 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
             <div className="w-9 h-9 border-t-2 border-l-2 border-white rounded-tl-xl" />
             <div className="w-9 h-9 border-t-2 border-r-2 border-white rounded-tr-xl" />
           </div>
-
-          {/* Bottom bracket with centered guidance text */}
-          <div className="flex items-end justify-between">
+          <div className="flex justify-between items-end">
             <div className="w-9 h-9 border-b-2 border-l-2 border-white rounded-bl-xl" />
-            <div className="bg-[#172b1d]/90 px-3 py-0.5 rounded-full text-center">
-              <span className="text-white text-xs font-medium tracking-wide">
-                {t.fill_frame}
-              </span>
-            </div>
             <div className="w-9 h-9 border-b-2 border-r-2 border-white rounded-br-xl" />
           </div>
         </div>
 
-        {/* Center Graphic */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <LeafGraphic
-            variant={selectedSample}
-            className="w-full h-full"
-          />
+        {/* Center Target Leaf Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center p-8 pointer-events-none">
+          <div className="w-64 h-64 opacity-90 transition-all duration-300">
+            <LeafGraphic
+              variant={
+                selectedSample === 'late_blight'
+                  ? 'late_blight'
+                  : selectedSample === 'healthy'
+                  ? 'healthy'
+                  : 'early_blight'
+              }
+              className="w-full h-full drop-shadow-2xl"
+            />
+          </div>
+        </div>
+
+        {/* Bottom Framing Guidance Pill */}
+        <div className="relative z-20 text-center pointer-events-none">
+          <span className="inline-block px-4 py-1.5 bg-black/45 backdrop-blur-md text-white/95 rounded-full text-xs font-medium tracking-wide">
+            {t.fit_leaf_guidance}
+          </span>
         </div>
       </div>
 
-      {/* Camera Shutter & Gallery Controls Bar */}
-      <div className="flex items-center justify-around py-5">
-        {/* Gallery Upload Button */}
+      {/* Shutter Bar */}
+      <div className="mt-4 flex items-center justify-between px-3">
+        {/* Upload from Gallery / Files */}
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="w-14 h-14 rounded-full bg-white border border-[#dfded5] flex items-center justify-center text-[#162a45] shadow-xs hover:bg-[#f3f2ea] active:scale-95 transition-all"
-          title={t.gallery_btn}
-          aria-label={t.gallery_btn}
+          className="w-14 h-14 rounded-full bg-white border border-[#dfded5] flex items-center justify-center text-[#162a45] shadow-xs hover:bg-[#f3f2ea] transition-all active:scale-95"
+          title="Choose photo from gallery"
+          aria-label="Upload leaf image"
         >
           <ImageIcon className="w-6 h-6 stroke-[1.8]" />
         </button>
 
-        {/* Primary Shutter Button - Blue circle with ring */}
+        {/* Main Camera Shutter Button */}
         <button
           onClick={handleShutterClick}
-          className="relative group p-1 active:scale-90 transition-transform"
+          className="relative group focus:outline-hidden"
           title={t.take_photo_btn}
           aria-label={t.take_photo_btn}
         >
@@ -162,13 +169,14 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         </button>
       </div>
 
-      {/* Test Sample Leaves Bar for Immediate Farmer Prototyping */}
-      <div className="mt-1 bg-white rounded-2xl p-3.5 border border-[#e8e7de] shadow-2xs">
+      {/* Test Sample Bar for Frozen 22-Class Scope */}
+      <div className="mt-2 bg-white rounded-2xl p-3.5 border border-[#e8e7de] shadow-2xs">
         <div className="flex items-center gap-1.5 text-xs font-semibold text-[#162a45] mb-2.5">
           <Sparkles className="w-3.5 h-3.5 text-[#0b72c9]" />
-          <span>{t.test_samples_title}</span>
+          <span>Model Scope Samples (22 Frozen Classes)</span>
         </div>
         <div className="grid grid-cols-2 gap-2">
+          {/* Tomato Early Blight (Mild) -> Prevention only, no scheme */}
           <button
             onClick={() => handleSampleClick('early_blight')}
             className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
@@ -178,21 +186,10 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
             }`}
           >
             <div className="font-semibold">{t.sample_early_blight}</div>
-            <div className="text-[10px] text-[#64748b]">Bullseye spots (Mild 18%)</div>
+            <div className="text-[10px] text-[#64748b]">Tomato · Mild (No scheme)</div>
           </button>
 
-          <button
-            onClick={() => handleSampleClick('blurry')}
-            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
-              selectedSample === 'blurry'
-                ? 'bg-[#fef3c7] border-[#d97706] text-[#b45309] font-medium'
-                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
-            }`}
-          >
-            <div className="font-semibold">{t.sample_blurry}</div>
-            <div className="text-[10px] text-[#64748b]">Tests uncertain screen</div>
-          </button>
-
+          {/* Tomato Late Blight (Severe) -> Scheme appears */}
           <button
             onClick={() => handleSampleClick('late_blight')}
             className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
@@ -202,9 +199,49 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
             }`}
           >
             <div className="font-semibold">{t.sample_late_blight}</div>
-            <div className="text-[10px] text-[#64748b]">Water-soaked patches (42%)</div>
+            <div className="text-[10px] text-[#64748b]">Tomato · Severe loss</div>
           </button>
 
+          {/* Rice Bacterial Leaf Blight (Severe) -> KL Scheme */}
+          <button
+            onClick={() => handleSampleClick('rice_bacterial_blight')}
+            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
+              selectedSample === 'rice_bacterial_blight'
+                ? 'bg-[#fee2e2] border-[#dc2626] text-[#b91c1c] font-medium'
+                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
+            }`}
+          >
+            <div className="font-semibold">Bacterial leaf blight</div>
+            <div className="text-[10px] text-[#64748b]">Rice · Severe loss</div>
+          </button>
+
+          {/* Rice Pest: Brown planthopper */}
+          <button
+            onClick={() => handleSampleClick('brown_planthopper')}
+            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
+              selectedSample === 'brown_planthopper'
+                ? 'bg-[#fef3c7] border-[#d97706] text-[#b45309] font-medium'
+                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
+            }`}
+          >
+            <div className="font-semibold">Brown planthopper</div>
+            <div className="text-[10px] text-[#64748b]">Rice Pest · Severe</div>
+          </button>
+
+          {/* Corn: Common rust (Moderate) -> Prevention only, no scheme */}
+          <button
+            onClick={() => handleSampleClick('corn_common_rust')}
+            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
+              selectedSample === 'corn_common_rust'
+                ? 'bg-[#fef3c7] border-[#d97706] text-[#b45309] font-medium'
+                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
+            }`}
+          >
+            <div className="font-semibold">Common rust</div>
+            <div className="text-[10px] text-[#64748b]">Corn · Moderate (No scheme)</div>
+          </button>
+
+          {/* Healthy */}
           <button
             onClick={() => handleSampleClick('healthy')}
             className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
@@ -214,7 +251,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
             }`}
           >
             <div className="font-semibold">{t.sample_healthy}</div>
-            <div className="text-[10px] text-[#64748b]">Clean green foliage</div>
+            <div className="text-[10px] text-[#64748b]">Clean foliage (Mild)</div>
           </button>
         </div>
       </div>

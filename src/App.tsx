@@ -91,21 +91,19 @@ export default function App() {
         } else {
           speechText =
             language === 'ml'
-              ? `തക്കാളി ഇല പരിശോധനാ ഫലം: ${prediction?.diseaseNameMl}. രോഗബാധ ${prediction?.affectedAreaPercent} ശതമാനം. കാഠിന്യം ${
-                  prediction?.severity === 'mild' ? 'ലഘുവായത്' : 'ഗുരുതരമായത്'
-                }. ബന്ധപ്പെട്ട സർക്കാർ പദ്ധതി: സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി, കുമിൾനാശിനികൾക്ക് 50 ശതമാനം സബ്സിഡി ലഭിക്കും.`
-              : `Tomato leaf diagnosis: ${prediction?.diseaseName}, ${prediction?.category}. Confidence is high. Affected leaf area is ${prediction?.affectedAreaPercent} percent, severity is ${prediction?.severity}. Related scheme: Vegetable Development Programme, providing 50 percent subsidy on crop protection.`;
+              ? `ഇല പരിശോധനാ ഫലം: ${prediction?.diseaseNameMl}. ശാസ്ത്രീയ പ്രതിരോധ നിർദ്ദേശങ്ങളും സർക്കാർ പദ്ധതികളും താഴെ കാണാം.`
+              : `Leaf diagnosis: ${prediction?.diseaseName}, ${prediction?.category}. Verified prevention guidelines and government schemes are shown below.`;
         }
       } else if (scanStep === 'treatment') {
         speechText =
           language === 'ml'
-            ? 'ചികിത്സാ നിർദ്ദേശങ്ങൾ. രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക, വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക, ചുവട്ടിൽ മാത്രം നനയ്ക്കുക. വിള വില അനുമാനം: തക്കാളിക്ക് പ്രതീക്ഷിക്കുന്ന വില കിലോഗ്രാമിന് 32 രൂപ, വിപണി നിരക്ക് വർദ്ധിക്കുന്നു.'
-            : 'Early blight management guide. Organic recommendations: Remove and burn infected lower leaves, spray neem-based solution in evening, water at base. Crop price outlook: Expected tomato price is ₹32 per kilogram with a rising market trend.';
+            ? 'ചികിത്സാ നിർദ്ദേശങ്ങൾ. രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക, വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക, ചുവട്ടിൽ മാത്രം നനയ്ക്കുക.'
+            : 'Management guide. Organic recommendations: Remove and burn infected lower leaves, spray neem-based solution in evening, water at base.';
       } else if (scanStep === 'scheme_context') {
         speechText =
           language === 'ml'
-            ? 'സർക്കാർ പദ്ധതി വിവരങ്ങൾ. സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി വഴി കൃഷിഭവനിൽ നിന്ന് 50 ശതമാനം സബ്സിഡി നിരക്കിൽ ജൈവ കുമിൾനാശിനികളും സ്പ്രേയറുകളും ലഭ്യമാണ്.'
-            : 'Government scheme details. Subhiksha Keralam provides 50 percent subsidy on bio-fungicides and knapsack sprayers through your local Krishi Bhavan.';
+            ? 'സർക്കാർ പദ്ധതി വിവരങ്ങൾ. യോഗ്യതയും അപേക്ഷാ രേഖകളും പരിശോധിച്ച് Krishi Bhavan വഴി ആനുകൂല്യങ്ങൾ നേടുക.'
+            : 'Government scheme details. View eligibility and documents to apply through your local agriculture portal or office.';
       }
     } else if (activeTab === 'history') {
       speechText =
@@ -310,6 +308,7 @@ export default function App() {
                     <ResultConfident
                       prediction={prediction}
                       language={language}
+                      isOnline={isOnline}
                       onBack={handleRetake}
                       onSeeTreatment={() => setScanStep('treatment')}
                       onViewRelatedScheme={handleViewRelatedSchemeFromResult}
@@ -322,6 +321,8 @@ export default function App() {
               {scanStep === 'treatment' && (
                 <TreatmentDetail
                   diseaseId={selectedDiseaseId}
+                  crop={prediction?.crop}
+                  diseaseName={prediction?.diseaseName}
                   language={language}
                   onBack={() => setScanStep('result')}
                   onNavigateToSchemes={handleViewRelatedSchemeFromTreatment}

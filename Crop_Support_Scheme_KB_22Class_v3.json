@@ -1,0 +1,329 @@
+{
+  "dataset_name": "Crop_Support_Scheme_KB_22Class_v3",
+  "version": "3.0",
+  "purpose": "Compact offline knowledge base for government support that may be relevant after a severe or critical crop-health prediction.",
+  "important_scope_rule": {
+    "model_crops": [
+      "tomato",
+      "potato",
+      "corn",
+      "rice"
+    ],
+    "model_classes": 22,
+    "state_options": [
+      {
+        "id": "TN",
+        "label": "Tamil Nadu"
+      },
+      {
+        "id": "KL",
+        "label": "Kerala"
+      },
+      {
+        "id": "UP",
+        "label": "Uttar Pradesh"
+      },
+      {
+        "id": "AP",
+        "label": "Andhra Pradesh"
+      },
+      {
+        "id": "CENTRAL",
+        "label": "Others",
+        "meaning": "Central Government schemes only"
+      }
+    ],
+    "others_is_not_all_states": true
+  },
+  "severity_policy": {
+    "show_schemes_only_for": [
+      "severe",
+      "critical"
+    ],
+    "do_not_show_for": [
+      "healthy",
+      "low",
+      "moderate",
+      "unknown",
+      "missing"
+    ],
+    "severity_source": "Existing application severity output only.",
+    "never_infer_severity_from_confidence": true,
+    "never_infer_severity_from_class_name": true
+  },
+  "recommendation_policy": {
+    "maximum_cards": 2,
+    "rank_by": [
+      "state match",
+      "crop match",
+      "explicit severe/critical trigger",
+      "scheme type directly related to crop loss",
+      "verified current/official eligibility information"
+    ],
+    "if_eligibility_cannot_be_verified": "Do not claim eligibility. Either show 'Potentially relevant' with a verification warning or return no recommendation.",
+    "no_generic_scheme_dump": true
+  },
+  "ui_copy": {
+    "section_title": "Government Support",
+    "badge": "Severe crop loss",
+    "card_status": "Potentially relevant",
+    "cta": "View official details",
+    "disclaimer": "This is a potential support pathway, not a confirmed claim or entitlement. Final eligibility, notified crop, area, season, enrollment and loss assessment must be verified with the official department or insurer."
+  },
+  "schemes": [
+    {
+      "scheme_id": "CENTRAL-PMFBY",
+      "jurisdiction": "Central Government",
+      "state_filter": "CENTRAL",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "category": "crop_insurance",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Potential crop-insurance support when the crop and area are notified for the relevant season and the farmer satisfies the insurance and loss-assessment conditions.",
+      "hard_gates": [
+        "Current state and season notification",
+        "Crop is notified in the relevant insurance unit",
+        "Farmer/policy/enrollment conditions are satisfied",
+        "Loss falls within the scheme's covered risk and assessment mechanism"
+      ],
+      "important_warning": "A disease prediction alone does not establish an insurance claim.",
+      "official_source": "https://pmfby.gov.in/"
+    },
+    {
+      "scheme_id": "TN-PMFBY",
+      "jurisdiction": "Tamil Nadu",
+      "state_filter": "TN",
+      "name": "PMFBY - Tamil Nadu implementation",
+      "category": "crop_insurance",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Tamil Nadu implements PMFBY through state notifications specifying crops, insurance units and seasons.",
+      "hard_gates": [
+        "Current Tamil Nadu notification",
+        "Notified crop",
+        "Notified insurance unit",
+        "Applicable season",
+        "Insurance/enrollment conditions"
+      ],
+      "important_warning": "Do not show this as automatically eligible merely because the model predicted a severe disease.",
+      "official_source": "https://www.tnagrisnet.tn.gov.in/CIS/login/tender_docs"
+    },
+    {
+      "scheme_id": "KL-STATE-CROP-INSURANCE",
+      "jurisdiction": "Kerala",
+      "state_filter": "KL",
+      "name": "Kerala Restructured State Crop Insurance Scheme",
+      "category": "crop_loss_compensation",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Kerala provides crop-loss insurance/compensation for covered crops. The 2025 implementation circular specifically provides a pest/disease-loss pathway for paddy.",
+      "hard_gates": [
+        "AIMS registration",
+        "Insurance/enrollment conditions",
+        "Covered crop and qualifying loss",
+        "Official field verification/assessment"
+      ],
+      "disease_rule": "For pest/disease loss, the cited 2025 Kerala circular specifically identifies rice/paddy; do not generalize that disease-loss provision to tomato, potato or corn.",
+      "important_loss_rule": "The cited circular states partial damage is not taken into account and paddy compensation is provided when crop loss is more than 50%.",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/05/document-559.pdf",
+      "application_portal": "https://aims.kerala.gov.in/"
+    },
+    {
+      "scheme_id": "KL-RWBCIS",
+      "jurisdiction": "Kerala",
+      "state_filter": "KL",
+      "name": "Restructured Weather Based Crop Insurance Scheme (RWBCIS) - Kerala",
+      "category": "weather_crop_insurance",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Weather-index insurance can be relevant where a notified crop and season are covered and the loss is associated with covered adverse weather conditions.",
+      "hard_gates": [
+        "Current Kerala RWBCIS notification",
+        "Crop and season must be notified",
+        "Applicable insurance unit and weather trigger",
+        "Required enrollment/premium conditions"
+      ],
+      "crop_note": "The Kerala 2025-26 Annual Plan lists tomato under Rabi RWBCIS and potato in Idukki under the listed Rabi crops; exact current notification must still be checked.",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/07/Final-Annual-Plan-2025-26.pdf"
+    },
+    {
+      "scheme_id": "UP-PMFBY",
+      "jurisdiction": "Uttar Pradesh",
+      "state_filter": "UP",
+      "name": "PMFBY - Uttar Pradesh implementation",
+      "category": "crop_insurance",
+      "model_crops": [
+        "rice",
+        "corn",
+        "potato"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "The Uttar Pradesh Government cabinet decision for PMFBY/RWBCIS implementation identifies paddy, maize and potato among crops covered under the state implementation period described in the order.",
+      "english_interpretation_of_official_up_source": {
+        "paddy_rice": "Included under PMFBY crop coverage described in the UP Government decision.",
+        "maize_corn": "Included under PMFBY crop coverage described in the UP Government decision.",
+        "potato": "Included under PMFBY crop coverage described in the UP Government decision.",
+        "tomato": "Do not automatically map tomato to UP PMFBY. The UP decision separately discusses tomato under weather-based insurance in selected districts; current notification must be checked."
+      },
+      "hard_gates": [
+        "Current UP season notification",
+        "Current notified crop",
+        "District/insurance unit",
+        "Season",
+        "Farmer coverage/enrollment conditions",
+        "Covered loss mechanism"
+      ],
+      "important_warning": "The English text above is a structured interpretation of the official Hindi government decision for application use; it is not a replacement for the official notification.",
+      "official_source_pdf": "https://information.up.gov.in/sites/default/files/2023-06/PN-CM-Cabinet%20Decisions-06%20June%2C%202023.pdf",
+      "official_portal": "https://upagriculture.com/"
+    },
+    {
+      "scheme_id": "UP-RWBCIS",
+      "jurisdiction": "Uttar Pradesh",
+      "state_filter": "UP",
+      "name": "Restructured Weather Based Crop Insurance Scheme (RWBCIS) - Uttar Pradesh",
+      "category": "weather_crop_insurance",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Potential support where a crop is notified under weather-based insurance and the relevant weather trigger and insurance conditions are met.",
+      "hard_gates": [
+        "Current UP notification",
+        "Notified crop and district/insurance unit",
+        "Relevant weather trigger",
+        "Season and enrollment/coverage conditions"
+      ],
+      "tomato_note": "The UP Government decision separately references tomato under RWBCIS in selected districts; do not display it as statewide tomato coverage.",
+      "official_source_pdf": "https://information.up.gov.in/sites/default/files/2023-06/PN-CM-Cabinet%20Decisions-06%20June%2C%202023.pdf",
+      "official_portal": "https://upagriculture.com/"
+    },
+    {
+      "scheme_id": "AP-DR-YSR-FCI-PMFBY",
+      "jurisdiction": "Andhra Pradesh",
+      "state_filter": "AP",
+      "name": "Dr. YSR Free Crop Insurance - PMFBY",
+      "category": "crop_insurance",
+      "model_crops": [
+        "rice",
+        "corn"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Andhra Pradesh's crop-insurance implementation provides financial protection for notified crops in notified insurance units. Official AP material identifies paddy and maize among notified crops in multiple districts/seasons.",
+      "hard_gates": [
+        "Current AP notified crop and insurance unit",
+        "Current season",
+        "e-Panta/e-crop record or current enrollment mechanism",
+        "Applicable Aadhaar/e-KYC or other current verification",
+        "Covered loss and official assessment"
+      ],
+      "crop_note": "Do not assume tomato or potato coverage without a current AP notification for the relevant district and season.",
+      "official_source_pdf": "https://apagrisnet.gov.in/pdf/Crop08122023.pdf",
+      "official_state_page": "https://tirupati.ap.gov.in/agriculture/"
+    },
+    {
+      "scheme_id": "AP-CROP-LOSS-ASSISTANCE",
+      "jurisdiction": "Andhra Pradesh",
+      "state_filter": "AP",
+      "name": "Andhra Pradesh Natural Calamity Crop-Loss Assistance / Input Support",
+      "category": "crop_loss_relief",
+      "model_crops": [
+        "tomato",
+        "potato",
+        "corn",
+        "rice"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "AP agriculture field-level procedures include assessment of crop damage from natural calamities and implementation of natural-calamity assistance/input support when government conditions are activated.",
+      "hard_gates": [
+        "Official declaration/activation or applicable calamity conditions",
+        "Eligible crop and affected area",
+        "Official field damage assessment",
+        "Current government norms and relief package"
+      ],
+      "important_warning": "A disease prediction by itself is not proof of eligibility. This pathway is for officially assessed crop loss under applicable relief conditions.",
+      "official_source": "https://tirupati.ap.gov.in/agriculture/",
+      "supporting_official_document": "https://etcsrikalahasti.ap.gov.in/assets/PDF/Village_Agriculture_Asst_Jobchart.pdf"
+    },
+    {
+      "scheme_id": "AP-MIDH-HORTICULTURE",
+      "jurisdiction": "Andhra Pradesh",
+      "state_filter": "AP",
+      "name": "Mission for Integrated Development of Horticulture (MIDH) - Andhra Pradesh",
+      "category": "horticulture_support",
+      "model_crops": [
+        "tomato"
+      ],
+      "trigger": [
+        "severe",
+        "critical"
+      ],
+      "why_relevant": "Horticulture support can become relevant when severe crop damage leads to an eligible re-establishment, protected cultivation, vegetable or horticulture-development need under a currently active AP component.",
+      "hard_gates": [
+        "Current AP horticulture component",
+        "Eligible crop/component",
+        "Eligible farmer/area",
+        "Current subsidy norms and availability"
+      ],
+      "important_warning": "This is development/subsidy support, not automatic disease-loss compensation. Do not display it merely because tomato disease confidence is high.",
+      "official_source": "https://kurnool.ap.gov.in/horticulture/"
+    }
+  ],
+  "no_recommendation_rules": [
+    "Severity is low, moderate, unknown or missing.",
+    "Crop is healthy.",
+    "State is missing for state-specific schemes.",
+    "The scheme does not match the selected crop.",
+    "Required current notification/insurance unit/season cannot be established.",
+    "The prediction only indicates disease presence but there is no evidence of qualifying crop loss.",
+    "Do not use a generic farmer-benefit scheme merely because disease severity is high."
+  ],
+  "implementation_note": "This KB is intentionally conservative. Government schemes are not an AI prediction. They are deterministic recommendations from structured official-source rules. Current state notifications must override this static KB when available."
+}

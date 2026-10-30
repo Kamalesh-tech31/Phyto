@@ -53,7 +53,7 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // Default reference quality check matching screenshot #2
+    // Default reference quality check
     return {
       sharpness: 'sharp',
       sharpnessLabel: 'Sharp',
@@ -68,7 +68,7 @@ class PredictionService implements IPredictionEngine {
       shadow: 'left_dark',
       shadowLabel: 'Left side dark',
       shadowLabelMl: 'ഇടതുഭാഗത്ത് ഇരുണ്ട്',
-      shadowPass: false, // warning amber check
+      shadowPass: false,
 
       distance: 'good',
       distanceLabel: 'Good',
@@ -82,23 +82,23 @@ class PredictionService implements IPredictionEngine {
   }
 
   /**
-   * Runs tomato disease diagnosis
+   * Runs crop disease/pest diagnosis within the frozen 22-class model scope
    */
   public async predict(imageUrl: string, presetType?: string): Promise<PredictionResult> {
-    // Simulate AI inference time (1.2 seconds for realistic model feel)
+    // Simulate AI inference time (1.2 seconds)
     await new Promise((r) => setTimeout(r, 1200));
 
     const id = `scan_${Date.now()}`;
     const timestamp = Date.now();
 
-    // 1. Uncertain state (from screenshot 5)
+    // 1. Uncertain state
     if (presetType === 'blurry' || presetType === 'uncertain') {
       return {
         id,
         timestamp,
         imageUrl,
-        crop: 'Tomato leaf',
-        cropMl: 'തക്കാളി ഇല',
+        crop: 'Tomato',
+        cropMl: 'തക്കാളി',
         diseaseId: 'uncertain',
         diseaseName: 'I am not sure yet',
         diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
@@ -110,20 +110,20 @@ class PredictionService implements IPredictionEngine {
         severity: 'mild',
         isUncertain: true,
         uncertaintyReason:
-          'The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.',
+          'The photo is too blurry to tell a disease from a nutrient problem. Please retake photo in clear daylight.',
         uncertaintyReasonMl:
-          'ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. തെറ്റായി പറയുന്നതിനേക്കാൾ വ്യക്തമായ ഫോട്ടോ ആവശ്യപ്പെടുന്നതാണ് നല്ലത്.',
+          'ഫോട്ടോ അവ്യക്തമായതിനാൽ കൃത്യമായ രോഗനിർണ്ണയം സാധ്യമല്ല. വ്യക്തമായ വെളിച്ചത്തിൽ വീണ്ടും ഫോട്ടോയെടുക്കുക.',
       };
     }
 
-    // 2. Late Blight state
+    // 2. Tomato: Late blight (Severe)
     if (presetType === 'late_blight') {
       return {
         id,
         timestamp,
         imageUrl,
-        crop: 'Tomato leaf',
-        cropMl: 'തക്കാളി ഇല',
+        crop: 'Tomato',
+        cropMl: 'തക്കാളി',
         diseaseId: 'late_blight',
         diseaseName: 'Late blight',
         diseaseNameMl: 'ലേറ്റ് ബ്ലൈറ്റ് (കരിമ്പൻ)',
@@ -134,27 +134,103 @@ class PredictionService implements IPredictionEngine {
         affectedAreaPercent: 42,
         severity: 'severe',
         isUncertain: false,
-        pestWarning: {
-          name: 'Leaf Miner',
-          nameMl: 'ഇല തുരപ്പൻ പുഴു',
-          severityLabel: 'Pest · mild',
-          severityLabelMl: 'കീടം · ലഘുവായത്',
-          details: 'Occasional serpentine mines observed on surrounding foliage.',
-          detailsMl: 'ചുറ്റുമുള്ള ഇലകളിൽ വെളുത്ത പാടുകൾ കണ്ടുവരുന്നു.',
-        },
       };
     }
 
-    // 3. Healthy state
+    // 3. Rice: Bacterial leaf blight (Severe)
+    if (presetType === 'rice_bacterial_blight') {
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Rice',
+        cropMl: 'നെല്ല് (Paddy)',
+        diseaseId: 'bacterial_leaf_blight',
+        diseaseName: 'Bacterial leaf blight',
+        diseaseNameMl: 'ബാക്ടീരിയൽ ഇല കരിച്ചിൽ',
+        category: 'Bacterial blight',
+        categoryMl: 'ബാക്ടീരിയ രോഗം',
+        confidence: 'high',
+        confidenceScore: 0.95,
+        affectedAreaPercent: 55,
+        severity: 'severe',
+        isUncertain: false,
+      };
+    }
+
+    // 4. Rice Pest: Brown planthopper (Severe insect infestation)
+    if (presetType === 'brown_planthopper') {
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Rice',
+        cropMl: 'നെല്ല് (Paddy)',
+        diseaseId: 'brown_planthopper',
+        diseaseName: 'Brown planthopper',
+        diseaseNameMl: 'മുഞ്ഞ (Brown planthopper)',
+        category: 'Insect pest infestation',
+        categoryMl: 'കീടബാധ (Pest)',
+        confidence: 'high',
+        confidenceScore: 0.93,
+        affectedAreaPercent: 60,
+        severity: 'severe',
+        isUncertain: false,
+      };
+    }
+
+    // 5. Corn: Common rust (Moderate)
+    if (presetType === 'corn_common_rust') {
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Corn',
+        cropMl: 'ചോളം (Maize)',
+        diseaseId: 'common_rust',
+        diseaseName: 'Common rust',
+        diseaseNameMl: 'കോമൺ റസ്റ്റ് (തുരുമ്പ് രോഗം)',
+        category: 'Fungal rust disease',
+        categoryMl: 'ഫംഗസ് രോഗം',
+        confidence: 'high',
+        confidenceScore: 0.91,
+        affectedAreaPercent: 28,
+        severity: 'moderate',
+        isUncertain: false,
+      };
+    }
+
+    // 6. Corn/Rice Pest: Armyworm (Severe)
+    if (presetType === 'armyworm') {
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Corn',
+        cropMl: 'ചോളം (Maize)',
+        diseaseId: 'armyworm',
+        diseaseName: 'Armyworm',
+        diseaseNameMl: 'പട്ടാളപ്പുഴു (Armyworm)',
+        category: 'Lepidopteran pest',
+        categoryMl: 'കീടബാധ (Pest)',
+        confidence: 'high',
+        confidenceScore: 0.94,
+        affectedAreaPercent: 48,
+        severity: 'severe',
+        isUncertain: false,
+      };
+    }
+
+    // 7. Healthy leaf
     if (presetType === 'healthy') {
       return {
         id,
         timestamp,
         imageUrl,
-        crop: 'Tomato leaf',
-        cropMl: 'തക്കാളി ഇല',
+        crop: 'Tomato',
+        cropMl: 'തക്കാളി',
         diseaseId: 'healthy',
-        diseaseName: 'Healthy leaf',
+        diseaseName: 'Healthy',
         diseaseNameMl: 'ആരോഗ്യമുള്ള ഇല',
         category: 'Normal crop',
         categoryMl: 'സാധാരണ വിളവ്',
@@ -166,13 +242,13 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 4. Default: Early Blight (Exact match to Reference Screenshot 3)
+    // 8. Default: Tomato Early Blight (Mild)
     return {
       id,
       timestamp,
       imageUrl,
-      crop: 'Tomato leaf',
-      cropMl: 'തക്കാളി ഇല',
+      crop: 'Tomato',
+      cropMl: 'തക്കാളി',
       diseaseId: 'early_blight',
       diseaseName: 'Early blight',
       diseaseNameMl: 'ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)',
