@@ -1,7 +1,7 @@
 import React, { useRef, useState, useImperativeHandle, forwardRef } from 'react';
 import { ingest } from '../ml/ingest';
 import { validateGalleryFile } from '../ml/gallery';
-import { Image as ImageIcon, AlertCircle, X } from 'lucide-react';
+import { AlertCircle, X } from 'lucide-react';
 
 export interface GalleryPickerHandle {
   openPicker: () => void;
@@ -76,22 +76,11 @@ export const GalleryPicker = forwardRef<GalleryPickerHandle, GalleryPickerProps>
           aria-label="Upload leaf photo from gallery"
         />
 
-        {/* Optional Custom Trigger Button */}
-        {children ? (
+        {/* Optional Custom Trigger Container */}
+        {children && (
           <div onClick={() => inputRef.current?.click()} className={className}>
             {children}
           </div>
-        ) : (
-          <button
-            type="button"
-            onClick={() => inputRef.current?.click()}
-            disabled={isProcessing}
-            className={`w-14 h-14 rounded-full bg-white border border-[#dfded5] flex items-center justify-center text-[#162a45] shadow-xs hover:bg-[#f3f2ea] active:scale-95 transition-all ${className}`}
-            title="Upload from gallery"
-            aria-label="Upload from gallery"
-          >
-            <ImageIcon className="w-6 h-6 stroke-[1.8]" />
-          </button>
         )}
 
         {/* User-friendly Validation Error Banner / Modal */}
