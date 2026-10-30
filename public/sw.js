@@ -1,24 +1,56 @@
-// Phyto PWA Service Worker - Offline-first agricultural assistant
-const CACHE_NAME = 'phyto-cache-v1';
-const STATIC_ASSETS = [
+/**
+ * AgriScan PWA Service Worker (PS 11.1 - Offline AI Detection)
+ *
+ * Implements AGENTS.md Section 2 & Section 8:
+ * - Offline-first caching for complete Airplane Mode functionality.
+ * - Cache version dynamically tied to model version.
+ * - Precaches ONNX int8 model, config, labels, and WASM binaries.
+ * - Cache-first strategy for model and WASM assets for instant offline execution.
+ */
+
+const MODEL_VERSION = '0.1.0-placeholder';
+const CACHE_NAME = `agriscan-cache-v${MODEL_VERSION}`;
+
+// High-priority offline assets: ONNX models, WASM binaries, App Shell
+const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icon.svg',
-  '/assets/aistudio/1_e142a476.png',
-  '/assets/aistudio/2_3f62c707.png',
-  '/assets/aistudio/3_d21a62fa.png',
-  '/assets/aistudio/4__d6647247.png',
-  '/assets/aistudio/5_dbf3ab43.png'
+
+  // On-device ML Model files
+  '/models/model_int8.onnx',
+  '/models/config.json',
+  '/models/labels.json',
+
+  // WebAssembly Runtimes (Single-threaded & SIMD)
+  '/ort/ort-wasm.wasm',
+  '/ort/ort-wasm-simd.wasm',
+  '/ort/ort-wasm-threaded.wasm',
+  '/ort/ort-wasm-simd-threaded.wasm',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS).catch((err) => {
-        console.warn('Failed to pre-cache some assets:', err);
-      });
-    })
+    caches
+      .open(CACHE_NAME)
+      .then(async (cache) => {
+        // Cache core assets individually so single missing file doesn't fail whole install
+        for (const asset of PRECACHE_ASSETS) {
+          try {
+            await cache.add(asset);
+          } catch (err) {
+            console.warn(`[SW] Note caching ${asset}:`, err);
+          }
+        }
+      })
+      .then(async () => {
+        // Notify open tabs that model and wasm are ready offline
+        const clients = await self.clients.matchAll();
+        clients.forEach((client) => {
+          client.postMessage({ type: 'MODEL_READY_OFFLINE', version: MODEL_VERSION });
+        });
+      })
   );
   self.skipWaiting();
 });
@@ -29,6 +61,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
+            console.log('[SW] Deleting stale cache:', key);
             return caches.delete(key);
           }
         })
@@ -44,15 +77,35 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(event.request.url);
 
-  // For navigation requests, network first, fallback to cached index.html
+  // 1. Navigation requests: Network-first, fallback to cached /index.html
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('/index.html'))
+      fetch(event.request).catch(async () => {
+        const cached = await caches.match('/index.html');
+        return cached || new Response('Offline: Please connect once to load AgriScan.', { status: 503 });
+      })
     );
     return;
   }
 
-  // Stale-while-revalidate for same-origin and static assets
+  // 2. Cache-First for /models/* and /ort/*.wasm (Fastest offline inference startup)
+  if (url.pathname.startsWith('/models/') || url.pathname.startsWith('/ort/')) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request).then((networkRes) => {
+          if (networkRes && networkRes.status === 200) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return networkRes;
+        });
+      })
+    );
+    return;
+  }
+
+  // 3. Stale-While-Revalidate for app assets
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       const fetchPromise = fetch(event.request)

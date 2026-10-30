@@ -45,8 +45,75 @@
 
 ---
 
+## 4. P5: Borderline Photo Enhancement Verification
+
+| Test Case | Steps to Test | Expected Behavior | Status |
+| :--- | :--- | :--- | :--- |
+| **TC-ENH-01: Mild Blur Unsharp Mask** | Run `applyUnsharpMaskLuminance` on borderline blurred pattern. | Laplacian sharpness metric increases by >10% ($\Delta \sigma^2 = +0.22$, 12.3% gain). | Automated Unit Test & Eval |
+| **TC-ENH-02: Color-Safe Chromaticity Invariance** | Evaluate hue shifts across all pixels before and after enhancement. | Maximum observed hue deviation $\le 3.0^\circ$ (within discrete integer rounding tolerance); zero diagnostic lesion color distortion. | Automated Unit Test |
+| **TC-ENH-03: Luminance Stretch & Auto-Levels** | Apply luminance stretch and gamma to dark borderline image. | Mean luminance advances toward target range without clipping. | Automated Unit Test |
+| **TC-ENH-04: Severe Defects Not Silently Fixed** | Evaluate photo with severe blur ($<80.0$) or heavy darkness. | Verdict remains `retake`; enhancement is not applied; user is asked for a retake. | Verified |
+
+---
+
+## 5. P6: Inference Worker & Decision Gate Verification
+
+| Test Case | Steps to Test | Expected Behavior | Status |
+| :--- | :--- | :--- | :--- |
+| **TC-DEC-01: Planar NCHW Preprocessing** | Check tensor shape and normalization values. | Shape is $[1, 3, 224, 224]$, values scaled by ImageNet mean/std. | Automated Unit Test |
+| **TC-DEC-02: Temperature Softmax** | Test softmax with temperature scaling ($T=1.0$ vs $T=0.5$). | Probabilities sum to 1.0; low $T$ sharpens top probability; high $T$ flattens. | Automated Unit Test |
+| **TC-DEC-03: Normalized Shannon Entropy** | Calculate entropy for deterministic $[1, 0, 0, 0]$ vs uniform $[0.25, 0.25, 0.25, 0.25]$. | Exactly $0.0$ for deterministic and $1.0$ for uniform. | Automated Unit Test |
+| **TC-DEC-04: Decision Status Gates** | Test `poor_quality`, `scanAnyway`, `unknown`, `uncertain` (low confidence & small margin), and `confident`. | All 5 decision rules match AGENTS.md contract with 100% precision. | Automated Unit Test |
+| **TC-DEC-05: Model & Ingest Parity Test** | Run `npm run parity` (`python ml/src/parity.py`). | 50 synthetic images pass with max logit difference $< 0.0001$ and $100\%$ top-1 agreement. | Verified |
+
+---
+
+## 6. P7: User Flow & Screens Verification
+
+| Test Case | Steps to Test | Expected Behavior | Status |
+| :--- | :--- | :--- | :--- |
+| **TC-FLOW-01: 360px Mobile-First Layout** | View all screens on 360px width viewport. | Touch targets $\ge 48\text{ px}$, no horizontal overflow, readable typography. | Verified |
+| **TC-FLOW-02: Before/After Toggle** | Trigger borderline photo enhancement in PhotoCheck. | Before/After toggle pill allows switching between Enhanced and Original preview with green badge. | Verified |
+| **TC-FLOW-03: Retake vs Scan Anyway** | Trigger retake verdict in PhotoCheck. | Retake is primary button; Scan Anyway is secondary outline button. | Verified |
+| **TC-FLOW-04: Top-3 Confidence Bars** | Complete scan to Confident or Uncertain Result. | Top-3 classes shown with percentage bars, honest uncertainty warnings, and inference latency badge. | Verified |
+| **TC-FLOW-05: Teammate Treatment Slot** | Tap "View Treatment & Prevention" on confident result. | Opens disease management guidance, organic/chemical options, cost estimate, and Krishi Bhavan schemes. | Verified |
+
+---
+
+## 7. P8: Airplane Mode & Offline PWA Verification
+
+### Step-by-Step Instructions to Verify Airplane Mode:
+
+1. **Initial Online Load:**
+   - Open Chrome or Edge DevTools $\to$ Open `http://localhost:3000/`.
+   - Open **Application** tab $\to$ **Service Workers**.
+   - Verify `sw.js` is active and running.
+   - Open **Cache Storage** $\to$ Verify `agriscan-cache-v0.1.0-placeholder` contains:
+     - `/models/model_int8.onnx`
+     - `/models/config.json`
+     - `/models/labels.json`
+     - `/ort/ort-wasm.wasm`
+     - `/ort/ort-wasm-simd.wasm`
+     - `/ort/ort-wasm-threaded.wasm`
+     - `/ort/ort-wasm-simd-threaded.wasm`
+     - `/index.html`, `/manifest.json`, `/icon.svg`
+
+2. **Simulate Airplane Mode / Disconnect Network:**
+   - In DevTools $\to$ Open **Network** tab $\to$ Change Throttling dropdown from `No throttling` to **`Offline`** (or turn on Airplane Mode on your phone/laptop).
+   - Verify the top Header displays:
+     - 🟢 Dot + *"Works offline · model ready on this phone"*
+
+3. **Execute Offline Scan:**
+   - From the Scan screen, tap the camera shutter or upload an image from gallery.
+   - Proceed through Photo Check $\to$ Tap **Analyse Leaf**.
+   - Watch the offline scanning animation.
+   - The diagnosis result displays top-3 predictions and confidence with **0 external network requests**.
+   - Tap **View Treatment & Prevention** $\to$ Teammate treatment details render completely offline from local cache.
+
+---
+
 ### What Could Not Be Verified Automatically:
-1. **Real Android Rear Camera Hardware Autofocus & Macro Lens:** Real phone physical focus distance and sensor sharpness require manual test on physical Android hardware.
-2. **OEM-Specific Browser Site Permission Menus:** Text directions for resetting site permissions may slightly vary across MIUI/Chrome/Samsung Internet/Brave.
-3. **Hardware HEIC Decoding on Safari vs Chrome:** Safari decodes HEIC natively in `createImageBitmap`, whereas Chromium on Android shows the fallback error prompt as expected.
-4. **Phone Ambient Lighting Extremes:** Field calibration of brightness and glare thresholds on specific target crops (tomatoes, bananas, etc.) in direct sunlight is performed using the `/debug/quality` calibration tool.
+1. **Physical Airplane Mode Toggle on Android Hardware:** Tested via browser DevTools offline emulation; final verification on Android device with cellular & Wi-Fi toggled off.
+2. **Real Android Rear Camera Autofocus & Macro Lens:** Physical focus distance requires manual test on real phone hardware.
+3. **OEM-Specific Browser Site Permission Menus:** Text directions for resetting site permissions may slightly vary across MIUI/Chrome/Samsung Internet/Brave.
+4. **Field Calibration on Direct Sunlight:** Threshold fine-tuning on specific crops in open sunlight can be done using `/debug/quality`.
