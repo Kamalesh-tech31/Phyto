@@ -1,0 +1,6 @@
+{
+  "name": "Phyto",
+  "description": "Offline-first agricultural assistant for farmers to detect crop diseases, access treatment guides, and view government schemes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

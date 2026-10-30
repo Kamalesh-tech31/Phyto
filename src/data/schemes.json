@@ -1,0 +1,132 @@
+[
+  {
+    "id": "subhiksha-keralam",
+    "name": "Subhiksha Keralam - Plant Protection Assistance",
+    "nameMl": "സുഭിക്ഷ കേരളം - സസ്യസംരക്ഷണ പദ്ധതി",
+    "tag": "State Scheme · Kerala",
+    "tagMl": "സംസ്ഥാന പദ്ധതി · കേരളം",
+    "benefit": "50% subsidy on bio-fungicides, neem seed kernel extract, trichoderma, and hand sprayers.",
+    "benefitMl": "ജൈവ കുമിൾനാശിനികൾ, വേപ്പെണ്ണ മിശ്രിതം, ട്രൈക്കോഡെർമ, സ്പ്രേയർ എന്നിവയ്ക്ക് 50% സബ്സിഡി.",
+    "eligibility": [
+      "Small and marginal farmers holding 0.05 to 2 acres of vegetable cultivation",
+      "Registered on the Kerala Karshakan AIMS Portal (aims.kerala.gov.in)",
+      "Resident of Kerala with active farming activity"
+    ],
+    "eligibilityMl": [
+      "0.05 മുതൽ 2 ഏക്കർ വരെ പച്ചക്കറി കൃഷിയുള്ള ചെറുകിട കർഷകർ",
+      "കേരള കർഷകൻ എയിംസ് (AIMS) പോർട്ടലിൽ രജിസ്റ്റർ ചെയ്തവർ",
+      "കേരളത്തിൽ സ്ഥിരതാമസമുള്ള കർഷകർ"
+    ],
+    "documents": [
+      "Aadhaar card copy",
+      "Land tax receipt (Current financial year)",
+      "Bank passbook copy (IFSC clearly visible)",
+      "AIMS registration number"
+    ],
+    "documentsMl": [
+      "ആധാർ കാർഡ് പകർപ്പ്",
+      "നടപ്പ് സാമ്പത്തിക വർഷത്തെ ഭൂനികുതി രസീത്",
+      "ബാങ്ക് പാസ്ബുക്ക് പകർപ്പ് (IFSC ഉള്ളത്)",
+      "എയിംസ് (AIMS) രജിസ്ട്രേഷൻ നമ്പർ"
+    ],
+    "lastUpdated": "October 2026",
+    "subsidyPercentage": "Up to 50%",
+    "helpline": "1800-425-1661",
+    "officialUrl": "https://aims.kerala.gov.in"
+  },
+  {
+    "id": "pm-kisan",
+    "name": "PM-KISAN (Kisan Samman Nidhi)",
+    "nameMl": "പി.എം. കിസാൻ സമ്മാൻ നിധി",
+    "tag": "Central Scheme",
+    "tagMl": "കേന്ദ്ര പദ്ധതി",
+    "benefit": "₹6,000 direct income support annually in three equal installments of ₹2,000 every 4 months.",
+    "benefitMl": "പ്രതിവർഷം ₹6,000 നേരിട്ട് ബാങ്ക് അക്കൗണ്ടിലേക്ക് (4 മാസത്തിലൊരിക്കൽ ₹2,000 വീതം 3 തവണകളായി).",
+    "eligibility": [
+      "All landholding farmer families with cultivable land in their names",
+      "Subject to institutional exclusion criteria (income tax payees excluded)"
+    ],
+    "eligibilityMl": [
+      "കൃഷിഭൂമി സ്വന്തം പേരിലുള്ള എല്ലാ കർഷക കുടുംബങ്ങൾക്കും അർഹതയുണ്ട്",
+      "ആദായനികുതി അടയ്ക്കുന്നവർക്കും സർക്കാർ ജീവനക്കാർക്കും ബാധകമല്ല"
+    ],
+    "documents": [
+      "Aadhaar Card linked with mobile number",
+      "Land ownership documents (Pattayam / RoR)",
+      "Bank account details (NPCI Aadhaar seeded)"
+    ],
+    "documentsMl": [
+      "മൊബൈൽ നമ്പറുമായി ബന്ധിപ്പിച്ച ആധാർ കാർഡ്",
+      "ഭൂവുടമസ്ഥാവകാശ രേഖകൾ (പട്ടയം / കരം രസീത്)",
+      "ആധാർ ലിങ്ക് ചെയ്ത ബാങ്ക് അക്കൗണ്ട് വിവരങ്ങൾ"
+    ],
+    "lastUpdated": "October 2026",
+    "subsidyPercentage": "₹6,000 / year",
+    "helpline": "155261 / 011-24300606",
+    "officialUrl": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "pmfby-crop-insurance",
+    "name": "PMFBY - Comprehensive Crop Insurance",
+    "nameMl": "പ്രധാനമന്ത്രി ഫസൽ ബീമാ യോജന (വിള ഇൻഷുറൻസ്)",
+    "tag": "Insurance Cover",
+    "tagMl": "ഇൻഷുറൻസ് പരിരക്ഷ",
+    "benefit": "Financial protection against severe disease outbreaks, unseasonal rainfall, floods, and localized blight devastation.",
+    "benefitMl": "കഠിനമായ രോഗബാധ, അകാല മഴ, വെള്ളപ്പൊക്കം എന്നിവ മൂലമുണ്ടാകുന്ന വിളനാശത്തിന് ധനസഹായം.",
+    "eligibility": [
+      "Farmers growing notified horticultural crops (Tomato, Chilli, Banana, etc.)",
+      "Both loanee and non-loanee farmers are eligible",
+      "Enrollment must be completed within cutoff notification date"
+    ],
+    "eligibilityMl": [
+      "വിജ്ഞാപനം ചെയ്ത പച്ചക്കറി വിളകൾ കൃഷി ചെയ്യുന്ന എല്ലാ കർഷകരും",
+      "വായ്പയെടുത്തവർക്കും അല്ലാത്തവർക്കും തുല്യമായി ചേരാം",
+      "വിജ്ഞാപന തീയതിക്ക് മുൻപായി അപേക്ഷിക്കണം"
+    ],
+    "documents": [
+      "Land possession certificate from Village Officer",
+      "Sowing certificate from Agricultural Field Officer (Krishi Bhavan)",
+      "Aadhaar card & Bank passbook"
+    ],
+    "documentsMl": [
+      "വില്ലേജ് ഓഫീസിൽ നിന്നുള്ള കൈവശാവകാശ സർട്ടിഫിക്കറ്റ്",
+      "കൃഷി ഭവനിൽ നിന്നുള്ള വിളവ് സർട്ടിഫിക്കറ്റ്",
+      "ആധാർ കാർഡും ബാങ്ക് പാസ്ബുക്കും"
+    ],
+    "lastUpdated": "September 2026",
+    "subsidyPercentage": "Premium capped at 5%",
+    "helpline": "14447",
+    "officialUrl": "https://pmfby.gov.in"
+  },
+  {
+    "id": "nmsa-micro-irrigation",
+    "name": "Per Drop More Crop (Micro Irrigation Scheme)",
+    "nameMl": "സൂക്ഷ്മ ജലസേചന പദ്ധതി (തുള്ളി നന)",
+    "tag": "Irrigation & Health",
+    "tagMl": "ജലസേചനവും ആരോഗ്യവും",
+    "benefit": "Up to 55% subsidy for drip irrigation systems to prevent leaf fungal infections caused by overhead splashing.",
+    "benefitMl": "ഇലകളിൽ നനവ് തട്ടാതെയുള്ള തുള്ളി നന (Drip irrigation) സംവിധാനങ്ങൾക്ക് 55% വരെ സബ്സിഡി.",
+    "eligibility": [
+      "Farmers having assured perennial water source (well, borewell, or pond)",
+      "Minimum 0.1 hectare cultivated under tomato or vegetables"
+    ],
+    "eligibilityMl": [
+      "സ്വന്തമായി ജലസ്രോതസ്സുള്ള (കിണർ, കുളം) കർഷകർ",
+      "കുറഞ്ഞത് 25 സെൻ്റ് സ്ഥലത്തെങ്കിലും പച്ചക്കറി കൃഷിയുള്ളവർ"
+    ],
+    "documents": [
+      "Electricity bill / Water source affidavit",
+      "Land possession certificate & Sketch",
+      "Aadhaar Card"
+    ],
+    "documentsMl": [
+      "വൈദ്യുതി ബിൽ / ജലസ്രോതസ്സ് സാക്ഷ്യപത്രം",
+      "ഭൂമി കൈവശാവകാശ രേഖയും സ്കെച്ചും",
+      "ആധാർ കാർഡ്"
+    ],
+    "lastUpdated": "August 2026",
+    "subsidyPercentage": "Up to 55%",
+    "helpline": "0471-2304830",
+    "officialUrl": "https://pmksy.gov.in"
+  }
+]

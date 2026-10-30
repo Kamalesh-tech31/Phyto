@@ -1,0 +1,179 @@
+[
+  {
+    "id": "early_blight",
+    "name": "Early blight",
+    "nameMl": "ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)",
+    "crop": "Tomato leaf",
+    "cropMl": "തക്കാളി ഇല",
+    "category": "Fungal disease",
+    "categoryMl": "ഫംഗസ് രോഗം",
+    "summary": "Caused by Alternaria solani fungus. Starts as small dark spots with concentric bullseye rings on older lower leaves.",
+    "summaryMl": "ആൾട്ടർനേറിയ സൊളാനി എന്ന കുമിൾ മൂലം ഉണ്ടാകുന്നു. അടിയിലെ മൂത്ത ഇലകളിൽ കേന്ദ്രീകൃത വളയങ്ങളുള്ള കറുത്ത പുള്ളികളായി ആരംഭിക്കുന്നു.",
+    "organicTreatments": [
+      {
+        "step": 1,
+        "text": "Remove and burn the infected lower leaves.",
+        "textMl": "രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുകയോ തീയിടുകയോ ചെയ്യുക."
+      },
+      {
+        "step": 2,
+        "text": "Spray a neem-based solution in the evening.",
+        "textMl": "വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ അധിഷ്ഠിത മിശ്രിതം തളിക്കുക."
+      },
+      {
+        "step": 3,
+        "text": "Water at the base, not over the leaves.",
+        "textMl": "ഇലകളിൽ നനയ്ക്കാതെ ചെടിയുടെ ചുവട്ടിൽ മാത്രം വെള്ളമൊഴിക്കുക."
+      }
+    ],
+    "chemicalCaution": {
+      "headline": "A fungicide registered for tomato. Follow the label exactly.",
+      "headlineMl": "തക്കാളിക്ക് അംഗീകൃത കുമിൾനാശിനി മാത്രം ഉപയോഗിക്കുക. നിർദ്ദേശങ്ങൾ കൃത്യമായി പാലിക്കുക.",
+      "caution": "Wear gloves and a mask when spraying.",
+      "cautionMl": "മരുന്ന് തളിക്കുമ്പോൾ കൈയ്യുറകളും മാസ്കും നിർബന്ധമായും ധരിക്കുക."
+    },
+    "costEstimate": {
+      "avgPrice": "₹120",
+      "govtPrice": "₹65",
+      "unit": "per 15 L tank",
+      "unitMl": "15 ലിറ്റർ ടാങ്കിന്",
+      "note": "Sample pricing shown here. Subsidized rates available via Krishi Bhavan.",
+      "noteMl": "മാതൃകാ നിരക്കുകൾ. കൃഷിഭവൻ വഴി സബ്സിഡി നിരക്കിൽ ലഭ്യമാണ്."
+    },
+    "preventions": [
+      {
+        "step": 1,
+        "text": "Mulch the soil around plants to prevent soil spores splashing onto lower leaves.",
+        "textMl": "മണ്ണിലെ കുമിൾ ബീജങ്ങൾ ഇലകളിലേക്ക് തെറിക്കാതിരിക്കാൻ ചെടിയുടെ ചുവട്ടിൽ പുതയിടുക."
+      },
+      {
+        "step": 2,
+        "text": "Maintain 45–60 cm distance between tomato plants for healthy air circulation.",
+        "textMl": "കാറ്റോട്ടം ലഭിക്കുന്നതിനായി തൈകൾ തമ്മിൽ 45–60 സെ.മീ അകലം പാലിക്കുക."
+      },
+      {
+        "step": 3,
+        "text": "Practice 3-year crop rotation; avoid planting tomatoes after potatoes or eggplants.",
+        "textMl": "വിളപരിക്രമണം നടത്തുക; തക്കാളി നട്ട സ്ഥലത്ത് ഉടൻ വഴുതനയോ ഉരുളക്കിഴങ്ങോ നടരുത്."
+      }
+    ]
+  },
+  {
+    "id": "late_blight",
+    "name": "Late blight",
+    "nameMl": "ലേറ്റ് ബ്ലൈറ്റ് (കരിമ്പൻ)",
+    "crop": "Tomato leaf",
+    "cropMl": "തക്കാളി ഇല",
+    "category": "Oomycete / Water mold",
+    "categoryMl": "പൂപ്പൽ രോഗം",
+    "summary": "Caused by Phytophthora infestans. Produces large, water-soaked pale-green to dark brown patches that spread quickly in humid weather.",
+    "summaryMl": "ഫൈറ്റോപ്തോറ ഇൻഫെസ്റ്റൻസ് മൂലമുണ്ടാകുന്ന അതീവ ഗുരുതര രോഗം. തണുത്ത ഈർപ്പമുള്ള കാലാവസ്ഥയിൽ ഇലകളിൽ നനഞ്ഞ കറുത്ത പാടുകൾ അതിവേഗം പടരുന്നു.",
+    "organicTreatments": [
+      {
+        "step": 1,
+        "text": "Prune severely affected stems and bury them deeply away from farm.",
+        "textMl": "കൂടുതൽ രോഗം ബാധിച്ച കമ്പുകൾ മുറിച്ച് കൃഷിയിടത്തിൽ നിന്ന് മാറ്റി കുഴിച്ചുമൂടുക."
+      },
+      {
+        "step": 2,
+        "text": "Apply 1% Bordeaux mixture on clear mornings on both leaf surfaces.",
+        "textMl": "തെളിഞ്ഞ പ്രഭാതത്തിൽ ഇലകളുടെ ഇരുവശത്തും 1% വീര്യമുള്ള ബോർഡോ മിശ്രിതം തളിക്കുക."
+      },
+      {
+        "step": 3,
+        "text": "Ensure quick drainage and avoid overhead sprinkler irrigation.",
+        "textMl": "നീർവാർച്ച ഉറപ്പാക്കുക, ഇലകൾക്ക് മുകളിലൂടെയുള്ള സ്പ്രിംഗ്ലർ നനവ് ഒഴിവാക്കുക."
+      }
+    ],
+    "chemicalCaution": {
+      "headline": "Systemic fungicide (Metalaxyl + Mancozeb). Follow pre-harvest interval.",
+      "headlineMl": "സിസ്റ്റമിക് കുമിൾനാശിനി നിർദ്ദേശാനുസരണം ഉപയോഗിക്കുക. വിളവെടുപ്പിന് മുൻപുള്ള സമയം പാലിക്കുക.",
+      "caution": "Do not harvest within 7 days of application. Wash thoroughly before consumption.",
+      "cautionMl": "മരുന്ന് തളിച്ച് 7 ദിവസത്തേക്ക് വിളവെടുക്കരുത്. ഉപയോഗത്തിന് മുൻപ് നന്നായി കഴുകുക."
+    },
+    "costEstimate": {
+      "avgPrice": "₹160",
+      "govtPrice": "₹80",
+      "unit": "per 15 L tank",
+      "unitMl": "15 ലിറ്റർ ടാങ്കിന്",
+      "note": "Sample pricing shown here. Subsidized bio-fungicides available through agro clinics.",
+      "noteMl": "മാതൃകാ നിരക്കുകൾ. അഗ്രോ ക്ലിനിക്കുകൾ വഴി സബ്സിഡി നിരക്കിൽ ലഭ്യമാണ്."
+    },
+    "preventions": [
+      {
+        "step": 1,
+        "text": "Use certified disease-resistant tomato varieties for rainy season planting.",
+        "textMl": "മഴക്കാലത്ത് രോഗപ്രതിരോധ ശേഷിയുള്ള സർട്ടിഫൈഡ് വിത്തിനങ്ങൽ തിരഞ്ഞെടുക്കുക."
+      },
+      {
+        "step": 2,
+        "text": "Stake and trellis plants to keep leaves clean and off damp soil.",
+        "textMl": "ഇലകൾ നനഞ്ഞ മണ്ണിൽ തട്ടാതിരിക്കാൻ ചെടികൾക്ക് താങ്ങുകാലുകൾ നൽകുക."
+      },
+      {
+        "step": 3,
+        "text": "Sanitize pruning shears with spirit or bleach between plants.",
+        "textMl": "കത്രികകളും ഉപകരണങ്ങളും സ്പിരിറ്റ് ഉപയോഗിച്ച് അണുവിമുക്തമാക്കി ഉപയോഗിക്കുക."
+      }
+    ]
+  },
+  {
+    "id": "healthy",
+    "name": "Healthy leaf",
+    "nameMl": "ആരോഗ്യമുള്ള ഇല",
+    "crop": "Tomato leaf",
+    "cropMl": "തക്കാളി ഇല",
+    "category": "Normal crop",
+    "categoryMl": "സാധാരണ വിളവ്",
+    "summary": "Vibrant green foliage with no detectable fungal lesions, blight, or severe pest damage.",
+    "summaryMl": "കുമിൾ പാടുകളോ കീടബാധയോ ഇല്ലാത്ത നല്ല പച്ചനിറമുള്ള ആരോഗ്യകരമായ ഇലകൾ.",
+    "organicTreatments": [
+      {
+        "step": 1,
+        "text": "No disease treatment required. Continue regular maintenance.",
+        "textMl": "രോഗചികിത്സ ആവശ്യമില്ല. പതിവ് പരിചരണം തുടരുക."
+      },
+      {
+        "step": 2,
+        "text": "Apply organic compost or vermicompost every 3 weeks at plant base.",
+        "textMl": "3 ആഴ്ചയിലൊരിക്കൽ ചെടിയുടെ ചുവട്ടിൽ മണ്ണിര കമ്പോസ്റ്റോ ജൈവവളമോ നൽകുക."
+      },
+      {
+        "step": 3,
+        "text": "Inspect the undersides of leaves weekly for early signs of whiteflies or aphids.",
+        "textMl": "വെള്ളീച്ചയോ മുഞ്ഞയോ ഉണ്ടോയെന്ന് ആഴ്ചയിലൊരിക്കൽ ഇലകളുടെ അടിഭാഗം പരിശോധിക്കുക."
+      }
+    ],
+    "chemicalCaution": {
+      "headline": "No chemicals recommended.",
+      "headlineMl": "രാസവസ്തുക്കൾ ആവശ്യമില്ല.",
+      "caution": "Keep chemical sprays away from healthy crops to protect beneficial pollinators.",
+      "cautionMl": "ഉപകാരികളായ പരാഗണ പ്രാണികളെ സംരക്ഷിക്കാൻ ആരോഗ്യകരമായ വിളകളിൽ രാസവസ്തുക്കൾ തളിക്കരുത്."
+    },
+    "costEstimate": {
+      "avgPrice": "₹0",
+      "govtPrice": "₹0",
+      "unit": "Routine care",
+      "unitMl": "പതിവ് പരിചരണം",
+      "note": "Preventive maintenance saves up to 40% of seasonal plant protection costs.",
+      "noteMl": "മുൻകരുതൽ പരിചരണം വഴി വിള സംരക്ഷണ ചെലവ് 40% വരെ കുറയ്ക്കാം."
+    },
+    "preventions": [
+      {
+        "step": 1,
+        "text": "Spray mild diluted cow urine or Panchagavya monthly to boost natural immunity.",
+        "textMl": "രോഗപ്രതിരോധശേഷി വർദ്ധിപ്പിക്കാൻ മാസത്തിലൊരിക്കൽ നേർപ്പിച്ച പഞ്ചഗവ്യം തളിക്കുക."
+      },
+      {
+        "step": 2,
+        "text": "Install yellow sticky traps to catch flying sucking pests early.",
+        "textMl": "പറക്കുന്ന കീടങ്ങളെ തടയാൻ മഞ്ഞക്കെണികൾ സ്ഥാപിക്കുക."
+      },
+      {
+        "step": 3,
+        "text": "Keep field perimeter free of wild solanaceous weeds.",
+        "textMl": "വരമ്പുകളിലെ കാട്ടു കളകൾ കൃത്യമായി വെട്ടി വൃത്തിയാക്കുക."
+      }
+    ]
+  }
+]
