@@ -132,6 +132,44 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         </div>
       </div>
 
+      {/* Card 2.5: Top-3 Model Predictions & Inference Latency */}
+      {prediction.top3 && prediction.top3.length > 0 && (
+        <div className="mt-3.5 bg-white rounded-3xl p-5 border border-[#e8e7de] shadow-xs">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-semibold text-[#162a45]">
+              {language === 'ml' ? 'മോഡൽ നിർണ്ണയങ്ങൾ (Top-3)' : 'Top Predictions (On-device)'}
+            </span>
+            {prediction.latencyMs !== undefined && (
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#f1f5f9] text-[#475569] rounded-full">
+                ⚡ {prediction.latencyMs}ms (Wasm)
+              </span>
+            )}
+          </div>
+          <div className="space-y-2.5">
+            {prediction.top3.map((pred, i) => {
+              const pct = Math.round(pred.prob * 100);
+              const labelClean = pred.label.replace('_', ' ');
+              return (
+                <div key={pred.label} className="space-y-1">
+                  <div className="flex justify-between text-xs font-semibold">
+                    <span className="capitalize text-[#334155]">{i + 1}. {labelClean}</span>
+                    <span className={i === 0 ? 'text-[#0b72c9] font-bold' : 'text-[#64748b]'}>{pct}%</span>
+                  </div>
+                  <div className="w-full bg-[#f1f0e9] h-2 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        i === 0 ? 'bg-[#0b72c9]' : 'bg-[#94a3b8]'
+                      }`}
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Card 3: Pest Observation on Leaf */}
       {prediction.pestWarning && (
         <button

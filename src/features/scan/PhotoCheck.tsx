@@ -22,6 +22,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
   onRetake,
 }) => {
   const t = translations[language];
+  const [showEnhanced, setShowEnhanced] = React.useState(Boolean(quality.enhancedImageUrl));
 
   // Helper for check icon (green check or amber warning)
   const renderStatusIcon = (passed: boolean) => {
@@ -40,6 +41,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
   };
 
   const isBlurryPreset = presetType === 'blurry';
+  const displayImage = showEnhanced && quality.enhancedImageUrl ? quality.enhancedImageUrl : imageUrl;
 
   return (
     <div className="flex flex-col px-5 pt-2 pb-24 max-w-md mx-auto">
@@ -70,10 +72,40 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
         </p>
       </div>
 
+      {/* Enhanced Photo Banner (if borderline enhancement applied) */}
+      {quality.enhancedImageUrl && (
+        <div className="mt-2 bg-[#ecfdf5] border border-[#a7f3d0] rounded-2xl p-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-base">✨</span>
+            <span className="text-xs font-semibold text-[#065f46]">
+              {language === 'ml' ? 'ഫോട്ടോ തെളിമ കൂട്ടിയിട്ടുണ്ട്' : 'We improved this photo'}
+            </span>
+          </div>
+          <div className="flex bg-[#d1fae5] p-0.5 rounded-lg text-xs font-medium">
+            <button
+              onClick={() => setShowEnhanced(true)}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                showEnhanced ? 'bg-white text-[#065f46] font-bold shadow-2xs' : 'text-[#047857]'
+              }`}
+            >
+              Enhanced
+            </button>
+            <button
+              onClick={() => setShowEnhanced(false)}
+              className={`px-2.5 py-1 rounded-md transition-all ${
+                !showEnhanced ? 'bg-white text-[#065f46] font-bold shadow-2xs' : 'text-[#047857]'
+              }`}
+            >
+              Original
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Captured Image Preview */}
       <div className="w-full aspect-[4/3] bg-[#172b1d] rounded-3xl overflow-hidden mt-3 relative shadow-xs">
         <LeafGraphic
-          imageUrl={imageUrl}
+          imageUrl={displayImage}
           variant={(presetType as any) || 'early_blight'}
           className="w-full h-full"
           showShadow={imageUrl.startsWith('sample:') && !isBlurryPreset}

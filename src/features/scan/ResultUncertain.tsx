@@ -60,6 +60,40 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
         </p>
       </div>
 
+      {/* Model Predictions Breakdown */}
+      {prediction.top3 && prediction.top3.length > 0 && (
+        <div className="mt-3.5 bg-white rounded-3xl p-4 border border-[#e8e7de] shadow-xs">
+          <div className="text-xs font-semibold text-[#162a45] mb-2">
+            {language === 'ml' ? 'മോഡൽ വിതരണം (കുറഞ്ഞ കൃത്യത)' : 'Model Distribution (Low Confidence / Margin)'}
+          </div>
+          <div className="space-y-2">
+            {prediction.top3.map((pred, i) => {
+              const pct = Math.round(pred.prob * 100);
+              const labelClean = pred.label.replace('_', ' ');
+              return (
+                <div key={pred.label} className="space-y-1">
+                  <div className="flex justify-between text-xs font-medium text-[#475569]">
+                    <span className="capitalize">{i + 1}. {labelClean}</span>
+                    <span className="font-semibold">{pct}%</span>
+                  </div>
+                  <div className="w-full bg-[#f1f0e9] h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-amber-500"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-[11px] text-[#64748b] mt-2">
+            {language === 'ml'
+              ? 'രോഗലക്ഷണങ്ങൾ പരസ്പരം സാമ്യമുള്ളതിനാലാണ് കൃത്യത കുറഞ്ഞത്.'
+              : 'Predictions are close or below safety threshold. AgriScan avoids false certainty.'}
+          </p>
+        </div>
+      )}
+
       {/* 3 Tips Card matching Reference #5 */}
       <div className="mt-4 bg-white rounded-3xl p-5 border border-[#e8e7de] shadow-xs">
         <div className="space-y-4">

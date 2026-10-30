@@ -6,6 +6,8 @@ import {
   SeverityLevel,
 } from '../types';
 import { analyzeQuality } from '../ml/quality';
+import { enhance } from '../ml/enhance';
+import { agriScanClient } from '../ml/client';
 import defaultQualityConfig from '../ml/quality.config.json';
 
 /**
@@ -118,6 +120,21 @@ class PredictionService implements IPredictionEngine {
           ? 'പരിശോധിക്കാൻ പര്യാപ്തമാണ്. തുല്യമായ വെളിച്ചത്തിൽ വീണ്ടുമെടുത്താൽ കൂടുതൽ കൃത്യത ലഭിച്ചേക്കാം.'
           : 'വ്യക്തത കുറവാണ്. ക്യാമറ ഫോക്കസ് ചെയ്ത് വീണ്ടും ഫോട്ടോയെടുക്കുക.';
 
+        let enhancedImageUrl: string | undefined;
+        if (report.verdict === 'enhance') {
+          try {
+            const enhanceRes = await enhance(bitmap, report);
+            const c = document.createElement('canvas');
+            c.width = enhanceRes.bitmap.width;
+            c.height = enhanceRes.bitmap.height;
+            const cctx = c.getContext('2d');
+            cctx?.drawImage(enhanceRes.bitmap, 0, 0);
+            enhancedImageUrl = c.toDataURL('image/jpeg', 0.9);
+          } catch (e) {
+            console.warn('Enhancement generation failed:', e);
+          }
+        }
+
         return {
           sharpness: isBlurry ? 'blurry' : report.blur < defaultQualityConfig.blur.enhanceThreshold ? 'fair' : 'sharp',
           sharpnessLabel,
@@ -142,6 +159,9 @@ class PredictionService implements IPredictionEngine {
           isAcceptable,
           advice,
           adviceMl,
+          verdict: report.verdict,
+          enhancedImageUrl,
+          hints: report.hints,
         };
       } catch (err) {
         console.warn('Real quality check failed, using fallback:', err);
@@ -197,31 +217,108 @@ class PredictionService implements IPredictionEngine {
           img.src = imageUrl;
         });
         const bitmap = await createImageBitmap(img);
-        const report = await analyzeQuality(bitmap);
-        if (report.verdict === 'retake') {
+
+        // Run full on-device pipeline via agriScanClient
+        const result = await agriScanClient.analyze(bitmap, { scanAnyway: true });
+
+        if (
+          result.status === 'poor_quality' ||
+          result.status === 'uncertain' ||
+          result.status === 'unknown'
+        ) {
           return {
             id,
             timestamp,
             imageUrl,
-            crop: 'Leaf scan',
-            cropMl: 'ഇല പരിശോധന',
+            crop: 'Tomato leaf',
+            cropMl: 'തക്കാളി ഇല',
             diseaseId: 'uncertain',
-            diseaseName: 'I am not sure yet',
-            diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+            diseaseName: result.status === 'unknown' ? 'Unknown plant leaf' : 'I am not sure yet',
+            diseaseNameMl: result.status === 'unknown' ? 'തിരിച്ചറിയാനാകാത്ത ഇല' : 'ഇതുവരെ ഉറപ്പില്ല',
             category: 'Inconclusive scan',
             categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
             confidence: 'low',
-            confidenceScore: 0.25,
+            confidenceScore: result.top3[0]?.prob ?? 0.35,
             affectedAreaPercent: 0,
-            severity: 'mild',
+            severity: (result.severity?.level as SeverityLevel) || 'mild',
             isUncertain: true,
+            top3: result.top3,
+            enhanced: result.enhanced,
+            latencyMs: result.latencyMs,
             uncertaintyReason:
-              report.hints[0] ||
-              'The photo is too blurry or unclear. I would rather ask for a clearer photo than guess wrong.',
+              result.status === 'unknown'
+                ? 'The leaf could not be recognized with confidence. Please make sure a single leaf fills the frame.'
+                : result.quality.hints[0] ||
+                  'The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.',
             uncertaintyReasonMl:
-              'ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. വ്യക്തമായ ഫോട്ടോ വീണ്ടുമെടുക്കുക.',
+              'ഫോട്ടോ അവ്യക്തമായതിനാലോ ഉറപ്പില്ലാത്തതിനാലോ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. വ്യക്തമായ ഫോട്ടോ വീണ്ടുമെടുക്കുക.',
           };
         }
+
+        // Confident diagnosis from on-device model
+        const top = result.top3[0];
+        const diseaseId: DiseaseId =
+          top.label === 'late_blight'
+            ? 'late_blight'
+            : top.label === 'healthy'
+            ? 'healthy'
+            : 'early_blight';
+
+        const nameMap: Record<string, { en: string; ml: string; catEn: string; catMl: string }> = {
+          early_blight: {
+            en: 'Early blight',
+            ml: 'ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)',
+            catEn: 'Fungal disease',
+            catMl: 'ഫംഗസ് രോഗം',
+          },
+          late_blight: {
+            en: 'Late blight',
+            ml: 'ലേറ്റ് ബ്ലൈറ്റ് (കരിമ്പൻ)',
+            catEn: 'Oomycete / Water mold',
+            catMl: 'പൂപ്പൽ രോഗം',
+          },
+          healthy: {
+            en: 'Healthy leaf',
+            ml: 'ആരോഗ്യമുള്ള ഇല',
+            catEn: 'Normal crop',
+            catMl: 'സാധാരണ വിളവ്',
+          },
+        };
+        const info = nameMap[diseaseId] || nameMap.early_blight;
+
+        return {
+          id,
+          timestamp,
+          imageUrl,
+          crop: 'Tomato leaf',
+          cropMl: 'തക്കാളി ഇല',
+          diseaseId,
+          diseaseName: info.en,
+          diseaseNameMl: info.ml,
+          category: info.catEn,
+          categoryMl: info.catMl,
+          confidence: 'high',
+          confidenceScore: top.prob,
+          affectedAreaPercent: result.severity?.pct ?? (diseaseId === 'healthy' ? 0 : 22),
+          severity:
+            (result.severity?.level as SeverityLevel) ||
+            (diseaseId === 'healthy' ? 'mild' : 'moderate'),
+          isUncertain: false,
+          top3: result.top3,
+          enhanced: result.enhanced,
+          latencyMs: result.latencyMs,
+          pestWarning:
+            diseaseId === 'late_blight'
+              ? {
+                  name: 'Leaf Miner',
+                  nameMl: 'ഇല തുരപ്പൻ പുഴു',
+                  severityLabel: 'Pest · mild',
+                  severityLabelMl: 'കീടം · ലഘുവായത്',
+                  details: 'Occasional serpentine mines observed on surrounding foliage.',
+                  detailsMl: 'ചുറ്റുമുള്ള ഇലകളിൽ വെളുത്ത പാടുകൾ കണ്ടുവരുന്നു.',
+                }
+              : undefined,
+        };
       } catch (e) {
         console.warn('Quality check in predict:', e);
       }

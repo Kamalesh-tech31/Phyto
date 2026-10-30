@@ -39,6 +39,9 @@ export interface QualityCheckResult {
   isAcceptable: boolean;
   advice: string;
   adviceMl: string;
+  verdict?: 'pass' | 'enhance' | 'retake';
+  enhancedImageUrl?: string;
+  hints?: string[];
 }
 
 export interface DiseaseGuidance {
@@ -103,6 +106,9 @@ export interface PredictionResult {
   uncertaintyReasonMl?: string;
   imageUrl: string;
   timestamp: number;
+  top3?: { label: string; prob: number }[];
+  enhanced?: boolean;
+  latencyMs?: number;
 }
 
 export interface ScanHistoryItem {
