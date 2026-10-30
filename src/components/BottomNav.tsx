@@ -37,11 +37,13 @@ export const BottomNav: React.FC<BottomNavProps> = ({
       className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[var(--color-surface)] z-40 transition-colors"
       style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 0px))' }}
     >
-      {/* Top Edge: Slim Three-Stripe Band, Mirrored (stripe-3, stripe-2, stripe-1) */}
-      <div className="w-full flex flex-col gap-[2px]" aria-hidden="true">
-        <div className="h-[3px] w-full bg-[var(--color-stripe-3)]" />
-        <div className="h-[3px] w-full bg-[var(--color-stripe-2)]" />
-        <div className="h-[3px] w-full bg-[var(--color-stripe-1)]" />
+      {/* Top Edge: Mirrored Thick-Thin Rule (1px rule-soft on top, 3px gap, 2px rule-strong below) */}
+      <div className="w-full h-[6px] flex flex-col justify-between" aria-hidden="true">
+        {/* 1px solid line in rule-soft on top */}
+        <div className="h-[1px] w-full bg-[var(--color-rule-soft)]" />
+        {/* 3px gap is between the two lines */}
+        {/* 2px solid line in rule-strong below */}
+        <div className="h-[2px] w-full bg-[var(--color-rule-strong)]" />
       </div>
 
       <div className="flex items-center justify-around px-4 pt-2">

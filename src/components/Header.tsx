@@ -88,11 +88,18 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Header divider: a slim three-stripe band (three horizontal stripes, each 3px high with 2px gaps, full width) */}
-      <div className="w-full flex flex-col gap-[2px]" aria-hidden="true">
-        <div className="h-[3px] w-full bg-[var(--color-stripe-1)]" />
-        <div className="h-[3px] w-full bg-[var(--color-stripe-2)]" />
-        <div className="h-[3px] w-full bg-[var(--color-stripe-3)]" />
+      {/* Header Divider: Full-width Thick-Thin Rule with Centred Diamond Ornament */}
+      <div className="relative w-full h-[6px] flex flex-col justify-between" aria-hidden="true">
+        {/* 2px solid line in rule-strong on top */}
+        <div className="h-[2px] w-full bg-[var(--color-rule-strong)]" />
+        {/* 3px gap is between the two lines */}
+        {/* 1px solid line in rule-soft below */}
+        <div className="h-[1px] w-full bg-[var(--color-rule-soft)]" />
+
+        {/* Centered Diamond Ornament with 6px background gap on each side */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25px] h-[16px] bg-[var(--color-bg)] flex items-center justify-center pointer-events-none">
+          <div className="w-[9px] h-[9px] rotate-45 bg-[var(--color-primary)] border-[1.5px] border-[var(--color-rule-strong)] shrink-0" />
+        </div>
       </div>
     </header>
   );

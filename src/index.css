@@ -154,10 +154,9 @@
   --color-vf-spot: #B84E28;
   --color-vf-frame: #F1E9D2;
 
-  /* Three-Stripe Outer Band Tokens */
-  --color-stripe-1: #2E6B3B;
-  --color-stripe-2: #E0A526;
-  --color-stripe-3: #B84E28;
+  /* Outer Divider Rule Tokens */
+  --color-rule-strong: #1F2A1C;
+  --color-rule-soft: #8C8466;
 }
 
 /* Retro Tokens: Dark ("Espresso and Mint") */
@@ -217,10 +216,9 @@
   --color-vf-spot: #D2603A;
   --color-vf-frame: #F4EAD5;
 
-  /* Three-Stripe Outer Band Tokens */
-  --color-stripe-1: #86D1A0;
-  --color-stripe-2: #F2C46B;
-  --color-stripe-3: #E88A5F;
+  /* Outer Divider Rule Tokens */
+  --color-rule-strong: #8A7C69;
+  --color-rule-soft: #5A5046;
 }
 
 @layer base {
@@ -263,7 +261,7 @@
 
 /* App Column Side Rules:
    Shown ONLY on wide screens (> 448px, desktop preview).
-   Double rule: a 2px line in outline colour plus a 1px line in divider colour, 5px inside it.
+   Double rule: a 2px line in rule-strong with a 1px line in rule-soft, 3px apart, mirrored on the right side.
    On phone-width screens, zero side borders. */
 .app-column {
   border-left: none;
@@ -273,17 +271,17 @@
 @media (min-width: 449px) {
   .app-column {
     position: relative;
-    border-left: 2px solid var(--color-outline);
-    border-right: 2px solid var(--color-outline);
+    border-left: 2px solid var(--color-rule-strong);
+    border-right: 2px solid var(--color-rule-strong);
   }
   .app-column::before {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 5px;
+    left: 3px;
     width: 1px;
-    background-color: var(--color-divider);
+    background-color: var(--color-rule-soft);
     pointer-events: none;
     z-index: 45;
   }
@@ -292,9 +290,9 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 5px;
+    right: 3px;
     width: 1px;
-    background-color: var(--color-divider);
+    background-color: var(--color-rule-soft);
     pointer-events: none;
     z-index: 45;
   }
