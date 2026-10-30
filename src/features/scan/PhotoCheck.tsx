@@ -70,13 +70,13 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
         </p>
       </div>
 
-      {/* Captured Image Preview with Left Shadow from Reference #2 */}
+      {/* Captured Image Preview */}
       <div className="w-full aspect-[4/3] bg-[#172b1d] rounded-3xl overflow-hidden mt-3 relative shadow-xs">
         <LeafGraphic
           imageUrl={imageUrl}
-          variant={presetType as any || 'early_blight'}
+          variant={(presetType as any) || 'early_blight'}
           className="w-full h-full"
-          showShadow={!isBlurryPreset}
+          showShadow={imageUrl.startsWith('sample:') && !isBlurryPreset}
         />
       </div>
 
@@ -152,29 +152,45 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
       </div>
 
       {/* Advisory Note */}
-      <p className="text-xs text-[#556980] mt-3 px-1 leading-relaxed">
-        {isBlurryPreset
-          ? t.photo_check_notice_blurry
-          : language === 'ml'
-          ? quality.adviceMl
-          : quality.advice}
+      <p className={`text-xs mt-3 px-1 leading-relaxed ${!quality.isAcceptable ? 'text-amber-700 font-medium' : 'text-[#556980]'}`}>
+        {language === 'ml' ? quality.adviceMl : quality.advice}
       </p>
 
-      {/* Action Buttons */}
+      {/* Action Buttons: If acceptable, Analyse is primary. If unacceptable (retake), Retake is primary. */}
       <div className="mt-8 flex flex-col gap-3">
-        <button
-          onClick={onAnalyse}
-          className="w-full py-4 bg-[#0b72c9] hover:bg-[#085da5] active:scale-[0.98] text-white font-semibold rounded-2xl text-base shadow-sm transition-all"
-        >
-          {t.btn_analyse_leaf}
-        </button>
+        {quality.isAcceptable ? (
+          <>
+            <button
+              onClick={onAnalyse}
+              className="w-full py-4 bg-[#0b72c9] hover:bg-[#085da5] active:scale-[0.98] text-white font-semibold rounded-2xl text-base shadow-sm transition-all"
+            >
+              {t.btn_analyse_leaf}
+            </button>
 
-        <button
-          onClick={onRetake}
-          className="w-full py-3.5 bg-transparent border-2 border-[#162a45] hover:bg-[#f3f2ea] active:scale-[0.98] text-[#162a45] font-semibold rounded-2xl text-base transition-all"
-        >
-          {t.btn_retake_photo}
-        </button>
+            <button
+              onClick={onRetake}
+              className="w-full py-3.5 bg-transparent border-2 border-[#162a45] hover:bg-[#f3f2ea] active:scale-[0.98] text-[#162a45] font-semibold rounded-2xl text-base transition-all"
+            >
+              {t.btn_retake_photo}
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={onRetake}
+              className="w-full py-4 bg-[#b91c1c] hover:bg-[#991b1b] active:scale-[0.98] text-white font-semibold rounded-2xl text-base shadow-sm transition-all"
+            >
+              {t.btn_retake_photo}
+            </button>
+
+            <button
+              onClick={onAnalyse}
+              className="w-full py-3.5 bg-transparent border-2 border-slate-300 hover:bg-slate-100 active:scale-[0.98] text-slate-600 font-semibold rounded-2xl text-sm transition-all"
+            >
+              {language === 'ml' ? 'ഇത് തന്നെ സ്കാൻ ചെയ്യുക (കുറഞ്ഞ കൃത്യത)' : 'Scan anyway (Low confidence)'}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
