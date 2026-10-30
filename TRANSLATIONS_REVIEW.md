@@ -16,3 +16,24 @@ English (`src/locales/en.json`) is the canonical source of truth.
 ## Notes for Native Reviewers
 1. Ensure agricultural terms (blight, pests, subsidy, quality checks) accurately reflect localized farming vocabulary.
 2. Confirm UI button length in native script fits mobile touch targets at Largest text size (approx. 150% font scale) on 360px wide devices.
+
+## Camera and Blur Detection Strings (Added for abinav2 Camera Integration)
+The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`, `ta.json`, `hi.json`, `te.json`):
+- `start_camera`: Prompt to activate live camera viewfinder
+- `starting_camera`: Loading state while camera stream initializes
+- `camera_denied_title` & `camera_denied_desc`: Permission denied notification and guidance
+- `camera_not_found_title` & `camera_not_found_desc`: Device lacks camera hardware
+- `camera_busy_title` & `camera_busy_desc`: Camera locked by another application
+- `camera_insecure_title` & `camera_insecure_desc`: Camera requires HTTPS / localhost
+- `camera_retry_btn`: Action to retry camera permission / initialization
+- `camera_gallery_fallback`: Action to upload from device photo gallery
+- `camera_switch`: Action to toggle front / rear camera
+- `hint_hold_steady`: Live preview hint when motion or blur is detected
+- `hint_too_dark`: Live preview hint when ambient light is insufficient
+- `hint_too_bright`: Live preview hint when glare or direct light is detected
+- `hint_motion_blur`: Directional motion blur detection notification
+- `hint_check_light`: General lighting advisory
+- `btn_scan_anyway`: Secondary action when photo is blurry or low confidence
+
+**Review Status**: English (`en`) is canonical; Malayalam (`ml`), Tamil (`ta`), Hindi (`hi`), and Telugu (`te`) are machine-translated and marked for native speaker review.
+

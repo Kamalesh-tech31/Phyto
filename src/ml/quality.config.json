@@ -1,0 +1,39 @@
+{
+  "blur": {
+    "retakeThreshold": 80.0,
+    "enhanceThreshold": 180.0
+  },
+  "tenengrad": {
+    "retakeThreshold": 60.0,
+    "enhanceThreshold": 130.0
+  },
+  "brightness": {
+    "minLuminance": 45.0,
+    "maxLuminance": 215.0,
+    "enhanceMinLuminance": 75.0,
+    "maxDarkFraction": 0.40,
+    "maxBrightFraction": 0.35
+  },
+  "contrast": {
+    "minStdDev": 22.0,
+    "enhanceMinStdDev": 32.0
+  },
+  "noise": {
+    "maxNoise": 14.0
+  },
+  "glare": {
+    "maxGlareFraction": 0.15
+  },
+  "coverage": {
+    "minCoverage": 0.20
+  },
+  "motionRatioThreshold": 2.2,
+  "enhancement": {
+    "enabled": false,
+    "strength": 0.8,
+    "unsharpRadius": 1.0,
+    "unsharpAmount": 0.7,
+    "targetLuminance": 128.0,
+    "gamma": 0.9
+  }
+}

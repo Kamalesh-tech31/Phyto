@@ -1,3 +1,5 @@
+import { analyzeQuality } from '../ml/quality';
+import defaultQualityConfig from '../ml/quality.config.json';
 import {
   ConfidenceLevel,
   DiseaseId,
@@ -51,6 +53,95 @@ class PredictionService implements IPredictionEngine {
         advice: 'Good enough to analyse. Retaking in even light may improve accuracy.',
         adviceMl: 'പരിശോധിക്കാൻ പര്യാപ്തമാണ്. തുല്യമായ വെളിച്ചത്തിൽ വീണ്ടുമെടുത്താൽ കൂടുതൽ കൃത്യത ലഭിച്ചേക്കാം.',
       };
+    }
+
+    // Real photo evaluation (from camera capture or gallery upload)
+    if (imageUrl && !imageUrl.startsWith('sample:')) {
+      try {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        await new Promise<void>((resolve, reject) => {
+          img.onload = () => resolve();
+          img.onerror = () => reject(new Error('Failed to load image for quality check'));
+          img.src = imageUrl;
+        });
+
+        let source;
+        if (typeof createImageBitmap === 'function') {
+          source = await createImageBitmap(img);
+        } else {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth || img.width || 256;
+          canvas.height = img.naturalHeight || img.height || 256;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas 2D context failed');
+          ctx.drawImage(img, 0, 0);
+          source = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        }
+
+        const report = await analyzeQuality(source);
+
+        const isBlurry =
+          report.blur < defaultQualityConfig.blur.retakeThreshold ||
+          report.tenengrad < defaultQualityConfig.tenengrad.retakeThreshold ||
+          report.motionLikely;
+
+        const isDim = report.brightness < defaultQualityConfig.brightness.minLuminance;
+        const isBright = report.brightness > defaultQualityConfig.brightness.maxLuminance;
+        const hasHeavyShadow = report.darkFraction > defaultQualityConfig.brightness.maxDarkFraction;
+        const isLowCoverage = report.coverage < defaultQualityConfig.coverage.minCoverage;
+
+        const sharpnessPass = !isBlurry;
+        const lightPass = !isDim && !isBright;
+        const shadowPass = !hasHeavyShadow;
+        const distancePass = !isLowCoverage;
+
+        const isAcceptable = sharpnessPass;
+
+        return {
+          sharpness: isBlurry
+            ? 'blurry'
+            : report.blur < defaultQualityConfig.blur.enhanceThreshold
+            ? 'fair'
+            : 'sharp',
+          sharpnessLabel: isBlurry
+            ? (report.motionLikely ? 'Motion blur' : 'Blurry / Unclear')
+            : (report.blur < defaultQualityConfig.blur.enhanceThreshold ? 'Fair sharpness' : 'Sharp'),
+          sharpnessLabelMl: isBlurry
+            ? (report.motionLikely ? 'ചലനം കാരണം മങ്ങിയത്' : 'മങ്ങിയത് / വ്യക്തമല്ല')
+            : 'വ്യക്തം',
+          sharpnessPass,
+
+          light: isDim ? 'dim' : isBright ? 'too_bright' : 'good',
+          lightLabel: isDim ? 'Dim lighting' : isBright ? 'Too bright' : 'Good',
+          lightLabelMl: isDim ? 'വെളിച്ചക്കുറവ്' : isBright ? 'അമിത വെളിച്ചം' : 'നല്ലത്',
+          lightPass,
+
+          shadow: hasHeavyShadow ? 'heavy' : 'good',
+          shadowLabel: hasHeavyShadow ? 'Heavy shadow' : 'Even lighting',
+          shadowLabelMl: hasHeavyShadow ? 'കനത്ത നിഴൽ' : 'തുല്യ വെളിച്ചം',
+          shadowPass,
+
+          distance: isLowCoverage ? 'too_far' : 'good',
+          distanceLabel: isLowCoverage ? 'Too far / Not centered' : 'Good',
+          distanceLabelMl: isLowCoverage ? 'വളരെ അകലെ' : 'നല്ലത്',
+          distancePass,
+
+          isAcceptable,
+          advice: isBlurry
+            ? 'Photo is blurry — tap screen to focus or hold still.'
+            : 'Good enough to analyse. Retaking in even light may improve accuracy.',
+          adviceMl: isBlurry
+            ? 'ഫോട്ടോ അവ്യക്തമാണ്. ക്യാമറ ഫോക്കസ് ചെയ്ത് അനങ്ങാതെ വീണ്ടുമെടുക്കുക.'
+            : 'പരിശോധിക്കാൻ പര്യാപ്തമാണ്. തുല്യമായ വെളിച്ചത്തിൽ വീണ്ടുമെടുത്താൽ കൂടുതൽ കൃത്യത ലഭിച്ചേക്കാം.',
+          quality: {
+            ok: isAcceptable,
+            reason: isBlurry ? 'blur' : undefined,
+          },
+        };
+      } catch (err) {
+        console.warn('Quality analysis error:', err);
+      }
     }
 
     // Default reference quality check matching screenshot #2

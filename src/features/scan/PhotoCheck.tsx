@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language, QualityCheckResult } from '../../types';
-import { translations } from '../../data/translations';
+import { t } from '../../services/i18n';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { ChevronLeft, Check, AlertTriangle } from 'lucide-react';
 
@@ -21,8 +21,6 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
   onAnalyse,
   onRetake,
 }) => {
-  const t = translations[language];
-
   // Helper for check icon (green check or amber warning sticker)
   const renderStatusIcon = (passed: boolean) => {
     if (passed) {
@@ -39,7 +37,8 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
     );
   };
 
-  const isBlurryPreset = presetType === 'blurry';
+  const isBlurry = !quality.sharpnessPass || presetType === 'blurry';
+  const isRealPhoto = imageUrl && !imageUrl.startsWith('sample:');
 
   return (
     <div className="flex flex-col px-5 pt-2 pb-24 max-w-md mx-auto">
@@ -53,7 +52,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <ChevronLeft className="w-7 h-7 stroke-[2]" />
         </button>
         <h2 className="font-editorial text-2xl font-bold text-[var(--color-ink)]">
-          {t.photo_check_title}
+          {t('photo_check_title', undefined, language)}
         </h2>
       </div>
 
@@ -66,7 +65,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <div className="bg-[var(--color-inset)] border border-[var(--color-divider)] rounded-full" />
         </div>
         <p className="text-xs text-[var(--color-muted)] mt-2 font-medium">
-          {t.step_indicator}
+          {t('step_indicator', undefined, language)}
         </p>
       </div>
 
@@ -74,9 +73,9 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
       <div className="w-full aspect-[4/3] bg-[var(--color-vf-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-3 relative">
         <LeafGraphic
           imageUrl={imageUrl}
-          variant={presetType as any || 'early_blight'}
+          variant={(presetType as any) || 'early_blight'}
           className="w-full h-full"
-          showShadow={!isBlurryPreset}
+          showShadow={!isBlurry && !isRealPhoto}
         />
       </div>
 
@@ -87,7 +86,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <div className="flex items-center gap-3">
             {renderStatusIcon(quality.sharpnessPass)}
             <span className="text-sm font-semibold text-[var(--color-ink)]">
-              {t.quality_sharpness}
+              {t('quality_sharpness', undefined, language)}
             </span>
           </div>
           <span
@@ -104,7 +103,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <div className="flex items-center gap-3">
             {renderStatusIcon(quality.lightPass)}
             <span className="text-sm font-semibold text-[var(--color-ink)]">
-              {t.quality_light}
+              {t('quality_light', undefined, language)}
             </span>
           </div>
           <span
@@ -121,7 +120,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <div className="flex items-center gap-3">
             {renderStatusIcon(quality.shadowPass)}
             <span className="text-sm font-semibold text-[var(--color-ink)]">
-              {t.quality_shadow}
+              {t('quality_shadow', undefined, language)}
             </span>
           </div>
           <span
@@ -138,7 +137,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           <div className="flex items-center gap-3">
             {renderStatusIcon(quality.distancePass)}
             <span className="text-sm font-semibold text-[var(--color-ink)]">
-              {t.quality_distance}
+              {t('quality_distance', undefined, language)}
             </span>
           </div>
           <span
@@ -153,28 +152,48 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
 
       {/* Advisory Note */}
       <p className="text-xs text-[var(--color-muted)] mt-3 px-1 leading-relaxed">
-        {isBlurryPreset
-          ? t.photo_check_notice_blurry
+        {isBlurry
+          ? t('photo_check_notice_blurry', undefined, language)
           : language === 'ml'
           ? quality.adviceMl
           : quality.advice}
       </p>
 
-      {/* Action Buttons */}
+      {/* Action Buttons: If acceptable, Analyse is primary. If unacceptable (blurry), Retake is primary. */}
       <div className="mt-8 flex flex-col gap-3">
-        <button
-          onClick={onAnalyse}
-          className="w-full min-h-[52px] py-3.5 retro-btn-primary text-base retro-focus"
-        >
-          {t.btn_analyse_leaf}
-        </button>
+        {!isBlurry ? (
+          <>
+            <button
+              onClick={onAnalyse}
+              className="w-full min-h-[52px] py-3.5 retro-btn-primary text-base retro-focus"
+            >
+              {t('btn_analyse_leaf', undefined, language)}
+            </button>
 
-        <button
-          onClick={onRetake}
-          className="w-full min-h-[48px] py-3 retro-btn-surface text-base retro-focus"
-        >
-          {t.btn_retake_photo}
-        </button>
+            <button
+              onClick={onRetake}
+              className="w-full min-h-[48px] py-3 retro-btn-surface text-base retro-focus"
+            >
+              {t('btn_retake_photo', undefined, language)}
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={onRetake}
+              className="w-full min-h-[52px] py-3.5 retro-btn-primary text-base retro-focus"
+            >
+              {t('btn_retake_photo', undefined, language)}
+            </button>
+
+            <button
+              onClick={onAnalyse}
+              className="w-full min-h-[48px] py-3 retro-btn-surface text-base retro-focus"
+            >
+              {t('btn_scan_anyway', undefined, language)}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

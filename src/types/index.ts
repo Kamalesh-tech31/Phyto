@@ -48,6 +48,10 @@ export interface QualityCheckResult {
   isAcceptable: boolean;
   advice: string;
   adviceMl: string;
+  quality?: {
+    ok: boolean;
+    reason?: 'blur' | 'dark' | 'shadow' | 'distance';
+  };
 }
 
 export interface DiseaseGuidance {

@@ -3,12 +3,10 @@
   "app_subtitle": "Offline-first agricultural assistant",
   "status_online": "Connected",
   "status_offline": "Works offline · model ready on this phone",
-
   "nav_scan": "Scan",
   "nav_history": "History",
   "nav_schemes": "Schemes",
   "nav_settings": "Settings",
-
   "settings_header_title": "Settings",
   "section_preferences": "Preferences",
   "section_lang": "Language / மொழி",
@@ -18,15 +16,12 @@
   "text_size_default": "Default",
   "text_size_large": "Large",
   "text_size_preview": "Phyto helps farmers identify crop health and treatment offline.",
-
   "section_theme": "Theme",
   "theme_light": "Light",
   "theme_dark": "Dark",
-
   "btn_reset_defaults": "Reset to defaults",
   "reset_confirm": "Reset language, text size, and theme to default values?",
   "reset_success": "Settings have been reset to defaults.",
-
   "related_schemes": "Related schemes",
   "view_scheme": "View scheme",
   "scheme_offline_note": "Open this when you are online",
@@ -34,7 +29,6 @@
   "view_treatment_prevention": "View Treatment & Prevention",
   "scheme_sample_title": "Vegetable Development Programme",
   "scheme_sample_benefit": "50% subsidy on bio-fungicides and knapsack sprayers for tomato crop protection.",
-
   "check_crop_title": "Check your crop",
   "check_crop_desc": "Take one clear photo of a single leaf. Phyto tells you what is wrong and what to do.",
   "light_good": "Light good",
@@ -47,7 +41,6 @@
   "sample_early_blight": "Early blight (Mild)",
   "sample_late_blight": "Late blight (Severe)",
   "sample_blurry": "Blurry photo (Uncertain)",
-
   "photo_check_title": "Photo check",
   "step_indicator": "Step 2 of 4 · Capture, check, diagnose, advice",
   "quality_sharpness": "Sharpness",
@@ -63,11 +56,9 @@
   "photo_check_notice_blurry": "This photo might be too blurry for accurate leaf diagnosis. You can still proceed or retake.",
   "btn_analyse_leaf": "Analyse leaf",
   "btn_retake_photo": "Retake photo",
-
   "analyzing_title": "Checking your leaf...",
   "analyzing_desc": "Scanning leaf cells and spotting fungal lesions offline...",
   "analyzing_hint": "Trained on agricultural field samples",
-
   "result_title": "Result",
   "confidence_label": "Confidence",
   "confidence_high": "High",
@@ -85,7 +76,6 @@
   "btn_listening": "Reading aloud...",
   "btn_stop_listen": "Stop audio",
   "btn_see_treatment": "See treatment",
-
   "uncertain_badge": "Low confidence",
   "uncertain_title": "I am not sure yet",
   "uncertain_desc": "The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.",
@@ -95,7 +85,6 @@
   "tip_3": "Fill the frame with a single leaf.",
   "btn_send_expert": "Send to an expert · sends when online",
   "expert_queued_msg": "Request queued. It will automatically send to the district extension officer when connected to the internet.",
-
   "tab_treatment": "Treatment",
   "tab_prevention": "Prevention",
   "heading_organic": "Start with organic options",
@@ -108,7 +97,6 @@
   "btn_listen_malayalam": "Listen in Malayalam",
   "btn_listen_english": "Listen in English",
   "btn_ask_expert": "Ask an expert · sends when online",
-
   "schemes_header_title": "Government Schemes",
   "schemes_header_desc": "Subsidies, plant protection grants, and crop insurance for vegetable farmers. Cached for offline browsing.",
   "schemes_filter_all": "All schemes",
@@ -119,11 +107,29 @@
   "helpline_label": "Helpline",
   "btn_open_portal": "Visit Official Portal",
   "portal_offline_warning": "You are currently offline. This external government link will open once your internet connection is restored.",
-
   "history_header_title": "Scan History",
   "history_header_desc": "All crop scans and leaf diagnoses saved on your device.",
   "history_empty_title": "No scans saved yet",
   "history_empty_desc": "Your previous leaf scans and diagnosis records will automatically appear here, accessible offline anytime.",
   "btn_clear_history": "Clear history",
-  "history_cleared": "History cleared"
+  "history_cleared": "History cleared",
+  "start_camera": "Tap to start camera",
+  "starting_camera": "Starting camera...",
+  "camera_denied_title": "Camera permission denied",
+  "camera_denied_desc": "Camera access was denied. Please allow camera permissions in site settings, or choose a photo from your gallery.",
+  "camera_not_found_title": "No camera found",
+  "camera_not_found_desc": "No camera was detected on this device. Please upload a photo from your gallery instead.",
+  "camera_busy_title": "Camera is busy",
+  "camera_busy_desc": "Camera is in use by another app. Please close other camera apps and try again.",
+  "camera_insecure_title": "Secure connection required",
+  "camera_insecure_desc": "Camera access requires HTTPS or localhost.",
+  "camera_retry_btn": "Try again",
+  "camera_gallery_fallback": "Upload from gallery",
+  "camera_switch": "Switch camera",
+  "hint_hold_steady": "Hold steady",
+  "hint_too_dark": "Move into better light",
+  "hint_too_bright": "Too bright / direct glare",
+  "hint_motion_blur": "Motion detected — hold still",
+  "hint_check_light": "Adjust light",
+  "btn_scan_anyway": "Scan anyway (Low confidence)"
 }

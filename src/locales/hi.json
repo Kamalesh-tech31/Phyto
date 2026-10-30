@@ -3,12 +3,10 @@
   "app_subtitle": "किसानों के लिए ऑफलाइन सहायक",
   "status_online": "इंटरनेट से जुड़ा है",
   "status_offline": "ऑफलाइन काम करता है · मॉडल फोन पर तैयार है",
-
   "nav_scan": "स्कैन",
   "nav_history": "इतिहास",
   "nav_schemes": "योजनाएं",
   "nav_settings": "सेटिंग्स",
-
   "settings_header_title": "सेटिंग्स",
   "section_preferences": "प्राथमिकताएं",
   "section_lang": "भाषा / Language",
@@ -18,15 +16,12 @@
   "text_size_default": "सामान्य",
   "text_size_large": "बड़ा",
   "text_size_preview": "फाइटो किसानों को फसलों के रोग और उपचार को ऑफलाइन पहचानने में मदद करता है।",
-
   "section_theme": "थीम (Theme)",
   "theme_light": "लाइट",
   "theme_dark": "डार्क",
-
   "btn_reset_defaults": "डिफ़ॉल्ट पर रीसेट करें",
   "reset_confirm": "क्या आप भाषा, टेक्स्ट साइज़ और थीम को डिफ़ॉल्ट पर रीसेट करना चाहते हैं?",
   "reset_success": "सेटिंग्स डिफ़ॉल्ट पर रीसेट हो गई हैं।",
-
   "related_schemes": "संबंधित योजनाएं",
   "view_scheme": "योजना देखें",
   "scheme_offline_note": "इंटरनेट उपलब्ध होने पर इसे खोलें",
@@ -34,7 +29,6 @@
   "view_treatment_prevention": "उपचार और रोकथाम देखें",
   "scheme_sample_title": "सब्जी विकास कार्यक्रम",
   "scheme_sample_benefit": "टमाटर फसल सुरक्षा के लिए जैव कवकनाशी और स्प्रेयर पर 50% सब्सिडी सहायता।",
-
   "check_crop_title": "अपनी फसल की जांच करें",
   "check_crop_desc": "एक पत्ती की साफ फोटो लें। फाइटो आपको बताएगा कि क्या समस्या है और क्या करना है।",
   "light_good": "अच्छी रोशनी",
@@ -47,7 +41,6 @@
   "sample_early_blight": "अगेती झुलसा (हल्का)",
   "sample_late_blight": "पछेती झुलसा (गंभीर)",
   "sample_blurry": "धुंधली फोटो (अनिश्चित)",
-
   "photo_check_title": "फोटो जांच",
   "step_indicator": "चरण 2 / 4 · फोटो लें, जांचें, रोग पहचानें, सलाह लें",
   "quality_sharpness": "स्पष्टता",
@@ -63,11 +56,9 @@
   "photo_check_notice_blurry": "यह फोटो सटीक निदान के लिए बहुत धुंधली हो सकती है। आप जारी रख सकते हैं या दोबारा ले सकते हैं।",
   "btn_analyse_leaf": "पत्ती का विश्लेषण करें",
   "btn_retake_photo": "दोबारा फोटो लें",
-
   "analyzing_title": "आपकी पत्ती की जांच हो रही है...",
   "analyzing_desc": "पत्ती की कोशिकाओं और फंगल लक्षणों का ऑफलाइन विश्लेषण हो रहा है...",
   "analyzing_hint": "कृषि क्षेत्र के नमूनों पर प्रशिक्षित",
-
   "result_title": "परिणाम",
   "confidence_label": "विश्वसनीयता",
   "confidence_high": "उच्च",
@@ -85,7 +76,6 @@
   "btn_listening": "पढ़कर सुनाया जा रहा है...",
   "btn_stop_listen": "ऑडियो रोकें",
   "btn_see_treatment": "उपचार देखें",
-
   "uncertain_badge": "कम विश्वसनीयता",
   "uncertain_title": "अभी पूरी तरह निश्चित नहीं",
   "uncertain_desc": "फोटो धुंधली होने के कारण रोग और पोषक तत्वों की कमी में अंतर करना कठिन है। गलत अनुमान लगाने से बेहतर है कि स्पष्ट फोटो ली जाए।",
@@ -95,7 +85,6 @@
   "tip_3": "फ्रेम को एक ही पत्ती से भरें।",
   "btn_send_expert": "विशेषज्ञ को भेजें · ऑनलाइन होने पर भेजा जाएगा",
   "expert_queued_msg": "अनुरोध कतारबद्ध किया गया। इंटरनेट जुड़ने पर यह स्वचालित रूप से कृषि अधिकारी को भेज दिया जाएगा।",
-
   "tab_treatment": "उपचार",
   "tab_prevention": "रोकथाम",
   "heading_organic": "जैविक विकल्पों से शुरुआत करें",
@@ -108,7 +97,6 @@
   "btn_listen_malayalam": "मलयालम में सुनें",
   "btn_listen_english": "अंग्रेज़ी में सुनें",
   "btn_ask_expert": "विशेषज्ञ से पूछें · ऑनलाइन होने पर भेजा जाएगा",
-
   "schemes_header_title": "सरकारी योजनाएं",
   "schemes_header_desc": "सब्जी उत्पादक किसानों के लिए सब्सिडी, पादप संरक्षण अनुदान और फसल बीमा। ऑफलाइन उपलब्ध।",
   "schemes_filter_all": "सभी योजनाएं",
@@ -119,11 +107,29 @@
   "helpline_label": "हेल्पलाइन",
   "btn_open_portal": "आधिकारिक पोर्टल पर जाएं",
   "portal_offline_warning": "आप वर्तमान में ऑफलाइन हैं। इंटरनेट कनेक्शन जुड़ने पर यह लिंक खुलेगा।",
-
   "history_header_title": "स्कैन इतिहास",
   "history_header_desc": "आपके डिवाइस पर सहेजे गए सभी फसल स्कैन और पत्ती निदान।",
   "history_empty_title": "कोई स्कैन सहेजा नहीं गया है",
   "history_empty_desc": "आपके पिछले पत्ती स्कैन और निदान रिकॉर्ड यहाँ दिखाई देंगे, कभी भी ऑफलाइन उपलब्ध।",
   "btn_clear_history": "इतिहास साफ करें",
-  "history_cleared": "इतिहास हटा दिया गया"
+  "history_cleared": "इतिहास हटा दिया गया",
+  "start_camera": "कैमरा शुरू करने के लिए टैप करें",
+  "starting_camera": "कैमरा शुरू हो रहा है...",
+  "camera_denied_title": "कैमरा अनुमति अस्वीकृत",
+  "camera_denied_desc": "कैमरा एक्सेस अस्वीकृत किया गया। कृपया साइट सेटिंग्स में अनुमति दें, या गैलरी से फोटो चुनें।",
+  "camera_not_found_title": "कोई कैमरा नहीं मिला",
+  "camera_not_found_desc": "इस डिवाइस पर कोई कैमरा नहीं मिला। कृपया गैलरी से फोटो अपलोड करें।",
+  "camera_busy_title": "कैमरा व्यस्त है",
+  "camera_busy_desc": "कैमरा किसी अन्य ऐप द्वारा उपयोग में है। कृपया अन्य ऐप्स बंद करें और पुनः प्रयास करें।",
+  "camera_insecure_title": "सुरक्षित कनेक्शन आवश्यक है",
+  "camera_insecure_desc": "कैमरा एक्सेस के लिए HTTPS या localhost आवश्यक है।",
+  "camera_retry_btn": "पुनः प्रयास करें",
+  "camera_gallery_fallback": "गैलरी से अपलोड करें",
+  "camera_switch": "कैमरा बदलें",
+  "hint_hold_steady": "स्थिर रखें",
+  "hint_too_dark": "बेहतर रोशनी में जाएं",
+  "hint_too_bright": "अत्यधिक तेज रोशनी / चकाचौंध",
+  "hint_motion_blur": "हलचल महसूस हुई — स्थिर रहें",
+  "hint_check_light": "रोशनी समायोजित करें",
+  "btn_scan_anyway": "फिर भी स्कैन करें (कम विश्वास)"
 }
