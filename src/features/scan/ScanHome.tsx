@@ -4,7 +4,7 @@ import { translations } from '../../data/translations';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { CameraCapture } from '../../components/CameraCapture';
 import { GalleryPicker, GalleryPickerHandle } from '../../components/GalleryPicker';
-import { Image as ImageIcon, Zap, Sparkles } from 'lucide-react';
+import { Image as ImageIcon, Zap } from 'lucide-react';
 
 interface ScanHomeProps {
   language: Language;
@@ -18,7 +18,6 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   const t = translations[language];
   const galleryPickerRef = useRef<GalleryPickerHandle>(null);
   const [torchActive, setTorchActive] = useState(false);
-  const [selectedSample, setSelectedSample] = useState<'early_blight' | 'late_blight' | 'healthy' | 'blurry'>('early_blight');
   const [showCameraModal, setShowCameraModal] = useState(false);
 
   const handleGalleryIngest = (bitmap: ImageBitmap) => {
@@ -34,11 +33,6 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   const handleShutterClick = () => {
     // Open full in-app camera capture modal with permission flow
     setShowCameraModal(true);
-  };
-
-  const handleSampleClick = (sampleType: 'early_blight' | 'late_blight' | 'healthy' | 'blurry') => {
-    setSelectedSample(sampleType);
-    onImageSelected(`sample:${sampleType}`, sampleType);
   };
 
   return (
@@ -95,7 +89,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         {/* Center Graphic */}
         <div className="absolute inset-0 flex items-center justify-center">
           <LeafGraphic
-            variant={selectedSample}
+            variant="healthy"
             className="w-full h-full"
           />
         </div>
@@ -142,62 +136,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         </button>
       </div>
 
-      {/* Test Sample Leaves Bar for Immediate Farmer Prototyping */}
-      <div className="mt-1 bg-white rounded-2xl p-3.5 border border-[#e8e7de] shadow-2xs">
-        <div className="flex items-center gap-1.5 text-xs font-semibold text-[#162a45] mb-2.5">
-          <Sparkles className="w-3.5 h-3.5 text-[#0b72c9]" />
-          <span>{t.test_samples_title}</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            onClick={() => handleSampleClick('early_blight')}
-            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
-              selectedSample === 'early_blight'
-                ? 'bg-[#e5f1fb] border-[#0b72c9] text-[#0b72c9] font-medium'
-                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
-            }`}
-          >
-            <div className="font-semibold">{t.sample_early_blight}</div>
-            <div className="text-[10px] text-[#64748b]">Bullseye spots (Mild 18%)</div>
-          </button>
 
-          <button
-            onClick={() => handleSampleClick('blurry')}
-            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
-              selectedSample === 'blurry'
-                ? 'bg-[#fef3c7] border-[#d97706] text-[#b45309] font-medium'
-                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
-            }`}
-          >
-            <div className="font-semibold">{t.sample_blurry}</div>
-            <div className="text-[10px] text-[#64748b]">Tests uncertain screen</div>
-          </button>
-
-          <button
-            onClick={() => handleSampleClick('late_blight')}
-            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
-              selectedSample === 'late_blight'
-                ? 'bg-[#fee2e2] border-[#dc2626] text-[#b91c1c] font-medium'
-                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
-            }`}
-          >
-            <div className="font-semibold">{t.sample_late_blight}</div>
-            <div className="text-[10px] text-[#64748b]">Water-soaked patches (42%)</div>
-          </button>
-
-          <button
-            onClick={() => handleSampleClick('healthy')}
-            className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
-              selectedSample === 'healthy'
-                ? 'bg-[#e2f2e5] border-[#16a34a] text-[#15803d] font-medium'
-                : 'bg-[#faf9f5] border-[#e8e7de] text-[#334155] hover:bg-[#f0efe8]'
-            }`}
-          >
-            <div className="font-semibold">{t.sample_healthy}</div>
-            <div className="text-[10px] text-[#64748b]">Clean green foliage</div>
-          </button>
-        </div>
-      </div>
 
       {/* In-App Camera Capture Flow */}
       {showCameraModal && (
