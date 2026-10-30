@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Language } from '../../types';
 import { translations } from '../../data/translations';
 import { LeafGraphic } from '../../components/LeafGraphic';
+import { CameraCapture } from '../../components/CameraCapture';
 import { Image as ImageIcon, Zap, Sparkles } from 'lucide-react';
 
 interface ScanHomeProps {
@@ -18,6 +19,7 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [torchActive, setTorchActive] = useState(false);
   const [selectedSample, setSelectedSample] = useState<'early_blight' | 'late_blight' | 'healthy' | 'blurry'>('early_blight');
+  const [showCameraModal, setShowCameraModal] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -33,10 +35,8 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   };
 
   const handleShutterClick = () => {
-    // If the user clicks the main shutter, we can either trigger the camera or use the chosen sample preset
-    if (cameraInputRef.current) {
-      cameraInputRef.current.click();
-    }
+    // Open full in-app camera capture modal with permission flow
+    setShowCameraModal(true);
   };
 
   const handleSampleClick = (sampleType: 'early_blight' | 'late_blight' | 'healthy' | 'blurry') => {
@@ -218,6 +218,27 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           </button>
         </div>
       </div>
+
+      {/* In-App Camera Capture Flow */}
+      {showCameraModal && (
+        <CameraCapture
+          onCapture={(bitmap) => {
+            const canvas = document.createElement('canvas');
+            canvas.width = bitmap.width;
+            canvas.height = bitmap.height;
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(bitmap, 0, 0);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            setShowCameraModal(false);
+            onImageSelected(dataUrl, 'camera');
+          }}
+          onOpenGallery={() => {
+            setShowCameraModal(false);
+            fileInputRef.current?.click();
+          }}
+          onClose={() => setShowCameraModal(false)}
+        />
+      )}
     </div>
   );
 };
