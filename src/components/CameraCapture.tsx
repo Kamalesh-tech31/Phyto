@@ -89,13 +89,17 @@ export const CameraCapture: React.FC<CameraCaptureProps> = ({
 
   // Capture frame
   const handleCapture = async () => {
-    if (!videoRef.current || cameraState !== 'streaming') return;
+    const video = videoRef.current;
+    if (!video || cameraState !== 'streaming') return;
 
-    setCameraState('capturing');
     try {
-      // Ingest draws the frame and ensures bounds/orientation
-      const bitmap = await ingest(videoRef.current);
+      // 1. Capture the frame FIRST while video is actively visible and streaming
+      const bitmap = await ingest(video);
+
+      // 2. Stop stream tracks cleanly
       stopActiveStream();
+
+      // 3. Deliver captured bitmap to parent
       onCapture(bitmap);
     } catch (err) {
       console.error('[CameraCapture] Capture failed:', err);

@@ -92,29 +92,29 @@ export function stopStream(stream: MediaStream | null): void {
 
 /**
  * Capture single frame from active video element into an ImageBitmap.
- * Prefers ImageCapture.takePhoto() when supported, falls back to native canvas extraction.
+ * Extracts the exact live visible frame directly from the streaming video element at native resolution.
  */
 export async function captureFrame(video: HTMLVideoElement): Promise<ImageBitmap> {
   if (!video) {
     throw new Error('Video element is required to capture frame');
   }
 
-  const stream = video.srcObject as MediaStream | null;
-  const videoTrack = stream?.getVideoTracks()[0];
-
-  // Try ImageCapture.takePhoto() if supported
-  if (videoTrack && typeof window !== 'undefined' && 'ImageCapture' in window) {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const imageCapture = new (window as any).ImageCapture(videoTrack);
-      const blob: Blob = await imageCapture.takePhoto();
-      return await createImageBitmap(blob);
-    } catch (e) {
-      console.warn('[Camera] ImageCapture.takePhoto failed, falling back to canvas:', e);
-    }
+  // Ensure video dimensions are available and video has rendered at least one frame
+  if (video.videoWidth === 0 || video.videoHeight === 0 || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+    await new Promise<void>((resolve) => {
+      let attempts = 0;
+      const check = () => {
+        attempts++;
+        if ((video.videoWidth > 0 && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) || attempts > 20) {
+          resolve();
+        } else {
+          setTimeout(check, 30);
+        }
+      };
+      check();
+    });
   }
 
-  // Fallback: draw video at native resolution to an offscreen canvas
   const width = video.videoWidth || 1280;
   const height = video.videoHeight || 720;
 
@@ -125,11 +125,12 @@ export async function captureFrame(video: HTMLVideoElement): Promise<ImageBitmap
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx) {
     throw new Error('Failed to create 2d rendering context for frame capture');
   }
 
+  // Draw the exact live visible video frame
   ctx.drawImage(video, 0, 0, width, height);
   return await createImageBitmap(canvas);
 }
