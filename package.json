@@ -10,7 +10,8 @@
     "clean": "rm -rf dist server.js",
     "copy:ort": "node scripts/copy-ort-wasm.mjs",
     "lint": "tsc --noEmit",
-    "test": "tsx --test src/ml/__tests__/*.test.ts"
+    "test": "tsx --test src/ml/__tests__/*.test.ts",
+    "eval:enhance": "tsx scripts/enhance_eval.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
