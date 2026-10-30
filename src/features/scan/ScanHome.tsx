@@ -3,6 +3,7 @@ import { Language } from '../../types';
 import { translations } from '../../data/translations';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { CameraCapture } from '../../components/CameraCapture';
+import { GalleryPicker, GalleryPickerHandle } from '../../components/GalleryPicker';
 import { Image as ImageIcon, Zap, Sparkles } from 'lucide-react';
 
 interface ScanHomeProps {
@@ -15,23 +16,19 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   onImageSelected,
 }) => {
   const t = translations[language];
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const cameraInputRef = useRef<HTMLInputElement>(null);
+  const galleryPickerRef = useRef<GalleryPickerHandle>(null);
   const [torchActive, setTorchActive] = useState(false);
   const [selectedSample, setSelectedSample] = useState<'early_blight' | 'late_blight' | 'healthy' | 'blurry'>('early_blight');
   const [showCameraModal, setShowCameraModal] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target?.result) {
-          onImageSelected(event.target.result as string, 'custom');
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleGalleryIngest = (bitmap: ImageBitmap) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    const ctx = canvas.getContext('2d');
+    ctx?.drawImage(bitmap, 0, 0);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+    onImageSelected(dataUrl, 'gallery');
   };
 
   const handleShutterClick = () => {
@@ -55,23 +52,6 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           {t.check_crop_desc}
         </p>
       </div>
-
-      {/* Hidden file inputs for real camera capture and gallery upload */}
-      <input
-        type="file"
-        ref={cameraInputRef}
-        accept="image/*"
-        capture="environment"
-        onChange={handleFileChange}
-        className="hidden"
-      />
-      <input
-        type="file"
-        ref={fileInputRef}
-        accept="image/*"
-        onChange={handleFileChange}
-        className="hidden"
-      />
 
       {/* Main Viewfinder Card - Visual Language identical to Reference #1 */}
       <div className="relative w-full aspect-[4/4.5] bg-[#172b1d] rounded-3xl p-4 flex flex-col justify-between overflow-hidden shadow-sm">
@@ -123,9 +103,9 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
 
       {/* Camera Shutter & Gallery Controls Bar */}
       <div className="flex items-center justify-around py-5">
-        {/* Gallery Upload Button */}
+        {/* Gallery Upload Button via GalleryPicker */}
         <button
-          onClick={() => fileInputRef.current?.click()}
+          onClick={() => galleryPickerRef.current?.openPicker()}
           className="w-14 h-14 rounded-full bg-white border border-[#dfded5] flex items-center justify-center text-[#162a45] shadow-xs hover:bg-[#f3f2ea] active:scale-95 transition-all"
           title={t.gallery_btn}
           aria-label={t.gallery_btn}
@@ -234,11 +214,17 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           }}
           onOpenGallery={() => {
             setShowCameraModal(false);
-            fileInputRef.current?.click();
+            galleryPickerRef.current?.openPicker();
           }}
           onClose={() => setShowCameraModal(false)}
         />
       )}
+
+      {/* Unified Ingest Gallery Picker */}
+      <GalleryPicker
+        ref={galleryPickerRef}
+        onImageIngested={handleGalleryIngest}
+      />
     </div>
   );
 };
