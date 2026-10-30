@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Language } from '../../types';
 import { translations } from '../../data/translations';
-import { LeafGraphic } from '../../components/LeafGraphic';
+import { RetroViewfinderArt } from '../../components/RetroViewfinderArt';
 import { Image as ImageIcon, Zap, Sparkles } from 'lucide-react';
 
 interface ScanHomeProps {
@@ -73,9 +73,17 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
       />
 
       {/* Main Viewfinder Card */}
-      <div className="relative w-full aspect-[4/4.5] bg-[#141C16] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] p-4 flex flex-col justify-between overflow-hidden">
-        {/* Top Badges */}
-        <div className="relative z-20 flex items-center justify-between pointer-events-none">
+      <div className="relative w-full aspect-[4/4.5] bg-[var(--color-vf-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden">
+        {/* Retro Poster Scene with Sunburst, Sun Disc, Halftone Dots, Leaf, and Overlay Brackets */}
+        <RetroViewfinderArt
+          variant={selectedSample}
+          showOverlay={true}
+          isVideoLive={false}
+          className="w-full h-full"
+        />
+
+        {/* Top Chips: placed at least 32px below top edge (top-8 = 32px) and 28px from sides (left-7 right-7 = 28px) */}
+        <div className="absolute top-8 left-7 right-7 z-20 flex items-center justify-between pointer-events-none">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 bg-[var(--color-surface)] text-[var(--color-ink)] border-[1.5px] border-[var(--color-outline)] rounded-full text-xs font-bold shadow-[2px_2px_0_var(--color-shadow-color)]">
               {t.light_good}
@@ -86,37 +94,17 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           </div>
 
           {torchActive && (
-            <span className="px-2.5 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-outline)] rounded-full text-[10px] font-bold">
+            <span className="px-2.5 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-outline)] rounded-full text-[10px] font-bold shadow-[2px_2px_0_var(--color-shadow-color)]">
               Torch ON
             </span>
           )}
         </div>
 
-        {/* Viewfinder Corner Framing Brackets */}
-        <div className="absolute inset-4 pointer-events-none z-10 flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <div className="w-8 h-8 border-t-2 border-l-2 border-[var(--color-surface)] rounded-tl-lg" />
-            <div className="w-8 h-8 border-t-2 border-r-2 border-[var(--color-surface)] rounded-tr-lg" />
-          </div>
-
-          {/* Bottom bracket with centered guidance text */}
-          <div className="flex items-end justify-between">
-            <div className="w-8 h-8 border-b-2 border-l-2 border-[var(--color-surface)] rounded-bl-lg" />
-            <div className="bg-[var(--color-surface)] text-[var(--color-ink)] border-[1.5px] border-[var(--color-outline)] px-3 py-0.5 rounded-full text-center shadow-[1px_1px_0_var(--color-shadow-color)]">
-              <span className="text-xs font-bold tracking-wide">
-                {t.fill_frame}
-              </span>
-            </div>
-            <div className="w-8 h-8 border-b-2 border-r-2 border-[var(--color-surface)] rounded-br-lg" />
-          </div>
-        </div>
-
-        {/* Center Graphic */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <LeafGraphic
-            variant={selectedSample}
-            className="w-full h-full"
-          />
+        {/* Caption: Centred, at least 24px above bottom edge (bottom-6 = 24px), between bottom brackets */}
+        <div className="absolute bottom-6 inset-x-0 z-20 flex justify-center pointer-events-none px-12">
+          <span className="bg-[var(--color-surface)] text-[var(--color-ink)] border-[1.5px] border-[var(--color-outline)] px-3.5 py-1 rounded-full text-center text-xs font-bold shadow-[2px_2px_0_var(--color-shadow-color)] leading-none max-w-[260px] truncate">
+            {t.fill_frame}
+          </span>
         </div>
       </div>
 

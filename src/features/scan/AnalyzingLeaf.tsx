@@ -30,7 +30,7 @@ export const AnalyzingLeaf: React.FC<AnalyzingLeafProps> = ({
       </div>
 
       {/* Scanning Viewport */}
-      <div className="relative w-64 h-64 bg-[#141C16] rounded-[14px] overflow-hidden border-2 border-[var(--color-outline)] shadow-[3px_3px_0_var(--color-shadow-color)]">
+      <div className="relative w-64 h-64 bg-[var(--color-vf-bg)] rounded-[14px] overflow-hidden border-2 border-[var(--color-outline)] shadow-[3px_3px_0_var(--color-shadow-color)]">
         <LeafGraphic
           imageUrl={imageUrl}
           variant={presetType as any || 'early_blight'}

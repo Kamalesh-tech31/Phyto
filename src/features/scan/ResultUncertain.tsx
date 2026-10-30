@@ -35,7 +35,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
       </div>
 
       {/* Dark Leaf Silhouette Container */}
-      <div className="w-full aspect-[4/2.6] bg-[#141C16] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-2 relative">
+      <div className="w-full aspect-[4/2.6] bg-[var(--color-vf-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-2 relative">
         <LeafGraphic
           imageUrl={prediction.imageUrl}
           variant="uncertain"

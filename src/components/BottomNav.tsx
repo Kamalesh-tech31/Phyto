@@ -33,8 +33,18 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[var(--color-surface)] border-t-2 border-[var(--color-outline)] px-4 py-2 z-40 transition-colors">
-      <div className="flex items-center justify-around">
+    <nav
+      className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[var(--color-surface)] z-40 transition-colors"
+      style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 0px))' }}
+    >
+      {/* Top Edge: Slim Three-Stripe Band, Mirrored (stripe-3, stripe-2, stripe-1) */}
+      <div className="w-full flex flex-col gap-[2px]" aria-hidden="true">
+        <div className="h-[3px] w-full bg-[var(--color-stripe-3)]" />
+        <div className="h-[3px] w-full bg-[var(--color-stripe-2)]" />
+        <div className="h-[3px] w-full bg-[var(--color-stripe-1)]" />
+      </div>
+
+      <div className="flex items-center justify-around px-4 pt-2">
         {navItems.map((item) => {
           const isActive = activeTab === item.id;
           const Icon = item.icon;

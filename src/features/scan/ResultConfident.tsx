@@ -73,7 +73,7 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
       {/* 1. Card 1: Disease Identity & Leaf Thumbnail */}
       <div className="mt-2 retro-card p-4 flex items-center gap-4">
         {/* Leaf square thumbnail */}
-        <div className="w-20 h-20 bg-[#141C16] border border-[var(--color-outline)] rounded-[10px] overflow-hidden shrink-0">
+        <div className="w-20 h-20 bg-[var(--color-vf-bg)] border border-[var(--color-outline)] rounded-[10px] overflow-hidden shrink-0">
           <LeafGraphic
             imageUrl={prediction.imageUrl}
             variant={prediction.diseaseId as any}

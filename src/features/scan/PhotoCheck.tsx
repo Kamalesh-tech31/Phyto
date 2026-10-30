@@ -71,7 +71,7 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
       </div>
 
       {/* Captured Image Preview with Left Shadow */}
-      <div className="w-full aspect-[4/3] bg-[#141C16] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-3 relative">
+      <div className="w-full aspect-[4/3] bg-[var(--color-vf-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-3 relative">
         <LeafGraphic
           imageUrl={imageUrl}
           variant={presetType as any || 'early_blight'}

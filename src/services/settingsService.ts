@@ -101,7 +101,7 @@ export function applySettingsToDOM(settings: PhytoSettings): void {
   // Apply meta theme-color
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   if (metaTheme) {
-    metaTheme.setAttribute('content', settings.theme === 'dark' ? '#101611' : '#F1E9D2');
+    metaTheme.setAttribute('content', settings.theme === 'dark' ? '#1A1613' : '#F1E9D2');
   }
 
   // Apply root font-size scale

@@ -100,7 +100,7 @@ export const HistoryList: React.FC<HistoryListProps> = ({
                 className="w-full retro-card-press p-3.5 text-left flex items-center gap-3.5 group retro-focus"
               >
                 {/* Leaf thumbnail */}
-                <div className="w-16 h-16 rounded-[10px] bg-[#141C16] border border-[var(--color-outline)] overflow-hidden shrink-0">
+                <div className="w-16 h-16 rounded-[10px] bg-[var(--color-vf-bg)] border border-[var(--color-outline)] overflow-hidden shrink-0">
                   <LeafGraphic
                     imageUrl={scan.imageUrl}
                     variant={scan.diseaseId as any}

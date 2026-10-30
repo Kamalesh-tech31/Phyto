@@ -244,7 +244,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)] flex flex-col items-center overflow-x-hidden transition-colors">
-      <div className="w-full max-w-md min-h-screen bg-[var(--color-bg)] flex flex-col relative border-x-2 border-[var(--color-outline)] transition-colors">
+      <div className="w-full max-w-md min-h-screen bg-[var(--color-bg)] flex flex-col relative transition-colors app-column">
         {/* Global Persistent Header: Phyto | Online/Offline status | Voice */}
         <Header
           language={language}

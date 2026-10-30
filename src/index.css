@@ -142,53 +142,85 @@
   --color-input-border: #CFC49F;
   --color-accent: #2E6B3B;
   --color-accent-hover: #24562F;
+
+  /* Viewfinder / Leaf Art Tokens */
+  --color-vf-bg: #1F4A2B;
+  --color-vf-ray: #265834;
+  --color-vf-sun: #E0A526;
+  --color-vf-leaf: #6FB57A;
+  --color-vf-leaf-outline: #10240F;
+  --color-vf-leaf-shadow: #153A22;
+  --color-vf-vein: #E7F0D2;
+  --color-vf-spot: #B84E28;
+  --color-vf-frame: #F1E9D2;
+
+  /* Three-Stripe Outer Band Tokens */
+  --color-stripe-1: #2E6B3B;
+  --color-stripe-2: #E0A526;
+  --color-stripe-3: #B84E28;
 }
 
-/* Retro Tokens: Dark ("Night Field with Amber Glow") */
+/* Retro Tokens: Dark ("Espresso and Mint") */
 [data-theme="dark"] {
-  --color-bg: #101611;
-  --color-surface: #172019;
-  --color-card: #172019;
-  --color-inset: #1F2B22;
-  --color-ink: #F0E6C8;
-  --color-text: #F0E6C8;
-  --color-muted: #A8B09A;
-  --color-text-muted: #A8B09A;
-  --color-outline: #5C7060;
-  --color-border: #5C7060;
-  --color-divider: #2A372C;
-  --color-primary: #F2B544;
-  --color-primary-pressed: #D99B2B;
-  --color-primary-outline: #D99B2B;
-  --color-on-primary: #1A1405;
-  --color-accent-text: #F2B544;
-  --color-secondary: #2D4A33;
-  --color-on-secondary: #CFE7C0;
-  --color-secondary-border: #7FAF86;
-  --color-selected-bg: #3A3015;
-  --color-selected-text: #F6CB72;
-  --color-selected-border: #F2B544;
-  --color-selected-chevron: #F6CB72;
-  --color-success-bg: #1B3322;
-  --color-success-text: #9ED08A;
-  --color-warning-bg: #3B2316;
-  --color-warning-text: #FFB38A;
+  --color-bg: #1A1613;
+  --color-surface: #241F1A;
+  --color-card: #241F1A;
+  --color-inset: #2E2822;
+  --color-ink: #F4EAD5;
+  --color-text: #F4EAD5;
+  --color-muted: #B5A995;
+  --color-text-muted: #B5A995;
+  --color-outline: #7A6D5E;
+  --color-border: #7A6D5E;
+  --color-divider: #3A322A;
+  --color-primary: #86D1A0;
+  --color-primary-pressed: #6CB988;
+  --color-primary-outline: #6CB988;
+  --color-on-primary: #0F2417;
+  --color-accent-text: #86D1A0;
+  --color-secondary: #E88A5F;
+  --color-on-secondary: #20100A;
+  --color-secondary-border: #F0A57F;
+  --color-selected-bg: #24382B;
+  --color-selected-text: #A8E3BC;
+  --color-selected-border: #86D1A0;
+  --color-selected-chevron: #A8E3BC;
+  --color-success-bg: #1F3326;
+  --color-success-text: #A8E3BC;
+  --color-warning-bg: #3A2C15;
+  --color-warning-text: #F2C46B;
   --color-danger-fill: #D2603A;
-  --color-danger-text: #FF9A84;
-  --color-danger-bg: #3A1D17;
-  --color-severity-mild: #9ED08A;
-  --color-severity-moderate: #F2B544;
-  --color-severity-severe: #FF9A84;
-  --color-focus-ring: #F2B544;
-  --color-shadow-color: #0A0E0B;
+  --color-danger-text: #FF9E85;
+  --color-danger-bg: #3A1E18;
+  --color-severity-mild: #86D1A0;
+  --color-severity-moderate: #F2C46B;
+  --color-severity-severe: #FF8F6E;
+  --color-focus-ring: #86D1A0;
+  --color-shadow-color: #0E0B09;
 
   /* Aliases */
-  --color-subtle-bg: #1F2B22;
-  --color-subtle-border: #2A372C;
-  --color-input-bg: #1F2B22;
-  --color-input-border: #2A372C;
-  --color-accent: #F2B544;
-  --color-accent-hover: #D99B2B;
+  --color-subtle-bg: #2E2822;
+  --color-subtle-border: #3A322A;
+  --color-input-bg: #2E2822;
+  --color-input-border: #3A322A;
+  --color-accent: #86D1A0;
+  --color-accent-hover: #6CB988;
+
+  /* Viewfinder / Leaf Art Tokens */
+  --color-vf-bg: #1E1A16;
+  --color-vf-ray: #26211B;
+  --color-vf-sun: #E88A5F;
+  --color-vf-leaf: #86D1A0;
+  --color-vf-leaf-outline: #0E0B09;
+  --color-vf-leaf-shadow: #0E0B09;
+  --color-vf-vein: #F4EAD5;
+  --color-vf-spot: #D2603A;
+  --color-vf-frame: #F4EAD5;
+
+  /* Three-Stripe Outer Band Tokens */
+  --color-stripe-1: #86D1A0;
+  --color-stripe-2: #F2C46B;
+  --color-stripe-3: #E88A5F;
 }
 
 @layer base {
@@ -204,7 +236,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Very subtle paper grain for light mode (3.5% opacity, zero performance impact) */
+  /* Very subtle paper grain for light mode */
   [data-theme="light"] body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
     background-repeat: repeat;
@@ -212,6 +244,59 @@
 
   [data-theme="dark"] body {
     background-image: none;
+  }
+}
+
+/* Wide-Screen Desktop Background: Poster on a Wall with Subtle Halftone Dots (~4% contrast) */
+@media (min-width: 449px) {
+  [data-theme="light"] body {
+    background-image: radial-gradient(rgba(31, 42, 28, 0.045) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    background-position: 0 0;
+  }
+  [data-theme="dark"] body {
+    background-image: radial-gradient(rgba(244, 234, 213, 0.04) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    background-position: 0 0;
+  }
+}
+
+/* App Column Side Rules:
+   Shown ONLY on wide screens (> 448px, desktop preview).
+   Double rule: a 2px line in outline colour plus a 1px line in divider colour, 5px inside it.
+   On phone-width screens, zero side borders. */
+.app-column {
+  border-left: none;
+  border-right: none;
+}
+
+@media (min-width: 449px) {
+  .app-column {
+    position: relative;
+    border-left: 2px solid var(--color-outline);
+    border-right: 2px solid var(--color-outline);
+  }
+  .app-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    width: 1px;
+    background-color: var(--color-divider);
+    pointer-events: none;
+    z-index: 45;
+  }
+  .app-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5px;
+    width: 1px;
+    background-color: var(--color-divider);
+    pointer-events: none;
+    z-index: 45;
   }
 }
 
