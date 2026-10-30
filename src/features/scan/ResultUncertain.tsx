@@ -24,18 +24,18 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
       <div className="flex items-center gap-3 py-2">
         <button
           onClick={onRetake}
-          className="p-1 -ml-1 text-[var(--color-text)] hover:opacity-75 transition-opacity rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          className="p-1 -ml-1 text-[var(--color-ink)] hover:opacity-75 transition-opacity rounded-xl retro-focus"
           aria-label="Back"
         >
           <ChevronLeft className="w-7 h-7 stroke-[2]" />
         </button>
-        <h2 className="font-editorial text-2xl font-bold text-[var(--color-text)]">
+        <h2 className="font-editorial text-2xl font-bold text-[var(--color-ink)]">
           {t.result_title}
         </h2>
       </div>
 
-      {/* Dark Leaf Silhouette Container from Reference #5 */}
-      <div className="w-full aspect-[4/2.6] bg-[#172b1d] rounded-3xl overflow-hidden mt-2 relative">
+      {/* Dark Leaf Silhouette Container */}
+      <div className="w-full aspect-[4/2.6] bg-[#141C16] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden mt-2 relative">
         <LeafGraphic
           imageUrl={prediction.imageUrl}
           variant="uncertain"
@@ -45,11 +45,11 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
 
       {/* Uncertainty Header Content */}
       <div className="mt-4">
-        <span className="inline-block px-3 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] rounded-full text-xs font-semibold">
+        <span className="inline-block px-3 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-outline)] rounded-full text-xs font-bold">
           {t.uncertain_badge}
         </span>
 
-        <h3 className="font-editorial text-[30px] font-bold text-[var(--color-text)] mt-2 leading-tight">
+        <h3 className="font-editorial text-[30px] font-bold text-[var(--color-ink)] mt-2 leading-tight">
           {t.uncertain_title}
         </h3>
 
@@ -60,42 +60,40 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
         </p>
       </div>
 
-      {/* 3 Tips Card matching Reference #5 */}
-      <div className="mt-4 bg-[var(--color-surface)] rounded-3xl p-5 border border-[var(--color-border)]">
-        <div className="space-y-4">
-          {/* Tip 1 */}
-          <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-              1
-            </div>
-            <p className="text-xs font-medium text-[var(--color-text)] leading-relaxed">
-              {t.tip_1}
-            </p>
+      {/* 3 Tips Card */}
+      <div className="mt-4 retro-card p-5 space-y-3.5">
+        {/* Tip 1 */}
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+            1
           </div>
+          <p className="text-xs font-medium text-[var(--color-ink)] leading-relaxed">
+            {t.tip_1}
+          </p>
+        </div>
 
-          <div className="border-t border-[var(--color-border)]" />
+        <div className="retro-divider" />
 
-          {/* Tip 2 */}
-          <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-              2
-            </div>
-            <p className="text-xs font-medium text-[var(--color-text)] leading-relaxed">
-              {t.tip_2}
-            </p>
+        {/* Tip 2 */}
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+            2
           </div>
+          <p className="text-xs font-medium text-[var(--color-ink)] leading-relaxed">
+            {t.tip_2}
+          </p>
+        </div>
 
-          <div className="border-t border-[var(--color-border)]" />
+        <div className="retro-divider" />
 
-          {/* Tip 3 */}
-          <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-              3
-            </div>
-            <p className="text-xs font-medium text-[var(--color-text)] leading-relaxed">
-              {t.tip_3}
-            </p>
+        {/* Tip 3 */}
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+            3
           </div>
+          <p className="text-xs font-medium text-[var(--color-ink)] leading-relaxed">
+            {t.tip_3}
+          </p>
         </div>
       </div>
 
@@ -103,7 +101,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
       <div className="mt-6">
         <button
           onClick={onRetake}
-          className="w-full min-h-[52px] py-3.5 bg-[var(--color-primary)] hover:opacity-95 active:scale-[0.98] text-[var(--color-on-primary)] font-semibold rounded-2xl text-base shadow-xs transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          className="w-full min-h-[52px] py-3.5 retro-btn-primary text-base flex items-center justify-center gap-2 retro-focus"
         >
           <Camera className="w-5 h-5" />
           <span>{t.btn_retake_photo}</span>

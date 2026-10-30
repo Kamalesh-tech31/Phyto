@@ -52,11 +52,11 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   return (
     <div
       ref={containerRef}
-      className="bg-[var(--color-surface)] rounded-3xl p-5 border border-[var(--color-border)] transition-colors"
+      className="retro-card p-5"
     >
       <div className="flex items-center gap-2 mb-2">
-        <Globe className="w-5 h-5 text-[var(--color-accent-text)] shrink-0" aria-hidden="true" />
-        <h3 className="font-editorial text-base font-bold text-[var(--color-text)]">
+        <Globe className="w-5 h-5 text-[var(--color-primary)] shrink-0" aria-hidden="true" />
+        <h3 className="font-editorial text-base font-bold text-[var(--color-ink)]">
           {t('section_lang', undefined, currentLanguage)}
         </h3>
       </div>
@@ -73,11 +73,11 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
           aria-haspopup="listbox"
           aria-expanded={isOpen}
           aria-label={t('section_lang_label', undefined, currentLanguage)}
-          className="w-full min-h-[48px] px-4 py-3 bg-[var(--color-inset)] border border-[var(--color-border)] hover:border-[var(--color-primary)] rounded-2xl flex items-center justify-between text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          className="w-full min-h-[48px] px-4 py-3 bg-[var(--color-inset)] border-2 border-[var(--color-outline)] shadow-[2px_2px_0_var(--color-shadow-color)] hover:bg-[var(--color-surface)] rounded-[12px] flex items-center justify-between text-left transition-all retro-focus"
         >
           <div className="flex items-center gap-3">
             <span
-              className="text-sm font-bold text-[var(--color-text)]"
+              className="text-sm font-bold text-[var(--color-ink)]"
               lang={activeOption.code}
             >
               {activeOption.nativeName}
@@ -89,8 +89,8 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
             )}
           </div>
           <ChevronDown
-            className={`w-4 h-4 text-[var(--color-muted)] transition-transform duration-200 ${
-              isOpen ? 'rotate-180 text-[var(--color-accent-text)]' : ''
+            className={`w-4 h-4 text-[var(--color-ink)] transition-transform duration-200 ${
+              isOpen ? 'rotate-180 text-[var(--color-primary)]' : ''
             }`}
             aria-hidden="true"
           />
@@ -101,7 +101,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
           <ul
             role="listbox"
             aria-label={t('section_lang', undefined, currentLanguage)}
-            className="absolute left-0 right-0 mt-2 z-30 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-lg overflow-hidden divide-y divide-[var(--color-border)] max-h-72 overflow-y-auto"
+            className="absolute left-0 right-0 mt-2 z-30 bg-[var(--color-surface)] border-2 border-[var(--color-outline)] rounded-[12px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden divide-y-[1.5px] divide-dashed divide-[var(--color-divider)] max-h-72 overflow-y-auto"
           >
             {LANGUAGES.map((lang) => {
               const isSelected = lang.code === currentLanguage;
@@ -118,7 +118,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
                   className={`min-h-[48px] px-4 py-3 flex items-center justify-between cursor-pointer transition-colors ${
                     isSelected
                       ? 'bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] font-bold'
-                      : 'hover:bg-[var(--color-inset)] text-[var(--color-text)]'
+                      : 'hover:bg-[var(--color-inset)] text-[var(--color-ink)]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">

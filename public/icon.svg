@@ -1,12 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <defs>
-    <linearGradient id="phytoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0277bd" />
-      <stop offset="100%" stop-color="#005691" />
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="128" fill="url(#phytoGrad)" />
-  <circle cx="256" cy="256" r="200" fill="#0b72c9" />
-  <path d="M352 160 C260 160 170 210 160 352 C230 350 350 320 352 160 Z" fill="#ffffff" />
-  <path d="M190 320 C230 270 280 230 352 160" stroke="#0b72c9" stroke-width="14" stroke-linecap="round" fill="none" />
+  <!-- Retro Vintage Seed Packet Icon Mark -->
+  <rect width="512" height="512" rx="128" fill="#F1E9D2" />
+  <circle cx="256" cy="256" r="200" fill="#2E6B3B" stroke="#1F2A1C" stroke-width="16" />
+  <!-- Cream Leaf -->
+  <path d="M344 168 C256 168 174 214 164 348 C232 346 342 318 344 168 Z" fill="#FBF6E6" stroke="#1F2A1C" stroke-width="10" stroke-linejoin="round" />
+  <path d="M192 318 C230 270 276 232 344 168" stroke="#1F2A1C" stroke-width="12" stroke-linecap="round" fill="none" />
 </svg>

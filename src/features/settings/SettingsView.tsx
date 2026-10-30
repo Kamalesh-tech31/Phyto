@@ -31,7 +31,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     <div className="flex flex-col px-5 pt-3 pb-36 max-w-md mx-auto space-y-4">
       {/* Title */}
       <div>
-        <h1 className="font-editorial text-[1.875rem] font-bold text-[var(--color-text)] leading-tight">
+        <h1 className="font-editorial text-[1.875rem] font-bold text-[var(--color-ink)] leading-tight">
           {t('settings_header_title', undefined, currentLang)}
         </h1>
       </div>
@@ -61,7 +61,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         <button
           type="button"
           onClick={handleResetDefaults}
-          className="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-[var(--color-surface)] hover:bg-[var(--color-inset)] text-[var(--color-text)] border border-[var(--color-border)] text-xs font-semibold flex items-center justify-center gap-2 transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          className="retro-btn-surface w-full min-h-[48px] px-4 py-3 text-xs font-bold flex items-center justify-center gap-2 retro-focus"
         >
           <RefreshCw className="w-4 h-4 text-[var(--color-muted)] shrink-0" aria-hidden="true" />
           <span>{t('btn_reset_defaults', undefined, currentLang)}</span>

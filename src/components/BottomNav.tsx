@@ -33,7 +33,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[var(--color-surface)]/95 backdrop-blur-md border-t border-[var(--color-border)] px-4 py-2 z-40 transition-colors">
+    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[var(--color-surface)] border-t-2 border-[var(--color-outline)] px-4 py-2 z-40 transition-colors">
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const isActive = activeTab === item.id;
@@ -43,10 +43,10 @@ export const BottomNav: React.FC<BottomNavProps> = ({
             <button
               key={item.id}
               onClick={() => onTabChange(item.id)}
-              className={`flex flex-col items-center justify-center py-1.5 px-3 min-h-[48px] min-w-[72px] rounded-xl transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] ${
+              className={`flex flex-col items-center justify-center py-1.5 px-3 min-h-[48px] min-w-[72px] transition-all retro-focus ${
                 isActive
-                  ? 'bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] font-bold'
-                  : 'text-[var(--color-muted)] hover:text-[var(--color-text)]'
+                  ? 'bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border-[1.5px] border-[var(--color-selected-border)] rounded-[12px] shadow-[2px_2px_0_var(--color-shadow-color)] font-bold'
+                  : 'text-[var(--color-muted)] hover:text-[var(--color-ink)] border-[1.5px] border-transparent rounded-[12px]'
               }`}
             >
               <Icon

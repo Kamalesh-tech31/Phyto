@@ -20,10 +20,10 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({
   ];
 
   return (
-    <div className="bg-[var(--color-surface)] rounded-3xl p-5 border border-[var(--color-border)] transition-colors">
+    <div className="retro-card p-5">
       <div className="flex items-center gap-2 mb-2">
-        <Palette className="w-5 h-5 text-[var(--color-accent-text)] shrink-0" aria-hidden="true" />
-        <h3 className="font-editorial text-base font-bold text-[var(--color-text)]">
+        <Palette className="w-5 h-5 text-[var(--color-primary)] shrink-0" aria-hidden="true" />
+        <h3 className="font-editorial text-base font-bold text-[var(--color-ink)]">
           {t('section_theme', undefined, currentLanguage)}
         </h3>
       </div>
@@ -35,7 +35,7 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({
       <div
         role="radiogroup"
         aria-label={t('section_theme', undefined, currentLanguage)}
-        className="grid grid-cols-2 gap-1.5 p-1 bg-[var(--color-inset)] border border-[var(--color-border)] rounded-2xl"
+        className="retro-inset grid grid-cols-2 gap-1.5 p-1"
       >
         {themes.map((item) => {
           const isSelected = currentTheme === item.id;
@@ -49,10 +49,10 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelectTheme(item.id)}
-              className={`min-h-[48px] py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] ${
+              className={`min-h-[48px] py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-bold transition-all retro-focus ${
                 isSelected
-                  ? 'bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-selected-border)] shadow-xs'
-                  : 'text-[var(--color-muted)] hover:text-[var(--color-text)] border border-transparent'
+                  ? 'bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border-[1.5px] border-[var(--color-selected-border)] shadow-[2px_2px_0_var(--color-shadow-color)] rounded-[10px]'
+                  : 'text-[var(--color-muted)] hover:text-[var(--color-ink)] border border-transparent rounded-[10px]'
               }`}
             >
               <Icon className="w-4 h-4 shrink-0" aria-hidden="true" />

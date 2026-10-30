@@ -2,19 +2,11 @@
 
 /* Self-Hosted Local Font Faces for Full Offline Support */
 @font-face {
-  font-family: 'Newsreader';
+  font-family: 'Fraunces';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/newsreader-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/newsreader-700.woff2') format('woff2');
+  src: url('/fonts/fraunces.woff2') format('woff2');
 }
 
 @font-face {
@@ -105,69 +97,98 @@
   src: url('/fonts/noto-sans-telugu-700.woff2') format('woff2');
 }
 
-/* Design Tokens & Theming */
+/* Retro Tokens: Light ("Vintage Seed Packet") */
 :root, [data-theme="light"] {
-  --color-bg: #F6F7F2;
-  --color-surface: #FFFFFF;
-  --color-card: #FFFFFF;
-  --color-inset: #EEF1EA;
-  --color-border: #DCE2D8;
-  --color-text: #14284B;
-  --color-muted: #4A5568;
-  --color-text-muted: #4A5568;
-  --color-primary: #0B6BC2;
-  --color-on-primary: #FFFFFF;
-  --color-accent-text: #0B6BC2;
-  --color-selected-bg: #E4EFFA;
-  --color-selected-text: #08508F;
-  --color-selected-border: #0B6BC2;
-  --color-selected-chevron: #0B6BC2;
-  --color-success-text: #1F6B33;
-  --color-success-bg: #E3EFE2;
-  --color-warning-text: #7A4300;
-  --color-warning-bg: #FBEBD0;
-  --color-danger-text: #A32D2D;
-  --color-danger-bg: #FBE4E4;
+  --color-bg: #F1E9D2;
+  --color-surface: #FBF6E6;
+  --color-card: #FBF6E6;
+  --color-inset: #E7DDBF;
+  --color-ink: #1F2A1C;
+  --color-text: #1F2A1C;
+  --color-muted: #5B6350;
+  --color-text-muted: #5B6350;
+  --color-outline: #1F2A1C;
+  --color-border: #1F2A1C;
+  --color-divider: #CFC49F;
+  --color-primary: #2E6B3B;
+  --color-primary-pressed: #24562F;
+  --color-primary-outline: #1F2A1C;
+  --color-on-primary: #FBF6E6;
+  --color-accent-text: #2E6B3B;
+  --color-secondary: #E0A526;
+  --color-on-secondary: #1F2A1C;
+  --color-secondary-border: #1F2A1C;
+  --color-selected-bg: #D9E6C3;
+  --color-selected-text: #1F4D2A;
+  --color-selected-border: #1F2A1C;
+  --color-selected-chevron: #1F2A1C;
+  --color-success-bg: #D9E6C3;
+  --color-success-text: #245C31;
+  --color-warning-bg: #F6E2A8;
+  --color-warning-text: #6B4A00;
+  --color-danger-fill: #B84E28;
+  --color-danger-text: #9A3E1C;
+  --color-danger-bg: #F4D9CC;
+  --color-severity-mild: #2E6B3B;
+  --color-severity-moderate: #E0A526;
+  --color-severity-severe: #B84E28;
+  --color-focus-ring: #1F2A1C;
+  --color-shadow-color: #1F2A1C;
 
-  /* Convenience aliases */
-  --color-subtle-bg: #EEF1EA;
-  --color-subtle-border: #DCE2D8;
-  --color-input-bg: #EEF1EA;
-  --color-input-border: #DCE2D8;
-  --color-accent: #0B6BC2;
-  --color-accent-hover: #085da5;
+  /* Aliases */
+  --color-subtle-bg: #E7DDBF;
+  --color-subtle-border: #CFC49F;
+  --color-input-bg: #E7DDBF;
+  --color-input-border: #CFC49F;
+  --color-accent: #2E6B3B;
+  --color-accent-hover: #24562F;
 }
 
+/* Retro Tokens: Dark ("Night Field with Amber Glow") */
 [data-theme="dark"] {
-  --color-bg: #0C1117;
-  --color-surface: #141B23;
-  --color-card: #141B23;
-  --color-inset: #1B242E;
-  --color-border: #27323E;
-  --color-text: #E8EDF2;
-  --color-muted: #9AA7B5;
-  --color-text-muted: #9AA7B5;
-  --color-primary: #1F6FC7;
-  --color-on-primary: #FFFFFF;
-  --color-accent-text: #6DB3F8;
-  --color-selected-bg: #16304D;
-  --color-selected-text: #8EC5FF;
-  --color-selected-border: #31649E;
-  --color-selected-chevron: #8EC5FF;
-  --color-success-text: #6FD08A;
-  --color-success-bg: #12301E;
-  --color-warning-text: #F0B35A;
-  --color-warning-bg: #33260F;
-  --color-danger-text: #FF8A80;
-  --color-danger-bg: #3A1B1B;
+  --color-bg: #101611;
+  --color-surface: #172019;
+  --color-card: #172019;
+  --color-inset: #1F2B22;
+  --color-ink: #F0E6C8;
+  --color-text: #F0E6C8;
+  --color-muted: #A8B09A;
+  --color-text-muted: #A8B09A;
+  --color-outline: #5C7060;
+  --color-border: #5C7060;
+  --color-divider: #2A372C;
+  --color-primary: #F2B544;
+  --color-primary-pressed: #D99B2B;
+  --color-primary-outline: #D99B2B;
+  --color-on-primary: #1A1405;
+  --color-accent-text: #F2B544;
+  --color-secondary: #2D4A33;
+  --color-on-secondary: #CFE7C0;
+  --color-secondary-border: #7FAF86;
+  --color-selected-bg: #3A3015;
+  --color-selected-text: #F6CB72;
+  --color-selected-border: #F2B544;
+  --color-selected-chevron: #F6CB72;
+  --color-success-bg: #1B3322;
+  --color-success-text: #9ED08A;
+  --color-warning-bg: #3B2316;
+  --color-warning-text: #FFB38A;
+  --color-danger-fill: #D2603A;
+  --color-danger-text: #FF9A84;
+  --color-danger-bg: #3A1D17;
+  --color-severity-mild: #9ED08A;
+  --color-severity-moderate: #F2B544;
+  --color-severity-severe: #FF9A84;
+  --color-focus-ring: #F2B544;
+  --color-shadow-color: #0A0E0B;
 
-  /* Convenience aliases */
-  --color-subtle-bg: #1B242E;
-  --color-subtle-border: #27323E;
-  --color-input-bg: #1B242E;
-  --color-input-border: #27323E;
-  --color-accent: #1F6FC7;
-  --color-accent-hover: #6DB3F8;
+  /* Aliases */
+  --color-subtle-bg: #1F2B22;
+  --color-subtle-border: #2A372C;
+  --color-input-bg: #1F2B22;
+  --color-input-border: #2A372C;
+  --color-accent: #F2B544;
+  --color-accent-hover: #D99B2B;
 }
 
 @layer base {
@@ -178,14 +199,25 @@
 
   body {
     background-color: var(--color-bg);
-    color: var(--color-text);
+    color: var(--color-ink);
     font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', 'Noto Sans Malayalam', 'Noto Sans Devanagari', 'Noto Sans Telugu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Very subtle paper grain for light mode (3.5% opacity, zero performance impact) */
+  [data-theme="light"] body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  [data-theme="dark"] body {
+    background-image: none;
+  }
 }
 
+/* Headings use self-hosted Fraunces with script-specific fallbacks */
 .font-editorial {
-  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-family: 'Fraunces', 'Noto Sans Tamil', 'Noto Sans Malayalam', 'Noto Sans Devanagari', 'Noto Sans Telugu', Georgia, serif;
 }
 
 .font-tamil {
@@ -202,6 +234,95 @@
 
 .font-telugu {
   font-family: 'Noto Sans Telugu', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Retro Seed Packet UI Component Utilities */
+.retro-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-outline);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--color-shadow-color);
+}
+
+.retro-card-press {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-outline);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--color-shadow-color);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.retro-card-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-shadow-color);
+}
+
+.retro-btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 2px solid var(--color-primary-outline);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--color-shadow-color);
+  font-weight: 700;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+.retro-btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-shadow-color);
+}
+
+.retro-btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+  border: 2px solid var(--color-secondary-border);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--color-shadow-color);
+  font-weight: 700;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+.retro-btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-shadow-color);
+}
+
+.retro-btn-surface {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  border: 2px solid var(--color-outline);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--color-shadow-color);
+  font-weight: 700;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+.retro-btn-surface:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-shadow-color);
+}
+
+.retro-btn-press {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.retro-btn-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-shadow-color) !important;
+}
+
+.retro-inset {
+  background-color: var(--color-inset);
+  border: 1.5px solid var(--color-divider);
+  border-radius: 12px;
+}
+
+.retro-divider {
+  border-bottom: 1.5px dashed var(--color-divider);
+}
+
+/* Retro Focus: 3px outline in focus-ring with 2px offset (keyboard only) */
+.retro-focus {
+  outline: none;
+}
+.retro-focus:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 /* Hide scrollbar for clean mobile horizontal pills */
@@ -233,7 +354,7 @@
   animation: scan-sweep 2.2s ease-in-out infinite;
 }
 
-/* Respect prefers-reduced-motion */
+/* Respect prefers-reduced-motion: disable physical translate */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -242,5 +363,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .retro-btn-primary:active,
+  .retro-btn-secondary:active,
+  .retro-btn-surface:active,
+  .retro-btn-press:active,
+  .retro-card-press:active {
+    transform: none !important;
+    box-shadow: 3px 3px 0 var(--color-shadow-color) !important;
   }
 }
