@@ -31,7 +31,22 @@
 
 ---
 
+## 3. P4: Image Quality Analysis & Calibration Verification
+
+| Test Case | Steps to Test | Expected Behavior | Status |
+| :--- | :--- | :--- | :--- |
+| **TC-QUAL-01: Sharp vs. Blurred Discrimination** | Run Laplacian variance and Tenengrad on sharp checkerboard vs. box-blurred variants (r=1, 2, 4). | Sharp image scores strictly higher than blurred versions ($L_{\text{sharp}} > L_{\text{blur1}} > L_{\text{blur2}} > L_{\text{blur4}}$). | Automated Unit Test |
+| **TC-QUAL-02: Motion Blur Detection** | Evaluate directional streak with strong vertical gradient and near-zero horizontal gradient. | Gradient energy ratio exceeds 2.2; flags `motionLikely = true` with hint: *"Hold steady — leaf photo has motion blur."* | Automated Unit Test |
+| **TC-QUAL-03: Dark Scene Flagging** | Evaluate underexposed / dark scene ($Y < 45$ or dark fraction $> 40\%$). | Categorized as `retake` with hint: *"Too dark — move into brighter daylight or remove heavy shadows."* | Automated Unit Test |
+| **TC-QUAL-04: Specular Glare Detection** | Evaluate leaf photo containing near-white specular highlights ($Y > 235$, saturation $< 0.20$). | Glare fraction calculated; if $> 15\%$, flags `retake` with glare hint. | Automated Unit Test |
+| **TC-QUAL-05: Foliage Centering & Coverage** | Evaluate center area green/foliage pixel ratio. | Center region with low leaf pixels ($< 20\%$) flags: *"Leaf is not centered — bring the camera closer to fill the box."* | Automated Unit Test |
+| **TC-QUAL-06: Immerkaer Sensor Noise Estimation** | Evaluate flat surface with additive pseudo-random noise. | Flat surface yields noise $\approx 0$, while noisy pattern yields noise $> 10$. | Automated Unit Test |
+| **TC-QUAL-07: Calibration Debug Page (/debug/quality)** | Navigate to `/debug/quality` on mobile browser or click button in Settings. | Displays all raw computed metrics, verdict badges, and calibration labeling controls with table export. | Verified in Browser |
+
+---
+
 ### What Could Not Be Verified Automatically:
 1. **Real Android Rear Camera Hardware Autofocus & Macro Lens:** Real phone physical focus distance and sensor sharpness require manual test on physical Android hardware.
 2. **OEM-Specific Browser Site Permission Menus:** Text directions for resetting site permissions may slightly vary across MIUI/Chrome/Samsung Internet/Brave.
 3. **Hardware HEIC Decoding on Safari vs Chrome:** Safari decodes HEIC natively in `createImageBitmap`, whereas Chromium on Android shows the fallback error prompt as expected.
+4. **Phone Ambient Lighting Extremes:** Field calibration of brightness and glare thresholds on specific target crops (tomatoes, bananas, etc.) in direct sunlight is performed using the `/debug/quality` calibration tool.

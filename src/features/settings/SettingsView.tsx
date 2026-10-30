@@ -9,6 +9,7 @@ import {
   RotateCcw,
   Landmark,
   ChevronRight,
+  Sliders,
 } from 'lucide-react';
 
 interface SettingsViewProps {
@@ -16,12 +17,14 @@ interface SettingsViewProps {
   onLanguageToggle: () => void;
   isOnline: boolean;
   onOpenSchemes?: () => void;
+  onOpenQualityDebug?: () => void;
 }
 
 export const SettingsView: React.FC<SettingsViewProps> = ({
   language,
   onLanguageToggle,
   onOpenSchemes,
+  onOpenQualityDebug,
 }) => {
   const t = translations[language];
 
@@ -136,6 +139,29 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
       {/* Farmer Assistant / FAQ Section */}
       <FarmerAssistant language={language} />
+
+      {/* Quality Calibration Tool Access */}
+      {onOpenQualityDebug && (
+        <button
+          onClick={onOpenQualityDebug}
+          className="w-full bg-white rounded-3xl p-4 border border-[#e8e7de] shadow-2xs flex items-center justify-between text-left hover:border-[#0b72c9] transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-[#e5f1fb] flex items-center justify-center text-[#0b72c9]">
+              <Sliders className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-editorial text-sm font-bold text-[#162a45]">
+                Quality Calibration Tool
+              </h3>
+              <p className="text-[11px] text-[#64748b]">
+                Inspect blur, lighting & glare metrics (/debug/quality)
+              </p>
+            </div>
+          </div>
+          <ChevronRight className="w-4 h-4 text-[#94a3b8]" />
+        </button>
+      )}
 
       {/* About Phyto Notice */}
       <div className="text-center py-4 text-xs text-[#94a3b8]">

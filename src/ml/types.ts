@@ -53,11 +53,13 @@ export interface QualityConfig {
   brightness: {
     minLuminance: number;
     maxLuminance: number;
+    enhanceMinLuminance?: number;
     maxDarkFraction: number;
     maxBrightFraction: number;
   };
   contrast: {
     minStdDev: number;
+    enhanceMinStdDev?: number;
   };
   noise: {
     maxNoise: number;
@@ -71,6 +73,7 @@ export interface QualityConfig {
   motionRatioThreshold: number;
   enhancement: {
     enabled: boolean;
+    strength?: number;
     unsharpRadius: number;
     unsharpAmount: number;
     targetLuminance: number;

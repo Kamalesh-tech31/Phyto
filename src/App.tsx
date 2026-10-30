@@ -19,6 +19,7 @@ import { TreatmentDetail } from './features/guidance/TreatmentDetail';
 import { SchemesList } from './features/schemes/SchemesList';
 import { HistoryList } from './features/history/HistoryList';
 import { SettingsView } from './features/settings/SettingsView';
+import { QualityDebugPage } from './components/QualityDebugPage';
 import { useConnectivity } from './services/connectivityService';
 import { predictionService } from './services/predictionService';
 import { storageService } from './services/storageService';
@@ -28,6 +29,34 @@ export default function App() {
   const isOnline = useConnectivity();
   const [language, setLanguage] = useState<Language>('en');
   const [activeTab, setActiveTab] = useState<BottomNavTab>('scan');
+
+  // Debug route for quality calibration (/debug/quality)
+  const [isDebugQuality, setIsDebugQuality] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return (
+        window.location.pathname === '/debug/quality' ||
+        window.location.hash === '#debug/quality' ||
+        window.location.search.includes('debug=quality')
+      );
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const checkRoute = () => {
+      setIsDebugQuality(
+        window.location.pathname === '/debug/quality' ||
+        window.location.hash === '#debug/quality' ||
+        window.location.search.includes('debug=quality')
+      );
+    };
+    window.addEventListener('popstate', checkRoute);
+    window.addEventListener('hashchange', checkRoute);
+    return () => {
+      window.removeEventListener('popstate', checkRoute);
+      window.removeEventListener('hashchange', checkRoute);
+    };
+  }, []);
 
   // Voice speech state
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
@@ -247,6 +276,18 @@ export default function App() {
     }
   };
 
+  // Render Quality Calibration Debugger on /debug/quality
+  if (isDebugQuality) {
+    return (
+      <QualityDebugPage
+        onBack={() => {
+          window.history.pushState({}, '', '/');
+          setIsDebugQuality(false);
+        }}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#faf9f5] flex flex-col items-center">
       <div className="w-full max-w-md min-h-screen bg-[#faf9f5] flex flex-col relative shadow-xl border-x border-[#edece4]">
@@ -361,6 +402,10 @@ export default function App() {
                   onLanguageToggle={handleLanguageToggle}
                   isOnline={isOnline}
                   onOpenSchemes={() => setIsSettingsSchemesOpen(true)}
+                  onOpenQualityDebug={() => {
+                    window.history.pushState({}, '', '/debug/quality');
+                    setIsDebugQuality(true);
+                  }}
                 />
               )}
             </>
