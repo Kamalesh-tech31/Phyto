@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language, PredictionResult } from '../../types';
 import { translations } from '../../data/translations';
+import { t } from '../../services/i18n';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { ChevronLeft, ChevronRight, Bug, ArrowRight } from 'lucide-react';
 
@@ -9,7 +10,7 @@ interface ResultConfidentProps {
   language: Language;
   onBack: () => void;
   onSeeTreatment: () => void;
-  onViewRelatedScheme: () => void;
+  onViewRelatedScheme?: () => void;
   onPestClick?: () => void;
 }
 
@@ -20,41 +21,57 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
   onSeeTreatment,
   onViewRelatedScheme,
 }) => {
-  const t = translations[language];
+  const trans = translations[language];
   const [showPestModal, setShowPestModal] = useState(false);
 
-  // Severity 3-segment progress bar helper
+  // Check if there are related schemes for the diagnosis
+  // Plant protection subsidy applies to fungal blight infections, not healthy crops or low-confidence
+  const hasRelatedSchemes = prediction.diseaseId !== 'healthy' && !prediction.isUncertain;
+
+  // Severity 3-segment progress bar helper: success for filled, inset for empty
   const getSeverityBars = () => {
     if (prediction.severity === 'severe') {
-      return { mild: 'bg-[#1b4d2e]', moderate: 'bg-[#1b4d2e]', severe: 'bg-[#b91c1c]' };
+      return {
+        mild: 'bg-[var(--color-success-text)]',
+        moderate: 'bg-[var(--color-success-text)]',
+        severe: 'bg-[var(--color-success-text)]',
+      };
     }
     if (prediction.severity === 'moderate') {
-      return { mild: 'bg-[#1b4d2e]', moderate: 'bg-[#d97706]', severe: 'bg-[#e2e1d7]' };
+      return {
+        mild: 'bg-[var(--color-success-text)]',
+        moderate: 'bg-[var(--color-success-text)]',
+        severe: 'bg-[var(--color-inset)]',
+      };
     }
     // Mild
-    return { mild: 'bg-[#1b4d2e]', moderate: 'bg-[#e2e1d7]', severe: 'bg-[#e2e1d7]' };
+    return {
+      mild: 'bg-[var(--color-success-text)]',
+      moderate: 'bg-[var(--color-inset)]',
+      severe: 'bg-[var(--color-inset)]',
+    };
   };
 
   const severityBars = getSeverityBars();
 
   return (
-    <div className="flex flex-col px-5 pt-2 pb-24 max-w-md mx-auto">
+    <div className="flex flex-col px-5 pt-2 pb-36 max-w-md mx-auto">
       {/* Top Header with Back Arrow and Title */}
       <div className="flex items-center gap-3 py-2">
         <button
           onClick={onBack}
-          className="p-1 -ml-1 text-[#162a45] hover:opacity-75 transition-opacity"
+          className="p-1 -ml-1 text-[var(--color-text)] hover:opacity-75 transition-opacity rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           aria-label="Back"
         >
           <ChevronLeft className="w-7 h-7 stroke-[2]" />
         </button>
-        <h2 className="font-editorial text-2xl font-bold text-[#162a45]">
-          {t.result_title}
+        <h2 className="font-editorial text-2xl font-bold text-[var(--color-text)]">
+          {trans.result_title}
         </h2>
       </div>
 
-      {/* Card 1: Disease Identity & Leaf Thumbnail */}
-      <div className="mt-2 bg-white rounded-3xl p-4 border border-[#e8e7de] shadow-xs flex items-center gap-4">
+      {/* 1. Card 1: Disease Identity & Leaf Thumbnail */}
+      <div className="mt-2 bg-[var(--color-surface)] rounded-3xl p-4 border border-[var(--color-border)] flex items-center gap-4 transition-colors">
         {/* Leaf square thumbnail */}
         <div className="w-20 h-20 bg-[#172b1d] rounded-2xl overflow-hidden shrink-0">
           <LeafGraphic
@@ -66,83 +83,91 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
 
         {/* Text details */}
         <div className="flex flex-col">
-          <span className="text-xs font-medium text-[#64748b]">
+          <span className="text-xs font-medium text-[var(--color-muted)]">
             {language === 'ml' ? prediction.cropMl : prediction.crop}
           </span>
-          <h3 className="font-editorial text-2xl font-bold text-[#162a45] leading-tight">
+          <h3 className="font-editorial text-2xl font-bold text-[var(--color-text)] leading-tight">
             {language === 'ml' ? prediction.diseaseNameMl : prediction.diseaseName}
           </h3>
-          <span className="mt-1.5 inline-block self-start px-2.5 py-0.5 bg-[#e5f1fb] text-[#0e5b9e] rounded-full text-xs font-semibold">
+          <span className="mt-1.5 inline-block self-start px-2.5 py-0.5 bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-selected-border)] rounded-full text-xs font-semibold">
             {language === 'ml' ? prediction.categoryMl : prediction.category}
           </span>
         </div>
       </div>
 
-      {/* Card 2: Confidence & Severity Breakdown */}
-      <div className="mt-3.5 bg-white rounded-3xl p-5 border border-[#e8e7de] shadow-xs">
+      {/* 2. Card 2: Confidence & Severity Breakdown */}
+      <div className="mt-3.5 bg-[var(--color-surface)] rounded-3xl p-5 border border-[var(--color-border)] transition-colors">
         {/* Confidence Header */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-[#f1f0e9]">
-          <span className="text-sm font-semibold text-[#162a45]">
-            {t.confidence_label}
+        <div className="flex items-center justify-between pb-3.5 border-b border-[var(--color-border)]">
+          <span className="text-sm font-semibold text-[var(--color-text)]">
+            {trans.confidence_label}
           </span>
           <div className="flex items-center gap-2">
             {/* 3-bar confidence indicator */}
-            <div className="flex items-center gap-1">
-              <span className="w-3.5 h-1.5 rounded-full bg-[#1b4d2e]" />
-              <span className="w-3.5 h-1.5 rounded-full bg-[#1b4d2e]" />
-              <span className="w-3.5 h-1.5 rounded-full bg-[#1b4d2e]" />
+            <div className="flex items-center gap-1" aria-hidden="true">
+              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
+              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
+              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
             </div>
-            <span className="text-xs font-bold text-[#1b4d2e]">
-              {t.confidence_high}
+            <span className="text-xs font-bold text-[var(--color-success-text)]">
+              {trans.confidence_high}
             </span>
           </div>
         </div>
 
         {/* Affected Leaf Area & Severity */}
         <div className="pt-4">
-          <div className="text-xs font-medium text-[#64748b]">
-            {t.affected_area_label}
+          <div className="text-xs font-medium text-[var(--color-muted)]">
+            {trans.affected_area_label}
           </div>
 
           <div className="flex items-baseline gap-3 mt-1">
-            <span className="font-editorial text-4xl font-bold text-[#162a45]">
+            <span className="font-editorial text-4xl font-bold text-[var(--color-text)]">
               {prediction.affectedAreaPercent}%
             </span>
-            <span className="px-2.5 py-0.5 bg-[#e2f2e5] text-[#1e5c2b] rounded-full text-xs font-bold capitalize">
+            <span
+              className={`px-2.5 py-0.5 rounded-full text-xs font-bold capitalize ${
+                prediction.severity === 'mild'
+                  ? 'bg-[var(--color-success-bg)] text-[var(--color-success-text)]'
+                  : prediction.severity === 'moderate'
+                  ? 'bg-[var(--color-warning-bg)] text-[var(--color-warning-text)]'
+                  : 'bg-[var(--color-danger-bg)] text-[var(--color-danger-text)]'
+              }`}
+            >
               {prediction.severity === 'mild'
-                ? t.severity_mild
+                ? trans.severity_mild
                 : prediction.severity === 'moderate'
-                ? t.severity_moderate
-                : t.severity_severe}
+                ? trans.severity_moderate
+                : trans.severity_severe}
             </span>
           </div>
 
-          {/* 3-segment severity bar */}
-          <div className="grid grid-cols-3 gap-2 mt-3.5">
+          {/* 3-segment severity bar: success for filled, inset for empty */}
+          <div className="grid grid-cols-3 gap-2 mt-3.5" aria-hidden="true">
             <div className={`h-2 rounded-full ${severityBars.mild}`} />
             <div className={`h-2 rounded-full ${severityBars.moderate}`} />
             <div className={`h-2 rounded-full ${severityBars.severe}`} />
           </div>
 
-          <div className="grid grid-cols-3 text-[11px] font-semibold text-[#64748b] mt-1.5">
-            <span>{t.severity_mild}</span>
-            <span className="text-center">{t.severity_moderate}</span>
-            <span className="text-right">{t.severity_severe}</span>
+          <div className="grid grid-cols-3 text-[11px] font-semibold text-[var(--color-muted)] mt-1.5">
+            <span>{trans.severity_mild}</span>
+            <span className="text-center">{trans.severity_moderate}</span>
+            <span className="text-right">{trans.severity_severe}</span>
           </div>
         </div>
       </div>
 
-      {/* Card 3: Pest Observation on Leaf */}
+      {/* 3. Card 3: Pest Observation on Leaf ("Also found" row) */}
       {prediction.pestWarning && (
         <button
           onClick={() => setShowPestModal(true)}
-          className="mt-3.5 bg-white rounded-2xl p-4 border border-[#e8e7de] shadow-xs flex items-center justify-between text-left hover:bg-[#fafaf7] transition-all"
+          className="mt-3.5 bg-[var(--color-surface)] rounded-2xl p-4 border border-[var(--color-border)] flex items-center justify-between text-left hover:bg-[var(--color-inset)] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
         >
           <div>
-            <div className="text-xs text-[#64748b] font-medium">
-              {t.also_found_title}
+            <div className="text-xs text-[var(--color-muted)] font-medium">
+              {trans.also_found_title}
             </div>
-            <div className="text-base font-bold text-[#162a45] mt-0.5">
+            <div className="text-base font-bold text-[var(--color-text)] mt-0.5">
               {language === 'ml'
                 ? prediction.pestWarning.nameMl
                 : prediction.pestWarning.name}
@@ -150,83 +175,79 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-[#fef3c7] text-[#92400e] rounded-full text-xs font-semibold">
+            <span className="px-3 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] rounded-full text-xs font-semibold">
               {language === 'ml'
                 ? prediction.pestWarning.severityLabelMl
                 : prediction.pestWarning.severityLabel}
             </span>
-            <ChevronRight className="w-5 h-5 text-[#94a3b8]" />
+            <ChevronRight className="w-5 h-5 text-[var(--color-muted)]" />
           </div>
         </button>
       )}
 
-      {/* Prominent Action: View Treatment & Prevention */}
+      {/* 4. Primary Action Button: View Treatment & Prevention */}
       <button
         onClick={onSeeTreatment}
-        className="mt-4 w-full py-4 bg-[#0b72c9] hover:bg-[#085da5] active:scale-[0.98] text-white font-semibold rounded-2xl text-sm shadow-xs transition-all flex items-center justify-center gap-2"
+        className="mt-4 w-full min-h-[52px] py-3.5 bg-[var(--color-primary)] hover:opacity-95 active:scale-[0.98] text-[var(--color-on-primary)] font-semibold rounded-2xl text-sm shadow-xs transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
       >
-        <span>{language === 'ml' ? 'ചികിത്സയും പ്രതിരോധവും കാണുക' : 'View Treatment & Prevention'}</span>
+        <span>{t('view_treatment_prevention', undefined, language)}</span>
         <ArrowRight className="w-4 h-4" />
       </button>
 
-      {/* Prominent Related Schemes Action Card (Contextual Scheme Access) */}
-      <div className="mt-3.5 bg-white rounded-3xl p-5 border border-[#e8e7de] shadow-xs">
-        <div className="text-[11px] font-bold text-[#1b5e20] uppercase tracking-wider">
-          {language === 'ml' ? 'ബന്ധപ്പെട്ട സർക്കാർ പദ്ധതി' : 'Related schemes'}
-        </div>
-        <h4 className="font-editorial text-lg font-bold text-[#162a45] mt-1 leading-snug">
-          {language === 'ml'
-            ? 'സുഭിക്ഷ കേരളം - പച്ചക്കറി വികസന പദ്ധതി'
-            : 'Vegetable Development Programme'}
-        </h4>
-        <p className="text-xs text-[#64748b] mt-1 leading-relaxed">
-          {language === 'ml'
-            ? 'തക്കാളി ചെടികൾക്ക് ജൈവ കുമിൾനാശിനികൾക്കും സ്പ്രേയർ ടാങ്കുകൾക്കും 50% സബ്സിഡി സഹായം.'
-            : '50% subsidy on bio-fungicides and knapsack sprayers for tomato crop protection.'}
-        </p>
-
+      {/* 5. Related Schemes Action Button */}
+      {hasRelatedSchemes && (
         <button
+          type="button"
           onClick={onViewRelatedScheme}
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#0b72c9] hover:text-[#085da5] active:scale-95 transition-all"
+          className="mt-3 w-full min-h-[52px] py-3.5 bg-[var(--color-primary)] hover:opacity-95 active:scale-[0.98] text-[var(--color-on-primary)] font-semibold rounded-2xl text-sm shadow-xs transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
         >
-          <span>{language === 'ml' ? 'പദ്ധതി കാണുക →' : 'View scheme →'}</span>
+          <span>{t('related_schemes', undefined, language)}</span>
+          <ArrowRight className="w-4 h-4" />
         </button>
-      </div>
+      )}
 
-      {/* Disclaimer Text */}
-      <p className="text-xs text-[#64748b] mt-4 px-1 leading-relaxed">
-        {t.disclaimer_text}
+      {/* 6. Disclaimer Text */}
+      <p className="text-xs text-[var(--color-muted)] mt-4 px-1 leading-relaxed">
+        {trans.disclaimer_text}
       </p>
 
       {/* Pest Information Modal */}
       {showPestModal && prediction.pestWarning && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="w-full max-w-sm rounded-3xl bg-white p-5 shadow-2xl border border-slate-100">
-            <div className="flex items-center gap-2.5 text-[#162a45] mb-2">
-              <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-                <Bug className="w-4 h-4 text-amber-700" />
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4"
+          onClick={() => setShowPestModal(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-sm rounded-3xl bg-[var(--color-surface)] p-5 border border-[var(--color-border)] shadow-2xl transition-colors"
+          >
+            <div className="flex items-center gap-2.5 text-[var(--color-text)] mb-2">
+              <div className="w-8 h-8 rounded-full bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] flex items-center justify-center shrink-0">
+                <Bug className="w-4 h-4" />
               </div>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-base text-[var(--color-text)]">
                 {language === 'ml'
                   ? prediction.pestWarning.nameMl
                   : prediction.pestWarning.name}
               </h3>
             </div>
-            <p className="text-xs text-[#475569] leading-relaxed mt-2">
+            <p className="text-xs text-[var(--color-muted)] leading-relaxed mt-2">
               {language === 'ml'
                 ? prediction.pestWarning.detailsMl
                 : prediction.pestWarning.details}
             </p>
-            <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+            <div className="mt-4 p-3 bg-[var(--color-warning-bg)] border border-[var(--color-warning-text)]/20 rounded-xl text-xs text-[var(--color-warning-text)]">
               {language === 'ml'
                 ? 'പ്രതിവിധി: വേപ്പെണ്ണ മിശ്രിതം ഇലയുടെ അടിഭാഗത്ത് കൂടി തളിക്കുന്നത് മുഞ്ഞയെ ഫലപ്രദമായി നിയന്ത്രിക്കും.'
                 : 'Tip: Spraying neem oil solution directly under the leaves deters aphids without harming crops.'}
             </div>
             <button
               onClick={() => setShowPestModal(false)}
-              className="mt-4 w-full rounded-2xl bg-[#162a45] py-2.5 text-xs font-semibold text-white"
+              className="mt-4 w-full min-h-[44px] rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:bg-[var(--color-inset)] py-2.5 text-xs font-semibold text-[var(--color-text)] transition-colors"
             >
-              {language === 'ml' ? 'മനസ്സിലായി (Close)' : 'Got it'}
+              {t('close', undefined, language)}
             </button>
           </div>
         </div>

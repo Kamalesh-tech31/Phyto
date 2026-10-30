@@ -23,10 +23,12 @@ import { useConnectivity } from './services/connectivityService';
 import { predictionService } from './services/predictionService';
 import { storageService } from './services/storageService';
 import { speechService } from './services/speechService';
+import { useSettings } from './services/settingsService';
 
 export default function App() {
   const isOnline = useConnectivity();
-  const [language, setLanguage] = useState<Language>('en');
+  const { settings, setLanguage } = useSettings();
+  const language = settings.language;
   const [activeTab, setActiveTab] = useState<BottomNavTab>('scan');
 
   // Voice speech state
@@ -53,7 +55,7 @@ export default function App() {
 
   // Language toggle (available in Settings)
   const handleLanguageToggle = () => {
-    setLanguage((prev) => (prev === 'en' ? 'ml' : 'en'));
+    setLanguage(language === 'en' ? 'ml' : 'en');
   };
 
   // Global Header Voice / Listen functionality
@@ -186,13 +188,6 @@ export default function App() {
     setScanStep('scheme_context');
   };
 
-  // Open related scheme contextually from Treatment screen
-  const handleViewRelatedSchemeFromTreatment = () => {
-    setContextualSchemeId('subhiksha-keralam');
-    setSchemesReturnStep('treatment');
-    setScanStep('scheme_context');
-  };
-
   // Select scan from history
   const handleSelectFromHistory = (item: ScanHistoryItem) => {
     if (item.isUncertain) {
@@ -248,8 +243,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf9f5] flex flex-col items-center">
-      <div className="w-full max-w-md min-h-screen bg-[#faf9f5] flex flex-col relative shadow-xl border-x border-[#edece4]">
+    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col items-center overflow-x-hidden transition-colors">
+      <div className="w-full max-w-md min-h-screen bg-[var(--color-bg)] flex flex-col relative shadow-xl border-x border-[var(--color-border)] transition-colors">
         {/* Global Persistent Header: Phyto | Online/Offline status | Voice */}
         <Header
           language={language}
@@ -324,7 +319,6 @@ export default function App() {
                   diseaseId={selectedDiseaseId}
                   language={language}
                   onBack={() => setScanStep('result')}
-                  onNavigateToSchemes={handleViewRelatedSchemeFromTreatment}
                 />
               )}
 

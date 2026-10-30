@@ -4,7 +4,6 @@ import { translations } from '../../data/translations';
 import diseasesData from '../../data/diseases.json';
 import {
   ChevronLeft,
-  ChevronRight,
   AlertCircle,
   Sparkles,
   TrendingUp,
@@ -14,14 +13,13 @@ interface TreatmentDetailProps {
   diseaseId: DiseaseId;
   language: Language;
   onBack: () => void;
-  onNavigateToSchemes: () => void;
+  onNavigateToSchemes?: () => void;
 }
 
 export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
   diseaseId,
   language,
   onBack,
-  onNavigateToSchemes,
 }) => {
   const t = translations[language];
   const [activeTab, setActiveTab] = useState<'treatment' | 'prevention'>('treatment');
@@ -161,22 +159,6 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
               </div>
             </div>
           </div>
-
-          {/* Section 4: Contextual Related Schemes Banner */}
-          <button
-            onClick={onNavigateToSchemes}
-            className="w-full bg-white rounded-3xl p-4 border border-[#e8e7de] shadow-2xs flex items-center justify-between text-left hover:bg-[#fafaf7] transition-all"
-          >
-            <div>
-              <div className="font-editorial text-base font-bold text-[#162a45]">
-                {t.schemes_banner_title}
-              </div>
-              <div className="text-xs text-[#64748b] mt-0.5">
-                {t.schemes_banner_sub}
-              </div>
-            </div>
-            <ChevronRight className="w-5 h-5 text-[#94a3b8]" />
-          </button>
         </div>
       )}
 

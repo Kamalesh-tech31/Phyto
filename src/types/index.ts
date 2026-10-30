@@ -1,4 +1,13 @@
-export type Language = 'en' | 'ml';
+export type Language = 'en' | 'ta' | 'ml' | 'hi' | 'te';
+
+export type TextSize = 'small' | 'default' | 'large';
+export type ThemeMode = 'light' | 'dark';
+
+export interface PhytoSettings {
+  language: Language;
+  textSize: TextSize;
+  theme: ThemeMode;
+}
 
 export type BottomNavTab = 'scan' | 'history' | 'settings';
 
