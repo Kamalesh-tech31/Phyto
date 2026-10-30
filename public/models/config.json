@@ -1,0 +1,19 @@
+{
+  "temperature": 1.0,
+  "minConf": 0.55,
+  "minMargin": 0.15,
+  "maxEntropy": 0.8,
+  "unknownClass": "unknown",
+  "inputSize": 224,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "modelVersion": "0.1.0-placeholder"
+}
