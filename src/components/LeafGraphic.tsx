@@ -54,15 +54,15 @@ export const LeafGraphic: React.FC<LeafGraphicProps> = ({
         <defs>
           {/* Leaf gradient */}
           <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#468853" />
-            <stop offset="100%" stop-color="#346a40" />
+            <stop offset="0%" stopColor="#468853" />
+            <stop offset="100%" stopColor="#346a40" />
           </linearGradient>
 
           {/* Late blight wet patch filter */}
           <radialGradient id="waterSoaked" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#2d3f27" stop-opacity="0.9" />
-            <stop offset="70%" stop-color="#1e2c1a" stop-opacity="0.85" />
-            <stop offset="100%" stop-color="#141f11" stop-opacity="0" />
+            <stop offset="0%" stopColor="#2d3f27" stopOpacity="0.9" />
+            <stop offset="70%" stopColor="#1e2c1a" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#141f11" stopOpacity="0" />
           </radialGradient>
         </defs>
 

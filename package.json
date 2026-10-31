@@ -1,14 +1,16 @@
 {
-  "name": "react-example",
+  "name": "phyto",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "check-i18n": "node scripts/check-i18n-keys.js",
+    "test:offline": "node scripts/test-offline-i18n.js"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

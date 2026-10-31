@@ -1,25 +1,21 @@
 import React from 'react';
-import { Language } from '../types';
-import { translations } from '../data/translations';
-import { Volume2, Square } from 'lucide-react';
+import { Language, SUPPORTED_LANGUAGES } from '../types';
+import { i18n } from '../services/i18nService';
+import { Globe, Check } from 'lucide-react';
 
 interface HeaderProps {
   language: Language;
-  isOnline: boolean;
-  isSpeaking: boolean;
-  onVoiceToggle: () => void;
+  onLanguageChange: (lang: Language) => void;
   onTitleClick?: () => void;
+  isOnline?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   language,
-  isOnline,
-  isSpeaking,
-  onVoiceToggle,
+  onLanguageChange,
   onTitleClick,
+  isOnline = true,
 }) => {
-  const t = translations[language];
-
   return (
     <header className="w-full bg-[#faf9f5] pt-3 pb-2 px-5 sticky top-0 z-40 border-b border-[#f1f0e8]/80">
       <div className="flex items-center justify-between">
@@ -30,7 +26,6 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label="Phyto Home"
         >
           <div className="w-9 h-9 rounded-full bg-[#0b72c9] flex items-center justify-center shadow-xs">
-            {/* Phyto stylized leaf mark */}
             <svg
               className="w-5 h-5 text-white"
               viewBox="0 0 24 24"
@@ -49,44 +44,35 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </button>
 
-        {/* Global Voice / Listen Button in Top Right */}
-        <button
-          onClick={onVoiceToggle}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all active:scale-95 shadow-2xs ${
-            isSpeaking
-              ? 'bg-[#0b72c9] border-[#0b72c9] text-white animate-pulse'
-              : 'bg-[#eae9e2] border-[#dfded5] text-[#162a45] hover:bg-[#dfded5]'
-          }`}
-          title={isSpeaking ? 'Stop speaking' : 'Listen to this page'}
-          aria-label={isSpeaking ? 'Stop audio' : 'Listen to page'}
-        >
-          {isSpeaking ? (
-            <>
-              <Square className="w-3.5 h-3.5 fill-white" />
-              <span>{language === 'ml' ? 'നിർത്തുക' : 'Stop'}</span>
-            </>
-          ) : (
-            <>
-              <Volume2 className="w-4 h-4 text-[#0b72c9]" />
-              <span>{language === 'ml' ? 'കേൾക്കുക' : 'Voice'}</span>
-            </>
-          )}
-        </button>
+        {/* Top-Bar Language Dropdown */}
+        <div className="relative flex items-center">
+          <div className="flex items-center gap-1.5 bg-white border border-[#dfded5] rounded-full px-2.5 py-1 shadow-2xs hover:border-[#cbd5e1] transition-all">
+            <Globe className="w-3.5 h-3.5 text-[#0b72c9] shrink-0" />
+            <select
+              value={language}
+              onChange={(e) => onLanguageChange(e.target.value as Language)}
+              className="bg-transparent text-xs font-bold text-[#162a45] focus:outline-none cursor-pointer pr-1 py-0.5"
+              aria-label={i18n.t('select_language')}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.code} value={lang.code} className="text-sm font-semibold">
+                  {lang.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
-      {/* Online / Offline Status Indicator */}
+      {/* Online / Offline Status Badge */}
       <div className="mt-2 flex items-center gap-1.5 text-xs font-medium">
         <span
-          className={`w-2 h-2 rounded-full ${
-            isOnline ? 'bg-[#15803d]' : 'bg-[#16a34a]'
+          className={`w-2 h-2 rounded-full shrink-0 ${
+            isOnline ? 'bg-[#16a34a]' : 'bg-[#d97706]'
           }`}
         />
-        <span
-          className={
-            isOnline ? 'text-[#166534]' : 'text-[#2e5e3b]'
-          }
-        >
-          {isOnline ? t.status_online : t.status_offline}
+        <span className={isOnline ? 'text-[#2e5e3b]' : 'text-[#92400e]'}>
+          {isOnline ? i18n.t('status_online') : i18n.t('status_offline_mode')} · {i18n.t('status_offline')}
         </span>
       </div>
     </header>

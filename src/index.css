@@ -1,5 +1,54 @@
 @import "tailwindcss";
 
+/* Offline Local Fonts with font-display: swap */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/plus-jakarta-sans.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/newsreader.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans Tamil';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/noto-sans-tamil.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans Devanagari';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/noto-sans-devanagari.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans Malayalam';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/noto-sans-malayalam.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans Telugu';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/assets/fonts/noto-sans-telugu.woff2') format('woff2');
+}
+
 @layer base {
   :root {
     --bg-warm: #faf9f5;
@@ -19,17 +68,36 @@
   body {
     background-color: #faf9f5;
     color: #162a45;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', 'Noto Sans Devanagari', 'Noto Sans Malayalam', 'Noto Sans Telugu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  /* Ensure non-Latin scripts wrap properly and never overflow buttons or cards */
+  button, p, span, h1, h2, h3, h4, h5, h6, li {
+    overflow-wrap: break-word;
   }
 }
 
 .font-editorial {
-  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', 'Noto Sans Tamil', 'Noto Sans Devanagari', 'Noto Sans Malayalam', 'Noto Sans Telugu', serif;
+}
+
+.font-tamil {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif;
 }
 
 .font-malayalam {
   font-family: 'Noto Sans Malayalam', 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-telugu {
+  font-family: 'Noto Sans Telugu', 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Hide scrollbar for clean mobile horizontal pills */

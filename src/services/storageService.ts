@@ -1,20 +1,11 @@
-import { ScanHistoryItem } from '../types';
+import { CachedTranslation, Language, ScanHistoryItem } from '../types';
 
 const DB_NAME = 'phyto_farmer_db';
-const DB_VERSION = 1;
+const DB_VERSION = 3;
 const STORE_SCANS = 'scan_history';
+const STORE_TRANSLATIONS = 'cached_translations';
 const LOCALSTORAGE_KEY = 'phyto_saved_scans';
-const QUEUE_KEY = 'phyto_expert_queue';
-
-export interface ExpertQueueItem {
-  id: string;
-  timestamp: number;
-  imageUrl: string;
-  diseaseId: string;
-  crop: string;
-  notes: string;
-  status: 'pending' | 'sent';
-}
+const DOWNLOADED_LANGS_KEY = 'phyto_downloaded_languages';
 
 class StorageService {
   private dbPromise: Promise<IDBDatabase> | null = null;
@@ -34,9 +25,19 @@ class StorageService {
 
         request.onupgradeneeded = (event) => {
           const db = (event.target as IDBOpenDBRequest).result;
+
+          // 1. Scan history store
           if (!db.objectStoreNames.contains(STORE_SCANS)) {
             const store = db.createObjectStore(STORE_SCANS, { keyPath: 'id' });
             store.createIndex('timestamp', 'timestamp', { unique: false });
+            store.createIndex('class_id', 'class_id', { unique: false });
+          }
+
+          // 2. Cached translations store
+          if (!db.objectStoreNames.contains(STORE_TRANSLATIONS)) {
+            const transStore = db.createObjectStore(STORE_TRANSLATIONS, { keyPath: 'id' });
+            transStore.createIndex('lang', 'lang', { unique: false });
+            transStore.createIndex('key', 'key', { unique: false });
           }
         };
 
@@ -53,21 +54,32 @@ class StorageService {
     return this.dbPromise;
   }
 
+  /* ================= SCAN HISTORY ================= */
+
   public async saveScan(scan: ScanHistoryItem): Promise<void> {
+    const cleanScan: ScanHistoryItem = {
+      id: scan.id,
+      class_id: scan.class_id || (scan.diseaseId as string) || 'tomato_healthy',
+      confidenceScore: scan.confidenceScore ?? 0.9,
+      affectedAreaPercent: scan.affectedAreaPercent ?? 0,
+      timestamp: scan.timestamp || Date.now(),
+      imageData: scan.imageData || scan.imageUrl || '',
+      isUncertain: !!scan.isUncertain,
+    };
+
     try {
       const db = await this.initDB();
       await new Promise<void>((resolve, reject) => {
         const tx = db.transaction(STORE_SCANS, 'readwrite');
         const store = tx.objectStore(STORE_SCANS);
-        const req = store.put(scan);
+        const req = store.put(cleanScan);
         req.onsuccess = () => resolve();
         req.onerror = () => reject(req.error);
       });
     } catch {
-      // LocalStorage fallback
       try {
         const existing = this.getScansFromLocalStorage();
-        const updated = [scan, ...existing.filter((s) => s.id !== scan.id)].slice(0, 30);
+        const updated = [cleanScan, ...existing.filter((s) => s.id !== cleanScan.id)].slice(0, 30);
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(updated));
       } catch (err) {
         console.warn('LocalStorage save failed', err);
@@ -91,23 +103,6 @@ class StorageService {
       });
     } catch {
       return this.getScansFromLocalStorage();
-    }
-  }
-
-  public async deleteScan(id: string): Promise<void> {
-    try {
-      const db = await this.initDB();
-      await new Promise<void>((resolve, reject) => {
-        const tx = db.transaction(STORE_SCANS, 'readwrite');
-        const store = tx.objectStore(STORE_SCANS);
-        const req = store.delete(id);
-        req.onsuccess = () => resolve();
-        req.onerror = () => reject(req.error);
-      });
-    } catch {
-      const existing = this.getScansFromLocalStorage();
-      const updated = existing.filter((s) => s.id !== id);
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(updated));
     }
   }
 
@@ -137,23 +132,84 @@ class StorageService {
     }
   }
 
-  // Queue expert consultation offline
-  public queueExpertRequest(item: ExpertQueueItem): void {
+  /* ================= CACHED TRANSLATIONS ================= */
+
+  public async getCachedTranslation(
+    lang: Language,
+    key: string,
+    hash: string
+  ): Promise<string | null> {
     try {
-      const queue = this.getExpertQueue();
-      queue.push(item);
-      localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
-    } catch (e) {
-      console.warn('Failed to queue expert request', e);
+      const db = await this.initDB();
+      const id = `${lang}:${key}`;
+      return await new Promise<string | null>((resolve) => {
+        const tx = db.transaction(STORE_TRANSLATIONS, 'readonly');
+        const store = tx.objectStore(STORE_TRANSLATIONS);
+        const req = store.get(id);
+        req.onsuccess = () => {
+          const record = req.result as CachedTranslation;
+          if (record && record.hash === hash) {
+            resolve(record.text);
+          } else {
+            resolve(null);
+          }
+        };
+        req.onerror = () => resolve(null);
+      });
+    } catch {
+      return null;
     }
   }
 
-  public getExpertQueue(): ExpertQueueItem[] {
+  public async saveCachedTranslation(
+    lang: Language,
+    key: string,
+    hash: string,
+    text: string
+  ): Promise<void> {
     try {
-      const raw = localStorage.getItem(QUEUE_KEY);
-      return raw ? JSON.parse(raw) : [];
+      const db = await this.initDB();
+      const record: CachedTranslation = {
+        id: `${lang}:${key}`,
+        lang,
+        key,
+        hash,
+        text,
+        auto: true,
+        timestamp: Date.now(),
+      };
+      await new Promise<void>((resolve, reject) => {
+        const tx = db.transaction(STORE_TRANSLATIONS, 'readwrite');
+        const store = tx.objectStore(STORE_TRANSLATIONS);
+        const req = store.put(record);
+        req.onsuccess = () => resolve();
+        req.onerror = () => reject(req.error);
+      });
+    } catch (e) {
+      console.warn('Failed to cache translation in IndexedDB:', e);
+    }
+  }
+
+  /* ================= OFFLINE DOWNLOAD PACKS ================= */
+
+  public getDownloadedLanguages(): Language[] {
+    try {
+      const raw = localStorage.getItem(DOWNLOADED_LANGS_KEY);
+      return raw ? JSON.parse(raw) : ['en'];
     } catch {
-      return [];
+      return ['en'];
+    }
+  }
+
+  public markLanguageDownloaded(lang: Language): void {
+    try {
+      const current = this.getDownloadedLanguages();
+      if (!current.includes(lang)) {
+        current.push(lang);
+        localStorage.setItem(DOWNLOADED_LANGS_KEY, JSON.stringify(current));
+      }
+    } catch (e) {
+      console.warn('Failed to mark language downloaded:', e);
     }
   }
 }

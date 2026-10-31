@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
   BottomNavTab,
-  DiseaseId,
   Language,
   PredictionResult,
   QualityCheckResult,
@@ -10,11 +9,13 @@ import {
 } from './types';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
+import { VoiceGuideButton } from './components/VoiceGuideButton';
 import { ScanHome } from './features/scan/ScanHome';
 import { PhotoCheck } from './features/scan/PhotoCheck';
 import { AnalyzingLeaf } from './features/scan/AnalyzingLeaf';
 import { ResultConfident } from './features/scan/ResultConfident';
 import { ResultUncertain } from './features/scan/ResultUncertain';
+import { ResultNotLeaf } from './features/scan/ResultNotLeaf';
 import { TreatmentDetail } from './features/guidance/TreatmentDetail';
 import { SchemesList } from './features/schemes/SchemesList';
 import { HistoryList } from './features/history/HistoryList';
@@ -23,14 +24,12 @@ import { useConnectivity } from './services/connectivityService';
 import { predictionService } from './services/predictionService';
 import { storageService } from './services/storageService';
 import { speechService } from './services/speechService';
+import { i18n } from './services/i18nService';
 
 export default function App() {
   const isOnline = useConnectivity();
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => i18n.getLanguage());
   const [activeTab, setActiveTab] = useState<BottomNavTab>('scan');
-
-  // Voice speech state
-  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
   // Scan Flow State
   const [scanStep, setScanStep] = useState<ScanStep>('capture');
@@ -38,92 +37,35 @@ export default function App() {
   const [samplePreset, setSamplePreset] = useState<string | undefined>('early_blight');
   const [qualityCheck, setQualityCheck] = useState<QualityCheckResult | null>(null);
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
-  const [selectedDiseaseId, setSelectedDiseaseId] = useState<DiseaseId>('early_blight');
+  const [selectedDiseaseId, setSelectedDiseaseId] = useState<string>('tomato_early_blight');
+  const [treatmentTab, setTreatmentTab] = useState<'treatment' | 'prevention'>('treatment');
 
   // Contextual Schemes Navigation State
   const [contextualSchemeId, setContextualSchemeId] = useState<string>('subhiksha-keralam');
   const [schemesReturnStep, setSchemesReturnStep] = useState<ScanStep>('result');
   const [isSettingsSchemesOpen, setIsSettingsSchemesOpen] = useState<boolean>(false);
 
+  // Service Worker Update State
+  const [swUpdateAvailable, setSwUpdateAvailable] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        setSwUpdateAvailable(true);
+      });
+    }
+  }, []);
+
   // Stop speech when tab or step changes
   useEffect(() => {
     speechService.stop();
-    setIsSpeaking(false);
-  }, [activeTab, scanStep, isSettingsSchemesOpen]);
+  }, [activeTab, scanStep, isSettingsSchemesOpen, treatmentTab]);
 
-  // Language toggle (available in Settings)
-  const handleLanguageToggle = () => {
-    setLanguage((prev) => (prev === 'en' ? 'ml' : 'en'));
-  };
-
-  // Global Header Voice / Listen functionality
-  const handleGlobalVoiceToggle = () => {
-    if (isSpeaking) {
-      speechService.stop();
-      setIsSpeaking(false);
-      return;
-    }
-
-    let speechText = '';
-
-    if (activeTab === 'scan') {
-      if (scanStep === 'capture') {
-        speechText =
-          language === 'ml'
-            ? 'നിങ്ങളുടെ വിള പരിശോധിക്കുക. ഒരൊറ്റ ഇലയുടെ വ്യക്തമായ ഫോട്ടോയെടുക്കുക. പ്രശ്നവും പരിഹാരവും ഫൈറ്റോ പറയും.'
-            : 'Check your crop. Take one clear photo of a single leaf. Phyto tells you what is wrong and what to do.';
-      } else if (scanStep === 'photo_check') {
-        speechText =
-          language === 'ml'
-            ? 'ഫോട്ടോ പരിശോധന. വ്യക്തതയും വെളിച്ചവും നല്ലതാണ്. പരിശോധിക്കാൻ പര്യാപ്തമാണ്.'
-            : 'Photo check. Sharpness is sharp, light is good, left side has shadow, distance is good. Good enough to analyse.';
-      } else if (scanStep === 'analyzing') {
-        speechText =
-          language === 'ml'
-            ? 'ഇല പരിശോധിക്കുന്നു. കോശഘടനകളും കുമിൾ ലക്ഷണങ്ങളും ഓഫ്‌ലൈനായി വിശകലനം ചെയ്യുന്നു.'
-            : 'Checking your leaf cells and fungal symptoms offline.';
-      } else if (scanStep === 'result') {
-        if (prediction?.isUncertain) {
-          speechText =
-            language === 'ml'
-              ? 'കുറഞ്ഞ വിശ്വാസ്യത. ഇതുവരെ ഉറപ്പില്ല. ഫോട്ടോ അവ്യക്തമാണ്. നല്ല വെളിച്ചത്തിൽ ഒരു ചാൺ അകലെ നിന്ന് വീണ്ടും ഫോട്ടോയെടുക്കുക.'
-              : 'Low confidence scan. I am not sure yet. The photo is too blurry to tell a disease from a nutrient problem. Please retake photo in daylight.';
-        } else {
-          speechText =
-            language === 'ml'
-              ? `തക്കാളി ഇല പരിശോധനാ ഫലം: ${prediction?.diseaseNameMl}. രോഗബാധ ${prediction?.affectedAreaPercent} ശതമാനം. കാഠിന്യം ${
-                  prediction?.severity === 'mild' ? 'ലഘുവായത്' : 'ഗുരുതരമായത്'
-                }. ബന്ധപ്പെട്ട സർക്കാർ പദ്ധതി: സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി, കുമിൾനാശിനികൾക്ക് 50 ശതമാനം സബ്സിഡി ലഭിക്കും.`
-              : `Tomato leaf diagnosis: ${prediction?.diseaseName}, ${prediction?.category}. Confidence is high. Affected leaf area is ${prediction?.affectedAreaPercent} percent, severity is ${prediction?.severity}. Related scheme: Vegetable Development Programme, providing 50 percent subsidy on crop protection.`;
-        }
-      } else if (scanStep === 'treatment') {
-        speechText =
-          language === 'ml'
-            ? 'ചികിത്സാ നിർദ്ദേശങ്ങൾ. രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക, വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക, ചുവട്ടിൽ മാത്രം നനയ്ക്കുക. വിള വില അനുമാനം: തക്കാളിക്ക് പ്രതീക്ഷിക്കുന്ന വില കിലോഗ്രാമിന് 32 രൂപ, വിപണി നിരക്ക് വർദ്ധിക്കുന്നു.'
-            : 'Early blight management guide. Organic recommendations: Remove and burn infected lower leaves, spray neem-based solution in evening, water at base. Crop price outlook: Expected tomato price is ₹32 per kilogram with a rising market trend.';
-      } else if (scanStep === 'scheme_context') {
-        speechText =
-          language === 'ml'
-            ? 'സർക്കാർ പദ്ധതി വിവരങ്ങൾ. സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി വഴി കൃഷിഭവനിൽ നിന്ന് 50 ശതമാനം സബ്സിഡി നിരക്കിൽ ജൈവ കുമിൾനാശിനികളും സ്പ്രേയറുകളും ലഭ്യമാണ്.'
-            : 'Government scheme details. Subhiksha Keralam provides 50 percent subsidy on bio-fungicides and knapsack sprayers through your local Krishi Bhavan.';
-      }
-    } else if (activeTab === 'history') {
-      speechText =
-        language === 'ml'
-          ? 'സ്കാൻ ചരിത്രം. ഫോണിൽ സൂക്ഷിച്ചിരിക്കുന്ന മുൻകാല പരിശോധനാ ഫലങ്ങൾ ഇവിടെ കാണാം.'
-          : 'Scan history. View all saved crop leaf diagnoses stored on this device.';
-    } else if (activeTab === 'settings') {
-      speechText =
-        language === 'ml'
-          ? 'സെറ്റിംഗ്സും കർഷക സഹായിയും. ഇന്റർനെറ്റ് ഇല്ലാതെയും മോഡൽ ഫോണിൽ സജ്ജമാണ്.'
-          : 'Settings and farm assistant. Phyto is an offline-first agricultural assistant ready on this phone.';
-    }
-
-    if (speechText) {
-      speechService.speak(speechText, language, (speaking) => {
-        setIsSpeaking(speaking);
-      });
-    }
+  // Handle immediate language change across whole app
+  const handleLanguageChange = (newLang: Language) => {
+    speechService.stop();
+    i18n.setLanguage(newLang);
+    setLanguage(newLang);
   };
 
   // Step 1 -> Step 2: Image captured or chosen
@@ -131,35 +73,34 @@ export default function App() {
     setSelectedImage(imageUrl);
     setSamplePreset(presetType);
 
-    // Compute quality check
+    // Compute quality check with on-device botanical leaf verification
     const quality = await predictionService.checkQuality(imageUrl, presetType);
     setQualityCheck(quality);
     setScanStep('photo_check');
   };
 
   // Step 2 -> Step 3: Run AI analysis
-  const handleStartAnalysis = async () => {
+  const handleStartAnalysis = async (notLeaf = false) => {
     setScanStep('analyzing');
 
     try {
       const result = await predictionService.predict(selectedImage, samplePreset);
+      if (notLeaf) {
+        result.notLeaf = true;
+      }
       setPrediction(result);
-      setSelectedDiseaseId(result.diseaseId);
+      setSelectedDiseaseId(result.class_id);
 
-      // Save to IndexedDB Scan History automatically
+      // Save to IndexedDB Scan History with clean language-free properties
       const historyItem: ScanHistoryItem = {
         id: result.id,
         timestamp: result.timestamp,
-        imageUrl: result.imageUrl,
-        crop: result.crop,
-        cropMl: result.cropMl,
-        diseaseName: result.diseaseName,
-        diseaseNameMl: result.diseaseNameMl,
-        diseaseId: result.diseaseId,
-        severity: result.severity,
+        imageData: result.imageData || selectedImage,
+        class_id: result.class_id,
         affectedAreaPercent: result.affectedAreaPercent,
-        confidence: result.confidence,
+        confidenceScore: result.confidenceScore,
         isUncertain: result.isUncertain,
+        notLeaf: result.notLeaf,
       };
       await storageService.saveScan(historyItem);
 
@@ -193,69 +134,141 @@ export default function App() {
     setScanStep('scheme_context');
   };
 
-  // Select scan from history
+  // Select scan from history - loads cleanly and renders in currently active language
   const handleSelectFromHistory = (item: ScanHistoryItem) => {
-    if (item.isUncertain) {
-      setPrediction({
-        id: item.id,
-        timestamp: item.timestamp,
-        imageUrl: item.imageUrl,
-        crop: item.crop,
-        cropMl: item.cropMl,
-        diseaseId: item.diseaseId,
-        diseaseName: item.diseaseName,
-        diseaseNameMl: item.diseaseNameMl,
-        category: 'Inconclusive scan',
-        categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
-        confidence: 'low',
-        confidenceScore: 0.38,
-        affectedAreaPercent: 0,
-        severity: item.severity,
-        isUncertain: true,
-      });
-      setScanStep('result');
-      setActiveTab('scan');
-    } else {
-      setPrediction({
-        id: item.id,
-        timestamp: item.timestamp,
-        imageUrl: item.imageUrl,
-        crop: item.crop,
-        cropMl: item.cropMl,
-        diseaseId: item.diseaseId,
-        diseaseName: item.diseaseName,
-        diseaseNameMl: item.diseaseNameMl,
-        category: 'Fungal disease',
-        categoryMl: 'ഫംഗസ് രോഗം',
-        confidence: item.confidence,
-        confidenceScore: 0.94,
-        affectedAreaPercent: item.affectedAreaPercent,
-        severity: item.severity,
-        pestWarning: {
-          name: 'Aphids',
-          nameMl: 'മുഞ്ഞ (Aphids)',
-          severityLabel: 'Pest · moderate',
-          severityLabelMl: 'കീടബാധ · ഇടത്തരം',
-          details: 'Sap-sucking pest cluster noted on leaf.',
-          detailsMl: 'ഇലയിൽ മുഞ്ഞയുടെ സാന്നിധ്യം കണ്ടെത്തി.',
-        },
-        isUncertain: false,
-      });
-      setSelectedDiseaseId(item.diseaseId);
-      setScanStep('result');
-      setActiveTab('scan');
+    const classId = item.class_id || (item.diseaseId as string) || 'tomato_healthy';
+    const confidenceScore = item.confidenceScore ?? (item.isUncertain ? 0.4 : 0.94);
+    const affectedArea = item.affectedAreaPercent ?? (item.severity === 'severe' ? 42 : item.severity === 'moderate' ? 25 : 18);
+
+    setPrediction({
+      id: item.id,
+      timestamp: item.timestamp,
+      class_id: classId,
+      confidenceScore,
+      confidence: confidenceScore >= 0.85 ? 'high' : confidenceScore >= 0.65 ? 'medium' : 'low',
+      affectedAreaPercent: affectedArea,
+      severity: affectedArea >= 30 ? 'severe' : affectedArea >= 10 ? 'moderate' : 'mild',
+      isUncertain: item.isUncertain,
+      notLeaf: item.notLeaf,
+      imageData: item.imageData || item.imageUrl || '',
+      imageUrl: item.imageData || item.imageUrl || '',
+      pestWarning:
+        classId === 'tomato_early_blight'
+          ? {
+              name: 'Aphids',
+              severityLabel: 'Pest · moderate',
+              details: 'Small cluster of sap-sucking insects detected near midrib vein.',
+            }
+          : undefined,
+    });
+    setSelectedDiseaseId(classId);
+    setScanStep('result');
+    setActiveTab('scan');
+  };
+
+  // Centrally computed voice guide narration properties for the single global button
+  const getActiveVoiceProps = (): { pageId: string; customText?: string; clipId?: string } => {
+    if (isSettingsSchemesOpen) {
+      return { pageId: 'schemes', clipId: 'page_schemes' };
+    }
+
+    if (activeTab === 'history') {
+      return { pageId: 'history', clipId: 'page_history' };
+    }
+
+    if (activeTab === 'settings') {
+      return { pageId: 'settings', clipId: 'page_settings' };
+    }
+
+    // activeTab === 'scan'
+    switch (scanStep) {
+      case 'capture':
+        return { pageId: 'scan_home', clipId: 'page_scan_home' };
+      case 'photo_check': {
+        if (qualityCheck?.isLeafPass === false) {
+          return {
+            pageId: 'photo_check_not_leaf',
+            customText: i18n.t('voice_not_leaf'),
+            clipId: 'voice_not_leaf',
+          };
+        }
+        return { pageId: 'photo_check', clipId: 'page_photo_check' };
+      }
+      case 'analyzing':
+        return { pageId: 'analyzing', clipId: 'page_analyzing' };
+      case 'result': {
+        if (prediction?.notLeaf) {
+          return {
+            pageId: 'result_not_leaf',
+            customText: i18n.t('voice_not_leaf'),
+            clipId: 'voice_not_leaf',
+          };
+        }
+        if (prediction?.isUncertain) {
+          return { pageId: 'result_uncertain', clipId: 'page_result_uncertain' };
+        }
+        const classId = prediction?.class_id || selectedDiseaseId;
+        const kb = i18n.getKB(classId);
+        const severityWord =
+          prediction?.severity === 'severe'
+            ? i18n.t('severity_severe')
+            : prediction?.severity === 'moderate'
+            ? i18n.t('severity_moderate')
+            : i18n.t('severity_mild');
+        const confidenceWord =
+          (prediction?.confidenceScore ?? 0.9) >= 0.8
+            ? i18n.t('confidence_high')
+            : i18n.t('confidence_medium');
+
+        const firstStep = kb?.treatments_organic?.[0]?.text;
+        const resultTemplate = i18n.t('voice_result_template', {
+          disease_name: kb?.name || classId,
+          severity_word: severityWord,
+          confidence_word: confidenceWord,
+        });
+
+        const narration = firstStep ? `${resultTemplate} ${firstStep}` : resultTemplate;
+
+        return {
+          pageId: 'result',
+          customText: narration,
+          clipId: `${classId}_overview`,
+        };
+      }
+      case 'treatment': {
+        const classId = selectedDiseaseId || 'tomato_early_blight';
+        const kb = i18n.getKB(classId) || i18n.getKB('tomato_early_blight');
+        if (treatmentTab === 'prevention') {
+          return {
+            pageId: 'prevention',
+            customText: kb?.voice_prevention,
+            clipId: `${classId}_prevention`,
+          };
+        }
+        return {
+          pageId: 'treatment',
+          customText: kb?.voice_treatment,
+          clipId: `${classId}_treatment`,
+        };
+      }
+      case 'scheme_context':
+        return { pageId: 'schemes', clipId: 'page_schemes' };
+      default:
+        return { pageId: 'scan_home', clipId: 'page_scan_home' };
     }
   };
 
+  const activeVoiceProps = getActiveVoiceProps();
+
   return (
     <div className="min-h-screen bg-[#faf9f5] flex flex-col items-center">
-      <div className="w-full max-w-md min-h-screen bg-[#faf9f5] flex flex-col relative shadow-xl border-x border-[#edece4]">
-        {/* Global Persistent Header: Phyto | Online/Offline status | Voice */}
+      {/* Phone Shell: max-w-md, h-screen, relative, overflow-hidden */}
+      <div className="w-full max-w-md h-screen max-h-screen bg-[#faf9f5] flex flex-col relative shadow-xl border-x border-[#edece4] overflow-hidden">
+        {/* Global Persistent Header: Phyto Logo | Offline status | 5-Language Dropdown */}
         <Header
           language={language}
           isOnline={isOnline}
-          isSpeaking={isSpeaking}
-          onVoiceToggle={handleGlobalVoiceToggle}
+          onLanguageChange={handleLanguageChange}
           onTitleClick={() => {
             setActiveTab('scan');
             setScanStep('capture');
@@ -263,8 +276,21 @@ export default function App() {
           }}
         />
 
-        {/* Main Content Area */}
-        <main className="flex-1 w-full overflow-y-auto pb-4">
+        {/* Update Available Banner if new Service Worker build is ready */}
+        {swUpdateAvailable && (
+          <div className="bg-[#0b72c9] text-white text-xs px-4 py-2 flex items-center justify-between shrink-0 shadow-xs z-50">
+            <span>{i18n.t('update_available')}</span>
+            <button
+              onClick={() => window.location.reload()}
+              className="underline font-bold text-white cursor-pointer hover:text-blue-100"
+            >
+              {i18n.t('btn_refresh')}
+            </button>
+          </div>
+        )}
+
+        {/* Main Scrollable Content Area with bottom padding to avoid button collision */}
+        <main className="flex-1 w-full overflow-y-auto pb-28">
           {activeTab === 'scan' && (
             <>
               {/* Step 1: Capture / Home */}
@@ -296,10 +322,16 @@ export default function App() {
                 />
               )}
 
-              {/* Step 4: Diagnosis Result (Confident vs Uncertain) */}
+              {/* Step 4: Diagnosis Result (Confident vs Uncertain vs Not Leaf) */}
               {scanStep === 'result' && prediction && (
                 <>
-                  {prediction.isUncertain ? (
+                  {prediction.notLeaf ? (
+                    <ResultNotLeaf
+                      imageUrl={prediction.imageData || selectedImage}
+                      language={language}
+                      onRetake={handleRetake}
+                    />
+                  ) : prediction.isUncertain ? (
                     <ResultUncertain
                       prediction={prediction}
                       language={language}
@@ -323,6 +355,8 @@ export default function App() {
                 <TreatmentDetail
                   diseaseId={selectedDiseaseId}
                   language={language}
+                  activeTab={treatmentTab}
+                  onTabChange={setTreatmentTab}
                   onBack={() => setScanStep('result')}
                   onNavigateToSchemes={handleViewRelatedSchemeFromTreatment}
                 />
@@ -358,7 +392,7 @@ export default function App() {
               ) : (
                 <SettingsView
                   language={language}
-                  onLanguageToggle={handleLanguageToggle}
+                  onLanguageChange={handleLanguageChange}
                   isOnline={isOnline}
                   onOpenSchemes={() => setIsSettingsSchemesOpen(true)}
                 />
@@ -367,7 +401,14 @@ export default function App() {
           )}
         </main>
 
-        {/* Bottom Persistent Navigation: ONLY Scan | History | Settings */}
+        {/* ONE Global Voice Guide Button: Positioned absolute inside the phone shell above BottomNav */}
+        <VoiceGuideButton
+          pageId={activeVoiceProps.pageId}
+          customText={activeVoiceProps.customText}
+          clipId={activeVoiceProps.clipId}
+        />
+
+        {/* Bottom Persistent Navigation: Scan | History | Settings */}
         <BottomNav
           activeTab={activeTab}
           onTabChange={(tab) => {

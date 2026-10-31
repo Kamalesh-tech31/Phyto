@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Language, SchemeItem } from '../../types';
-import { translations } from '../../data/translations';
+import { i18n } from '../../services/i18nService';
 import schemesData from '../../data/schemes.json';
 import {
   ExternalLink,
@@ -25,7 +25,6 @@ export const SchemesList: React.FC<SchemesListProps> = ({
   onBack,
   highlightSchemeId,
 }) => {
-  const t = translations[language];
   const [filter, setFilter] = useState<'all' | 'subsidy' | 'insurance'>('all');
   const [offlineToast, setOfflineToast] = useState(false);
 
@@ -62,13 +61,13 @@ export const SchemesList: React.FC<SchemesListProps> = ({
         )}
         <div>
           <h1 className="font-editorial text-[28px] font-bold text-[#162a45] leading-tight">
-            {t.schemes_header_title}
+            {i18n.t('schemes_header_title')}
           </h1>
         </div>
       </div>
 
       <p className="text-xs text-[#64748b] mb-4 leading-relaxed">
-        {t.schemes_header_desc}
+        {i18n.t('schemes_header_desc')}
       </p>
 
       {/* Filter Tabs */}
@@ -81,7 +80,7 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               : 'bg-white border border-[#e8e7de] text-[#64748b]'
           }`}
         >
-          {t.schemes_filter_all}
+          {i18n.t('schemes_filter_all')}
         </button>
         <button
           onClick={() => setFilter('subsidy')}
@@ -91,7 +90,7 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               : 'bg-white border border-[#e8e7de] text-[#64748b]'
           }`}
         >
-          {t.schemes_filter_subsidy}
+          {i18n.t('schemes_filter_subsidy')}
         </button>
         <button
           onClick={() => setFilter('insurance')}
@@ -101,7 +100,7 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               : 'bg-white border border-[#e8e7de] text-[#64748b]'
           }`}
         >
-          {t.schemes_filter_insurance}
+          {i18n.t('schemes_filter_insurance')}
         </button>
       </div>
 
@@ -109,7 +108,7 @@ export const SchemesList: React.FC<SchemesListProps> = ({
       {offlineToast && (
         <div className="mb-4 p-3.5 bg-amber-50 border border-amber-300 rounded-2xl flex items-start gap-2 text-xs text-amber-900 shadow-sm animate-fadeIn">
           <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-          <span>{t.portal_offline_warning}</span>
+          <span>{i18n.t('portal_offline_warning')}</span>
         </div>
       )}
 
@@ -117,6 +116,13 @@ export const SchemesList: React.FC<SchemesListProps> = ({
       <div className="space-y-4">
         {filteredSchemes.map((scheme) => {
           const isHighlighted = highlightSchemeId === scheme.id;
+          const loc = (scheme.i18n && scheme.i18n[language]) || scheme.i18n?.en || {
+            name: scheme.name || '',
+            tag: scheme.tag || '',
+            benefit: scheme.benefit || '',
+            eligibility: scheme.eligibility || [],
+            documents: scheme.documents || [],
+          };
 
           return (
             <div
@@ -130,28 +136,28 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               {/* Category tag */}
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="px-2.5 py-0.5 bg-[#e5f1fb] text-[#0b72c9] rounded-full text-[11px] font-semibold">
-                  {language === 'ml' ? scheme.tagMl : scheme.tag}
+                  {loc.tag}
                 </span>
 
                 {isHighlighted && (
                   <span className="text-[10px] uppercase font-bold text-[#16a34a] bg-emerald-50 px-2 py-0.5 rounded-full">
-                    Recommended for this crop
+                    {i18n.t('schemes_rec_crop')}
                   </span>
                 )}
               </div>
 
               {/* Scheme Title */}
               <h3 className="font-editorial text-xl font-bold text-[#162a45] leading-snug">
-                {language === 'ml' ? scheme.nameMl : scheme.name}
+                {loc.name}
               </h3>
 
               {/* Primary Benefit Highlight Card */}
               <div className="mt-3 p-3.5 bg-[#f0f7f1] border border-[#d2ead6] rounded-2xl">
                 <div className="text-[11px] font-bold text-[#1b5e20] uppercase tracking-wider">
-                  {language === 'ml' ? 'പ്രധാന നേട്ടം' : 'Core Benefit'}
+                  {i18n.t('schemes_core_benefit')}
                 </div>
                 <p className="text-xs font-semibold text-[#1e4620] mt-0.5 leading-relaxed">
-                  {language === 'ml' ? scheme.benefitMl : scheme.benefit}
+                  {loc.benefit}
                 </p>
               </div>
 
@@ -159,20 +165,18 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               <div className="mt-4">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-[#162a45] mb-2">
                   <CheckCircle className="w-3.5 h-3.5 text-[#16a34a]" />
-                  <span>{t.eligibility_label}</span>
+                  <span>{i18n.t('eligibility_label')}</span>
                 </div>
                 <ul className="space-y-1.5 pl-1">
-                  {(language === 'ml' ? scheme.eligibilityMl : scheme.eligibility).map(
-                    (elig, idx) => (
-                      <li
-                        key={idx}
-                        className="text-xs text-[#475569] flex items-start gap-2 leading-relaxed"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#94a3b8] mt-1.5 shrink-0" />
-                        <span>{elig}</span>
-                      </li>
-                    )
-                  )}
+                  {loc.eligibility.map((elig, idx) => (
+                    <li
+                      key={idx}
+                      className="text-xs text-[#475569] flex items-start gap-2 leading-relaxed"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#94a3b8] mt-1.5 shrink-0" />
+                      <span>{elig}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -180,19 +184,17 @@ export const SchemesList: React.FC<SchemesListProps> = ({
               <div className="mt-4 pt-3 border-t border-[#f1f0e9]">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-[#162a45] mb-2">
                   <FileText className="w-3.5 h-3.5 text-[#0b72c9]" />
-                  <span>{t.documents_label}</span>
+                  <span>{i18n.t('documents_label')}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {(language === 'ml' ? scheme.documentsMl : scheme.documents).map(
-                    (doc, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 bg-[#f8fafc] border border-[#e2e8f0] text-[#334155] rounded-xl text-[11px] font-medium"
-                      >
-                        {doc}
-                      </span>
-                    )
-                  )}
+                  {loc.documents.map((doc, idx) => (
+                    <span
+                      key={idx}
+                      className="px-2.5 py-1 bg-[#f8fafc] border border-[#e2e8f0] text-[#334155] rounded-xl text-[11px] font-medium"
+                    >
+                      {doc}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -215,7 +217,7 @@ export const SchemesList: React.FC<SchemesListProps> = ({
                   onClick={() => handleOpenLink(scheme.officialUrl)}
                   className="w-full sm:w-auto px-4 py-2 bg-[#0b72c9] hover:bg-[#085da5] active:scale-95 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-2xs transition-all"
                 >
-                  <span>{t.btn_open_portal}</span>
+                  <span>{i18n.t('btn_open_portal')}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </button>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language, PredictionResult } from '../../types';
-import { translations } from '../../data/translations';
+import { i18n } from '../../services/i18nService';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { ChevronLeft, Camera } from 'lucide-react';
 
@@ -13,11 +13,8 @@ interface ResultUncertainProps {
 
 export const ResultUncertain: React.FC<ResultUncertainProps> = ({
   prediction,
-  language,
   onRetake,
 }) => {
-  const t = translations[language];
-
   return (
     <div className="flex flex-col px-5 pt-2 pb-24 max-w-md mx-auto">
       {/* Top Header with Back Arrow and Title */}
@@ -30,14 +27,14 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
           <ChevronLeft className="w-7 h-7 stroke-[2]" />
         </button>
         <h2 className="font-editorial text-2xl font-bold text-[#162a45]">
-          {t.result_title}
+          {i18n.t('result_title')}
         </h2>
       </div>
 
-      {/* Dark Leaf Silhouette Container from Reference #5 */}
+      {/* Dark Leaf Silhouette Container */}
       <div className="w-full aspect-[4/2.6] bg-[#172b1d] rounded-3xl overflow-hidden mt-2 relative shadow-xs">
         <LeafGraphic
-          imageUrl={prediction.imageUrl}
+          imageUrl={prediction.imageData || prediction.imageUrl}
           variant="uncertain"
           className="w-full h-full"
         />
@@ -46,21 +43,19 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
       {/* Uncertainty Header Content */}
       <div className="mt-4">
         <span className="inline-block px-3 py-1 bg-[#fef3c7] text-[#92400e] rounded-full text-xs font-semibold">
-          {t.uncertain_badge}
+          {i18n.t('uncertain_badge')}
         </span>
 
         <h3 className="font-editorial text-[30px] font-bold text-[#162a45] mt-2 leading-tight">
-          {t.uncertain_title}
+          {i18n.t('uncertain_title')}
         </h3>
 
         <p className="text-sm text-[#475569] mt-2 leading-relaxed">
-          {language === 'ml'
-            ? prediction.uncertaintyReasonMl || t.uncertain_desc
-            : prediction.uncertaintyReason || t.uncertain_desc}
+          {i18n.t('uncertain_desc')}
         </p>
       </div>
 
-      {/* 3 Tips Card matching Reference #5 */}
+      {/* 3 Tips Card */}
       <div className="mt-4 bg-white rounded-3xl p-5 border border-[#e8e7de] shadow-xs">
         <div className="space-y-4">
           {/* Tip 1 */}
@@ -69,7 +64,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
               1
             </div>
             <p className="text-xs font-medium text-[#162a45] leading-relaxed">
-              {t.tip_1}
+              {i18n.t('tip_1')}
             </p>
           </div>
 
@@ -81,7 +76,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
               2
             </div>
             <p className="text-xs font-medium text-[#162a45] leading-relaxed">
-              {t.tip_2}
+              {i18n.t('tip_2')}
             </p>
           </div>
 
@@ -93,7 +88,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
               3
             </div>
             <p className="text-xs font-medium text-[#162a45] leading-relaxed">
-              {t.tip_3}
+              {i18n.t('tip_3')}
             </p>
           </div>
         </div>
@@ -106,7 +101,7 @@ export const ResultUncertain: React.FC<ResultUncertainProps> = ({
           className="w-full py-4 bg-[#0b72c9] hover:bg-[#085da5] active:scale-[0.98] text-white font-semibold rounded-2xl text-base shadow-xs transition-all flex items-center justify-center gap-2"
         >
           <Camera className="w-5 h-5" />
-          <span>{t.btn_retake_photo}</span>
+          <span>{i18n.t('btn_retake_photo')}</span>
         </button>
       </div>
     </div>

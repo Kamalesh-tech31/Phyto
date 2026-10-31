@@ -1,6 +1,6 @@
 import React from 'react';
 import { BottomNavTab, Language } from '../types';
-import { translations } from '../data/translations';
+import { i18n } from '../services/i18nService';
 import { Scan, History, SlidersHorizontal } from 'lucide-react';
 
 interface BottomNavProps {
@@ -12,24 +12,21 @@ interface BottomNavProps {
 export const BottomNav: React.FC<BottomNavProps> = ({
   activeTab,
   onTabChange,
-  language,
 }) => {
-  const t = translations[language];
-
   const navItems = [
     {
       id: 'scan' as BottomNavTab,
-      label: t.nav_scan,
+      label: i18n.t('nav_scan'),
       icon: Scan,
     },
     {
       id: 'history' as BottomNavTab,
-      label: t.nav_history,
+      label: i18n.t('nav_history'),
       icon: History,
     },
     {
       id: 'settings' as BottomNavTab,
-      label: t.nav_settings,
+      label: i18n.t('nav_settings'),
       icon: SlidersHorizontal,
     },
   ];
@@ -56,8 +53,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({
               />
               <span
                 className={`text-[11px] mt-1 font-medium leading-none ${
-                  language === 'ml' ? 'font-malayalam' : ''
-                } ${isActive ? 'font-semibold text-[#0b72c9]' : ''}`}
+                  isActive ? 'font-semibold text-[#0b72c9]' : ''
+                }`}
               >
                 {item.label}
               </span>

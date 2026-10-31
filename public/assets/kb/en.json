@@ -1,0 +1,152 @@
+{
+  "tomato_early_blight": {
+    "review_status": "verified",
+    "name": "Early blight",
+    "crop": "Tomato leaf",
+    "type": "Fungal disease",
+    "symptoms": "Caused by Alternaria solani fungus. Starts as small dark spots with concentric bullseye rings on older lower leaves.",
+    "treatments_organic": [
+      {
+        "step": 1,
+        "text": "Remove and burn the infected lower leaves."
+      },
+      {
+        "step": 2,
+        "text": "Spray a neem-based solution in the evening."
+      },
+      {
+        "step": 3,
+        "text": "Water at the base, not over the leaves."
+      }
+    ],
+    "chemical_caution": {
+      "headline": "A fungicide registered for tomato. Follow the label exactly.",
+      "caution": "Wear gloves and a mask when spraying."
+    },
+    "cost": {
+      "avg_price": "₹120",
+      "govt_price": "₹65",
+      "unit": "per 15 L tank",
+      "note": "Sample pricing shown here. Subsidized rates available via Krishi Bhavan."
+    },
+    "prevention": [
+      {
+        "step": 1,
+        "text": "Mulch the soil around plants to prevent soil spores splashing onto lower leaves."
+      },
+      {
+        "step": 2,
+        "text": "Maintain 45–60 cm distance between tomato plants for healthy air circulation."
+      },
+      {
+        "step": 3,
+        "text": "Practice 3-year crop rotation; avoid planting tomatoes after potatoes or eggplants."
+      }
+    ],
+    "fertilizer": "Apply balanced organic compost; avoid excessive nitrogen fertilizer which softens leaf tissues.",
+    "farmer_tip": "Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.",
+    "voice_text": "Tomato leaf diagnosis: Early blight, Fungal disease. Remove infected lower leaves, spray neem solution in the evening, and water only at plant base.",
+    "voice_treatment": "Step 1: Remove and burn the infected lower leaves. Step 2: Spray a neem-based solution in the evening. Step 3: Water at the base, not over the leaves. If it keeps spreading, use a fungicide registered for tomato. Follow the label exactly and wear gloves and a mask when spraying.",
+    "voice_prevention": "Step 1: Mulch the soil around plants to prevent soil spores splashing onto lower leaves. Step 2: Maintain 45–60 cm distance between tomato plants for healthy air circulation. Step 3: Practice 3-year crop rotation; avoid planting tomatoes after potatoes or eggplants. Farmer pro tip: Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season."
+  },
+  "tomato_late_blight": {
+    "review_status": "verified",
+    "name": "Late blight",
+    "crop": "Tomato leaf",
+    "type": "Oomycete / Water mold",
+    "symptoms": "Caused by Phytophthora infestans. Produces large, water-soaked pale-green to dark brown patches that spread quickly in humid weather.",
+    "treatments_organic": [
+      {
+        "step": 1,
+        "text": "Prune severely affected stems and bury them deeply away from farm."
+      },
+      {
+        "step": 2,
+        "text": "Apply 1% Bordeaux mixture on clear mornings on both leaf surfaces."
+      },
+      {
+        "step": 3,
+        "text": "Ensure quick drainage and avoid overhead sprinkler irrigation."
+      }
+    ],
+    "chemical_caution": {
+      "headline": "Systemic fungicide (Metalaxyl + Mancozeb). Follow pre-harvest interval.",
+      "caution": "Do not harvest within 7 days of application. Wash thoroughly before consumption."
+    },
+    "cost": {
+      "avg_price": "₹160",
+      "govt_price": "₹80",
+      "unit": "per 15 L tank",
+      "note": "Sample pricing shown here. Subsidized bio-fungicides available through agro clinics."
+    },
+    "prevention": [
+      {
+        "step": 1,
+        "text": "Use certified disease-resistant tomato varieties for rainy season planting."
+      },
+      {
+        "step": 2,
+        "text": "Stake and trellis plants to keep leaves clean and off damp soil."
+      },
+      {
+        "step": 3,
+        "text": "Sanitize pruning shears with spirit or bleach between plants."
+      }
+    ],
+    "fertilizer": "Avoid high potassium deficiency; maintain balanced micronutrients with calcium and boron.",
+    "farmer_tip": "Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.",
+    "voice_text": "Tomato leaf diagnosis: Late blight, Water mold disease. Prune severely affected stems, apply 1% Bordeaux mixture on clear mornings, and avoid sprinkler irrigation.",
+    "voice_treatment": "Step 1: Prune severely affected stems and bury them deeply away from farm. Step 2: Apply 1% Bordeaux mixture on clear mornings on both leaf surfaces. Step 3: Ensure quick drainage and avoid overhead sprinkler irrigation. If it keeps spreading, use systemic fungicide Metalaxyl + Mancozeb. Do not harvest within 7 days of application.",
+    "voice_prevention": "Step 1: Use certified disease-resistant tomato varieties for rainy season planting. Step 2: Stake and trellis plants to keep leaves clean and off damp soil. Step 3: Sanitize pruning shears with spirit or bleach between plants. Farmer pro tip: Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season."
+  },
+  "tomato_healthy": {
+    "review_status": "verified",
+    "name": "Healthy leaf",
+    "crop": "Tomato leaf",
+    "type": "Normal crop",
+    "symptoms": "Vibrant green foliage with no detectable fungal lesions, blight, or severe pest damage.",
+    "treatments_organic": [
+      {
+        "step": 1,
+        "text": "No disease treatment required. Continue regular maintenance."
+      },
+      {
+        "step": 2,
+        "text": "Apply organic compost or vermicompost every 3 weeks at plant base."
+      },
+      {
+        "step": 3,
+        "text": "Inspect the undersides of leaves weekly for early signs of whiteflies or aphids."
+      }
+    ],
+    "chemical_caution": {
+      "headline": "No chemicals recommended.",
+      "caution": "Keep chemical sprays away from healthy crops to protect beneficial pollinators."
+    },
+    "cost": {
+      "avg_price": "₹0",
+      "govt_price": "₹0",
+      "unit": "Routine care",
+      "note": "Preventive maintenance saves up to 40% of seasonal plant protection costs."
+    },
+    "prevention": [
+      {
+        "step": 1,
+        "text": "Spray mild diluted cow urine or Panchagavya monthly to boost natural immunity."
+      },
+      {
+        "step": 2,
+        "text": "Install yellow sticky traps to catch flying sucking pests early."
+      },
+      {
+        "step": 3,
+        "text": "Keep field perimeter free of wild solanaceous weeds."
+      }
+    ],
+    "fertilizer": "Continue applying vermicompost and fermented bio-fertilizers like Jeevamrutha every 2–3 weeks.",
+    "farmer_tip": "Regular inspection in early morning helps spot any pest or fungus before it establishes.",
+    "voice_text": "Tomato leaf diagnosis: Healthy crop. No disease detected. Continue regular organic maintenance and water at base.",
+    "voice_treatment": "No disease treatment required. Continue regular maintenance. Step 2: Apply organic compost or vermicompost every 3 weeks at plant base. Step 3: Inspect the undersides of leaves weekly for early signs of whiteflies or aphids. No chemicals recommended.",
+    "voice_prevention": "Step 1: Spray mild diluted cow urine or Panchagavya monthly to boost natural immunity. Step 2: Install yellow sticky traps to catch flying sucking pests early. Step 3: Keep field perimeter free of wild solanaceous weeds. Farmer pro tip: Regular inspection in early morning helps spot any pest or fungus before it establishes."
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../../types';
-import { translations } from '../../data/translations';
+import { i18n } from '../../services/i18nService';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { Cpu } from 'lucide-react';
 
@@ -13,10 +13,7 @@ interface AnalyzingLeafProps {
 export const AnalyzingLeaf: React.FC<AnalyzingLeafProps> = ({
   imageUrl,
   presetType,
-  language,
 }) => {
-  const t = translations[language];
-
   return (
     <div className="flex flex-col items-center justify-center min-h-[75vh] px-5 py-6 max-w-md mx-auto text-center">
       {/* 4-Step Progress Indicator */}
@@ -33,7 +30,7 @@ export const AnalyzingLeaf: React.FC<AnalyzingLeafProps> = ({
       <div className="relative w-64 h-64 bg-[#172b1d] rounded-3xl overflow-hidden shadow-lg border-2 border-[#2b4c34]">
         <LeafGraphic
           imageUrl={imageUrl}
-          variant={presetType as any || 'early_blight'}
+          variant={(presetType as any) || 'early_blight'}
           className="w-full h-full"
         />
 
@@ -47,17 +44,17 @@ export const AnalyzingLeaf: React.FC<AnalyzingLeafProps> = ({
       {/* Status Heading */}
       <div className="mt-8">
         <h2 className="font-editorial text-2xl font-bold text-[#162a45]">
-          {t.analyzing_title}
+          {i18n.t('analyzing_title')}
         </h2>
         <p className="text-sm text-[#475569] mt-2 max-w-xs mx-auto leading-relaxed">
-          {t.analyzing_desc}
+          {i18n.t('analyzing_desc')}
         </p>
       </div>
 
       {/* Offline AI indicator badge */}
       <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#eaf2f8] border border-[#d2e4f3] rounded-full text-xs font-medium text-[#0b72c9]">
         <Cpu className="w-3.5 h-3.5 animate-spin" />
-        <span>{t.analyzing_hint}</span>
+        <span>{i18n.t('analyzing_hint')}</span>
       </div>
     </div>
   );
