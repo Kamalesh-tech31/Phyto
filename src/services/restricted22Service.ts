@@ -108,10 +108,24 @@ export class Restricted22Service {
       (e) => e.crop === crop && e.class_name.toLowerCase() === className.toLowerCase()
     );
 
-    const isFallbackEnglish = Boolean(lang && lang !== 'en');
+    let localizedEntry = match || null;
+    let isFallbackEnglish = false;
+
+    if (match && lang && lang !== 'en') {
+      if (match.translations && match.translations[lang]) {
+        localizedEntry = {
+          ...match,
+          prevention: match.translations[lang].prevention || match.prevention,
+          local_prevention: match.translations[lang].local_prevention || match.local_prevention,
+        };
+        isFallbackEnglish = false;
+      } else {
+        isFallbackEnglish = true;
+      }
+    }
 
     return {
-      entry: match || null,
+      entry: localizedEntry,
       isPest,
       isHealthy,
       isFallbackEnglish,

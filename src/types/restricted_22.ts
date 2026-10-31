@@ -18,6 +18,11 @@ export interface RestrictedPreventionEntry {
   local_prevention?: string[];
   notes?: string[];
   sources?: string[];
+  translations?: Record<string, {
+    review_status: string;
+    prevention: string[];
+    local_prevention?: string[];
+  }>;
 }
 
 export interface PreventionLookupResult {
