@@ -19,6 +19,7 @@ English (`src/locales/en.json`) is the canonical source of truth.
 
 ## Camera and Blur Detection Strings (Added for abinav2 Camera Integration)
 The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`, `ta.json`, `hi.json`, `te.json`):
+- `enable_camera`: Prompt to enable camera on prompt state
 - `start_camera`: Prompt to activate live camera viewfinder
 - `starting_camera`: Loading state while camera stream initializes
 - `camera_denied_title` & `camera_denied_desc`: Permission denied notification and guidance
@@ -28,6 +29,7 @@ The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`
 - `camera_retry_btn`: Action to retry camera permission / initialization
 - `camera_gallery_fallback`: Action to upload from device photo gallery
 - `camera_switch`: Action to toggle front / rear camera
+- `camera_only_one`: Tooltip/label when only a single camera is detected
 - `hint_hold_steady`: Live preview hint when motion or blur is detected
 - `hint_too_dark`: Live preview hint when ambient light is insufficient
 - `hint_too_bright`: Live preview hint when glare or direct light is detected
@@ -36,4 +38,3 @@ The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`
 - `btn_scan_anyway`: Secondary action when photo is blurry or low confidence
 
 **Review Status**: English (`en`) is canonical; Malayalam (`ml`), Tamil (`ta`), Hindi (`hi`), and Telugu (`te`) are machine-translated and marked for native speaker review.
-

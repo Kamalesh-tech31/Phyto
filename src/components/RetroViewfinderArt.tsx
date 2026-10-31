@@ -1,5 +1,53 @@
 import React from 'react';
 
+export const RetroFrameOverlay: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <svg
+    viewBox="0 0 400 450"
+    className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
+    preserveAspectRatio="none"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* 1.5px dashed inner line in vf-frame at 40% opacity, inset 14px, connecting corners */}
+    <rect
+      x="14"
+      y="14"
+      width="372"
+      height="422"
+      rx="6"
+      fill="none"
+      stroke="var(--color-vf-frame)"
+      strokeWidth="1.5"
+      strokeDasharray="6 6"
+      opacity="0.4"
+    />
+
+    {/* 4px vf-frame L-shaped corners with rounded outer corners and thin dark outline for contrast, placed 14px inside frame edges */}
+    <g stroke="var(--color-shadow-color)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none">
+      {/* Top-Left */}
+      <path d="M 14,48 L 14,20 Q 14,14 20,14 L 48,14" />
+      {/* Top-Right */}
+      <path d="M 352,14 L 380,14 Q 386,14 386,20 L 386,48" />
+      {/* Bottom-Left */}
+      <path d="M 14,402 L 14,430 Q 14,436 20,436 L 48,436" />
+      {/* Bottom-Right */}
+      <path d="M 386,402 L 386,430 Q 386,436 380,436 L 352,436" />
+    </g>
+
+    {/* 4px vf-frame corner stroke on top */}
+    <g stroke="var(--color-vf-frame)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none">
+      {/* Top-Left */}
+      <path d="M 14,48 L 14,20 Q 14,14 20,14 L 48,14" />
+      {/* Top-Right */}
+      <path d="M 352,14 L 380,14 Q 386,14 386,20 L 386,48" />
+      {/* Bottom-Left */}
+      <path d="M 14,402 L 14,430 Q 14,436 20,436 L 48,436" />
+      {/* Bottom-Right */}
+      <path d="M 386,402 L 386,430 Q 386,436 380,436 L 352,436" />
+    </g>
+  </svg>
+);
+
 interface RetroViewfinderArtProps {
   variant?: 'healthy' | 'early_blight' | 'late_blight' | 'uncertain' | 'blurry';
   className?: string;
@@ -19,13 +67,12 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
 
   return (
     <div className={`relative w-full h-full overflow-hidden select-none ${className}`}>
-      {/* If live camera video is active, show video instead of poster layers a to e */}
-      {isVideoLive ? (
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[var(--color-vf-bg)]">
-          {children}
-        </div>
-      ) : (
-        /* Stylish Retro Poster Art (Flat vector, no gradients, no blur, no glow) */
+      {/* Layer 1: Background flat vector poster art (rendered at z-0, visible unless video is live) */}
+      <div
+        className={`absolute inset-0 w-full h-full transition-opacity duration-200 z-0 ${
+          isVideoLive ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         <svg
           viewBox="0 0 400 450"
           className="w-full h-full object-cover"
@@ -54,33 +101,25 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
 
           {/* Layer d: Subtle halftone dot pattern along the bottom third in vf-ray */}
           <g fill="var(--color-vf-ray)">
-            {/* Row 1 (y=325, r=1.5) */}
             <circle cx="36" cy="325" r="1.5" /><circle cx="64" cy="325" r="1.5" /><circle cx="92" cy="325" r="1.5" /><circle cx="120" cy="325" r="1.5" /><circle cx="148" cy="325" r="1.5" /><circle cx="176" cy="325" r="1.5" /><circle cx="204" cy="325" r="1.5" /><circle cx="232" cy="325" r="1.5" /><circle cx="260" cy="325" r="1.5" /><circle cx="288" cy="325" r="1.5" /><circle cx="316" cy="325" r="1.5" /><circle cx="344" cy="325" r="1.5" /><circle cx="368" cy="325" r="1.5" />
-            {/* Row 2 (y=350, r=2.2) */}
             <circle cx="36" cy="350" r="2.2" /><circle cx="64" cy="350" r="2.2" /><circle cx="92" cy="350" r="2.2" /><circle cx="120" cy="350" r="2.2" /><circle cx="148" cy="350" r="2.2" /><circle cx="176" cy="350" r="2.2" /><circle cx="204" cy="350" r="2.2" /><circle cx="232" cy="350" r="2.2" /><circle cx="260" cy="350" r="2.2" /><circle cx="288" cy="350" r="2.2" /><circle cx="316" cy="350" r="2.2" /><circle cx="344" cy="350" r="2.2" /><circle cx="368" cy="350" r="2.2" />
-            {/* Row 3 (y=375, r=2.8) */}
             <circle cx="36" cy="375" r="2.8" /><circle cx="64" cy="375" r="2.8" /><circle cx="92" cy="375" r="2.8" /><circle cx="120" cy="375" r="2.8" /><circle cx="148" cy="375" r="2.8" /><circle cx="176" cy="375" r="2.8" /><circle cx="204" cy="375" r="2.8" /><circle cx="232" cy="375" r="2.8" /><circle cx="260" cy="375" r="2.8" /><circle cx="288" cy="375" r="2.8" /><circle cx="316" cy="375" r="2.8" /><circle cx="344" cy="375" r="2.8" /><circle cx="368" cy="375" r="2.8" />
-            {/* Row 4 (y=400, r=3.4) */}
             <circle cx="36" cy="400" r="3.4" /><circle cx="64" cy="400" r="3.4" /><circle cx="92" cy="400" r="3.4" /><circle cx="120" cy="400" r="3.4" /><circle cx="148" cy="400" r="3.4" /><circle cx="176" cy="400" r="3.4" /><circle cx="204" cy="400" r="3.4" /><circle cx="232" cy="400" r="3.4" /><circle cx="260" cy="400" r="3.4" /><circle cx="288" cy="400" r="3.4" /><circle cx="316" cy="400" r="3.4" /><circle cx="344" cy="400" r="3.4" /><circle cx="368" cy="400" r="3.4" />
-            {/* Row 5 (y=425, r=4.0) */}
             <circle cx="36" cy="425" r="4.0" /><circle cx="64" cy="425" r="4.0" /><circle cx="92" cy="425" r="4.0" /><circle cx="120" cy="425" r="4.0" /><circle cx="148" cy="425" r="4.0" /><circle cx="176" cy="425" r="4.0" /><circle cx="204" cy="425" r="4.0" /><circle cx="232" cy="425" r="4.0" /><circle cx="260" cy="425" r="4.0" /><circle cx="288" cy="425" r="4.0" /><circle cx="316" cy="425" r="4.0" /><circle cx="344" cy="425" r="4.0" /><circle cx="368" cy="425" r="4.0" />
           </g>
 
           {/* Layer e: The leaf with hard offset shadow, outline, veins, and spots */}
-          {/* Stem Shadow */}
           <path
             d="M 204,324 L 204,349"
             stroke="var(--color-vf-leaf-shadow)"
             strokeWidth="4"
             strokeLinecap="round"
           />
-          {/* Leaf Hard Offset Shadow (+4px, +4px) */}
           <path
             d="M 204,64 C 279,119 299,224 204,324 C 109,224 129,119 204,64 Z"
             fill="var(--color-vf-leaf-shadow)"
           />
 
-          {/* Stem */}
           <path
             d="M 200,320 L 200,345"
             stroke="var(--color-vf-leaf-outline)"
@@ -88,7 +127,6 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
             strokeLinecap="round"
           />
 
-          {/* Leaf Body: filled with vf-leaf, 3px stroke in vf-leaf-outline */}
           <path
             d="M 200,60 C 275,115 295,220 200,320 C 105,220 125,115 200,60 Z"
             fill="var(--color-vf-leaf)"
@@ -97,7 +135,6 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
             strokeLinejoin="round"
           />
 
-          {/* Central Main Stem Vein in vf-vein at 2.5px with round caps */}
           <path
             d="M 200,75 L 200,315"
             stroke="var(--color-vf-vein)"
@@ -105,7 +142,6 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
             strokeLinecap="round"
           />
 
-          {/* Lateral Veins in vf-vein at 2.5px with round caps */}
           <path
             d="M 200,120 L 240,95 M 200,120 L 160,95 M 200,165 L 255,138 M 200,165 L 145,138 M 200,215 L 255,190 M 200,215 L 145,190 M 200,265 L 235,250 M 200,265 L 165,250"
             stroke="var(--color-vf-vein)"
@@ -113,22 +149,18 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
             strokeLinecap="round"
           />
 
-          {/* 3 Disease Spots in vf-spot (only if not healthy), each with dark ring and highlight dot */}
           {!isHealthy && (
             <g>
-              {/* Spot 1: Upper left */}
               <circle cx="160" cy="145" r="14" fill="var(--color-vf-leaf-outline)" />
               <circle cx="160" cy="145" r="12" fill="var(--color-vf-spot)" />
               <circle cx="160" cy="145" r="6.5" fill="none" stroke="var(--color-vf-leaf-outline)" strokeWidth="1.5" />
               <circle cx="157" cy="142" r="2.2" fill="var(--color-vf-vein)" />
 
-              {/* Spot 2: Middle right */}
               <circle cx="240" cy="190" r="17" fill="var(--color-vf-leaf-outline)" />
               <circle cx="240" cy="190" r="15" fill="var(--color-vf-spot)" />
               <circle cx="240" cy="190" r="8" fill="none" stroke="var(--color-vf-leaf-outline)" strokeWidth="1.5" />
               <circle cx="236" cy="186" r="2.5" fill="var(--color-vf-vein)" />
 
-              {/* Spot 3: Lower left */}
               <circle cx="180" cy="245" r="12" fill="var(--color-vf-leaf-outline)" />
               <circle cx="180" cy="245" r="10" fill="var(--color-vf-spot)" />
               <circle cx="180" cy="245" r="5" fill="none" stroke="var(--color-vf-leaf-outline)" strokeWidth="1.5" />
@@ -136,57 +168,17 @@ export const RetroViewfinderArt: React.FC<RetroViewfinderArtProps> = ({
             </g>
           )}
         </svg>
+      </div>
+
+      {/* Layer 2: Always mounted children (video element) at z-10 */}
+      {children && (
+        <div className="absolute inset-0 w-full h-full z-10 overflow-hidden">
+          {children}
+        </div>
       )}
 
-      {/* Frame overlay on top of the art (also visible over live video) */}
-      {showOverlay && (
-        <svg
-          viewBox="0 0 400 450"
-          className="absolute inset-0 w-full h-full pointer-events-none z-10"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* 1.5px dashed inner line in vf-frame at 40% opacity, inset 14px, connecting corners */}
-          <rect
-            x="14"
-            y="14"
-            width="372"
-            height="422"
-            rx="6"
-            fill="none"
-            stroke="var(--color-vf-frame)"
-            strokeWidth="1.5"
-            strokeDasharray="6 6"
-            opacity="0.4"
-          />
-
-          {/* 4px vf-frame L-shaped corners with rounded outer corners and thin dark outline for contrast, placed 14px inside frame edges */}
-          {/* Dark outline paths underneath (width 7px) */}
-          <g stroke="var(--color-shadow-color)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            {/* Top-Left */}
-            <path d="M 14,48 L 14,20 Q 14,14 20,14 L 48,14" />
-            {/* Top-Right */}
-            <path d="M 352,14 L 380,14 Q 386,14 386,20 L 386,48" />
-            {/* Bottom-Left */}
-            <path d="M 14,402 L 14,430 Q 14,436 20,436 L 48,436" />
-            {/* Bottom-Right */}
-            <path d="M 386,402 L 386,430 Q 386,436 380,436 L 352,436" />
-          </g>
-
-          {/* 4px vf-frame corner stroke on top */}
-          <g stroke="var(--color-vf-frame)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            {/* Top-Left */}
-            <path d="M 14,48 L 14,20 Q 14,14 20,14 L 48,14" />
-            {/* Top-Right */}
-            <path d="M 352,14 L 380,14 Q 386,14 386,20 L 386,48" />
-            {/* Bottom-Left */}
-            <path d="M 14,402 L 14,430 Q 14,436 20,436 L 48,436" />
-            {/* Bottom-Right */}
-            <path d="M 386,402 L 386,430 Q 386,436 380,436 L 352,436" />
-          </g>
-        </svg>
-      )}
+      {/* Layer 3: Frame Overlay at z-20 */}
+      {showOverlay && <RetroFrameOverlay className="z-20" />}
     </div>
   );
 };

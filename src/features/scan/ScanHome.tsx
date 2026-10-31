@@ -5,7 +5,7 @@ import { RetroViewfinderArt } from '../../components/RetroViewfinderArt';
 import {
   startCamera,
   stopStream,
-  captureFrame,
+  captureVideoFrame,
   mapCameraError,
   useLivePreview,
   CameraError,
@@ -14,7 +14,6 @@ import {
 import { analyzePreviewQuality } from '../../ml/quality';
 import {
   Image as ImageIcon,
-  Zap,
   Sparkles,
   Camera,
   RotateCcw,
@@ -27,7 +26,7 @@ interface ScanHomeProps {
   onImageSelected: (imageUrl: string, presetType?: string) => void;
 }
 
-type CameraState = 'idle' | 'starting' | 'streaming' | 'error' | 'capturing';
+type CameraState = 'idle' | 'starting' | 'live' | 'error';
 
 export const ScanHome: React.FC<ScanHomeProps> = ({
   language,
@@ -36,11 +35,17 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const sessionTokenRef = useRef<number>(0);
+  const capturedUrlRef = useRef<string | null>(null);
+  const wasLiveBeforeHideRef = useRef<boolean>(false);
 
   const [cameraState, setCameraState] = useState<CameraState>('idle');
+  const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
   const [cameraError, setCameraError] = useState<CameraError | null>(null);
   const [facingMode, setFacingMode] = useState<FacingMode>('environment');
-  const [torchActive, setTorchActive] = useState(false);
+  const [activeFacingMode, setActiveFacingMode] = useState<FacingMode>('environment');
+  const [cameraCount, setCameraCount] = useState<number>(2); // Default to >=2 until enumerated
+  const [isSwitching, setIsSwitching] = useState<boolean>(false);
   const [selectedSample, setSelectedSample] = useState<'early_blight' | 'late_blight' | 'healthy' | 'blurry'>('early_blight');
 
   // Live preview quality state (~5 fps)
@@ -63,70 +68,118 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
     if (videoRef.current) {
       videoRef.current.srcObject = null;
     }
+    setIsVideoPlaying(false);
   }, []);
 
-  // Request camera stream and attach to video element
+  // Check how many videoinput devices exist
+  const checkCameraDevices = useCallback(async () => {
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const vInputs = devices.filter((d) => d.kind === 'videoinput');
+        setCameraCount(vInputs.length);
+      } catch {
+        // Fallback: keep previous camera count
+      }
+    }
+  }, []);
+
+  // Request camera stream and attach to video element with race/cancellation safety
   const initCamera = useCallback(
     async (mode: FacingMode = 'environment') => {
+      const currentToken = ++sessionTokenRef.current;
       setCameraError(null);
       setCameraState('starting');
+      setIsSwitching(true);
+
+      // Cleanly stop existing stream and detach video
       stopActiveStream();
 
       try {
         const stream = await startCamera(mode);
+
+        // Cancelled or double-mounted during async getUserMedia
+        if (currentToken !== sessionTokenRef.current) {
+          stopStream(stream);
+          return;
+        }
+
         streamRef.current = stream;
+
+        // Detect actual facingMode from track settings
+        const videoTrack = stream.getVideoTracks()[0];
+        if (videoTrack) {
+          const settings = videoTrack.getSettings ? videoTrack.getSettings() : undefined;
+          const detected = (settings?.facingMode as FacingMode) || mode;
+          setActiveFacingMode(detected);
+
+          videoTrack.onended = () => {
+            if (currentToken === sessionTokenRef.current) {
+              setCameraState('idle');
+              setIsVideoPlaying(false);
+            }
+          };
+        }
 
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
-          await videoRef.current.play();
+          try {
+            await videoRef.current.play();
+          } catch (playErr) {
+            console.warn('[ScanHome] video play caught:', playErr);
+          }
         }
-        setCameraState('streaming');
+
+        setFacingMode(mode);
+        await checkCameraDevices();
       } catch (err) {
+        if (currentToken !== sessionTokenRef.current) return;
+        console.error('[ScanHome] startCamera error:', err);
         const mapped = mapCameraError(err);
         setCameraError(mapped);
         setCameraState('error');
+        setIsVideoPlaying(false);
+      } finally {
+        if (currentToken === sessionTokenRef.current) {
+          setIsSwitching(false);
+        }
       }
     },
-    [stopActiveStream]
+    [stopActiveStream, checkCameraDevices]
   );
 
   // Switch between front and rear cameras
   const handleToggleFacingMode = () => {
+    if (isSwitching || cameraCount <= 1) return;
     const nextMode: FacingMode = facingMode === 'environment' ? 'user' : 'environment';
-    setFacingMode(nextMode);
-    if (cameraState === 'streaming') {
-      initCamera(nextMode);
-    }
+    initCamera(nextMode);
   };
 
-  // Start camera on user tap
+  // Start camera on user action
   const handleStartCamera = () => {
     initCamera(facingMode);
   };
 
-  // Capture frame from active streaming video
+  // Capture frame from active streaming video capped at 1280px native resolution
   const handleCapture = async () => {
     const video = videoRef.current;
-    if (!video || cameraState !== 'streaming') return;
+    if (!video || !isVideoPlaying) return;
 
     try {
-      setCameraState('capturing');
-      // Capture the visible frame directly from the video stream
-      const bitmap = await captureFrame(video);
+      // 1. Capture raw unmirrored frame
+      const { objectUrl } = await captureVideoFrame(video, 1280);
 
-      // Stop camera tracks immediately after frame capture
+      // 2. Revoke previously generated blob URL
+      if (capturedUrlRef.current && capturedUrlRef.current.startsWith('blob:')) {
+        URL.revokeObjectURL(capturedUrlRef.current);
+      }
+      capturedUrlRef.current = objectUrl;
+
+      // 3. Stop camera tracks cleanly
       stopActiveStream();
 
-      // Convert bitmap to JPEG data URL
-      const canvas = document.createElement('canvas');
-      canvas.width = bitmap.width;
-      canvas.height = bitmap.height;
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.drawImage(bitmap, 0, 0);
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-        onImageSelected(dataUrl, 'camera');
-      }
+      // 4. Pass captured photo URL to app flow
+      onImageSelected(objectUrl, 'camera');
     } catch (err) {
       console.error('[ScanHome] Capture error:', err);
       setCameraError({
@@ -142,17 +195,17 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
 
   // Shutter button click dispatcher
   const handleShutterClick = () => {
-    if (cameraState === 'streaming') {
+    if (cameraState === 'live' && isVideoPlaying) {
       handleCapture();
     } else if (cameraState === 'idle' || cameraState === 'error') {
       handleStartCamera();
     }
   };
 
-  // Live preview quality analysis hook: ~5 fps on 160x160 canvas
+  // Live preview quality analysis hook: ~5 fps on 160x160 canvas (reads raw unmirrored video)
   useLivePreview(
     videoRef,
-    cameraState === 'streaming',
+    cameraState === 'live' && isVideoPlaying,
     (imageData: ImageData) => {
       try {
         const res = analyzePreviewQuality(imageData);
@@ -162,11 +215,72 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           motion: !res.sharp,
         });
       } catch {
-        // Ignore live sampling glitch
+        // Ignore sampling glitch
       }
     },
     5
   );
+
+  // Initial check on mount: auto-start if permission granted, otherwise idle
+  useEffect(() => {
+    let isMounted = true;
+
+    // Enumerate camera devices
+    checkCameraDevices();
+
+    // Device change listener
+    const handleDeviceChange = () => {
+      if (isMounted) checkCameraDevices();
+    };
+    if (navigator.mediaDevices && navigator.mediaDevices.addEventListener) {
+      navigator.mediaDevices.addEventListener('devicechange', handleDeviceChange);
+    }
+
+    // Permission check
+    const checkPermissions = async () => {
+      if (navigator.permissions && navigator.permissions.query) {
+        try {
+          const status = await navigator.permissions.query({ name: 'camera' as PermissionName });
+          if (!isMounted) return;
+
+          if (status.state === 'granted') {
+            initCamera('environment');
+          } else if (status.state === 'denied') {
+            setCameraError(mapCameraError({ name: 'NotAllowedError' }));
+            setCameraState('error');
+          } else {
+            setCameraState('idle');
+          }
+
+          status.onchange = () => {
+            if (!isMounted) return;
+            if (status.state === 'granted') {
+              initCamera('environment');
+            } else if (status.state === 'denied') {
+              stopActiveStream();
+              setCameraError(mapCameraError({ name: 'NotAllowedError' }));
+              setCameraState('error');
+            }
+          };
+          return;
+        } catch {
+          // Permissions query API unsupported for camera
+        }
+      }
+      if (isMounted) {
+        setCameraState('idle');
+      }
+    };
+
+    checkPermissions();
+
+    return () => {
+      isMounted = false;
+      if (navigator.mediaDevices && navigator.mediaDevices.removeEventListener) {
+        navigator.mediaDevices.removeEventListener('devicechange', handleDeviceChange);
+      }
+    };
+  }, [initCamera, checkCameraDevices, stopActiveStream]);
 
   // Gallery file picker change handler
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -190,13 +304,18 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
     onImageSelected(`sample:${sampleType}`, sampleType);
   };
 
-  // Stop stream when tab is hidden or component unmounts
+  // Stop stream when tab is hidden or component unmounts; resume on visibility if previously live
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        stopActiveStream();
-        if (cameraState === 'streaming') {
-          setCameraState('idle');
+        if (streamRef.current) {
+          wasLiveBeforeHideRef.current = cameraState === 'live' && isVideoPlaying;
+          stopActiveStream();
+        }
+      } else {
+        if (wasLiveBeforeHideRef.current) {
+          wasLiveBeforeHideRef.current = false;
+          initCamera(facingMode);
         }
       }
     };
@@ -206,8 +325,11 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       stopActiveStream();
+      if (capturedUrlRef.current && capturedUrlRef.current.startsWith('blob:')) {
+        URL.revokeObjectURL(capturedUrlRef.current);
+      }
     };
-  }, [stopActiveStream, cameraState]);
+  }, [stopActiveStream, cameraState, isVideoPlaying, initCamera, facingMode]);
 
   return (
     <div className="flex flex-col px-5 pt-3 pb-24 max-w-md mx-auto">
@@ -230,90 +352,92 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         className="hidden"
       />
 
-      {/* Main Viewfinder Card */}
+      {/* Main Viewfinder Card - 14px rounded retro card with 3px shadow */}
       <div className="relative w-full aspect-[4/4.5] bg-[var(--color-vf-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] overflow-hidden">
-        {/* Retro Poster Scene or Live Camera Stream with Frame Overlay */}
+        {/* Layer 1 & 2: Retro Poster Scene + Always-mounted Video + Frame Overlay */}
         <RetroViewfinderArt
           variant={selectedSample}
-          showOverlay={cameraState !== 'error'}
-          isVideoLive={cameraState === 'streaming' || cameraState === 'capturing'}
+          showOverlay={true}
+          isVideoLive={cameraState === 'live' && isVideoPlaying}
           className="w-full h-full"
         >
-          {/* Live Video Element */}
+          {/* Live Video Element: Always in DOM at z-10, transitions opacity when playing */}
           <video
             ref={videoRef}
+            autoPlay
             playsInline
             muted
-            autoPlay
-            className={`w-full h-full object-cover transition-opacity duration-200 ${
-              cameraState === 'streaming' || cameraState === 'capturing'
+            onPlaying={() => {
+              if (videoRef.current && videoRef.current.videoWidth > 0) {
+                setIsVideoPlaying(true);
+                setCameraState('live');
+              }
+            }}
+            onLoadedMetadata={() => {
+              if (videoRef.current) {
+                videoRef.current.play().catch(() => {});
+              }
+            }}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+              cameraState === 'live' && isVideoPlaying
                 ? 'opacity-100'
-                : 'opacity-0'
+                : 'opacity-0 pointer-events-none'
             }`}
+            style={activeFacingMode === 'user' ? { transform: 'scaleX(-1)' } : undefined}
           />
         </RetroViewfinderArt>
 
-        {/* Idle State: Tap anywhere in viewfinder to activate live camera */}
+        {/* UI Overlay: Idle State ("Enable camera" centered button over poster art) */}
         {cameraState === 'idle' && (
-          <button
-            onClick={handleStartCamera}
-            className="absolute inset-0 z-10 w-full h-full flex flex-col items-center justify-center bg-black/10 hover:bg-black/5 transition-colors cursor-pointer group"
-            aria-label={t('start_camera', undefined, language)}
-          >
-            <div className="px-4 py-2 rounded-full bg-[var(--color-surface)] border-2 border-[var(--color-outline)] text-[var(--color-ink)] shadow-[2px_2px_0_var(--color-shadow-color)] flex items-center gap-2 group-hover:scale-105 transition-transform">
+          <div className="absolute inset-0 z-25 flex items-center justify-center pointer-events-auto">
+            <button
+              onClick={handleStartCamera}
+              className="px-4 py-2.5 rounded-full bg-[var(--color-surface)] border-2 border-[var(--color-outline)] text-[var(--color-ink)] shadow-[2px_2px_0_var(--color-shadow-color)] flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform cursor-pointer retro-focus"
+              aria-label={t('enable_camera', undefined, language)}
+            >
               <Camera className="w-4 h-4 text-[var(--color-primary)] stroke-[2.5]" />
-              <span className="text-xs font-bold">{t('start_camera', undefined, language)}</span>
-            </div>
-          </button>
+              <span className="text-xs font-bold">{t('enable_camera', undefined, language)}</span>
+            </button>
+          </div>
         )}
 
-        {/* Starting Camera Spinner */}
+        {/* UI Overlay: Starting Camera Indicator */}
         {cameraState === 'starting' && (
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[var(--color-vf-bg)]/80 backdrop-blur-sm p-6 text-center">
-            <div className="w-9 h-9 border-3 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mb-3" />
-            <p className="text-xs font-bold text-[var(--color-ink)]">
-              {t('starting_camera', undefined, language)}
-            </p>
-          </div>
-        )}
-
-        {/* Capturing Indicator */}
-        {cameraState === 'capturing' && (
-          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
-            <div className="w-9 h-9 border-3 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mb-3" />
-            <p className="text-xs font-bold text-white">
-              {t('take_photo_btn', undefined, language)}...
-            </p>
-          </div>
-        )}
-
-        {/* Error State: Clear translated permission / device error view */}
-        {cameraState === 'error' && (
-          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[var(--color-surface)] p-6 text-center">
-            <div className="w-12 h-12 rounded-full bg-[var(--color-warning-bg)] border border-[var(--color-outline)] flex items-center justify-center mb-3">
-              <AlertCircle className="w-6 h-6 text-[var(--color-warning-text)]" />
+          <div className="absolute inset-0 z-25 flex items-center justify-center pointer-events-none">
+            <div className="px-4 py-2 rounded-full bg-[var(--color-surface)]/95 backdrop-blur-sm border-2 border-[var(--color-outline)] text-[var(--color-ink)] shadow-[2px_2px_0_var(--color-shadow-color)] flex items-center gap-2">
+              <div className="w-3.5 h-3.5 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin motion-reduce:hidden" />
+              <span className="text-xs font-bold">{t('starting_camera', undefined, language)}</span>
             </div>
-            <h3 className="font-editorial text-lg font-bold text-[var(--color-ink)] mb-1.5">
+          </div>
+        )}
+
+        {/* UI Overlay: Error State (Translated permission / hardware error over poster art) */}
+        {cameraState === 'error' && (
+          <div className="absolute inset-0 z-25 flex flex-col items-center justify-center p-6 text-center bg-[var(--color-surface)]/95 backdrop-blur-sm m-4 rounded-[12px] border-2 border-[var(--color-outline)] shadow-[2px_2px_0_var(--color-shadow-color)]">
+            <div className="w-10 h-10 rounded-full bg-[var(--color-warning-bg)] border border-[var(--color-outline)] flex items-center justify-center mb-2">
+              <AlertCircle className="w-5 h-5 text-[var(--color-warning-text)]" />
+            </div>
+            <h3 className="font-editorial text-base font-bold text-[var(--color-ink)] mb-1">
               {cameraError?.messageKey
                 ? t(cameraError.messageKey, undefined, language)
                 : t('camera_denied_title', undefined, language)}
             </h3>
-            <p className="text-xs text-[var(--color-muted)] mb-5 leading-relaxed max-w-xs">
+            <p className="text-xs text-[var(--color-muted)] mb-4 leading-relaxed max-w-xs">
               {cameraError?.descKey
                 ? t(cameraError.descKey, undefined, language)
                 : t('camera_denied_desc', undefined, language)}
             </p>
-            <div className="flex flex-col gap-2.5 w-full max-w-xs">
+            <div className="flex gap-2 w-full max-w-xs">
               <button
                 onClick={handleStartCamera}
-                className="w-full py-2.5 retro-btn-primary text-xs font-bold flex items-center justify-center gap-2 retro-focus"
+                className="flex-1 py-2 retro-btn-primary text-xs font-bold flex items-center justify-center gap-1.5 retro-focus"
               >
                 <RefreshCw className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>{t('camera_retry_btn', undefined, language)}</span>
               </button>
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full py-2.5 retro-btn-surface text-xs font-bold flex items-center justify-center gap-2 retro-focus"
+                className="flex-1 py-2 retro-btn-surface text-xs font-bold flex items-center justify-center gap-1.5 retro-focus"
               >
                 <ImageIcon className="w-3.5 h-3.5 stroke-[2]" />
                 <span>{t('camera_gallery_fallback', undefined, language)}</span>
@@ -322,13 +446,13 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           </div>
         )}
 
-        {/* Top Chips: placed inside frame overlay at top-8 left-7 right-7 without overlapping corner brackets */}
+        {/* Top Chips: Inside frame overlay at top-8 left-7 right-7 without overlapping corner brackets */}
         {cameraState !== 'error' && (
-          <div className="absolute top-8 left-7 right-7 z-20 flex items-center justify-between pointer-events-none">
+          <div className="absolute top-8 left-7 right-7 z-30 flex items-center justify-between pointer-events-none">
             <div className="flex items-center gap-2">
               {/* Light Status Chip */}
               <span className="px-3 py-1 bg-[var(--color-surface)] text-[var(--color-ink)] border-[1.5px] border-[var(--color-outline)] rounded-full text-xs font-bold shadow-[2px_2px_0_var(--color-shadow-color)]">
-                {cameraState === 'streaming'
+                {cameraState === 'live' && isVideoPlaying
                   ? liveQuality.bright
                     ? t('light_good', undefined, language)
                     : t('hint_check_light', undefined, language)
@@ -338,30 +462,24 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
               {/* Blur / Steady Motion Status Chip */}
               <span
                 className={`px-3 py-1 border-[1.5px] border-[var(--color-outline)] rounded-full text-xs font-bold shadow-[2px_2px_0_var(--color-shadow-color)] transition-colors ${
-                  cameraState === 'streaming' && !liveQuality.sharp
+                  cameraState === 'live' && isVideoPlaying && !liveQuality.sharp
                     ? 'bg-[var(--color-warning-bg)] text-[var(--color-warning-text)]'
                     : 'bg-[var(--color-surface)] text-[var(--color-ink)]'
                 }`}
               >
-                {cameraState === 'streaming'
+                {cameraState === 'live' && isVideoPlaying
                   ? liveQuality.sharp
                     ? t('hold_steady', undefined, language)
                     : t('hint_motion_blur', undefined, language)
                   : t('hold_steady', undefined, language)}
               </span>
             </div>
-
-            {torchActive && (
-              <span className="px-2.5 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-outline)] rounded-full text-[10px] font-bold shadow-[2px_2px_0_var(--color-shadow-color)]">
-                Torch ON
-              </span>
-            )}
           </div>
         )}
 
         {/* Caption: Centred at bottom-6, placed between bottom brackets */}
         {cameraState !== 'error' && (
-          <div className="absolute bottom-6 inset-x-0 z-20 flex justify-center pointer-events-none px-12">
+          <div className="absolute bottom-6 inset-x-0 z-30 flex justify-center pointer-events-none px-12">
             <span className="bg-[var(--color-surface)] text-[var(--color-ink)] border-[1.5px] border-[var(--color-outline)] px-3.5 py-1 rounded-full text-center text-xs font-bold shadow-[2px_2px_0_var(--color-shadow-color)] leading-none max-w-[260px] truncate">
               {t('fill_frame', undefined, language)}
             </span>
@@ -384,25 +502,23 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
         {/* Primary Shutter Button - Circular with ink outline and physical press */}
         <button
           onClick={handleShutterClick}
-          disabled={cameraState === 'starting' || cameraState === 'capturing'}
+          disabled={cameraState === 'starting'}
           className={`w-20 h-20 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] border-2 border-[var(--color-primary-outline)] shadow-[3px_3px_0_var(--color-shadow-color)] retro-btn-press flex items-center justify-center retro-focus ${
-            cameraState === 'starting' || cameraState === 'capturing'
-              ? 'opacity-70 cursor-not-allowed'
-              : ''
+            cameraState === 'starting' ? 'opacity-70 cursor-not-allowed' : ''
           }`}
           title={
-            cameraState === 'streaming'
+            cameraState === 'live' && isVideoPlaying
               ? t('take_photo_btn', undefined, language)
-              : t('start_camera', undefined, language)
+              : t('enable_camera', undefined, language)
           }
           aria-label={
-            cameraState === 'streaming'
+            cameraState === 'live' && isVideoPlaying
               ? t('take_photo_btn', undefined, language)
-              : t('start_camera', undefined, language)
+              : t('enable_camera', undefined, language)
           }
         >
           <div className="w-14 h-14 rounded-full border-2 border-[var(--color-on-primary)]/40 flex items-center justify-center">
-            {cameraState === 'streaming' ? (
+            {cameraState === 'live' && isVideoPlaying ? (
               <div className="w-3.5 h-3.5 rounded-full bg-[var(--color-on-primary)]" />
             ) : (
               <Camera className="w-5 h-5 stroke-[2.5]" />
@@ -410,30 +526,26 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           </div>
         </button>
 
-        {/* Secondary Action: Flip Camera if Streaming, or Toggle Light Guide */}
-        {cameraState === 'streaming' ? (
-          <button
-            onClick={handleToggleFacingMode}
-            className="w-14 h-14 rounded-full retro-btn-surface flex items-center justify-center retro-focus"
-            title={t('camera_switch', undefined, language)}
-            aria-label={t('camera_switch', undefined, language)}
-          >
-            <RotateCcw className="w-6 h-6 stroke-[2]" />
-          </button>
-        ) : (
-          <button
-            onClick={() => setTorchActive(!torchActive)}
-            className={`w-14 h-14 rounded-full flex items-center justify-center retro-focus ${
-              torchActive
-                ? 'bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border-2 border-[var(--color-outline)] shadow-[3px_3px_0_var(--color-shadow-color)]'
-                : 'retro-btn-surface'
-            }`}
-            title="Toggle light guide"
-            aria-label="Toggle light guide"
-          >
-            <Zap className={`w-6 h-6 ${torchActive ? 'fill-current stroke-[2]' : 'stroke-[2]'}`} />
-          </button>
-        )}
+        {/* Secondary Action: Front / Back Camera Flip (Disabled if only 1 camera on device) */}
+        <button
+          onClick={handleToggleFacingMode}
+          disabled={isSwitching || cameraCount <= 1}
+          className={`w-14 h-14 rounded-full retro-btn-surface flex items-center justify-center retro-focus transition-opacity ${
+            cameraCount <= 1 || isSwitching ? 'opacity-40 cursor-not-allowed' : ''
+          }`}
+          title={
+            cameraCount <= 1
+              ? t('camera_only_one', undefined, language)
+              : t('camera_switch', undefined, language)
+          }
+          aria-label={
+            cameraCount <= 1
+              ? t('camera_only_one', undefined, language)
+              : t('camera_switch', undefined, language)
+          }
+        >
+          <RotateCcw className={`w-6 h-6 stroke-[2] ${isSwitching ? 'animate-spin' : ''}`} />
+        </button>
       </div>
 
       {/* Test Sample Leaves Bar for Immediate Farmer Prototyping */}

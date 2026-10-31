@@ -47,7 +47,7 @@ export async function startCamera(facingMode: FacingMode = 'environment'): Promi
   }
 
   try {
-    // Primary request: rear camera preferred, 1280x720 ideal
+    // Primary request: rear camera preferred, 1280x720 ideal (using ideal, never exact)
     const constraints: MediaStreamConstraints = {
       audio: false,
       video: {
@@ -132,9 +132,76 @@ export async function captureFrame(video: HTMLVideoElement): Promise<ImageBitmap
     throw new Error('Failed to create 2d rendering context for frame capture');
   }
 
-  // Draw the exact live visible video frame
+  // Draw the exact live visible video frame unmirrored
   ctx.drawImage(video, 0, 0, width, height);
   return await createImageBitmap(canvas);
+}
+
+/**
+ * Captures video frame capped at maxDimension (default 1280px) and produces a Blob and object URL.
+ * Never mirrored, captures raw video sensor pixels.
+ */
+export async function captureVideoFrame(
+  video: HTMLVideoElement,
+  maxDimension: number = 1280
+): Promise<{ blob: Blob; objectUrl: string }> {
+  if (!video) {
+    throw new Error('Video element is required to capture frame');
+  }
+
+  // Ensure video dimensions are available and video has rendered at least one frame
+  if (video.videoWidth === 0 || video.videoHeight === 0 || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+    await new Promise<void>((resolve) => {
+      let attempts = 0;
+      const check = () => {
+        attempts++;
+        if ((video.videoWidth > 0 && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) || attempts > 20) {
+          resolve();
+        } else {
+          setTimeout(check, 30);
+        }
+      };
+      check();
+    });
+  }
+
+  const origWidth = video.videoWidth || 1280;
+  const origHeight = video.videoHeight || 720;
+
+  let targetWidth = origWidth;
+  let targetHeight = origHeight;
+  const longest = Math.max(origWidth, origHeight);
+  if (longest > maxDimension) {
+    const scale = maxDimension / longest;
+    targetWidth = Math.round(origWidth * scale);
+    targetHeight = Math.round(origHeight * scale);
+  }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!ctx) {
+    throw new Error('Failed to create 2d rendering context for capture');
+  }
+
+  // Draw raw sensor frame without mirroring
+  ctx.drawImage(video, 0, 0, targetWidth, targetHeight);
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) {
+          reject(new Error('Failed to create blob from captured video frame'));
+          return;
+        }
+        const objectUrl = URL.createObjectURL(blob);
+        resolve({ blob, objectUrl });
+      },
+      'image/jpeg',
+      0.92
+    );
+  });
 }
 
 /**
@@ -176,6 +243,8 @@ export function mapCameraError(err: unknown): CameraError {
         name: 'OverconstrainedError',
         message: 'The camera could not satisfy the requested resolution.',
         nextStep: 'Try reloading with relaxed camera settings or use gallery upload.',
+        messageKey: 'camera_denied_title',
+        descKey: 'camera_denied_desc',
       };
     case 'SecurityError':
       return {
@@ -190,6 +259,8 @@ export function mapCameraError(err: unknown): CameraError {
         name: 'UnknownError',
         message: (err as Error)?.message || 'An unexpected camera error occurred.',
         nextStep: 'Please refresh the page or upload a photo from your gallery.',
+        messageKey: 'camera_denied_title',
+        descKey: 'camera_denied_desc',
       };
   }
 }
@@ -234,6 +305,7 @@ export function useLivePreview(
           video.videoHeight > 0 &&
           ctx
         ) {
+          // Draw raw video pixels without mirroring
           ctx.drawImage(video, 0, 0, 160, 160);
           try {
             const imageData = ctx.getImageData(0, 0, 160, 160);
