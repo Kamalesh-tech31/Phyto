@@ -198,14 +198,12 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         <button
           type="button"
           onClick={onViewRelatedScheme}
-          className="mt-3 w-full min-h-[52px] py-3.5 px-4 retro-btn-secondary text-sm flex items-center justify-between retro-focus"
+          className="mt-3 w-full min-h-[52px] py-3.5 px-4 retro-btn-secondary text-sm flex items-center justify-center gap-2 retro-focus"
         >
-          <div className="flex items-center gap-2">
-            <span>{t('related_schemes', undefined, language)}</span>
-            <span className="w-5 h-5 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0">
-              1
-            </span>
-          </div>
+          <span>{t('related_schemes', undefined, language)}</span>
+          <span className="w-5 h-5 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0">
+            1
+          </span>
           <ArrowRight className="w-4 h-4 stroke-[2.2]" />
         </button>
       )}
