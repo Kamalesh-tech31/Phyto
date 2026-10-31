@@ -1,0 +1,601 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-31T12:00:00Z",
+  "clips": {
+    "en/page_scan_home.mp3": {
+      "hash": "35b8590d81180c9a",
+      "text": "Check your crop. Take one clear photo of a single leaf. Phyto tells you what is wrong and what to do.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_photo_check.mp3": {
+      "hash": "91b1804c8b03bfd1",
+      "text": "Photo check page. Please verify sharpness, daylight, and distance before analyzing.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_analyzing.mp3": {
+      "hash": "52c4356603365680",
+      "text": "Analyzing leaf cells and spotting fungal lesions offline.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_result_uncertain.mp3": {
+      "hash": "4da15af0bc67ae76",
+      "text": "The photo is too blurry to diagnose accurately. Please retake photo in bright daylight holding the phone one hand-span away.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_history.mp3": {
+      "hash": "32c017b49b28ce06",
+      "text": "This is your scan history. All leaf diagnoses are saved on this phone.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_schemes.mp3": {
+      "hash": "a025f4a0845359f5",
+      "text": "Government schemes page. Browse agricultural subsidies and plant protection grants for vegetable farmers.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/page_settings.mp3": {
+      "hash": "06e004eaa5534bac",
+      "text": "Settings and farmer assistant. You can switch language, download offline packages, and adjust voice speed.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/voice_not_leaf.mp3": {
+      "hash": "fa0cc10699776c3d",
+      "text": "Please upload a photo of a plant leaf.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_early_blight_overview.mp3": {
+      "hash": "34e95dd56e4650b3",
+      "text": "Tomato leaf diagnosis: Early blight, Fungal disease. Remove infected lower leaves, spray neem solution in the evening, and water only at plant base.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_early_blight_treatment.mp3": {
+      "hash": "8c466bbb532f772b",
+      "text": "Step 1: Remove and burn the infected lower leaves. Step 2: Spray a neem-based solution in the evening. Step 3: Water at the base, not over the leaves. If it keeps spreading, use a fungicide registered for tomato. Follow the label exactly and wear gloves and a mask when spraying.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_early_blight_prevention.mp3": {
+      "hash": "b70ebefd3138cb7c",
+      "text": "Step 1: Mulch the soil around plants to prevent soil spores splashing onto lower leaves. Step 2: Maintain 45–60 cm distance between tomato plants for healthy air circulation. Step 3: Practice 3-year crop rotation; avoid planting tomatoes after potatoes or eggplants. Farmer pro tip: Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_late_blight_overview.mp3": {
+      "hash": "f2c28d179853b765",
+      "text": "Tomato leaf diagnosis: Late blight, Water mold disease. Prune severely affected stems, apply 1% Bordeaux mixture on clear mornings, and avoid sprinkler irrigation.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_late_blight_treatment.mp3": {
+      "hash": "9605143631614e3a",
+      "text": "Step 1: Prune severely affected stems and bury them deeply away from farm. Step 2: Apply 1% Bordeaux mixture on clear mornings on both leaf surfaces. Step 3: Ensure quick drainage and avoid overhead sprinkler irrigation. If it keeps spreading, use systemic fungicide Metalaxyl + Mancozeb. Do not harvest within 7 days of application.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_late_blight_prevention.mp3": {
+      "hash": "5cbc8752ecd38dc8",
+      "text": "Step 1: Use certified disease-resistant tomato varieties for rainy season planting. Step 2: Stake and trellis plants to keep leaves clean and off damp soil. Step 3: Sanitize pruning shears with spirit or bleach between plants. Farmer pro tip: Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_healthy_overview.mp3": {
+      "hash": "fa0f5eb1c6603601",
+      "text": "Tomato leaf diagnosis: Healthy crop. No disease detected. Continue regular organic maintenance and water at base.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_healthy_treatment.mp3": {
+      "hash": "44cc18cdf7546af1",
+      "text": "No disease treatment required. Continue regular maintenance. Step 2: Apply organic compost or vermicompost every 3 weeks at plant base. Step 3: Inspect the undersides of leaves weekly for early signs of whiteflies or aphids. No chemicals recommended.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "en/tomato_healthy_prevention.mp3": {
+      "hash": "e08f95688f45fde9",
+      "text": "Step 1: Spray mild diluted cow urine or Panchagavya monthly to boost natural immunity. Step 2: Install yellow sticky traps to catch flying sucking pests early. Step 3: Keep field perimeter free of wild solanaceous weeds. Farmer pro tip: Regular inspection in early morning helps spot any pest or fungus before it establishes.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_scan_home.mp3": {
+      "hash": "38bec5a03edc1e0f",
+      "text": "உங்கள் பயிரை சோதிக்கவும். ஒரே ஒரு இலையின் தெளிவான புகைப்படத்தை எடுக்கவும். என்ன பிரச்சனை மற்றும் என்ன செய்ய வேண்டும் என்பதை பைட்டோ கூறும்.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_photo_check.mp3": {
+      "hash": "870306added728b1",
+      "text": "புகைப்பட சோதனை பக்கம். தெளிவு, வெளிச்சம் மற்றும் தூரத்தை சரிபார்த்து பகுப்பாய்வு செய்யவும்.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_analyzing.mp3": {
+      "hash": "45ebf6f846a254df",
+      "text": "இலை செல்களை ஸ்கேன் செய்து ஆஃப்லைனில் பூஞ்சை அறிகுறிகளை கண்டறிகிறது.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_result_uncertain.mp3": {
+      "hash": "9dcbad66936de714",
+      "text": "துல்லியமான நோயறிதலுக்கு புகைப்படம் மிகவும் மங்கலாக உள்ளது. நல்ல பகல் வெளிச்சத்தில் மீண்டும் படம் எடுக்கவும்.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_history.mp3": {
+      "hash": "37c5bc669253a8b3",
+      "text": "இது உங்கள் ஸ்கேன் வரலாறு. போனில் சேமிக்கப்பட்ட அனைத்து பரிசோதனைகளும் இங்கு உள்ளன.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_schemes.mp3": {
+      "hash": "88336373d6d1b05c",
+      "text": "அரசு திட்டங்கள். காய்கறி விவசாயிகளுக்கான மானியங்கள் மற்றும் பயிர் பாதுகாப்பு உதவிகளை காண்க.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/page_settings.mp3": {
+      "hash": "e6acf75f2206d2c0",
+      "text": "அமைப்புகள் மற்றும் விவசாயி உதவியாளர். மொழியை மாற்றவும், ஆஃப்லைன் தொகுப்புகளை பதிவிறக்கவும், குரல் வேகத்தை மாற்றவும் முடியும்.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/voice_not_leaf.mp3": {
+      "hash": "3f5bc78aa372d804",
+      "text": "தயவுசெய்து தாவர இலையின் புகைப்படத்தைப் பதிவேற்றவும்.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_early_blight_overview.mp3": {
+      "hash": "4a5488769d7c2c86",
+      "text": "தக்காளி இலை பரிசோதனை முடிவு: ஆரம்பகால கருகல் நோய், பூஞ்சை நோய். பாதிக்கப்பட்ட கீழ் இலைகளை அகற்றவும், மாலையில் வேப்பெண்ணெய் தெளிக்கவும், வேர்ப்பகுதியில் மட்டும் நீர் பாய்ச்சவும்.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_early_blight_treatment.mp3": {
+      "hash": "86a609bd96d875c0",
+      "text": "படி 1: பாதிக்கப்பட்ட கீழ் இலைகளை அகற்றி எரிக்கவும். படி 2: மாலையில் வேப்ப எண்ணெய் கலவையைத் தெளிக்கவும். படி 3: இலைகளின் மேல் தெளிக்காமல் வேர்ப்பகுதியில் மட்டுமே நீர் பாய்ச்சவும். நோய் பரவினால் தக்காளிக்கு அங்கீகரிக்கப்பட்ட பூஞ்சைக்கொல்லியை பயன்படுத்தவும். கையுறைகள் மற்றும் முகக்கவசம் அணியவும்.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_early_blight_prevention.mp3": {
+      "hash": "a70322bb363e619e",
+      "text": "படி 1: மண் வித்துக்கள் தெறிப்பதைத் தடுக்க செடியின் அடியில் தழைக் கூளம் இடவும். படி 2: காற்றோட்டத்திற்கு தக்காளிச் செடிகளுக்கு இடையே 45–60 cm இடைவெளி பராமரிக்கவும். படி 3: 3 ஆண்டு பயிர் சுழற்சி முறையைக் கடைப்பிடிக்கவும். விவசாயிக்கு முக்கிய குறிப்பு: அறுவடைக்குப் பிறகு பாதிக்கப்பட்ட பயிர்க் கழிவுகளை முழுமையாக அழிக்கவும்.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_late_blight_overview.mp3": {
+      "hash": "fed9585d4d49b9ee",
+      "text": "தக்காளி இலை பரிசோதனை முடிவு: பின்கருகல் நோய். பாதிக்கப்பட்ட பகுதிகளை கவாத்து செய்து அகற்றவும், காலையில் 1% Bordeaux mixture தெளிக்கவும், தெளிப்பு பாசனத்தை தவிர்க்கவும்.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_late_blight_treatment.mp3": {
+      "hash": "aa7505cfe7083448",
+      "text": "படி 1: பாதிக்கப்பட்ட கிளைகளை வெட்டி பண்ணையிலிருந்து தூரமாக ஆழமாக புதைக்கவும். படி 2: காலை வேளையில் இலைகளின் இருபுறமும் 1% Bordeaux mixture தெளிக்கவும். படி 3: விரைவான வடிகால் வசதியை உறுதி செய்யவும். நோய் பரவினால் Metalaxyl + Mancozeb பயன்படுத்தவும். மருந்து தெளித்த 7 days வரை அறுவடை செய்யக்கூடாது.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_late_blight_prevention.mp3": {
+      "hash": "5ebded8862fdc526",
+      "text": "படி 1: சான்றளிக்கப்பட்ட நோய் எதிர்ப்பு தக்காளி வகைகளைப் பயன்படுத்தவும். படி 2: இலைகள் ஈர மண்ணில் படாமல் இருக்க ஊன்றுகோல் கட்டவும். படி 3: கருவிகளை கிருமி நீக்கம் செய்யவும். விவசாயிக்கு முக்கிய குறிப்பு: அறுவடைக்குப் பிறகு பாதிக்கப்பட்ட பயிர்க் கழிவுகளை முழுமையாக அழிக்கவும்.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_healthy_overview.mp3": {
+      "hash": "d05405d478e88050",
+      "text": "தக்காளி இலை பரிசோதனை முடிவு: ஆரோக்கியமான பயிர். எந்த நோயும் கண்டறியப்படவில்லை. வழக்கமான இயற்கை பராமரிப்பைத் தொடரவும்.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_healthy_treatment.mp3": {
+      "hash": "2cc0492d579808c8",
+      "text": "நோய் சிகிச்சை எதுவும் தேவையில்லை. வழக்கமான பராமரிப்பைத் தொடரவும். படி 2: 3 வாரங்களுக்கு ஒருமுறை செடியின் அடியில் மண்புழு உரம் இடவும். படி 3: வெள்ளை ஈக்கள் அல்லது அசுவினிகள் உள்ளனவா என்று வாரந்தோறும் இலையின் அடிப்பகுதியை பரிசோதிக்கவும். ரசாயனங்கள் தேவையில்லை.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ta/tomato_healthy_prevention.mp3": {
+      "hash": "2bc851a466de77b8",
+      "text": "படி 1: இயற்கை நோய் எதிர்ப்பு சக்தியை அதிகரிக்க மாதந்தோறும் பஞ்சகவ்யம் தெளிக்கவும். படி 2: மஞ்சள் ஒட்டும் பொறிகளை நிறுவவும். படி 3: காட்டு களைகளை சுத்தமாக வைக்கவும். விவசாயிக்கு முக்கிய குறிப்பு: அதிகாலையில் ஆய்வு செய்வது பூச்சிகளை தொடக்கத்திலேயே கட்டுப்படுத்த உதவுகிறது.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_scan_home.mp3": {
+      "hash": "b0bbeb6bb06f47d0",
+      "text": "अपनी फसल की जांच करें। एक पत्ती की स्पष्ट फोटो लें। फाइटो बताएगा कि क्या समस्या है और क्या उपाय करना है।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_photo_check.mp3": {
+      "hash": "0c26de56ce17c00d",
+      "text": "फोटो जांच पृष्ठ। कृपया विश्लेषण से पहले स्पष्टता, रोशनी और दूरी की पुष्टि करें।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_analyzing.mp3": {
+      "hash": "246b36d8c807b0b8",
+      "text": "पत्ती की कोशिकाओं को स्कैन कर ऑफ़लाइन फंगल लक्षणों की पहचान की जा रही है।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_result_uncertain.mp3": {
+      "hash": "bc8ce389c45d1287",
+      "text": "सटीक निदान के लिए फोटो बहुत धुंधली है। कृपया दिन के उजाले में एक बालिश्त दूर से दोबारा फोटो लें।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_history.mp3": {
+      "hash": "809944550869406a",
+      "text": "यह आपका स्कैन इतिहास है। आपके फोन में सुरक्षित सभी फसल जांच रिकॉर्ड यहाँ हैं।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_schemes.mp3": {
+      "hash": "7498fb851d07fff1",
+      "text": "सरकारी योजनाएं। सब्जी उत्पादकों के लिए सब्सिडी और पादप संरक्षण अनुदान देखें।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/page_settings.mp3": {
+      "hash": "1689fe1509aa5e3b",
+      "text": "सेटिंग्स और किसान सहायक। आप भाषा बदल सकते हैं, ऑफ़लाइन पैकेज डाउनलोड कर सकते हैं और आवाज़ की गति समायोजित कर सकते हैं।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/voice_not_leaf.mp3": {
+      "hash": "f7a59d38686dd53c",
+      "text": "कृपया पौधे की पत्ती की फोटो अपलोड करें।",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_early_blight_overview.mp3": {
+      "hash": "dbb1f82da6975f77",
+      "text": "टमाटर पत्ती निदान: अगेती झुलसा, फंगल रोग। संक्रमित निचली पत्तियों को हटाएं, शाम को नीम का घोल छिड़कें और केवल जड़ में पानी दें।",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_early_blight_treatment.mp3": {
+      "hash": "18c7da2528d7bb7b",
+      "text": "चरण 1: संक्रमित निचली पत्तियों को तोड़कर नष्ट कर दें। चरण 2: शाम के समय नीम आधारित घोल का छिड़काव करें। चरण 3: केवल पौधे की जड़ में पानी दें। यदि रोग बढ़ता है, तो टमाटर के लिए पंजीकृत कवकनाशी का उपयोग करें। दस्ताने और मास्क अवश्य पहनें।",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_early_blight_prevention.mp3": {
+      "hash": "0aced5233d054120",
+      "text": "चरण 1: मिट्टी के बीजाणुओं को रोकने के लिए पौधे के चारों ओर पुआल की मल्चिंग करें। चरण 2: पौधों के बीच 45–60 cm की दूरी बनाए रखें। चरण 3: 3 वर्ष का फसल चक्र अपनाएं। किसान के लिए खास सलाह: कटाई के बाद संक्रमित फसल अवशेषों को पूरी तरह नष्ट कर दें।",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_late_blight_overview.mp3": {
+      "hash": "98e0395a34259e28",
+      "text": "टमाटर पत्ती निदान: पछेती झुलसा रोग। प्रभावित शाखाओं को काटकर हटाएं, सुबह 1% Bordeaux mixture छिड़कें और स्प्रिंकलर सिंचाई से बचें।",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_late_blight_treatment.mp3": {
+      "hash": "37d92a4e3babd774",
+      "text": "चरण 1: प्रभावित तनों को छांटें और उन्हें खेत से दूर गहराई में दबा दें। चरण 2: सुबह पत्तियों के दोनों किनारों पर 1% Bordeaux mixture का छिड़काव करें। चरण 3: त्वरित जल निकासी सुनिश्चित करें। यदि रोग बढ़ता है, तो Metalaxyl + Mancozeb का उपयोग करें। दवा छिड़कने के 7 days के भीतर कटाई न करें।",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_late_blight_prevention.mp3": {
+      "hash": "afd21cc95019b769",
+      "text": "चरण 1: प्रमाणित रोग प्रतिरोधी टमाटर की किस्मों का चयन करें। चरण 2: पौधों को सहारा (स्टेकिंग) दें। चरण 3: औजारों को कीटाणुरहित करें। किसान के लिए खास सलाह: कटाई के बाद संक्रमित फसल अवशेषों को पूरी तरह नष्ट कर दें।",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_healthy_overview.mp3": {
+      "hash": "6dee9f420acd2ea6",
+      "text": "टमाटर पत्ती निदान: स्वस्थ फसल। कोई बीमारी नहीं पाई गई। नियमित जैविक देखभाल जारी रखें और जड़ में पानी दें।",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_healthy_treatment.mp3": {
+      "hash": "9c077517479f60a3",
+      "text": "किसी रोग उपचार की आवश्यकता नहीं है। नियमित देखभाल जारी रखें। चरण 2: हर 3 सप्ताह में पौधे की जड़ में वर्मीकम्पोस्ट डालें। चरण 3: साप्ताहिक रूप से पत्तियों के नीचे कीटों की जांच करें। किसी रसायन की आवश्यकता नहीं है।",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "hi/tomato_healthy_prevention.mp3": {
+      "hash": "c8ed8a13d7d8c279",
+      "text": "चरण 1: रोग प्रतिरोधक क्षमता बढ़ाने के लिए महीने में एक बार पतला पंचगव्य छिड़कें। चरण 2: पीले चिपचिपे जाल लगाएं। चरण 3: जंगली खरपतवारों को साफ रखें। किसान के लिए खास सलाह: सुबह नियमित निरीक्षण से रोगों का शुरुआत में ही पता चल जाता है।",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_scan_home.mp3": {
+      "hash": "5e8d07cba800df45",
+      "text": "നിങ്ങളുടെ വിള പരിശോധിക്കുക. ഒരൊറ്റ ഇലയുടെ വ്യക്തമായ ഫോട്ടോയെടുക്കുക. പ്രശ്നവും പരിഹാരവും ഫൈറ്റോ പറയും.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_photo_check.mp3": {
+      "hash": "897393a8133c83c3",
+      "text": "ഫോട്ടോ പരിശോധന. വ്യക്തതയും വെളിച്ചവും അകലവും നല്ലതാണെന്ന് ഉറപ്പുവരുത്തുക.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_analyzing.mp3": {
+      "hash": "d0b2004cdefc0685",
+      "text": "ഇലയിലെ കോശഘടനകളും കുമിൾ ലക്ഷണങ്ങളും ഓഫ്‌ലൈനായി വിശകലനം ചെയ്യുന്നു.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_result_uncertain.mp3": {
+      "hash": "64cda6837a0f8640",
+      "text": "ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗനിർണ്ണയം സാധ്യമല്ല. നല്ല വെളിച്ചത്തിൽ ഒരു ചാൺ അകലെ നിന്ന് വീണ്ടും ഫോട്ടോയെടുക്കുക.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_history.mp3": {
+      "hash": "a3d56d03457bdb55",
+      "text": "സ്കാൻ ചരിത്രം. ഫോണിൽ സൂക്ഷിച്ചിരിക്കുന്ന മുൻകാല പരിശോധനാ ഫലങ്ങൾ ഇവിടെ കാണാം.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_schemes.mp3": {
+      "hash": "330e2213683ea284",
+      "text": "സർക്കാർ പദ്ധതികൾ. പച്ചക്കറി കർഷകർക്കുള്ള സബ്സിഡികളും കാർഷിക ആനുകൂല്യങ്ങളും ഇവിടെ കാണാം.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/page_settings.mp3": {
+      "hash": "8f91df0e92307d29",
+      "text": "സെറ്റിംഗ്സും കർഷക സഹായിയും. ഭാഷ മാറ്റാനും ഓഫ്‌ലൈൻ പാക്ക് ഡൗൺലോഡ് ചെയ്യാനും ശബ്ദവേഗത ക്രമീകരിക്കാനും സാധിക്കും.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/voice_not_leaf.mp3": {
+      "hash": "bdeba3a90ab8be42",
+      "text": "ദയവായി ചെടിയുടെ ഇലയുടെ ഫോട്ടോ അപ്ലോഡ് ചെയ്യുക.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_early_blight_overview.mp3": {
+      "hash": "fd4b8ce54884b227",
+      "text": "തക്കാളി ഇല പരിശോധനാ ഫലം: ഏർലി ബ്ലൈറ്റ്, ഫംഗസ് രോഗം. രോഗബാധയുള്ള അടിയിലെ ഇലകൾ നശിപ്പിക്കുക, വൈകുന്നേരം വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക, ചുവട്ടിൽ മാത്രം നനയ്ക്കുക.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_early_blight_treatment.mp3": {
+      "hash": "7f03699e18a4ccca",
+      "text": "ഘട്ടം 1: രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക. ഘട്ടം 2: വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ അധിഷ്ഠിത മിശ്രിതം തളിക്കുക. ഘട്ടം 3: ചെടിയുടെ ചുവട്ടിൽ മാത്രം വെള്ളമൊഴിക്കുക. രോഗം പടരുകയാണെങ്കിൽ തക്കാളിക്ക് അംഗീകൃത കുമിൾനാശിനി ഉപയോഗിക്കുക. കൈയ്യുറകളും മാസ്കും ധരിക്കുക.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_early_blight_prevention.mp3": {
+      "hash": "602588ee809c3908",
+      "text": "ഘട്ടം 1: മണ്ണിലെ കുമിൾ ബീജങ്ങൾ തെറിക്കാതിരിക്കാൻ ചുവട്ടിൽ പുതയിടുക. ഘട്ടം 2: കാറ്റോട്ടത്തിനായി തൈകൾ തമ്മിൽ 45–60 cm അകലം പാലിക്കുക. ഘട്ടം 3: 3 വർഷ വിളപരിക്രമണം നടത്തുക. കർഷക ശ്രദ്ധയ്ക്ക്: വിളവെടുപ്പിന് ശേഷം രോഗബാധയുള്ള അവശിഷ്ടങ്ങൾ പൂർണ്ണമായി നശിപ്പിക്കുക.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_late_blight_overview.mp3": {
+      "hash": "1f2773d9caa9850e",
+      "text": "തക്കാളി ഇല പരിശോധനാ ഫലം: ലേറ്റ് ബ്ലൈറ്റ് രോഗം. രോഗബാധയുള്ള ഭാഗങ്ങൾ മുറിച്ചു മാറ്റുക, പ്രഭാതത്തിൽ 1% Bordeaux mixture തളിക്കുക, സ്പ്രിംഗ്ലർ നനവ് ഒഴിവാക്കുക.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_late_blight_treatment.mp3": {
+      "hash": "acc7bc74c7a2830f",
+      "text": "ഘട്ടം 1: രോഗം ബാധിച്ച കമ്പുകൾ മുറിച്ച് കുഴിച്ചുമൂടുക. ഘട്ടം 2: തെളിഞ്ഞ പ്രഭാതത്തിൽ 1% Bordeaux mixture തളിക്കുക. ഘട്ടം 3: നീർവാർച്ച ഉറപ്പാക്കുക. രോഗം പടരുകയാണെങ്കിൽ Metalaxyl + Mancozeb ഉപയോഗിക്കുക. മരുന്ന് തളിച്ച് 7 days വരെ വിളവെടുക്കരുത്.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_late_blight_prevention.mp3": {
+      "hash": "5c3b15c02a47373c",
+      "text": "ഘട്ടം 1: മഴക്കാലത്ത് രോഗപ്രതിരോധ ശേഷിയുള്ള സർട്ടിഫൈഡ് വിത്തുകൾ തിരഞ്ഞെടുക്കുക. ഘട്ടം 2: ഇലകൾ മണ്ണിൽ തട്ടാതിരിക്കാൻ താങ്ങുകാലുകൾ നൽകുക. ഘട്ടം 3: ഉപകരണങ്ങൾ അണുവിമുക്തമാക്കുക. കർഷക ശ്രദ്ധയ്ക്ക്: വിളവെടുപ്പിന് ശേഷം രോഗബാധയുള്ള അവശിഷ്ടങ്ങൾ പൂർണ്ണമായി നശിപ്പിക്കുക.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_healthy_overview.mp3": {
+      "hash": "05f14c3f1084e9a3",
+      "text": "തക്കാളി ഇല പരിശോധനാ ഫലം: ആരോഗ്യകരമായ വിളവ്. രോഗലക്ഷണങ്ങളൊന്നുമില്ല. പതിവ് ജൈവ പരിചരണം തുടരുക.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_healthy_treatment.mp3": {
+      "hash": "a17a93a2a91821ad",
+      "text": "രോഗചികിത്സ ആവശ്യമില്ല. പതിവ് പരിചരണം തുടരുക. ഘട്ടം 2: 3 ആഴ്ചയിലൊരിക്കൽ ചെടിയുടെ ചുവട്ടിൽ മണ്ണിര കമ്പോസ്റ്റോ ജൈവവളമോ നൽകുക. ഘട്ടം 3: ആഴ്ചയിലൊരിക്കൽ ഇലകളുടെ അടിഭാഗം പരിശോധിക്കുക. രാസവസ്തുക്കൾ ആവശ്യമില്ല.",
+      "type": "kb_treatment",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "ml/tomato_healthy_prevention.mp3": {
+      "hash": "46badd61d3a39a99",
+      "text": "ഘട്ടം 1: പ്രതിരോധശേഷി കൂട്ടാൻ മാസത്തിലൊരിക്കൽ നേർപ്പിച്ച പഞ്ചഗവ്യം തളിക്കുക. ഘട്ടം 2: മഞ്ഞക്കെണികൾ സ്ഥാപിക്കുക. ഘട്ടം 3: കാട്ടു കളകൾ വെട്ടി വൃത്തിയാക്കുക. കർഷക ശ്രദ്ധയ്ക്ക്: അതിരാവിലെയുള്ള പരിശോധന രോഗങ്ങളെ തുടക്കത്തിലേ തടയും.",
+      "type": "kb_prevention",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_scan_home.mp3": {
+      "hash": "d0d9b31822d632c9",
+      "text": "మీ పంటను తనిఖీ చేయండి. ఒకే ఒక ఆకు స్పష్టమైన ఫోటో తీయండి. సమస్య ఏమిటో, ఏం చేయాలో ఫైటో చెబుతుంది.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_photo_check.mp3": {
+      "hash": "21b477784f5aef3a",
+      "text": "ఫోటో తనిఖీ పేజీ. విశ్లేషణకు ముందు స్పష్టత, వెలుతురు మరియు దూరాన్ని నిర్ధారించుకోండి.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_analyzing.mp3": {
+      "hash": "d4c3fcddddd46e38",
+      "text": "ఆకు కణజాలాన్ని స్కాన్ చేస్తూ ఆఫ్‌లైన్‌లో శిలీంధ్ర లక్షణాలను గుర్తిస్తోంది.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_result_uncertain.mp3": {
+      "hash": "0eb28f61ebace1b2",
+      "text": "ఖచ్చితమైన నిర్ధారణకు ఫోటో చాలా మసకగా ఉంది. దయచేసి మంచి వెలుతురులో ఒక జానెడు దూరం నుండి మళ్ళీ ఫోటో తీయండి.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_history.mp3": {
+      "hash": "81ed2cdc3a3ba2f9",
+      "text": "ఇది మీ స్కాన్ చరిత్ర. ఫోన్‌లో భద్రపరచబడిన పంట నిర్ధారణ రికార్డులన్నీ ఇక్కడ ఉంటాయి.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_schemes.mp3": {
+      "hash": "6c6de3a984507114",
+      "text": "ప్రభుత్వ పథకాలు. కూరగాయల రైతుల కోసం రాయితీలు మరియు సస్యరక్షణ సహాయాలను చూడండి.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/page_settings.mp3": {
+      "hash": "f425b517f42869a1",
+      "text": "సెట్టింగ్‌లు మరియు రైతు సహాయకుడు. మీరు భాష మార్చుకోవచ్చు, ఆఫ్‌లైన్ ప్యాక్‌లను డౌన్‌లోడ్ చేయవచ్చు మరియు వాయిస్ వేగాన్ని మార్చవచ్చు.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/voice_not_leaf.mp3": {
+      "hash": "ab3bf1273c11c288",
+      "text": "దయచేసి మొక్క ఆకు ఫోటోను అప్లోడ్ చేయండి.",
+      "type": "ui_guide",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/tomato_early_blight_overview.mp3": {
+      "hash": "ff29b17c757b4188",
+      "text": "టమోటా ఆకు నిర్ధారణ: ముందస్తు మచ్చ తెగులు, ఫంగల్ వ్యాధి. తెగులు సోకిన దిగువ ఆకులను తొలగించండి, సాయంత్రం వేప ద్రావణాన్ని పిచికారీ చేయండి మరియు మొదట్లోనే నీరు పోయండి.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/tomato_early_blight_treatment.mp3": {
+      "hash": "afc0f4c3a18efb13",
+      "text": "దశ 1: తెగులు సోకిన దిగువ ఆకులను తొలగించి కాల్చివేయండి. దశ 2: సాయంత్రం వేళల్లో వేపనూనె ద్రావణాన్ని పిచికారీ చేయండి. దశ 3: మొక్క మొదట్లోనే నీరు పోయండి. తెగులు మరింత వ్యాపిస్తే టమోటాకు సిఫార్సు చేసిన శిలీంధ్ర సంహారిణిని వాడండి. చేతి తొడుగులు మరియు మాస్క్ ధరించండి.",
+      "type": "kb_treatment",
+      "available": false,
+      "isPlaceholder": true
+    },
+    "te/tomato_early_blight_prevention.mp3": {
+      "hash": "25db46e44c25034a",
+      "text": "దశ 1: నేలలోని కణాలు ఆకులపై పడకుండా మొక్కల మొదట్లో ఎండుటాకులతో కప్పండి. దశ 2: మొక్కల మధ్య 45–60 cm దూరం పాటించండి. దశ 3: 3 సంవత్సరాల పంట మార్పిడి విధానాన్ని పాటించండి. రైతుకు ముఖ్య గమనిక: పంట కోత తర్వాత తెగులు సోకిన అవశేషాలను పూర్తిగా నాశనం చేయండి.",
+      "type": "kb_prevention",
+      "available": false,
+      "isPlaceholder": true
+    },
+    "te/tomato_late_blight_overview.mp3": {
+      "hash": "68e24153c935f0b1",
+      "text": "టమోటా ఆకు నిర్ధారణ: ఆలస్యపు మచ్చ తెగులు. ప్రభావిత కొమ్మలను కత్తిరించండి, ఉదయం 1% Bordeaux mixture పిచికారీ చేయండి మరియు స్ప్రింక్లర్ పద్ధతిలో నీరు పెట్టవద్దు.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/tomato_late_blight_treatment.mp3": {
+      "hash": "410109c36dff5138",
+      "text": "దశ 1: తీవ్రంగా తెగులు సోకిన కొమ్మలను కత్తిరించి దూరంగా పూడ్చిపెట్టండి. దశ 2: ఉదయపు వేళల్లో ఆకులపై 1% Bordeaux mixture పిచికారీ చేయండి. దశ 3: నీరు నిలవకుండా చూడండి. తెగులు వ్యాపిస్తే Metalaxyl + Mancozeb వాడండి. మందు పిచికారీ చేసిన 7 days వరకు పంట కోయకూడదు.",
+      "type": "kb_treatment",
+      "available": false,
+      "isPlaceholder": true
+    },
+    "te/tomato_late_blight_prevention.mp3": {
+      "hash": "36566eb3b010b172",
+      "text": "దశ 1: ధృవీకరించబడిన తెగులు నిరోధక టమోటా రకాలను ఎంచుకోండి. దశ 2: మొక్కలకు కర్రల సాయం అందించండి. దశ 3: కత్తిరింపు సాధనాలను శుభ్రం చేయండి. రైతుకు ముఖ్య గమనిక: పంట కోత తర్వాత తెగులు సోకిన అవశేషాలను పూర్తిగా నాశనం చేయండి.",
+      "type": "kb_prevention",
+      "available": false,
+      "isPlaceholder": true
+    },
+    "te/tomato_healthy_overview.mp3": {
+      "hash": "82e7f4253df03782",
+      "text": "టమోటా ఆకు నిర్ధారణ: ఆరోగ్యకరమైన పంట. ఎటువంటి తెగుళ్లు లేవు. సాధారణ సేంద్రీయ సంరక్షణ కొనసాగించండి మరియు మొదట్లో నీరు పోయండి.",
+      "type": "kb_overview",
+      "available": true,
+      "isPlaceholder": false
+    },
+    "te/tomato_healthy_treatment.mp3": {
+      "hash": "9c6c9b5994b7b00c",
+      "text": "ఎటువంటి వ్యాధి చికిత్స అవసరం లేదు. సాధారణ సంరక్షణ కొనసాగించండి. దశ 2: ప్రతి 3 వారాలకు ఒకసారి మొక్క మొదట్లో వర్మీకంపోస్ట్ వేయండి. దశ 3: వారానికోసారి ఆకుల అడుగుభాగాన్ని తనిఖీ చేయండి. రసాయనాలు ఏవీ అవసరం లేదు.",
+      "type": "kb_treatment",
+      "available": false,
+      "isPlaceholder": true
+    },
+    "te/tomato_healthy_prevention.mp3": {
+      "hash": "d8f9951db39fa992",
+      "text": "దశ 1: రోగనిరోధక శక్తిని పెంచడానికి నెలకు ఒకసారి పంచగవ్యను పిచికారీ చేయండి. దశ 2: పసుపు రంగు జిగురు ఉచ్చులను అమర్చండి. దశ 3: కలుపు మొక్కలను ఎప్పటికప్పుడు తొలగించండి. రైతుకు ముఖ్య గమనిక: ఉదయపు వేళల్లో పరిశీలించడం వల్ల తెగుళ్లను ప్రారంభంలోనే నియంత్రించవచ్చు.",
+      "type": "kb_prevention",
+      "available": false,
+      "isPlaceholder": true
+    }
+  }
+}

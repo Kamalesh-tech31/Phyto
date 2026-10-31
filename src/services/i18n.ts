@@ -16,12 +16,31 @@ const LOCALES: Record<Language, Record<string, string>> = {
 
 let currentLanguage: Language = 'en';
 
+type LanguageSubscriber = (lang: Language) => void;
+const subscribers = new Set<LanguageSubscriber>();
+
 export function setI18nLanguage(lang: Language): void {
-  currentLanguage = lang;
+  if (currentLanguage !== lang) {
+    currentLanguage = lang;
+    subscribers.forEach((cb) => {
+      try {
+        cb(lang);
+      } catch (err) {
+        console.warn('Error in language subscriber:', err);
+      }
+    });
+  }
 }
 
 export function getI18nLanguage(): Language {
   return currentLanguage;
+}
+
+export function subscribeToLanguageChange(callback: LanguageSubscriber): () => void {
+  subscribers.add(callback);
+  return () => {
+    subscribers.delete(callback);
+  };
 }
 
 export function getLanguageMeta(lang: Language = currentLanguage): LanguageMeta {
@@ -93,3 +112,14 @@ export function formatNumber(
     return value.toString();
   }
 }
+
+/**
+ * Shared singleton for components and speechService
+ */
+export const i18n = {
+  t,
+  getLanguage: getI18nLanguage,
+  setLanguage: setI18nLanguage,
+  subscribe: subscribeToLanguageChange,
+  getLanguageMeta,
+};

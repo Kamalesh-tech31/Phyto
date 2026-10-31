@@ -113,6 +113,14 @@ export function applySettingsToDOM(settings: PhytoSettings): void {
 
   // Sync i18n helper
   setI18nLanguage(settings.language);
+
+  // Trigger background audio cache for chosen language (Directive 5)
+  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({
+      type: 'CACHE_LANGUAGE_CLIPS',
+      language: settings.language,
+    });
+  }
 }
 
 // Global subscribers for multi-component reactive sync
