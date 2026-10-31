@@ -17,7 +17,6 @@ import {
   FlaskConical,
   Tag,
   Sparkles,
-  TrendingUp,
 } from 'lucide-react';
 
 interface TreatmentDetailProps {
@@ -481,65 +480,6 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
         </div>
       )}
 
-      {/* Crop Price Prediction Section */}
-      <div className="mt-5 retro-card p-5">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-[var(--color-selected-bg)] border border-[var(--color-outline)] flex items-center justify-center text-[var(--color-selected-text)]">
-              <TrendingUp className="w-4 h-4 stroke-[2.2]" />
-            </div>
-            <h4 className="font-editorial text-lg font-bold text-[var(--color-ink)]">
-              {language === 'ml' ? 'വിള വില അനുമാനം' : 'Crop price outlook'}
-            </h4>
-          </div>
-          <span
-            className={`px-2 py-0.5 bg-[var(--color-inset)] text-[var(--color-muted)] border border-[var(--color-outline)] text-[10px] font-bold rounded-full ${
-              language === 'en' ? 'uppercase tracking-wider' : ''
-            }`}
-          >
-            Demo data
-          </span>
-        </div>
-
-        <div className="mt-3 pt-3 border-t-[1.5px] border-dashed border-[var(--color-divider)] space-y-2.5">
-          <div className="flex items-baseline justify-between">
-            <span className="text-xs font-medium text-[var(--color-muted)]">
-              {language === 'ml' ? 'പ്രതീക്ഷിക്കുന്ന തക്കാളി വില:' : 'Current / expected tomato price:'}
-            </span>
-            <div className="text-right">
-              <span className="font-editorial text-2xl font-bold text-[var(--color-ink)]">
-                ₹32
-              </span>
-              <span className="text-xs font-medium text-[var(--color-muted)]"> / kg</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-[var(--color-muted)]">
-              {language === 'ml' ? 'വിപണി പ്രവണത (Trend):' : 'Market trend:'}
-            </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-[var(--color-success-bg)] text-[var(--color-success-text)] border border-[var(--color-outline)]">
-              <span>↑</span>
-              <span>{language === 'ml' ? 'വർദ്ധിക്കുന്നു (Rising)' : 'Rising (+12%)'}</span>
-            </span>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-[var(--color-muted)]">
-              {language === 'ml' ? 'വിപണി നിരക്ക് പരിധി:' : 'Indicative market range:'}
-            </span>
-            <span className="text-xs font-bold text-[var(--color-ink)]">
-              ₹26 – ₹38 / kg
-            </span>
-          </div>
-
-          <p className="text-[11px] text-[var(--color-muted)] pt-1 leading-normal">
-            {language === 'ml'
-              ? 'പ്രാദേശിക കാർഷിക മൊത്തവ്യാപാര മാർക്കറ്റുകളിലെ ശരാശരി വില നിലവാരം. (മാതൃകാ ഡാറ്റ)'
-              : 'Indicative mandi rate based on regional vegetable arrivals. (Demo estimation)'}
-          </p>
-        </div>
-      </div>
 
       {/* Sample Content Disclaimer */}
       <p className="text-xs text-[var(--color-muted)] mt-4 px-1 leading-relaxed">

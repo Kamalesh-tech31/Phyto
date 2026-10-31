@@ -5,7 +5,7 @@ import { translations } from '../../data/translations';
 import { RetroViewfinderArt } from '../../components/RetroViewfinderArt';
 import { CameraCapture } from '../../components/CameraCapture';
 import { GalleryPicker, GalleryPickerHandle } from '../../components/GalleryPicker';
-import { Image as ImageIcon, Zap, Sparkles } from 'lucide-react';
+import { Image as ImageIcon, Zap } from 'lucide-react';
 
 interface ScanHomeProps {
   language: Language;
@@ -58,7 +58,6 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
       >
         {/* Retro Poster Scene with Sunburst, Sun Disc, Halftone Dots, Leaf, and Overlay Brackets */}
         <RetroViewfinderArt
-          variant={selectedSample}
           showOverlay={true}
           className="w-full h-full"
         />
@@ -127,64 +126,8 @@ export const ScanHome: React.FC<ScanHomeProps> = ({
           <Zap className={`w-6 h-6 ${torchActive ? 'fill-current stroke-[2]' : 'stroke-[2]'}`} />
         </button>
       </div>
-
-      {/* Test Sample Leaves Bar for Immediate Farmer Prototyping */}
-      <div className="mt-1 retro-card p-3.5">
-        <div className={`flex items-center gap-1.5 text-xs font-bold text-[var(--color-ink)] mb-2.5 ${language === 'en' ? 'uppercase tracking-wider' : ''}`}>
-          <Sparkles className="w-3.5 h-3.5 text-[var(--color-primary)]" />
-          <span>{t.test_samples_title}</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            onClick={() => handleSampleClick('early_blight')}
-            className={`p-2.5 rounded-[12px] text-left text-xs transition-all retro-focus ${
-              selectedSample === 'early_blight'
-                ? 'bg-[var(--color-selected-bg)] border-2 border-[var(--color-selected-border)] text-[var(--color-selected-text)] shadow-[2px_2px_0_var(--color-shadow-color)] font-medium'
-                : 'bg-[var(--color-inset)] border-[1.5px] border-[var(--color-divider)] text-[var(--color-ink)] hover:bg-[var(--color-surface)]'
-            }`}
-          >
-            <div className="font-bold">{t.sample_early_blight}</div>
-            <div className="text-[10px] text-[var(--color-muted)]">Bullseye spots (Mild 18%)</div>
-          </button>
-
-          <button
-            onClick={() => handleSampleClick('blurry')}
-            className={`p-2.5 rounded-[12px] text-left text-xs transition-all retro-focus ${
-              selectedSample === 'blurry'
-                ? 'bg-[var(--color-selected-bg)] border-2 border-[var(--color-selected-border)] text-[var(--color-selected-text)] shadow-[2px_2px_0_var(--color-shadow-color)] font-medium'
-                : 'bg-[var(--color-inset)] border-[1.5px] border-[var(--color-divider)] text-[var(--color-ink)] hover:bg-[var(--color-surface)]'
-            }`}
-          >
-            <div className="font-bold">{t.sample_blurry}</div>
-            <div className="text-[10px] text-[var(--color-muted)]">Tests uncertain screen</div>
-          </button>
-
-          <button
-            onClick={() => handleSampleClick('late_blight')}
-            className={`p-2.5 rounded-[12px] text-left text-xs transition-all retro-focus ${
-              selectedSample === 'late_blight'
-                ? 'bg-[var(--color-selected-bg)] border-2 border-[var(--color-selected-border)] text-[var(--color-selected-text)] shadow-[2px_2px_0_var(--color-shadow-color)] font-medium'
-                : 'bg-[var(--color-inset)] border-[1.5px] border-[var(--color-divider)] text-[var(--color-ink)] hover:bg-[var(--color-surface)]'
-            }`}
-          >
-            <div className="font-bold">{t.sample_late_blight}</div>
-            <div className="text-[10px] text-[var(--color-muted)]">Water-soaked patches (42%)</div>
-          </button>
-
-          <button
-            onClick={() => handleSampleClick('healthy')}
-            className={`p-2.5 rounded-[12px] text-left text-xs transition-all retro-focus ${
-              selectedSample === 'healthy'
-                ? 'bg-[var(--color-selected-bg)] border-2 border-[var(--color-selected-border)] text-[var(--color-selected-text)] shadow-[2px_2px_0_var(--color-shadow-color)] font-medium'
-                : 'bg-[var(--color-inset)] border-[1.5px] border-[var(--color-divider)] text-[var(--color-ink)] hover:bg-[var(--color-surface)]'
-            }`}
-          >
-            <div className="font-bold">{t.sample_healthy}</div>
-            <div className="text-[10px] text-[var(--color-muted)]">Clean green foliage</div>
-          </button>
-        </div>
-      </div>
-
+
+
       {/* Full-screen in-app camera capture modal rendered through Portal */}
       {showCameraModal &&
         typeof document !== 'undefined' &&
