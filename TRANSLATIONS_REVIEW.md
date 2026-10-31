@@ -36,5 +36,16 @@ The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`
 - `hint_motion_blur`: Directional motion blur detection notification
 - `hint_check_light`: General lighting advisory
 - `btn_scan_anyway`: Secondary action when photo is blurry or low confidence
+- `camera_access_title` & `camera_access_desc`: Full-screen camera permission modal title and non-cloud privacy notice
+- `btn_allow_camera`: Primary action button to request camera stream permission
+- `btn_upload_gallery_instead`: Secondary option to open device photo gallery
+- `offline_on_device`: Status chip confirming 100% on-device operation
+- `capturing_photo`: Intermediate indicator during frame capture
+- `btn_close_camera`: Accessibility label for modal close (X) button
+- `btn_switch_camera`: Accessibility label for front/back flip button
+- `btn_gallery`: Shutter bar gallery action button label
+- `camera_error_title`: Generic error header for camera failures
+- `btn_try_again`: Retry button on error screen
+- `tip_good_light` & `tip_hold_steady`: Static viewfinder guidance chips on idle scan card
 
 **Review Status**: English (`en`) is canonical; Malayalam (`ml`), Tamil (`ta`), Hindi (`hi`), and Telugu (`te`) are machine-translated and marked for native speaker review.

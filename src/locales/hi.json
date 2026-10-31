@@ -133,5 +133,18 @@
   "hint_check_light": "रोशनी समायोजित करें",
   "btn_scan_anyway": "फिर भी स्कैन करें (कम विश्वास)",
   "enable_camera": "कैमरा सक्षम करें",
-  "camera_only_one": "केवल एक कैमरा उपलब्ध है"
+  "camera_only_one": "केवल एक कैमरा उपलब्ध है",
+  "camera_access_title": "कैमरा अनुमति",
+  "camera_access_desc": "पत्तियों को स्कैन करने के लिए फाइटो को कैमरे की आवश्यकता है। जब तक आप किसी विशेषज्ञ को नहीं भेजते, तस्वीरें आपके फोन में ही रहेंगी।",
+  "btn_allow_camera": "कैमरा अनुमति दें",
+  "btn_upload_gallery_instead": "गैलरी से अपलोड करें",
+  "offline_on_device": "ऑफ़लाइन और डिवाइस पर",
+  "capturing_photo": "तस्वीर ली जा रही है...",
+  "btn_close_camera": "कैमरा बंद करें",
+  "btn_switch_camera": "कैमरा बदलें",
+  "btn_gallery": "गैलरी",
+  "camera_error_title": "कैमरा त्रुटि",
+  "btn_try_again": "पुनः प्रयास करें",
+  "tip_good_light": "अच्छी रोशनी",
+  "tip_hold_steady": "स्थिर पकड़ें"
 }

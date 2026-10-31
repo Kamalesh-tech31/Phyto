@@ -133,5 +133,18 @@
   "hint_check_light": "Adjust light",
   "btn_scan_anyway": "Scan anyway (Low confidence)",
   "enable_camera": "Enable camera",
-  "camera_only_one": "Only one camera available"
+  "camera_only_one": "Only one camera available",
+  "camera_access_title": "Camera Access",
+  "camera_access_desc": "Phyto needs the camera to scan leaves. Photos stay on your phone unless you choose to send one to an expert.",
+  "btn_allow_camera": "Allow Camera",
+  "btn_upload_gallery_instead": "Upload from gallery instead",
+  "offline_on_device": "Offline & On-Device",
+  "capturing_photo": "Capturing photo...",
+  "btn_close_camera": "Close camera",
+  "btn_switch_camera": "Switch camera",
+  "btn_gallery": "Gallery",
+  "camera_error_title": "Camera Error",
+  "btn_try_again": "Try again",
+  "tip_good_light": "Good lighting",
+  "tip_hold_steady": "Hold steady"
 }

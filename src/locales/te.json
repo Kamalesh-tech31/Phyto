@@ -133,5 +133,18 @@
   "hint_check_light": "వెలుతురు సర్దుబాటు చేయండి",
   "btn_scan_anyway": "ఏదేమైనా స్కాన్ చేయండి (తక్కువ ఖచ్చితత్వం)",
   "enable_camera": "కెమెరాను ప్రారంభించండి",
-  "camera_only_one": "ఒకే ఒక కెమెరా అందుబాటులో ఉంది"
+  "camera_only_one": "ఒకే ఒక కెమెరా అందుబాటులో ఉంది",
+  "camera_access_title": "కెమెరా అనుమతి",
+  "camera_access_desc": "ఆకులను స్కాన్ చేయడానికి ఫైటోకు కెమెరా అవసరం. మీరు నిపుణుడికి పంపాలని ఎంచుకునే వరకు ఫోటోలు మీ ఫోన్‌లోనే ఉంటాయి.",
+  "btn_allow_camera": "కెమెరాను అనుమతించండి",
+  "btn_upload_gallery_instead": "గ్యాలరీ నుండి అప్‌లోడ్ చేయండి",
+  "offline_on_device": "ఆఫ్‌లైన్ & పరికరంలో",
+  "capturing_photo": "ఫోటో తీస్తోంది...",
+  "btn_close_camera": "కెమెరా మూసివేయి",
+  "btn_switch_camera": "కెమెరా మార్చండి",
+  "btn_gallery": "గ్యాలరీ",
+  "camera_error_title": "కెమెరా లోపం",
+  "btn_try_again": "మళ్ళీ ప్రయత్నించండి",
+  "tip_good_light": "మంచి వెలుతురు",
+  "tip_hold_steady": "కదలకుండా పట్టుకోండి"
 }

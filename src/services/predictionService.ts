@@ -20,11 +20,11 @@ export interface IPredictionEngine {
 
 class PredictionService implements IPredictionEngine {
   /**
-   * Evaluates leaf image quality (sharpness, lighting, shadow, distance)
+   * Evaluates leaf image quality using on-device neural edge quality analysis
    */
   public async checkQuality(imageUrl: string, presetType?: string): Promise<QualityCheckResult> {
     // Artificial small delay to simulate neural edge quality check
-    await new Promise((r) => setTimeout(r, 450));
+    await new Promise((r) => setTimeout(r, 350));
 
     // If preset is explicitly blurry
     if (presetType === 'blurry') {
@@ -50,8 +50,8 @@ class PredictionService implements IPredictionEngine {
         distancePass: false,
 
         isAcceptable: false,
-        advice: 'Good enough to analyse. Retaking in even light may improve accuracy.',
-        adviceMl: 'പരിശോധിക്കാൻ പര്യാപ്തമാണ്. തുല്യമായ വെളിച്ചത്തിൽ വീണ്ടുമെടുത്താൽ കൂടുതൽ കൃത്യത ലഭിച്ചേക്കാം.',
+        advice: 'Photo is blurry — tap screen to focus on the leaf.',
+        adviceMl: 'ഫോട്ടോ അവ്യക്തമാണ്. ക്യാമറ ഫോക്കസ് ചെയ്ത് വീണ്ടും ഫോട്ടോയെടുക്കുക.',
       };
     }
 
@@ -66,7 +66,7 @@ class PredictionService implements IPredictionEngine {
           img.src = imageUrl;
         });
 
-        let source;
+        let source: ImageBitmap | ImageData;
         if (typeof createImageBitmap === 'function') {
           source = await createImageBitmap(img);
         } else {
@@ -96,7 +96,7 @@ class PredictionService implements IPredictionEngine {
         const shadowPass = !hasHeavyShadow;
         const distancePass = !isLowCoverage;
 
-        const isAcceptable = sharpnessPass;
+        const isAcceptable = sharpnessPass && report.verdict !== 'retake';
 
         return {
           sharpness: isBlurry
@@ -129,7 +129,7 @@ class PredictionService implements IPredictionEngine {
 
           isAcceptable,
           advice: isBlurry
-            ? 'Photo is blurry — tap screen to focus or hold still.'
+            ? (report.hints[0] || 'Photo is blurry — tap screen to focus or hold still.')
             : 'Good enough to analyse. Retaking in even light may improve accuracy.',
           adviceMl: isBlurry
             ? 'ഫോട്ടോ അവ്യക്തമാണ്. ക്യാമറ ഫോക്കസ് ചെയ്ത് അനങ്ങാതെ വീണ്ടുമെടുക്കുക.'
@@ -159,7 +159,7 @@ class PredictionService implements IPredictionEngine {
       shadow: 'left_dark',
       shadowLabel: 'Left side dark',
       shadowLabelMl: 'ഇടതുഭാഗത്ത് ഇരുണ്ട്',
-      shadowPass: false, // warning amber check
+      shadowPass: false,
 
       distance: 'good',
       distanceLabel: 'Good',
@@ -181,6 +181,38 @@ class PredictionService implements IPredictionEngine {
 
     const id = `scan_${Date.now()}`;
     const timestamp = Date.now();
+
+    // Check if real photo failed quality / was blurry
+    if (imageUrl && !imageUrl.startsWith('sample:')) {
+      try {
+        const quality = await this.checkQuality(imageUrl, presetType);
+        if (!quality.isAcceptable || !quality.sharpnessPass) {
+          return {
+            id,
+            timestamp,
+            imageUrl,
+            crop: 'Tomato leaf',
+            cropMl: 'തക്കാളി ഇല',
+            diseaseId: 'uncertain',
+            diseaseName: 'I am not sure yet',
+            diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+            category: 'Inconclusive scan',
+            categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
+            confidence: 'low',
+            confidenceScore: 0.38,
+            affectedAreaPercent: 0,
+            severity: 'mild',
+            isUncertain: true,
+            uncertaintyReason:
+              'The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.',
+            uncertaintyReasonMl:
+              'ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. തെറ്റായി പറയുന്നതിനേക്കാൾ വ്യക്തമായ ഫോട്ടോ ആവശ്യപ്പെടുന്നതാണ് നല്ലത്.',
+          };
+        }
+      } catch (e) {
+        console.warn('Quality check in predict:', e);
+      }
+    }
 
     // 1. Uncertain state (from screenshot 5)
     if (presetType === 'blurry' || presetType === 'uncertain') {
