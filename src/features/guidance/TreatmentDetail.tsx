@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { DiseaseGuidance, DiseaseId, Language } from '../../types';
 import { translations } from '../../data/translations';
+import { t as translate } from '../../services/i18n';
 import diseasesData from '../../data/diseases.json';
+import { restricted22Service } from '../../services/restricted22Service';
 import {
   ChevronLeft,
   AlertCircle,
@@ -11,6 +13,8 @@ import {
 
 interface TreatmentDetailProps {
   diseaseId: DiseaseId;
+  crop?: string;
+  diseaseName?: string;
   language: Language;
   onBack: () => void;
   onNavigateToSchemes?: () => void;
@@ -18,6 +22,8 @@ interface TreatmentDetailProps {
 
 export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
   diseaseId,
+  crop,
+  diseaseName,
   language,
   onBack,
 }) => {
@@ -28,6 +34,13 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
   const guidance: DiseaseGuidance =
     (diseasesData.find((d) => d.id === diseaseId) as DiseaseGuidance) ||
     (diseasesData[0] as DiseaseGuidance);
+
+  // Look up class-specific prevention guidance from Ashwin's frozen 22-class KB
+  const preventionResult = restricted22Service.lookupPrevention(
+    crop || guidance.crop,
+    diseaseName || guidance.name,
+    language
+  );
 
   return (
     <div className="flex flex-col px-5 pt-2 pb-24 max-w-md mx-auto">
@@ -165,32 +178,64 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({
       {/* Main Tab Content: Prevention */}
       {activeTab === 'prevention' && (
         <div className="mt-5 space-y-4">
-          <div className="retro-card p-2 divide-y-[1.5px] divide-dashed divide-[var(--color-divider)]">
-            {guidance.preventions.map((prev) => (
-              <div key={prev.step} className="flex items-start gap-3.5 p-3.5">
-                <div className="w-7 h-7 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  {prev.step}
-                </div>
-                <p className="text-xs font-medium text-[var(--color-ink)] leading-relaxed">
-                  {language === 'ml' ? prev.textMl : prev.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-[var(--color-selected-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] p-4 text-[var(--color-selected-text)]">
-            <div className="flex items-center gap-2 mb-1">
-              <Sparkles className="w-4 h-4 text-[var(--color-primary)]" />
-              <span className={`text-xs font-bold ${language === 'en' ? 'uppercase tracking-wider' : ''}`}>
-                {language === 'ml' ? 'കർഷക ശ്രദ്ധയ്ക്ക്' : 'Farmer Pro Tip'}
+          {preventionResult.isFallbackEnglish && (
+            <div className="flex items-center justify-between px-1">
+              <span className="text-xs font-semibold text-[var(--color-muted)]">
+                {translate('prevention_title', undefined, language)}
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[var(--color-inset)] text-[var(--color-muted)] border border-[var(--color-outline)]">
+                {translate('shown_in_english', undefined, language)}
               </span>
             </div>
-            <p className="text-xs text-[var(--color-selected-text)] leading-relaxed font-medium">
-              {language === 'ml'
-                ? 'വിളവെടുപ്പിന് ശേഷം രോഗബാധയുള്ള ചെടികളുടെ അവശിഷ്ടങ്ങൾ ഉടനടി തോട്ടത്തിൽ നിന്ന് മാറ്റി കത്തിച്ചു കളയുക. ഇത് അടുത്ത സീസണിലെ രോഗസാധ്യത 80% വരെ കുറയ്ക്കും.'
-                : 'Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.'}
-            </p>
-          </div>
+          )}
+
+          {preventionResult.entry && preventionResult.entry.prevention.length > 0 ? (
+            <div className="retro-card p-2 divide-y-[1.5px] divide-dashed divide-[var(--color-divider)]">
+              {preventionResult.entry.prevention.map((bullet, idx) => (
+                <div key={idx} className="flex items-start gap-3.5 p-3.5">
+                  <div className="w-7 h-7 rounded-full bg-[var(--color-selected-bg)] text-[var(--color-selected-text)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                    {idx + 1}
+                  </div>
+                  <p className="text-xs font-medium text-[var(--color-ink)] leading-relaxed">
+                    {bullet}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="retro-card p-4 text-center">
+              <p className="text-xs font-medium text-[var(--color-muted)]">
+                {translate('no_guidance_available', undefined, language)}
+              </p>
+            </div>
+          )}
+
+          {preventionResult.entry?.local_prevention && preventionResult.entry.local_prevention.length > 0 && (
+            <div className="bg-[var(--color-selected-bg)] border-2 border-[var(--color-outline)] rounded-[14px] shadow-[3px_3px_0_var(--color-shadow-color)] p-4 text-[var(--color-selected-text)]">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles className="w-4 h-4 text-[var(--color-primary)]" />
+                <span className={`text-xs font-bold ${language === 'en' ? 'uppercase tracking-wider' : ''}`}>
+                  {translate('local_tip_label', undefined, language)}
+                </span>
+              </div>
+              <p className="text-xs text-[var(--color-selected-text)] leading-relaxed font-medium">
+                {preventionResult.entry.local_prevention.join(' ')}
+              </p>
+            </div>
+          )}
+
+          {preventionResult.entry?.sources && preventionResult.entry.sources.length > 0 && (
+            <div className="px-1 text-[11px] text-[var(--color-muted)]">
+              <span className="font-semibold block mb-1">
+                {translate('sources_label', undefined, language)}:
+              </span>
+              <ul className="list-disc list-inside space-y-0.5">
+                {preventionResult.entry.sources.map((src, idx) => (
+                  <li key={idx} className="break-all">{src}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 

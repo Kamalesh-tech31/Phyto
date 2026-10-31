@@ -48,4 +48,28 @@ The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`
 - `btn_try_again`: Retry button on error screen
 - `tip_good_light` & `tip_hold_steady`: Static viewfinder guidance chips on idle scan card
 
+## Government Schemes and Prevention Strings (Added for abinav3 Integration)
+The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`, `ta.json`, `hi.json`, `te.json`):
+- `schemes_section_title`: Section title for Government Schemes
+- `schemes_crop_support_group`: Subsidies and inputs group header ("Support for this crop")
+- `schemes_loss_group`: Calamity and insurance group header ("If you suffer crop loss")
+- `schemes_state_label`: Label for farmer state selection
+- `schemes_select_state_prompt`: Prompt guiding farmer to select state for state-specific schemes
+- `state_tn`, `state_kl`, `state_up`, `state_ap`, `state_other`: Localized state names (Tamil Nadu, Kerala, Uttar Pradesh, Andhra Pradesh, Other state)
+- `schemes_field_damage_label`: Label asking farmer about extent of field damage
+- `damage_under_25`, `damage_25_to_50`, `damage_over_50`, `damage_over_70`: Field damage threshold selection chips
+- `relevant_now`: Status badge for schemes relevant under current loss/severity conditions
+- `requires_severe_loss`: Notice indicating scheme requires qualifying severe crop loss (>50%)
+- `no_state_schemes_note`: Advisory when selected state has no state-specific schemes in KB
+- `no_schemes_available`: Fallback when no schemes match current filters
+- `official_site`: Link label to open official government portal
+- `scheme_conditions`: Collapsible section header for eligibility hard gates
+- `scheme_offline_notice`: Inline notification when farmer taps external link while offline
+- `scheme_disclaimer`: Conservative verification advisory
+- `shown_in_english`: Notice badge indicating scientific prevention content is displayed in English
+- `no_guidance_available`: Fallback when prevention data is not available for a class
+- `prevention_title`: Section title for prevention guidance
+- `local_tip_label`: Label for localized agronomic tip box
+- `sources_label`: Header for official citations/sources
+
 **Review Status**: English (`en`) is canonical; Malayalam (`ml`), Tamil (`ta`), Hindi (`hi`), and Telugu (`te`) are machine-translated and marked for native speaker review.
