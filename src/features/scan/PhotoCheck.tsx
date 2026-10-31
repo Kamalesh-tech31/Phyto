@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Language, QualityCheckResult } from '../../types';
 import { t } from '../../services/i18n';
+import { speechService } from '../../services/speechService';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import { ChevronLeft, Check, AlertTriangle } from 'lucide-react';
 
@@ -21,6 +22,21 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
   onAnalyse,
   onRetake,
 }) => {
+  // Trigger speech once if leaf check fails
+  useEffect(() => {
+    if (quality.isLeafPass === false) {
+      try {
+        speechService.speak({
+          clipId: 'voice_not_leaf',
+          text: t('voice_not_leaf', undefined, language),
+          language,
+        });
+      } catch {
+        // Autoplay restrictions safely caught
+      }
+    }
+  }, [quality.isLeafPass, language]);
+
   // Helper for check icon (green check or amber warning sticker)
   const renderStatusIcon = (passed: boolean) => {
     if (passed) {
@@ -78,6 +94,14 @@ export const PhotoCheck: React.FC<PhotoCheckProps> = ({
           showShadow={!isBlurry && !isRealPhoto}
         />
       </div>
+
+      {/* Not Leaf Notice */}
+      {quality.isLeafPass === false && (
+        <div className="mt-3 p-3 rounded-xl border border-[var(--color-outline)] bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] text-xs font-semibold flex items-center gap-2">
+          <AlertTriangle className="w-4 h-4 shrink-0 stroke-[2.5]" />
+          <span>{t('photo_check_notice_not_leaf', undefined, language)}</span>
+        </div>
+      )}
 
       {/* Quality Checks Card */}
       <div className="mt-4 retro-card overflow-hidden divide-y-[1.5px] divide-dashed divide-[var(--color-divider)]">

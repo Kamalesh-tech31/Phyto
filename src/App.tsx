@@ -7,6 +7,7 @@ import {
   QualityCheckResult,
   ScanHistoryItem,
   ScanStep,
+  VoiceSequenceItem,
 } from './types';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
@@ -23,6 +24,7 @@ import { useConnectivity } from './services/connectivityService';
 import { predictionService } from './services/predictionService';
 import { storageService } from './services/storageService';
 import { speechService } from './services/speechService';
+import { t } from './services/i18n';
 import { useSettings } from './services/settingsService';
 
 export default function App() {
@@ -47,11 +49,22 @@ export default function App() {
   const [schemesReturnStep, setSchemesReturnStep] = useState<ScanStep>('result');
   const [isSettingsSchemesOpen, setIsSettingsSchemesOpen] = useState<boolean>(false);
 
-  // Stop speech when tab or step changes
+  // Auto-register speech service state listener
+  useEffect(() => {
+    speechService.registerStateListener((state) => {
+      setIsSpeaking(state === 'speaking');
+    });
+    return () => {
+      speechService.unregisterStateListener();
+      speechService.stop();
+    };
+  }, []);
+
+  // Stop speech when tab or step or language changes
   useEffect(() => {
     speechService.stop();
     setIsSpeaking(false);
-  }, [activeTab, scanStep, isSettingsSchemesOpen]);
+  }, [activeTab, scanStep, isSettingsSchemesOpen, language]);
 
   // Language toggle (available in Settings)
   const handleLanguageToggle = () => {
@@ -66,85 +79,147 @@ export default function App() {
       return;
     }
 
-    let speechText = '';
-
     if (activeTab === 'scan') {
       if (scanStep === 'capture') {
-        speechText =
-          language === 'ml'
-            ? 'നിങ്ങളുടെ വിള പരിശോധിക്കുക. ഒരൊറ്റ ഇലയുടെ വ്യക്തമായ ഫോട്ടോയെടുക്കുക. പ്രശ്നവും പരിഹാരവും ഫൈറ്റോ പറയും.'
-            : 'Check your crop. Take one clear photo of a single leaf. Phyto tells you what is wrong and what to do.';
+        speechService.speak({
+          clipId: 'page_scan_home',
+          text: t('voice_guide_scan_home', undefined, language),
+          language,
+          onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+        });
+        return;
       } else if (scanStep === 'photo_check') {
-        speechText =
-          language === 'ml'
-            ? 'ഫോട്ടോ പരിശോധന. വ്യക്തതയും വെളിച്ചവും നല്ലതാണ്. പരിശോധിക്കാൻ പര്യാപ്തമാണ്.'
-            : 'Photo check. Sharpness is sharp, light is good, left side has shadow, distance is good. Good enough to analyse.';
+        speechService.speak({
+          clipId: 'page_photo_check',
+          text: t('voice_guide_photo_check', undefined, language),
+          language,
+          onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+        });
+        return;
       } else if (scanStep === 'analyzing') {
-        speechText =
-          language === 'ml'
-            ? 'ഇല പരിശോധിക്കുന്നു. കോശഘടനകളും കുമിൾ ലക്ഷണങ്ങളും ഓഫ്‌ലൈനായി വിശകലനം ചെയ്യുന്നു.'
-            : 'Checking your leaf cells and fungal symptoms offline.';
+        speechService.speak({
+          clipId: 'page_analyzing',
+          text: t('voice_guide_analyzing', undefined, language),
+          language,
+          onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+        });
+        return;
       } else if (scanStep === 'result') {
         if (!prediction) return;
-        const certaintyPct = Math.round(prediction.confidenceScore * 100);
 
         if (prediction.isNotPlant) {
-          speechText =
-            language === 'ml'
-              ? 'വിളയോ കീടമോ അല്ല. ഇത് ഒരു വിളയുടെ ഇലയോ കീടമോ ആയി തോന്നുന്നില്ല. നല്ല വെളിച്ചത്തിൽ ഇല വ്യക്തമായി കാണത്തക്ക വിധം വീണ്ടും ഫോട്ടോയെടുക്കുക.'
-              : 'Not a crop leaf or supported pest. Please frame a supported crop leaf or pest in good light.';
-        } else if (prediction.isUncertain) {
-          speechText =
-            language === 'ml'
-              ? 'കുറഞ്ഞ വിശ്വാസ്യത. ഇതുവരെ ഉറപ്പില്ല. ഫോട്ടോ അവ്യക്തമാണ്. നല്ല വെളിച്ചത്തിൽ ഒരു ചാൺ അകലെ നിന്ന് വീണ്ടും ഫോട്ടോയെടുക്കുക.'
-              : 'Low confidence scan. I am not sure yet. The photo is unclear. Please retake photo in daylight.';
-        } else if (prediction.isAmbiguous) {
-          speechText =
-            language === 'ml'
-              ? `${prediction.cropMl} പരിശോധനാ ഫലം: ${prediction.diseaseNameMl} അല്ലെങ്കിൽ ${prediction.secondCandidate?.conditionMl}. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
-              : `${prediction.crop} scan: Could be ${prediction.diseaseName} or ${prediction.secondCandidate?.condition}. Model certainty is ${certaintyPct} percent.`;
-        } else if (prediction.isHealthy) {
-          speechText =
-            language === 'ml'
-              ? `${prediction.cropMl} ആരോഗ്യമുള്ള ഇല. രോഗലക്ഷണങ്ങളോ കീടങ്ങളോ കണ്ടെത്തിയില്ല. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
-              : `${prediction.crop} leaf looks healthy. No disease lesions or pests detected. Model certainty is ${certaintyPct} percent.`;
-        } else {
-          speechText =
-            language === 'ml'
-              ? `${prediction.cropMl} പരിശോധനാ ഫലം: ${prediction.diseaseNameMl}. വിഭാഗം: ${prediction.categoryMl}. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
-              : `${prediction.crop} diagnosis: ${prediction.diseaseName}, ${prediction.category}. Model certainty is ${certaintyPct} percent.`;
+          speechService.speak({
+            clipId: 'voice_not_plant',
+            text: t('voice_not_plant', undefined, language),
+            language,
+            onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+          });
+          return;
         }
+
+        if (prediction.isUncertain) {
+          speechService.speak({
+            clipId: 'voice_result_uncertain',
+            text: t('voice_result_uncertain', undefined, language),
+            language,
+            onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+          });
+          return;
+        }
+
+        // Build result voice from short clips played in sequence (Directive 3):
+        // 1. Class overview
+        // 2. Certainty band (high, medium, low)
+        // 3. 'Also possible' intro + second candidate class clip (if ambiguous)
+        // 4. Grape / Pest special notices
+        const items: VoiceSequenceItem[] = [];
+
+        // 1. Overview clip
+        const diseaseIdentifier = (prediction.diseaseId || 'healthy').toLowerCase();
+        const cropLower = (prediction.crop || '').toLowerCase();
+        const classKey = `${cropLower}_${diseaseIdentifier}_overview`;
+        items.push({
+          clipId: classKey,
+          text: t(classKey, undefined, language) || `${prediction.crop}: ${prediction.diseaseName}`,
+        });
+
+        // 2. Certainty band
+        const score = prediction.confidenceScore ?? 0;
+        const bandKey = score >= 0.8 ? 'certainty_band_high' : (score >= 0.6 ? 'certainty_band_medium' : 'certainty_band_low');
+        items.push({
+          clipId: bandKey,
+          text: t(bandKey, undefined, language),
+        });
+
+        // 3. Ambiguous check
+        if (prediction.isAmbiguous && prediction.secondCandidate) {
+          items.push({
+            clipId: 'also_possible_intro',
+            text: t('also_possible_intro', undefined, language),
+          });
+          const secondClassKey = `${prediction.secondCandidate.diseaseId}_overview`;
+          items.push({
+            clipId: secondClassKey,
+            text: t(secondClassKey, undefined, language) || prediction.secondCandidate.condition,
+          });
+        }
+
+        // 4. Grape / Pest special notices
+        if (cropLower === 'grape') {
+          items.push({
+            clipId: 'grape_notice_voice',
+            text: t('grape_notice_voice', undefined, language),
+          });
+        } else if (prediction.isPest) {
+          items.push({
+            clipId: 'pest_notice_voice',
+            text: t('pest_notice_voice', undefined, language),
+          });
+        }
+
+        speechService.speakSequence(items, language, {
+          onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+        });
+        return;
       } else if (scanStep === 'treatment') {
-        speechText =
-          language === 'ml'
-            ? 'ചികിത്സാ നിർദ്ദേശങ്ങൾ. രോഗബാധയുള്ള അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക, വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക, ചുവട്ടിൽ മാത്രം നനയ്ക്കുക. വിള വില അനുമാനം: തക്കാളിക്ക് പ്രതീക്ഷിക്കുന്ന വില കിലോഗ്രാമിന് 32 രൂപ, വിപണി നിരക്ക് വർദ്ധിക്കുന്നു.'
-            : 'Early blight management guide. Organic recommendations: Remove and burn infected lower leaves, spray neem-based solution in evening, water at base. Crop price outlook: Expected tomato price is ₹32 per kilogram with a rising market trend.';
-      } else if (scanStep === 'scheme_context') {
-        speechText =
-          language === 'ml'
-            ? 'സർക്കാർ പദ്ധതി വിവരങ്ങൾ. സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി വഴി കൃഷിഭവനിൽ നിന്ന് 50 ശതമാനം സബ്സിഡി നിരക്കിൽ ജൈവ കുമിൾനാശിനികളും സ്പ്രേയറുകളും ലഭ്യമാണ്.'
-            : 'Government scheme details. Subhiksha Keralam provides 50 percent subsidy on bio-fungicides and knapsack sprayers through your local Krishi Bhavan.';
+        const diseaseIdentifier = (prediction?.diseaseId || 'healthy').toLowerCase();
+        const cropLower = (prediction?.crop || '').toLowerCase();
+        const treatKey = `${cropLower}_${diseaseIdentifier}_treatment`;
+        speechService.speak({
+          clipId: treatKey,
+          text: t(treatKey, undefined, language) || t('view_treatment_prevention', undefined, language),
+          language,
+          onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+        });
+        return;
       }
     } else if (activeTab === 'history') {
-      speechText =
-        language === 'ml'
-          ? 'സ്കാൻ ചരിത്രം. ഫോണിൽ സൂക്ഷിച്ചിരിക്കുന്ന മുൻകാല പരിശോധനാ ഫലങ്ങൾ ഇവിടെ കാണാം.'
-          : 'Scan history. View all saved crop leaf diagnoses stored on this device.';
-    } else if (activeTab === 'settings') {
-      speechText =
-        language === 'ml'
-          ? 'സെറ്റിംഗ്സും കർഷക സഹായിയും. ഇന്റർനെറ്റ് ഇല്ലാതെയും മോഡൽ ഫോണിൽ സജ്ജമാണ്.'
-          : 'Settings and farm assistant. Phyto is an offline-first agricultural assistant ready on this phone.';
-    }
-
-    if (speechText) {
-      speechService.speak(speechText, language, (speaking) => {
-        setIsSpeaking(speaking);
+      speechService.speak({
+        clipId: 'page_history',
+        text: t('voice_guide_history', undefined, language),
+        language,
+        onStateChange: (state) => setIsSpeaking(state === 'speaking'),
       });
+      return;
+    } else if (activeTab === 'settings') {
+      speechService.speak({
+        clipId: 'page_settings',
+        text: t('voice_guide_settings', undefined, language),
+        language,
+        onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+      });
+      return;
+    } else if (activeTab === 'schemes') {
+      speechService.speak({
+        clipId: 'page_schemes',
+        text: t('voice_guide_schemes', undefined, language),
+        language,
+        onStateChange: (state) => setIsSpeaking(state === 'speaking'),
+      });
+      return;
     }
   };
 
-  // Step 1 -> Step 2: Image captured or chosen
   const handleImageSelected = async (imageUrl: string, presetType?: string) => {
     setSelectedImage(imageUrl);
     setSamplePreset(presetType);

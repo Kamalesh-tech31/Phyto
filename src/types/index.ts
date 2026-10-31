@@ -61,6 +61,7 @@ export interface QualityCheckResult {
   distanceLabelMl: string;
   distancePass: boolean;
 
+  isLeafPass?: boolean;
   isAcceptable: boolean;
   advice: string;
   adviceMl: string;
@@ -125,6 +126,7 @@ export interface PredictionResult {
   isUncertain: boolean;
   isAmbiguous: boolean;
   isNotPlant: boolean;
+  notLeaf?: boolean;
   isHealthy: boolean;
   isPest: boolean;
   isComingSoon: boolean;
@@ -195,4 +197,23 @@ export interface FAQItem {
   answerMl: string;
   speechText?: string;
   speechTextMl?: string;
+}
+
+export type VoiceState = 'idle' | 'loading' | 'speaking' | 'error';
+
+export interface SpeechDiagnostics {
+  isSupported: boolean;
+  totalVoices: number;
+  voicesForLanguage: string[];
+  selectedVoiceName: string | null;
+  activeTier: 'bundled' | 'remote' | 'webspeech' | 'none';
+  lastStatus: string | null;
+  lastError: string | null;
+  lastClipPath: string | null;
+  lastHttpStatus: string | number | null;
+}
+
+export interface VoiceSequenceItem {
+  clipId?: string;
+  text: string;
 }
