@@ -1,0 +1,574 @@
+{
+  "dataset_name": "India_Central_Kerala_TamilNadu_Government_Agriculture_Scheme_KB",
+  "version": "2.0",
+  "purpose": "Decision-support knowledge base for showing the most relevant government agriculture scheme(s) after crop/disease assessment.",
+  "critical_rule": "Disease prediction alone must never be treated as proof of scheme eligibility. Severe crop-health status can be used to prioritize loss-compensation/insurance pathways only when the official scheme conditions are also satisfied.",
+  "severity_logic": {
+    "low": {
+      "meaning": "Disease detected but crop remains manageable; no evidence of major crop loss.",
+      "scheme_priority": "Usually show no compensation scheme. Show preventive/input/development schemes only when their independent eligibility conditions match."
+    },
+    "moderate": {
+      "meaning": "Disease is significant and may affect yield, but crop is not established as a qualifying total-loss event.",
+      "scheme_priority": "Prioritize applicable crop-health/input/development support; do not present insurance compensation as guaranteed."
+    },
+    "severe": {
+      "meaning": "Extensive damage or likely major loss; app should request/verify actual crop-loss facts rather than infer them solely from an image.",
+      "scheme_priority": "Prioritize crop-insurance/crop-loss compensation schemes when crop, state, season, notification, enrollment and loss conditions match."
+    },
+    "critical": {
+      "meaning": "Crop is extensively damaged and may need removal/replanting, but an image model cannot legally establish scheme eligibility.",
+      "scheme_priority": "Show only schemes whose official conditions match the verified situation; compensation/insurance should be surfaced above general development schemes."
+    }
+  },
+  "ranking_rules": [
+    "1. Match state and scheme jurisdiction.",
+    "2. Match crop and notified crop/area where applicable.",
+    "3. Match the farmer's situation and scheme purpose.",
+    "4. If severe/critical loss is verified, rank applicable insurance/loss-compensation schemes first.",
+    "5. Never rank a scheme highly merely because its name contains the crop name.",
+    "6. Never claim guaranteed eligibility; show 'potentially relevant' until official verification.",
+    "7. Prefer current financial-year government orders/guidelines over older summaries.",
+    "8. Preserve official document and page references for every important eligibility/benefit rule."
+  ],
+  "schemes": [
+    {
+      "id": "IN-PMFBY",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "jurisdiction": "India - participating/notified states and areas",
+      "type": "crop_insurance",
+      "best_when": [
+        "notified crop",
+        "notified area",
+        "insured farmer",
+        "covered peril/loss",
+        "seasonal notification"
+      ],
+      "severity_priority": [
+        "severe",
+        "critical"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Do not trigger from disease name alone. Verify current season/state/crop notification and policy conditions.",
+      "official_source": "https://pmfby.gov.in/"
+    },
+    {
+      "id": "IN-PMKISAN",
+      "name": "PM-KISAN",
+      "jurisdiction": "India",
+      "type": "income_support",
+      "best_when": [
+        "eligible landholding farmer family"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate",
+        "severe",
+        "critical"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "General farmer income support; disease severity does not determine eligibility.",
+      "official_source": "https://pmkisan.gov.in/"
+    },
+    {
+      "id": "IN-KCC",
+      "name": "Kisan Credit Card",
+      "jurisdiction": "India",
+      "type": "agricultural_credit",
+      "best_when": [
+        "eligible farmer",
+        "cultivation/input/working-capital need"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Useful where crop damage creates a legitimate need for eligible agricultural credit; eligibility is determined by the lending institution and applicable guidelines.",
+      "official_source": "https://www.myscheme.gov.in/"
+    },
+    {
+      "id": "IN-SOIL-HEALTH-CARD",
+      "name": "Soil Health Card",
+      "jurisdiction": "India",
+      "type": "soil_health",
+      "best_when": [
+        "soil testing",
+        "nutrient management"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Not a disease-compensation scheme; useful where soil/nutrient management is relevant.",
+      "official_source": "https://soilhealth.dac.gov.in/"
+    },
+    {
+      "id": "IN-PER-DROP-MORE-CROP",
+      "name": "Per Drop More Crop",
+      "jurisdiction": "India - state implementation",
+      "type": "micro_irrigation",
+      "best_when": [
+        "eligible micro-irrigation need",
+        "water-use efficiency"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Infrastructure/input support, not compensation for disease loss.",
+      "official_source": "https://www.myscheme.gov.in/"
+    },
+    {
+      "id": "IN-PM-RKVY",
+      "name": "PM-Rashtriya Krishi Vikas Yojana (PM-RKVY)",
+      "jurisdiction": "India - state implementation",
+      "type": "agriculture_development",
+      "best_when": [
+        "approved state/project component",
+        "farm infrastructure/development"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "A broad umbrella/development framework; do not present it as direct disease compensation unless a specific approved component provides that support.",
+      "official_source": "https://www.myscheme.gov.in/"
+    },
+    {
+      "id": "IN-MIDH",
+      "name": "Mission for Integrated Development of Horticulture (MIDH)",
+      "jurisdiction": "India - state implementation",
+      "type": "horticulture_development",
+      "best_when": [
+        "eligible horticulture crop",
+        "planting material",
+        "protected cultivation",
+        "orchard/horticulture development"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Useful for eligible horticulture development/replanting components where the current state implementation permits it.",
+      "official_source": "https://midh.gov.in/"
+    },
+    {
+      "id": "IN-PKVY",
+      "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+      "jurisdiction": "India - state implementation",
+      "type": "organic_farming",
+      "best_when": [
+        "eligible organic farming cluster/farmer"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Organic farming support; not an automatic disease-loss compensation mechanism.",
+      "official_source": "https://www.myscheme.gov.in/"
+    },
+    {
+      "id": "IN-NMNF",
+      "name": "National Mission on Natural Farming (NMNF)",
+      "jurisdiction": "India - state implementation",
+      "type": "natural_farming",
+      "best_when": [
+        "eligible natural farming programme/cluster"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "matching_note": "Practice-development support; not a direct disease-loss compensation scheme.",
+      "official_source": "https://www.myscheme.gov.in/"
+    },
+    {
+      "id": "KL-STATE-CROP-INSURANCE",
+      "name": "Kerala Restructured State Crop Insurance Scheme",
+      "jurisdiction": "Kerala",
+      "type": "crop_loss_compensation",
+      "best_when": [
+        "insured farmer",
+        "covered crop",
+        "qualifying crop loss",
+        "natural calamity/wild animal",
+        "paddy pest/disease where applicable"
+      ],
+      "severity_priority": [
+        "severe",
+        "critical"
+      ],
+      "disease_direct_trigger": "paddy_only_for_pest_disease",
+      "covered_crops_from_source": [
+        "Paddy",
+        "Coconut",
+        "Arecanut",
+        "Rubber",
+        "Cashew",
+        "Tapioca",
+        "Banana",
+        "Pineapple",
+        "Pepper",
+        "Cardamom",
+        "Ginger",
+        "Nutmeg",
+        "Turmeric",
+        "Coffee",
+        "Tea",
+        "Cocoa",
+        "Sesamum",
+        "Groundnut",
+        "Vegetables",
+        "Clove",
+        "Betelvine",
+        "Pulses",
+        "Tubercrops",
+        "Sugarcane",
+        "Tobacco",
+        "Mango",
+        "Millets"
+      ],
+      "hard_gate": [
+        "AIMS registration",
+        "insurance/enrollment conditions",
+        "qualifying loss",
+        "official verification"
+      ],
+      "special_rule": "For crop pest/disease loss, the cited Kerala order specifically provides for paddy; do not generalize this disease-loss provision to all listed crops.",
+      "official_document": "document-559.pdf",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/05/document-559.pdf",
+      "source_evidence": "The 2025-26 Kerala circular states that compensation covers natural calamities/wild-animal menace for 27 major crops and pest/disease attack in rice; it also states partial damage is not considered and paddy compensation is provided when crop loss exceeds 50%. fileciteturn7file1L53-L74"
+    },
+    {
+      "id": "KL-PMFBY-RWBCIS",
+      "name": "PMFBY and Restructured Weather Based Crop Insurance Scheme (RWBCIS) - Kerala implementation",
+      "jurisdiction": "Kerala",
+      "type": "crop_insurance",
+      "best_when": [
+        "notified crop",
+        "notified season/area",
+        "insured farmer",
+        "covered loss/weather condition"
+      ],
+      "severity_priority": [
+        "severe",
+        "critical"
+      ],
+      "disease_direct_trigger": false,
+      "covered_crops_from_kerala_plan": [
+        "paddy",
+        "banana",
+        "pepper",
+        "ginger",
+        "turmeric",
+        "cardamom",
+        "pineapple",
+        "nutmeg",
+        "arecanut",
+        "sugarcane",
+        "snake gourd",
+        "bitter gourd",
+        "yard long bean",
+        "cashew",
+        "mango",
+        "millets",
+        "cabbage",
+        "carrot",
+        "garlic",
+        "French bean",
+        "potato",
+        "ash gourd",
+        "pumpkin",
+        "cucumber",
+        "tomato",
+        "bhindi",
+        "chilli"
+      ],
+      "hard_gate": [
+        "notified crop/season/area",
+        "insurance enrollment",
+        "applicable claim conditions"
+      ],
+      "official_document": "Final-Annual-Plan-2025-26.pdf",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/07/Final-Annual-Plan-2025-26.pdf",
+      "source_evidence": "Kerala's Annual Plan lists the notified Kharif and Rabi crops for PMFBY/RWBCIS, including several crops in the app's target set. fileciteturn7file0L10-L27"
+    },
+    {
+      "id": "KL-CONTINGENCY-CROP-HEALTH",
+      "name": "Kerala Contingency Programme to meet Natural Calamities and Pest & Disease Endemic",
+      "jurisdiction": "Kerala",
+      "type": "emergency_crop_support",
+      "best_when": [
+        "pest/disease endemic",
+        "natural calamity",
+        "affected farmers",
+        "departmental emergency response"
+      ],
+      "severity_priority": [
+        "severe",
+        "critical"
+      ],
+      "disease_direct_trigger": "possible_but_departmental",
+      "support_examples_from_source": [
+        "short-duration seed buffer stock",
+        "bund strengthening",
+        "debris removal",
+        "crop health management support"
+      ],
+      "hard_gate": [
+        "departmental programme activation/implementation"
+      ],
+      "official_document": "Final-Annual-Plan-2025-26.pdf",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/07/Final-Annual-Plan-2025-26.pdf",
+      "source_evidence": "Kerala's Annual Plan provides ₹750 lakh for contingency response to natural calamity and pest/disease endemic, including buffer stock distribution, bund strengthening, debris removal and crop-health management. fileciteturn7file6L437-L449"
+    },
+    {
+      "id": "KL-CROP-HEALTH-MANAGEMENT",
+      "name": "Kerala Crop Health Management",
+      "jurisdiction": "Kerala",
+      "type": "crop_health_support",
+      "best_when": [
+        "crop health issue",
+        "pest/disease management support",
+        "eligible departmental component"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": "possible_but_component_specific",
+      "hard_gate": [
+        "current departmental implementation"
+      ],
+      "official_document": "Final-Annual-Plan-2025-26.pdf",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/07/Final-Annual-Plan-2025-26.pdf",
+      "source_evidence": "Kerala's Annual Plan lists Crop Health Management as a state plan scheme. fileciteturn7file5L339-L355"
+    },
+    {
+      "id": "KL-CROP-DIVERSIFICATION",
+      "name": "Kerala Crop Diversification, Intensification & Introduction",
+      "jurisdiction": "Kerala",
+      "type": "crop_development",
+      "best_when": [
+        "eligible small/marginal farmer",
+        "pulses/oilseeds/millets/betel vine",
+        "approved implementation area"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "crop/component match",
+        "current implementation"
+      ],
+      "official_document": "document-87.pdf",
+      "official_source": "https://keralaagriculture.gov.in/wp-content/uploads/2025/08/document-87.pdf",
+      "source_evidence": "The Kerala 2025-26 circular describes assistance for oilseeds, pulses, millets and betel vine; its pulse component is limited to small and marginal farmers while registered farmer groups can also be eligible. fileciteturn7file8L518-L550"
+    },
+    {
+      "id": "TN-MIDH",
+      "name": "Mission for Integrated Development of Horticulture (MIDH) - Tamil Nadu",
+      "jurisdiction": "Tamil Nadu",
+      "type": "horticulture_development",
+      "best_when": [
+        "eligible horticulture crop/component",
+        "planting material",
+        "orchard/horticulture development"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "current Tamil Nadu component and eligibility"
+      ],
+      "official_document": "2026-27-NHM-First-Instalment-GO-(92).pdf",
+      "official_source": "Tamil Nadu Horticulture Department / current scheme-GO repository",
+      "source_evidence": "The uploaded 2026-27 Tamil Nadu GO records Mission for Integrated Development of Horticulture and release of the first instalment under the annual action plan. fileciteturn6file4L1-L7"
+    },
+    {
+      "id": "TN-PER-DROP-MORE-CROP",
+      "name": "Per Drop More Crop - Micro Irrigation",
+      "jurisdiction": "Tamil Nadu",
+      "type": "micro_irrigation",
+      "best_when": [
+        "eligible farmer",
+        "micro-irrigation need",
+        "water-use efficiency"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "category/beneficiary eligibility",
+        "current component availability"
+      ],
+      "official_document": "2026-27-Micro-Irrigation-First-Instalment-GO-(87).pdf",
+      "official_source": "Tamil Nadu Horticulture Department / current scheme-GO repository",
+      "source_evidence": "The 2026-27 GO provides funds for Per Drop More Crop micro-irrigation installation and states a higher subsidy pattern for small/marginal farmers than other farmers. fileciteturn6file5L2-L6"
+    },
+    {
+      "id": "TN-PKVY",
+      "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+      "jurisdiction": "Tamil Nadu",
+      "type": "organic_farming",
+      "best_when": [
+        "eligible organic-farming cluster/component"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "cluster/component eligibility"
+      ],
+      "official_document": "2026-27-PKVY-GO-(123).pdf",
+      "official_source": "Tamil Nadu Agriculture/Horticulture Department",
+      "source_evidence": "The 2026-27 GO sanctions PKVY funds and identifies Agriculture and Horticulture department clusters/components for implementation. fileciteturn6file6L2-L6"
+    },
+    {
+      "id": "TN-NMNF",
+      "name": "National Mission on Natural Farming (NMNF)",
+      "jurisdiction": "Tamil Nadu",
+      "type": "natural_farming",
+      "best_when": [
+        "eligible natural-farming cluster",
+        "eligible farmer/component"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "cluster/component eligibility"
+      ],
+      "official_document": "2026-27-NMNF-First-Instalment-GO-(93).pdf",
+      "official_source": "Tamil Nadu Agriculture/Horticulture Department",
+      "source_evidence": "The 2026-27 GO states NMNF aims to build natural-farming capacity and lists cluster activities and first-year components including training, certification, orientation and bio-input resource centres. fileciteturn6file8L2-L6"
+    },
+    {
+      "id": "TN-PM-RKVY",
+      "name": "PM-Rashtriya Krishi Vikas Yojana (PM-RKVY) - Tamil Nadu",
+      "jurisdiction": "Tamil Nadu",
+      "type": "agriculture_development",
+      "best_when": [
+        "specific approved DPR/project component",
+        "eligible beneficiary/project"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "specific approved project/component"
+      ],
+      "official_document": "2026-27-PM-RKVY-First-Instalment-GO-(126).pdf",
+      "official_source": "Tamil Nadu Agriculture Department",
+      "source_evidence": "The 2026-27 PM-RKVY GO lists approved projects including agricultural extension, seed production/processing, infrastructure and horticulture-related projects. fileciteturn6file9L3-L6"
+    },
+    {
+      "id": "TN-AGROFORESTRY-PM-RKVY",
+      "name": "Agroforestry Scheme under PM-RKVY",
+      "jurisdiction": "Tamil Nadu",
+      "type": "agroforestry",
+      "best_when": [
+        "eligible agroforestry intervention",
+        "approved implementation component"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "approved component"
+      ],
+      "official_document": "2026-27-Agroforestry-GO-(125).pdf",
+      "official_source": "Tamil Nadu Agriculture Department",
+      "source_evidence": "The 2026-27 GO sanctions the Agroforestry scheme under PM-RKVY and authorizes implementation according to scheme guidelines. fileciteturn6file7L2-L6"
+    },
+    {
+      "id": "TN-NBM",
+      "name": "National Bamboo Mission (NBM)",
+      "jurisdiction": "Tamil Nadu",
+      "type": "bamboo_horticulture",
+      "best_when": [
+        "eligible bamboo intervention"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "current NBM component eligibility"
+      ],
+      "official_document": "2026-27-NBM-First-Instalment-GO-(85).pdf",
+      "official_source": "Tamil Nadu Agriculture/Horticulture Department",
+      "source_evidence": "The 2026-27 GO records the National Bamboo Mission annual action plan and first instalment under Krishonnati Yojana. fileciteturn6file10L1-L3"
+    },
+    {
+      "id": "TN-NMEO-OP",
+      "name": "National Mission on Edible Oils - Oil Palm (NMEO-OP)",
+      "jurisdiction": "Tamil Nadu",
+      "type": "oil_palm_development",
+      "best_when": [
+        "eligible oil-palm grower/planting intervention"
+      ],
+      "severity_priority": [
+        "low",
+        "moderate"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "eligible oil-palm area/intervention"
+      ],
+      "official_document": "2026-27-NMEO-OP-First-Instalment-GO-(191).pdf",
+      "official_source": "Tamil Nadu Agriculture/Horticulture Department",
+      "source_evidence": "The 2026-27 GO sanctions the NMEO-OP annual action plan and lists planting-material and maintenance interventions. fileciteturn6file11L2-L6"
+    },
+    {
+      "id": "TN-CDB",
+      "name": "Coconut Development Board schemes - Tamil Nadu implementation",
+      "jurisdiction": "Tamil Nadu",
+      "type": "coconut_development",
+      "best_when": [
+        "coconut farmer",
+        "eligible CDB intervention"
+      ],
+      "severity_priority": [
+        "moderate",
+        "severe"
+      ],
+      "disease_direct_trigger": false,
+      "hard_gate": [
+        "specific CDB scheme/component"
+      ],
+      "official_document": "GO-136-ADM-App-2026-27.pdf",
+      "official_source": "Tamil Nadu Agriculture Department / Coconut Development Board",
+      "source_evidence": "The 2026-27 Tamil Nadu GO records Coconut Development Board schemes and notes beneficiary contribution for Coconut Palm Insurance Scheme and Kera Suraksha Scheme. fileciteturn6file12L2-L3"
+    }
+  ],
+  "implementation_note": {
+    "recommended_app_output": "Show at most 1-3 highest-ranked schemes, not the entire database.",
+    "severe_case": "If verified severe/critical crop loss matches an insurance/compensation scheme, place that scheme first and explain the qualifying conditions.",
+    "non_severe_case": "Do not show compensation as if it is available merely because a disease was detected; show relevant development/input schemes only if independent eligibility matches.",
+    "verification_message": "Potentially relevant scheme. Final eligibility, notification, enrollment and claim approval must be confirmed through the official department/portal."
+  }
+}

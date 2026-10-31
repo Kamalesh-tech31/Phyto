@@ -1,0 +1,52 @@
+[
+  {
+    "id": "faq-1",
+    "category": "disease",
+    "question": "How can I prevent early blight on my tomatoes?",
+    "questionMl": "തക്കാളിയിലെ ഏർലി ബ്ലൈറ്റ് രോഗം എങ്ങനെ തടയാം?",
+    "answer": "Early blight spores survive in the soil and splash onto leaves during rain or watering. To prevent it: 1) Remove the lowest 25-30 cm of leaves once the plant is established. 2) Apply clean straw or plastic mulch over the soil. 3) Water only at the soil line in the morning so foliage stays dry. 4) Spray organic neem seed extract or cow dung slurry as a protective shield.",
+    "answerMl": "മണ്ണിലെ കുമിൾ ബീജങ്ങൾ മഴവെള്ളം തെറിച്ചാണ് ഇലകളിലേക്ക് പടരുന്നത്. ഇത് തടയാൻ: 1) ചെടിയുടെ അടിഭാഗത്തെ 30 സെ.മീ ഉയരത്തിലുള്ള ഇലകൾ മുറിച്ചു മാറ്റുക. 2) ചെടിയുടെ ചുവട്ടിൽ വൈക്കോലോ ഉണങ്ങിയ ഇലകളോ കൊണ്ട് പുതയിടുക. 3) ഇലകളിൽ വീഴാതെ ചുവട്ടിൽ മാത്രം രാവിലെ നനയ്ക്കുക. 4) മുൻകരുതലായി വേപ്പെണ്ണ മിശ്രിതം അല്ലെങ്കിൽ ചാണകപ്പാൽ തളിക്കുക.",
+    "speechText": "To prevent early blight, mulch around plants, prune the lowest leaves, and water directly at the base rather than over the leaves.",
+    "speechTextMl": "ഏർലി ബ്ലൈറ്റ് തടയാൻ ചെടിയുടെ ചുവട്ടിൽ പുതയിടുകയും അടിയിലെ ഇലകൾ മാറ്റുകയും ഇലകളിൽ നനയ്ക്കാതിരിക്കുകയും ചെയ്യുക."
+  },
+  {
+    "id": "faq-2",
+    "category": "disease",
+    "question": "What should I do immediately after finding diseased leaves?",
+    "questionMl": "രോഗമുള്ള ഇലകൾ കണ്ടാൽ ഉടൻ എന്താണ് ചെയ്യേണ്ടത്?",
+    "answer": "Act swiftly: 1) Prune all infected leaves using clean shears on a dry sunny afternoon (never while wet). 2) Put the leaves directly into a bag and burn or bury them—do not put them into compost. 3) Disinfect your hands and tools before touching healthy plants. 4) Apply a copper-based or neem preventive spray to remaining healthy foliage.",
+    "answerMl": "ഉടൻ ചെയ്യേണ്ട കാര്യങ്ങൾ: 1) രോഗം ബാധിച്ച ഇലകൾ ഉച്ചയ്ക്ക് ശേഷം ഉണങ്ങിയ സമയത്ത് വെട്ടി മാറ്റുക. 2) അവ കമ്പോസ്റ്റിൽ ഇടാതെ തീയിടുകയോ ആഴത്തിൽ കുഴിച്ചുമൂടുകയോ ചെയ്യുക. 3) കൈകളും കത്രികയും അണുവിമുക്തമാക്കുക. 4) ബാക്കിയുള്ള ആരോഗ്യകരമായ ഇലകളിൽ വേപ്പെണ്ണ മിശ്രിതമോ ബോർഡോ മിശ്രിതമോ തളിക്കുക.",
+    "speechText": "Immediately cut infected leaves with clean shears, burn or bury them, and spray neem oil onto healthy leaves.",
+    "speechTextMl": "രോഗബാധയുള്ള ഇലകൾ ഉടനടി വെട്ടി തീയിടുക. ശേഷം ആരോഗ്യകരമായ ഇലകളിൽ വേപ്പെണ്ണ തളിക്കുക."
+  },
+  {
+    "id": "faq-3",
+    "category": "schemes",
+    "question": "Which government schemes can help me with disease management costs?",
+    "questionMl": "ചികിത്സാ ചെലവുകൾക്ക് ഏതെല്ലാം സർക്കാർ പദ്ധതികൾ വഴി സഹായം ലഭിക്കും?",
+    "answer": "In Kerala, under the 'Subhiksha Keralam' Plant Protection component, Krishi Bhavans provide 50% subsidized bio-fungicides (like Trichoderma, Pseudomonas, and Neem extracts) as well as battery/knapsack sprayers. PM-KISAN gives ₹6,000 yearly for farm inputs, and PMFBY covers severe crop loss.",
+    "answerMl": "കേരളത്തിൽ സുഭിക്ഷ കേരളം പദ്ധതി വഴി കൃഷിഭവനുകൾ ട്രൈക്കോഡെർമ, സ്യൂഡോമോണസ്, വേപ്പെണ്ണ തുടങ്ങിയ ജൈവ കീടനാശിനികൾക്കും സ്പ്രേയറുകൾക്കും 50% സബ്സിഡി നൽകുന്നു. കൂടാതെ പി.എം കിസാൻ വഴി പ്രതിവർഷം 6,000 രൂപയും വിളനാശത്തിന് ഫസൽ ബീമാ യോജനയും ലഭ്യമാണ്.",
+    "speechText": "Subhiksha Keralam provides 50 percent subsidy on bio-fungicides and sprayers from your local Krishi Bhavan.",
+    "speechTextMl": "സുഭിക്ഷ കേരളം പദ്ധതി വഴി കൃഷിഭവനുകളിൽ നിന്ന് 50 ശതമാനം സബ്സിഡി നിരക്കിൽ ജൈവ കുമിൾനാശിനികൾ ലഭിക്കും."
+  },
+  {
+    "id": "faq-4",
+    "category": "camera",
+    "question": "How should I take a clear leaf photo for accurate AI detection?",
+    "questionMl": "കൃത്യമായ രോഗനിർണ്ണയത്തിന് എങ്ങനെ വ്യക്തമായ ഫോട്ടോയെടുക്കാം?",
+    "answer": "Follow these 4 simple steps: 1) Hold your phone about one hand-span (15-20 cm) away from the leaf. 2) Ensure natural daylight is shining across the leaf surface without your shadow falling on it. 3) Choose a single leaf showing clear symptoms and fill the camera frame. 4) Hold completely steady until the capture completes.",
+    "answerMl": "4 കാര്യങ്ങൾ ശ്രദ്ധിക്കുക: 1) മൊബൈൽ ഇലയിൽ നിന്ന് ഒരു ചാൺ (15-20 സെ.മീ) അകലെ പിടിക്കുക. 2) നല്ല പകൽവെളിച്ചത്തിൽ ഫോട്ടോയെടുക്കുക, നിഴൽ വീഴരുത്. 3) രോഗലക്ഷണങ്ങൾ വ്യക്തമായ ഒരൊറ്റ ഇല ഫ്രെയിമിൽ നിറഞ്ഞുനിൽക്കണം. 4) ഫോൺ അനങ്ങാതെ പിടിച്ച് ഫോട്ടോയെടുക്കുക.",
+    "speechText": "Hold the phone one hand-span away in natural daylight, avoid shadows, and fill the frame with one single leaf.",
+    "speechTextMl": "ഒരു ചാൺ അകലെ നിന്ന് നല്ല വെളിച്ചത്തിൽ നിഴൽ വീഴാതെ ഒരൊറ്റ ഇല മുഴുവനായി കാണുന്ന രീതിയിൽ ഫോൺ അനങ്ങാതെ ഫോട്ടോയെടുക്കുക."
+  },
+  {
+    "id": "faq-5",
+    "category": "prevention",
+    "question": "How do I prepare an effective organic neem spray at home?",
+    "questionMl": "വീട്ടിൽ എങ്ങനെ ഫലപ്രദമായ വേപ്പെണ്ണ മിശ്രിതം തയ്യാറാക്കാം?",
+    "answer": "Mix 20 ml pure cold-pressed neem oil and 5 grams of soap flakes (or mild liquid soap) in 1 liter of warm water. Shake vigorously until milky and homogeneous. Spray on both upper and lower leaf surfaces during cool evening hours to avoid leaf burn.",
+    "answerMl": "ഒരു ലിറ്റർ ഇളം ചൂടുവെള്ളത്തിൽ 20 മില്ലി ശുദ്ധമായ വേപ്പെണ്ണയും 5 ഗ്രാം ബാർ സോപ്പ് ചിരകിയതും ചേർത്ത് നന്നായി ഇളക്കുക. പാൽ നിറമാകുമ്പോൾ വൈകുന്നേരങ്ങളിൽ ഇലകളുടെ ഇരുവശത്തും തളിക്കുക.",
+    "speechText": "Mix 20 millilitres of pure neem oil and 5 grams of soap in 1 litre of warm water, and spray during cool evening hours.",
+    "speechTextMl": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 20 മില്ലി വേപ്പെണ്ണയും 5 ഗ്രാം സോപ്പും ചേർത്ത് ഇളക്കി വൈകുന്നേരങ്ങളിൽ തളിക്കുക."
+  }
+]

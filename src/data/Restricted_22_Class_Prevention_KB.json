@@ -1,0 +1,1619 @@
+{
+  "dataset_name": "Restricted_22_Class_Prevention_KB",
+  "version": "2.0",
+  "scope": {
+    "crops": [
+      "tomato",
+      "potato",
+      "corn",
+      "rice"
+    ],
+    "total_classes": 22,
+    "disease_and_healthy_classes": 17,
+    "pest_classes": 5,
+    "healthy_classes": 3,
+    "actual_non_healthy_classes": 19,
+    "note": "Exactly 22 frozen model labels: 17 tomato/potato/corn/rice disease-or-healthy labels + 5 pest labels. Rice has no Healthy class in the frozen list."
+  },
+  "important_constraint": "This KB contains only the frozen 4-crop/22-class model scope. It does not contain prevention entries for any other crop.",
+  "model_class_verification": {
+    "status": "pending_actual_dataset_folder_check",
+    "reason": "The frozen labels supplied by the team are used here, but the actual PlantVillage/IP102/rice-dataset folder names were not available in this conversation. Do not rename model classes until the actual folders are inspected.",
+    "required_before_training": [
+      "List actual PlantVillage folder names.",
+      "List actual IP102 folder names.",
+      "List actual rice-disease dataset folder names.",
+      "Resolve aliases such as Yellow leaf curl virus vs Tomato leaf curl virus only in a mapping layer.",
+      "Do not assign scientific pest names until the actual IP102 folder identity is verified."
+    ]
+  },
+  "display_policy": {
+    "purpose": "Compact side-feature prevention guidance after prediction.",
+    "do_not_show": [
+      "government schemes",
+      "long disease explanations",
+      "training information",
+      "large source lists"
+    ],
+    "preferred_display": "3-5 concise prevention bullets, with optional 'Local tip' line."
+  },
+  "entries": [
+    {
+      "crop": "tomato",
+      "class_name": "Early blight",
+      "class_type": "disease",
+      "prevention": [
+        "Start with healthy seedlings and clean planting material.",
+        "Remove and destroy infected leaves and crop debris promptly.",
+        "Maintain adequate plant spacing and airflow; avoid prolonged leaf wetness.",
+        "Avoid overhead irrigation where practical and keep foliage as dry as possible.",
+        "Rotate tomato with non-host crops rather than repeatedly planting tomato in the same bed."
+      ],
+      "local_prevention": [
+        "Prioritize sanitation and canopy drying during humid South-Indian weather."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான நாற்றுகள் மற்றும் சுத்தமான நடவுப் பொருட்களைக் கொண்டு தொடங்கவும்.",
+            "பாதிக்கப்பட்ட இலைகள் மற்றும் பயிர் எச்சங்களை உடனடியாக அகற்றி அழிக்கவும்.",
+            "போதுமான பயிர் இடைவெளி மற்றும் காற்றோட்டத்தை பராமரிக்கவும்; இலைகளில் நீண்ட நேரம் ஈரம் தங்குவதைத் தவிர்க்கவும்.",
+            "சாத்தியமான இடங்களில் மேல்நிலை தெளிப்பு பாசனத்தைத் தவிர்த்து இலைகளை உலர்வாக வைக்கவும்.",
+            "ஒரே இடத்தில் தொடர்ந்து தக்காளி பயிரிடாமல் மாற்றுப் பயிர்களுடன் பயிர் சுழற்சி செய்யவும்."
+          ],
+          "local_prevention": [
+            "தென்னிந்திய ஈரப்பதமான காலநிலையில் தூய்மை மற்றும் இலைப்பகுதி உலர்தலுக்கு முன்னுரிமை அளிக்கவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ पौध और साफ रोपण सामग्री से शुरुआत करें।",
+            "संक्रमित पत्तियों और फसल के मलबे को तुरंत हटाकर नष्ट कर दें।",
+            "पौधों के बीच उचित दूरी और हवा का संचार बनाए रखें; पत्तियों को लंबे समय तक गीला न रहने दें।",
+            "जहां व्यावहारिक हो ऊपर से सिंचाई से बचें और पत्तियों को सूखा रखें।",
+            "एक ही जगह पर बार-बार टमाटर लगाने के बजाय गैर-पोषक फसलों के साथ फसल चक्र अपनाएं।"
+          ],
+          "local_prevention": [
+            "दक्षिण भारत के आर्द्र मौसम में स्वच्छता और पत्तियों को सुखाने को प्राथमिकता दें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ആരോഗ്യമുള്ള തൈകളും ശുദ്ധമായ നടീൽ വസ്തുക്കളും ഉപയോഗിച്ച് കൃഷി ആരംഭിക്കുക.",
+            "രോഗം ബാധിച്ച ഇലകളും വിള അവശിഷ്ടങ്ങളും ഉടൻ തന്നെ നീക്കം ചെയ്ത് നശിപ്പിക്കുക.",
+            "ചെടികൾക്കിടയിൽ കൃത്യമായ അകലവും വായുസഞ്ചാരവും ഉറപ്പാക്കുക; ഇലകളിൽ വെള്ളം തങ്ങിനിൽക്കുന്നത് ഒഴിവാക്കുക.",
+            "സാധ്യമാകുന്നിടത്ത് തളിച്ചു നനയ്ക്കുന്നത് ഒഴിവാക്കി ഇലകൾ പരമാവധി ഉണക്കി സൂക്ഷിക്കുക.",
+            "ഒരേ തടത്തിൽ തുടർച്ചയായി തക്കാളി നടാതെ മറ്റ് വിളകൾ മാറി കൃഷി ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "ദക്ഷിണേന്ത്യൻ ഈർപ്പമുള്ള കാലാവസ്ഥയിൽ ശുചിത്വത്തിനും ഇലകൾ ഉണക്കി സൂക്ഷിക്കുന്നതിനും പ്രാധാന്യം നൽകുക."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన నారు మరియు శుభ్రమైన నాటే పదార్థాలతో ప్రారంభించండి.",
+            "సోకిన ఆకులు మరియు పంట వ్యర్థాలను వెంటనే తొలగించి నాశనం చేయండి.",
+            "తగినంత మొక్కల అంతరం మరియు గాలి ప్రసరణను నిర్వహించండి; ఎక్కువసేపు ఆకులు తడిగా ఉండకుండా చూసుకోండి.",
+            "వీలైనంత వరకు పైనుండి నీటిపారుదల నివారించి ఆకులను పొడిగా ఉంచండి.",
+            "ఒకే మడిలో పదేపదే టమోటా నాటడం కంటే ఇతర పంటలతో పంట మార్పిడి చేయండి."
+          ],
+          "local_prevention": [
+            "దక్షిణ భారత తేమ వాతావరణంలో పరిశుభ్రత మరియు ఆకుల ఎండబెట్టడానికి ప్రాధాన్యత ఇవ్వండి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Late blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy planting material and avoid introducing infected transplants.",
+        "Remove infected plant material promptly and destroy crop residues after harvest.",
+        "Maintain spacing and airflow to reduce prolonged leaf wetness.",
+        "Avoid unnecessary overhead irrigation and improve drainage.",
+        "Monitor closely during cool, wet and highly humid periods."
+      ],
+      "local_prevention": [
+        "In humid monsoon conditions, drainage and rapid drying of foliage are particularly important."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான நடவுப் பொருட்களைப் பயன்படுத்தவும்; நோய் தாக்கிய நாற்றுகளை நடுவதைத் தவிர்க்கவும்.",
+            "பாதிக்கப்பட்ட தாவர பாகங்களை உடனடியாக அகற்றவும்; அறுவடைக்கு பின் எச்சங்களை அழிக்கவும்.",
+            "இலைகளில் நீண்ட நேரம் ஈரம் தங்குவதைக் குறைக்க இடைவெளி மற்றும் காற்றோட்டத்தை பராமரிக்கவும்.",
+            "தேவையற்ற மேல்நிலை பாசனத்தைத் தவிர்த்து வடிகால் வசதியை மேம்படுத்தவும்.",
+            "குளிர்ந்த, ஈரமான மற்றும் அதிக ஈரப்பதம் உள்ள காலங்களில் உன்னிப்பாக கண்காணிக்கவும்."
+          ],
+          "local_prevention": [
+            "ஈரப்பதமான பருவமழை காலங்களில் வடிகால் மற்றும் இலைகள் விரைவில் உலருவது மிகவும் முக்கியம்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ रोपण सामग्री का उपयोग करें और संक्रमित पौधों को लगाने से बचें।",
+            "संक्रमित पौधों की सामग्री को तुरंत हटाएं और कटाई के बाद फसल अवशेषों को नष्ट करें।",
+            "पत्तियों की नमी को कम करने के लिए दूरी और हवा का संचार बनाए रखें।",
+            "अनावश्यक ऊपर से सिंचाई से बचें और जल निकासी में सुधार करें।",
+            "ठंडे, गीले और अत्यधिक आर्द्र समय में बारीकी से निगरानी करें।"
+          ],
+          "local_prevention": [
+            "मानसून के आर्द्र मौसम में जल निकासी और पत्तियों का तेजी से सूखना विशेष रूप से महत्वपूर्ण है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ആരോഗ്യമുള്ള നടീൽ വസ്തുക്കൾ ഉപയോഗിക്കുക, രോഗബാധയുള്ള തൈകൾ നടുന്നത് ഒഴിവാക്കുക.",
+            "രോഗം ബാധിച്ച സസ്യഭാഗങ്ങൾ ഉടൻ നീക്കം ചെയ്യുകയും വിളവെടുപ്പിനു ശേഷം അവശിഷ്ടങ്ങൾ നശിപ്പിക്കുകയും ചെയ്യുക.",
+            "ഇലകളിലെ നനവ് കുറയ്ക്കുന്നതിന് കൃത്യമായ അകലവും വായുസഞ്ചാരവും നൽകുക.",
+            "അനാവശ്യമായ മുകളിൽ നിന്നുള്ള നന ഒഴിവാക്കി ഡ്രെയിനേജ് മെച്ചപ്പെടുത്തുക.",
+            "തണുപ്പും മഴയും ഈർപ്പവുമുള്ള സമയങ്ങളിൽ സൂക്ഷ്മമായി നിരീക്ഷിക്കുക."
+          ],
+          "local_prevention": [
+            "ഈർപ്പമുള്ള മൺസൂൺ കാലാവസ്ഥയിൽ വെള്ളം വാർന്നുപോകുന്നതും ഇലകൾ വേഗത്തിൽ ഉണങ്ങുന്നതും വളരെ പ്രധാനമാണ്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన నాటే పదార్థాన్ని ఉపయోగించండి మరియు సోకిన నారును తీసుకురావడం నివారించండి.",
+            "సోకిన మొక్కల భాగాలను వెంటనే తొలగించండి మరియు పంట కోత తర్వాత వ్యర్థాలను నాశనం చేయండి.",
+            "ఎక్కువసేపు ఆకుల తడిని తగ్గించడానికి అంతరం మరియు గాలి ప్రసరణను నిర్వహించండి.",
+            "అనవసరమైన పైనుండి నీటిపారుదల నివారించి నీటి పారుదలని మెరుగుపరచండి.",
+            "చల్లని, తడి మరియు అధిక తేమతో కూడిన సమయాల్లో నిశితంగా గమనించండి."
+          ],
+          "local_prevention": [
+            "తేమతో కూడిన వర్షాకాల పరిస్థితులలో నీటి పారుదల మరియు ఆకులు త్వరగా ఆరడం చాలా ముఖ్యం."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Leaf mold",
+      "class_type": "disease",
+      "prevention": [
+        "Reduce humidity around foliage through adequate spacing, pruning and good airflow.",
+        "Avoid overhead watering and reduce prolonged leaf wetness.",
+        "Remove and destroy infected leaves and fallen debris.",
+        "Sanitize stakes, tools and protected-cultivation structures where relevant.",
+        "Use resistant varieties when available and appropriate."
+      ],
+      "local_prevention": [
+        "Especially relevant to protected/high-humidity cultivation."
+      ],
+      "notes": [],
+      "sources": [
+        "https://ipm.cahnr.uconn.edu/tomato-leaf-mold/"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "சரியான இடைவெளி, கவாத்து மற்றும் நல்ல காற்றோட்டம் மூலம் இலைப்பகுதி ஈரப்பதத்தைக் குறைக்கவும்.",
+            "மேலிருந்து தண்ணீர் ஊற்றுவதைத் தவிர்த்து நீண்ட நேரம் இலை ஈரமாக இருப்பதை குறைக்கவும்.",
+            "பாதிக்கப்பட்ட இலைகள் மற்றும் உதிர்ந்த குப்பைகளை அகற்றி அழிக்கவும்.",
+            "முட்டுக்கொம்புகள், கருவிகள் மற்றும் பாதுகாப்பு சாகுபடி அமைப்புகளை கிருமி நீக்கம் செய்யவும்.",
+            "பொருத்தமான இடங்களில் கிடைக்கும் போது நோய் எதிர்ப்பு ரகங்களைப் பயன்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "பாதுகாக்கப்பட்ட மற்றும் அதிக ஈரப்பதம் கொண்ட சாகுபடிக்கு இது மிகவும் பொருந்தும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "उचित दूरी, कटाई-छंटाई और हवा के प्रवाह से पत्तियों के पास नमी कम करें।",
+            "ऊपर से पानी देने से बचें और लंबे समय तक पत्तियों के गीले रहने को कम करें।",
+            "संक्रमित पत्तियों और गिरे हुए कचरे को हटाकर नष्ट करें।",
+            "सहारे की डंडियों, औजारों और संरक्षित खेती के ढांचों को जीवाणुरहित करें।",
+            "उपलब्ध और उपयुक्त होने पर प्रतिरोधी किस्मों का उपयोग करें।"
+          ],
+          "local_prevention": [
+            "संरक्षित और उच्च आर्द्रता वाली खेती के लिए विशेष रूप से प्रासंगिक।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "കൃത്യമായ അകലം, കൊമ്പുകോതൽ, നല്ല വായുസഞ്ചാരം എന്നിവ വഴി ഇലകൾക്ക് ചുറ്റുമുള്ള ഈർപ്പം കുറയ്ക്കുക.",
+            "മുകളിൽ നിന്ന് വെള്ളം ഒഴിക്കുന്നത് ഒഴിവാക്കി ഇലകൾ കൂടുതൽ സമയം നനഞ്ഞിരിക്കുന്നത് കുറയ്ക്കുക.",
+            "രോഗം ബാധിച്ച ഇലകളും കൊഴിഞ്ഞുവീണ അവശിഷ്ടങ്ങളും നീക്കം ചെയ്തു നശിപ്പിക്കുക.",
+            "താങ്ങുകാലുകൾ, കാർഷിക ഉപകരണങ്ങൾ, പോളിഹൗസ് നിർമ്മിതികൾ എന്നിവ അണുവിമുക്തമാക്കുക.",
+            "അനുയോജ്യമായ പ്രതിരോധ ഇനങ്ങൾ ലഭ്യമാണെങ്കിൽ അവ തിരഞ്ഞെടുക്കുക."
+          ],
+          "local_prevention": [
+            "പോളിഹൗസ് അല്ലെങ്കിൽ ഉയർന്ന ഈർപ്പമുള്ള കൃഷിരീതികൾക്ക് ഇത് പ്രത്യേകിച്ചും പ്രസക്തമാണ്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "తగినంత అంతరం, కత్తిరింపు మరియు మంచి గాలి ప్రసరణ ద్వారా ఆకుల చుట్టూ తేమను తగ్గించండి.",
+            "పైనుండి నీరు పోయడం నివారించి ఆకులు ఎక్కువసేపు తడిగా ఉండకుండా తగ్గించండి.",
+            "సోకిన ఆకులు మరియు రాలిన వ్యర్థాలను తొలగించి నాశనం చేయండి.",
+            "కర్రలు, పనిముట్లు మరియు రక్షిత సాగు నిర్మాణాలను శుభ్రపరచండి.",
+            "అందుబాటులో మరియు సముచితంగా ఉన్నప్పుడు నిరోధక రకాలను ఉపయోగించండి."
+          ],
+          "local_prevention": [
+            "రక్షిత లేదా అధిక తేమ గల సాగుకు ప్రత్యేకంగా వర్తిస్తుంది."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Septoria leaf spot",
+      "class_type": "disease",
+      "prevention": [
+        "Remove and destroy infected leaves and crop debris.",
+        "Use adequate spacing and pruning to improve air circulation.",
+        "Water at the base rather than wetting foliage.",
+        "Use mulch to reduce soil splash onto lower leaves.",
+        "Rotate away from tomato and manage solanaceous weeds where practical."
+      ],
+      "local_prevention": [
+        "TNAU specifically lists removal/destruction of affected plant parts and clean seed treatment as management measures."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "பாதிக்கப்பட்ட இலைகள் மற்றும் பயிர் எச்சங்களை அகற்றி அழிக்கவும்.",
+            "காற்றோட்டத்தை மேம்படுத்த போதுமான இடைவெளி மற்றும் கவாத்து முறைகளைக் கையாளவும்.",
+            "இலைகளை நனைக்காமல் செடியின் அடிப்பகுதியில் மட்டும் தண்ணீர் பாய்ச்சவும்.",
+            "அடி இலைகளில் மண் தெறிப்பதைக் குறைக்க மூடாக்கைப் பயன்படுத்தவும்.",
+            "தக்காளிக்கு பதிலாக மாற்றுப் பயிர்களை சுழற்சி செய்யவும் மற்றும் சொலனேசியஸ் களைகளை கட்டுப்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "பாதிக்கப்பட்ட பாகங்களை அகற்றுதல் மற்றும் தூய விதை நேர்த்தியை மேலாண்மை நடவடிக்கைகளாக TNAU குறிப்பிடுகிறது."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "संक्रमित पत्तियों और फसल मलबे को हटाकर नष्ट करें।",
+            "हवा के संचार में सुधार के लिए उचित दूरी और छंटाई का उपयोग करें।",
+            "पत्तियों को गीला करने के बजाय पौधों की जड़ में पानी दें।",
+            "निचली पत्तियों पर मिट्टी के छींटों को कम करने के लिए मल्चिंग का उपयोग करें।",
+            "टमाटर की जगह अन्य फसलें लगाएं और सोलानेसी कुल के खरपतवारों को नियंत्रित करें।"
+          ],
+          "local_prevention": [
+            "TNAU विशेष रूप से प्रभावित भागों को हटाने/नष्ट करने और बीज उपचार को प्रबंधन उपाय बताता है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "രോഗബാധിതമായ ഇലകളും വിള അവശിഷ്ടങ്ങളും മാറ്റി നശിപ്പിക്കുക.",
+            "വായുസഞ്ചാരം മെച്ചപ്പെടുത്താൻ കൃത്യമായ അകലവും കൊമ്പുകോതലും നടത്തുക.",
+            "ഇലകളിൽ നനയ്ക്കാതെ ചെടിയുടെ ചുവട്ടിൽ മാത്രം വെള്ളമൊഴിക്കുക.",
+            "അടിയിലെ ഇലകളിൽ മണ്ണ് തെറിക്കുന്നത് തടയാൻ പുതയിടൽ (മൾച്ചിംഗ്) നടത്തുക.",
+            "തക്കാളിക്ക് പകരം മറ്റ് വിളകൾ മാറി കൃഷി ചെയ്യുകയും കളകൾ നിയന്ത്രിക്കുകയും ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "രോഗബാധിത ഭാഗങ്ങൾ നശിപ്പിക്കുന്നതും വിത്തുചികിത്സയും TNAU പ്രധാന നിയന്ത്രണ മാർഗ്ഗങ്ങളായി നിർദ്ദേശിക്കുന്നു."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "సోకిన ఆకులు మరియు పంట వ్యర్థాలను తొలగించి నాశనం చేయండి.",
+            "గాలి ప్రసరణను మెరుగుపరచడానికి తగినంత అంతరం మరియు కత్తిరింపును ఉపయోగించండి.",
+            "ఆకులను తడపడం కంటే మొదట్లో నీరు పోయండి.",
+            "కింది ఆకులపై మట్టి చిందకుండా ఉండటానికి మల్చింగ్‌ను ఉపయోగించండి.",
+            "టమోటా కాకుండా ఇతర పంటల మార్పిడి చేయండి మరియు సోలనేసియస్ కలుపు మొక్కలను నిర్వహించండి."
+          ],
+          "local_prevention": [
+            "TNAU ప్రత్యేకంగా ప్రభావిత మొక్కల భాగాలను తొలగించడం/నాశనం చేయడం మరియు శుభ్రమైన విత్తన శుద్ధిని యాజమాన్య చర్యలుగా పేర్కొంది."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Bacterial spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use clean, disease-free seed and healthy transplants.",
+        "Remove and destroy infected plant material and crop debris.",
+        "Avoid working through wet foliage because bacterial spread is favored by water.",
+        "Avoid overhead irrigation and reduce leaf wetness.",
+        "Maintain spacing and airflow and control volunteer plants/weeds."
+      ],
+      "local_prevention": [
+        "Use sanitation and water-management measures first; avoid spreading contaminated material between plants."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "சுத்தமான, நோய் தாக்காத விதைகள் மற்றும் ஆரோக்கியமான நாற்றுகளைப் பயன்படுத்தவும்.",
+            "பாதிக்கப்பட்ட தாவர பாகங்கள் மற்றும் பயிர் எச்சங்களை அகற்றி அழிக்கவும்.",
+            "பாக்டீரியா பரவ நீர் உதவுவதால் ஈரமாக உள்ள இலைகளுக்கு இடையே வேலை செய்வதைத் தவிர்க்கவும்.",
+            "மேல்நிலை தெளிப்பு பாசனத்தைத் தவிர்த்து இலை ஈரப்பதத்தைக் குறைக்கவும்.",
+            "இடைவெளி மற்றும் காற்றோட்டத்தை பராமரிக்கவும்; தான்தோன்றி தாவரங்கள் மற்றும் களைகளை கட்டுப்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "முதலில் தூய்மை மற்றும் நீர் மேலாண்மை முறைகளைக் கையாளவும்; தாவரங்களுக்கிடையே மாசடைந்த பகுதிகளை பரப்புவதைத் தவிர்க்கவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "साफ, रोगमुक्त बीज और स्वस्थ पौधों का उपयोग करें।",
+            "संक्रमित पौधों के भाग और फसल अवशेषों को हटाकर नष्ट करें।",
+            "गीली पत्तियों के बीच काम करने से बचें क्योंकि पानी से बैक्टीरिया तेजी से फैलता है।",
+            "ऊपर से पानी देने से बचें और पत्तियों की नमी कम करें।",
+            "उचित दूरी और हवा का संचार बनाए रखें तथा खरपतवारों को नियंत्रित करें।"
+          ],
+          "local_prevention": [
+            "पहले स्वच्छता और जल प्रबंधन के उपाय करें; पौधों के बीच दूषित सामग्री फैलाने से बचें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "രോഗമില്ലാത്ത വൃത്തിയുള്ള വിത്തുകളും ആരോഗ്യകരമായ തൈകളും ഉപയോഗിക്കുക.",
+            "രോഗബാധയുള്ള ചെടിയുടെ ഭാഗങ്ങളും വിള അവശിഷ്ടങ്ങളും നശിപ്പിക്കുക.",
+            "വെള്ളത്തിലൂടെ ബാക്ടീരിയ പടരാൻ സാധ്യതയുള്ളതിനാൽ നനഞ്ഞ ഇലകളിൽ സ്പർശിച്ചുള്ള ജോലികൾ ഒഴിവാക്കുക.",
+            "മുകളിൽ നിന്ന് നനയ്ക്കുന്നത് ഒഴിവാക്കി ഇലകളിലെ ഈർപ്പം കുറയ്ക്കുക.",
+            "അകലവും വായുസഞ്ചാരവും ഉറപ്പാക്കുകയും അനാവശ്യ സസ്യങ്ങളെയും കളകളെയും നിയന്ത്രിക്കുകയും ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "ആദ്യം ശുചിത്വവും ജലപരിപാലനവും ഉറപ്പാക്കുക; ചെടികൾക്കിടയിൽ രോഗബാധയുള്ള ഭാഗങ്ങൾ പടർത്തരുത്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "శుభ్రమైన, తెగులు లేని విత్తనాలు మరియు ఆరోగ్యకరమైన నారును ఉపయోగించండి.",
+            "సోకిన మొక్కల భాగాలు మరియు పంట వ్యర్థాలను తొలగించి నాశనం చేయండి.",
+            "నీటి ద్వారా బాక్టీరియా వ్యాప్తి చెందుతుంది కాబట్టి తడి ఆకుల మధ్య పనిచేయడం నివారించండి.",
+            "పైనుండి నీరు పెట్టడం నివారించి ఆకుల తడిని తగ్గించండి.",
+            "అంతరం మరియు గాలి ప్రసరణను నిర్వహించండి మరియు అవాంఛిత మొక్కలు/కలుపును నియంత్రించండి."
+          ],
+          "local_prevention": [
+            "మొదట పరిశుభ్రత మరియు నీటి నిర్వహణ చర్యలను ఉపయోగించండి; మొక్కల మధ్య కలుషితమైన పదార్థాలు వ్యాపించకుండా నివారించండి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Yellow leaf curl virus",
+      "class_type": "disease",
+      "prevention": [
+        "Use virus-free, healthy transplants and resistant/tolerant varieties where available.",
+        "Control whitefly populations and reduce nearby weed/host reservoirs.",
+        "Remove severely infected plants when incidence is low enough for roguing to be useful.",
+        "Remove old tomato crop residues and volunteers promptly after harvest.",
+        "Avoid establishing new tomato plantings immediately beside heavily infected older crops."
+      ],
+      "local_prevention": [
+        "The disease is virus-associated; prevention focuses on healthy planting material, whitefly management and sanitation rather than curing infected plants."
+      ],
+      "notes": [],
+      "sources": [
+        "https://ipm.ucanr.edu/agriculture/tomato/tomato-yellow-leaf-curl/",
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "வைரஸ் தாக்காத ஆரோக்கியமான நாற்றுகள் மற்றும் கிடைக்கும் இடங்களில் எதிர்ப்பு ரகங்களைப் பயன்படுத்தவும்.",
+            "வெள்ளைப் பூச்சிகளைக் கட்டுப்படுத்தி அருகிலுள்ள களைகள் மற்றும் மாற்றுத் தாவரங்களைக் குறைக்கவும்.",
+            "பாதிப்பு குறைவாக இருக்கும் போது தீவிரமாக தாக்கப்பட்ட செடிகளை வேரோடு பிடுங்கி எறியவும்.",
+            "அறுவடைக்குப் பிறகு பழைய தக்காளி எச்சங்கள் மற்றும் தான்தோன்றி செடிகளை உடனே அகற்றவும்.",
+            "கடுமையாக பாதிக்கப்பட்ட பழைய பயிர்களுக்கு மிக அருகில் புதிய தக்காளி நடவு செய்வதைத் தவிர்க்கவும்."
+          ],
+          "local_prevention": [
+            "இந்நோய் வைரஸ் சார்ந்தது; குணப்படுத்துவதை விட ஆரோக்கியமான நாற்றுகள், வெள்ளை ஈ கட்டுப்பாடு மற்றும் தூய்மையே முக்கிய தடுப்பாகும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "वायरस मुक्त, स्वस्थ पौधे और उपलब्ध होने पर प्रतिरोधी किस्मों का उपयोग करें।",
+            "सफेद मक्खी की आबादी को नियंत्रित करें और आस-पास के खरपतवारों को कम करें।",
+            "जब संक्रमण कम हो तो गंभीर रूप से संक्रमित पौधों को उखाड़ कर नष्ट कर दें।",
+            "कटाई के बाद पुराने टमाटर के अवशेषों और स्वतः उगे पौधों को तुरंत हटा दें।",
+            "गंभीर रूप से संक्रमित पुरानी फसलों के ठीक बगल में नए टमाटर के पौधे लगाने से बचें।"
+          ],
+          "local_prevention": [
+            "यह रोग वायरस जनित है; संक्रमित पौधों को ठीक करने के बजाय स्वस्थ सामग्री, सफेद मक्खी नियंत्रण और स्वच्छता पर ध्यान दें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "വൈറസ് ബാധയില്ലാത്ത നല്ല തൈകളും പ്രതിരോധ ശേഷിയുള്ള വിത്തിനങ്ങളും ഉപയോഗിക്കുക.",
+            "വെള്ളീച്ചകളെ നിയന്ത്രിക്കുകയും സമീപത്തെ കളകളെയും രോഗവാഹക സസ്യങ്ങളെയും നശിപ്പിക്കുകയും ചെയ്യുക.",
+            "രോഗബാധ കുറവായിരിക്കുമ്പോൾ ഗുരുതരമായി ബാധിച്ച ചെടികൾ വേരോടെ പിഴുതു നശിപ്പിക്കുക.",
+            "വിളവെടുപ്പിന് ശേഷം പഴയ തക്കാളി അവശിഷ്ടങ്ങളും തനിയെ മുളച്ച തൈകളും ഉടൻ നീക്കം ചെയ്യുക.",
+            "രോഗം ബാധിച്ച പഴയ വിളകൾക്ക് തൊട്ടടുത്ത് പുതിയ തക്കാളിത്തൈകൾ നടുന്നത് ഒഴിവാക്കുക."
+          ],
+          "local_prevention": [
+            "ഈ രോഗം വൈറസ് മൂലമാണ് ഉണ്ടാകുന്നത്; രോഗം മാറ്റുന്നതിനേക്കാൾ ആരോഗ്യകരമായ നടീൽ, വെള്ളീച്ച നിയന്ത്രണം, ശുചിത്വം എന്നിവയിലാണ് ശ്രദ്ധ കേന്ദ്രീകരിക്കേണ്ടത്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "వైరస్ లేని, ఆరోగ్యకరమైన నారు మరియు అందుబాటులో ఉన్న చోట నిరోధక రకాలను ఉపయోగించండి.",
+            "తెల్లదోమ జనాభాను నియంత్రించండి మరియు సమీపంలోని కలుపు మొక్కలను తగ్గించండి.",
+            "తెగులు తీవ్రత తక్కువగా ఉన్నప్పుడు తీవ్రంగా సోకిన మొక్కలను పీకి వేయండి.",
+            "పంట కోత తర్వాత పాత టమోటా పంట వ్యర్థాలను మరియు అవాంఛిత మొక్కలను వెంటనే తొలగించండి.",
+            "తీవ్రంగా సోకిన పాత పంటల పక్కనే కొత్త టమోటా మొక్కలు నాటడం నివారించండి."
+          ],
+          "local_prevention": [
+            "ఈ వ్యాధి వైరస్ సంబంధితమైనది; సోకిన మొక్కలను నయం చేయడం కంటే ఆరోగ్యకరమైన నాటే పదార్థం, తెల్లదోమ నిర్వహణ మరియు పరిశుభ్రతపై నివారణ దృష్టి పెడుతుంది."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "tomato",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Continue using healthy planting material and clean tools.",
+        "Maintain balanced nutrition, adequate spacing and good drainage.",
+        "Avoid prolonged leaf wetness and unnecessary plant stress.",
+        "Scout plants regularly so early disease symptoms can be addressed promptly."
+      ],
+      "local_prevention": [
+        "No disease-specific intervention is required for a healthy prediction."
+      ],
+      "notes": [],
+      "sources": [
+        "https://keralaagriculture.gov.in/wp-content/uploads/2021/04/tomato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான நடவுப் பொருட்கள் மற்றும் சுத்தமான கருவிகளை தொடர்ந்து பயன்படுத்தவும்.",
+            "சமச்சீரான ஊட்டச்சத்து, போதுமான இடைவெளி மற்றும் நல்ல வடிகால் வசதியை பராமரிக்கவும்.",
+            "நீண்ட நேரம் இலை ஈரமாக இருப்பதையும் தேவையற்ற பயிர் அழுத்தத்தையும் தவிர்க்கவும்.",
+            "ஆரம்பகால நோய் அறிகுறிகளை உடனே களைய தாவரங்களை தொடர்ந்து கண்காணிக்கவும்."
+          ],
+          "local_prevention": [
+            "ஆரோக்கியமான முடிவுக்கு நோய் சார்ந்த சிறப்பு சிகிச்சை எதுவும் தேவையில்லை."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ रोपण सामग्री और साफ औजारों का उपयोग जारी रखें।",
+            "संतुलित पोषण, पर्याप्त दूरी और अच्छी जल निकासी बनाए रखें।",
+            "पत्तियों के लंबे समय तक गीले रहने और पौधों के अनावश्यक तनाव से बचें।",
+            "पौधों का नियमित निरीक्षण करें ताकि शुरुआती लक्षणों पर तुरंत कार्रवाई की जा सके।"
+          ],
+          "local_prevention": [
+            "स्वस्थ परिणाम के लिए किसी विशिष्ट रोग उपचार की आवश्यकता नहीं है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ആരോഗ്യമുള്ള നടീൽ വസ്തുക്കളും വൃത്തിയുള്ള ഉപകരണങ്ങളും തുടർന്നും ഉപയോഗിക്കുക.",
+            "സമീകൃത പോഷണം, കൃത്യമായ അകലം, നല്ല ഡ്രെയിനേജ് എന്നിവ ഉറപ്പുവരുത്തുക.",
+            "ഇലകളിൽ കൂടുതൽ സമയം ഈർപ്പം നിൽക്കുന്നതും അനാവശ്യ സസ്യ സമ്മർദ്ദവും ഒഴിവാക്കുക.",
+            "പ്രാരംഭ രോഗലക്ഷണങ്ങൾ തുടക്കത്തിലേ കണ്ടെത്തി പരിഹരിക്കാൻ കൃഷിയിടം പതിവായി നിരീക്ഷിക്കുക."
+          ],
+          "local_prevention": [
+            "ആരോഗ്യമുള്ള വിളയ്ക്ക് പ്രത്യേക രോഗചികിത്സകൾ ആവശ്യമില്ല."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన నాటే పదార్థాలు మరియు శుభ్రమైన పనిముట్లను ఉపయోగించడం కొనసాగించండి.",
+            "సమతుల్య పోషణ, తగినంత అంతరం మరియు మంచి నీటి పారుదలని నిర్వహించండి.",
+            "ఆకులు ఎక్కువసేపు తడిగా ఉండటం మరియు అనవసరమైన మొక్కల ఒత్తిడిని నివారించండి.",
+            "ప్రారంభ వ్యాధి లక్షణాలను వెంటనే పరిష్కరించడానికి మొక్కలను క్రమం తప్పకుండా తనిఖీ చేయండి."
+          ],
+          "local_prevention": [
+            "ఆరోగ్యకరమైన నిర్ధారణకు ఎటువంటి వ్యాధి సంబంధిత చికిత్స అవసరం లేదు."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "potato",
+      "class_name": "Early blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy seed tubers and maintain good field sanitation.",
+        "Remove or manage infected crop residues after harvest.",
+        "Maintain balanced plant nutrition and avoid prolonged plant stress.",
+        "Use adequate spacing and irrigation practices that minimize extended leaf wetness.",
+        "Rotate crops where practical rather than continuous potato cultivation."
+      ],
+      "local_prevention": [
+        "Prefer cultural and sanitation measures before any chemical intervention."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான விதை கிழங்குகளைப் பயன்படுத்தவும் மற்றும் நல்ல வயல் தூய்மையை பராமரிக்கவும்.",
+            "அறுவடைக்குப் பிறகு பாதிக்கப்பட்ட பயிர் எச்சங்களை அகற்றவும் அல்லது நிர்வகிக்கவும்.",
+            "சமச்சீரான தாவர ஊட்டச்சத்தை பராமரிக்கவும் மற்றும் நீண்ட பயிர் அழுத்தத்தைத் தவிர்க்கவும்.",
+            "இலைகளில் நீண்ட நேரம் ஈரம் தங்குவதைக் குறைக்கும் தகுந்த இடைவெளி மற்றும் பாசன முறைகளைக் கையாளவும்.",
+            "தொடர்ந்து உருளைக்கிழங்கு பயிரிடாமல் சாத்தியமான இடங்களில் பயிர் சுழற்சி செய்யவும்."
+          ],
+          "local_prevention": [
+            "எந்தவொரு ரசாயன பயன்பாட்டிற்கும் முன் உழவியல் மற்றும் தூய்மை முறைகளுக்கு முன்னுரிமை அளிக்கவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ बीज कंदों का उपयोग करें और खेत की अच्छी स्वच्छता बनाए रखें।",
+            "कटाई के बाद संक्रमित फसल अवशेषों को हटाएं या उनका प्रबंधन करें।",
+            "पौधों का संतुलित पोषण बनाए रखें और लंबे समय तक पौधों के तनाव से बचें।",
+            "उचित दूरी और ऐसी सिंचाई पद्धतियां अपनाएं जिससे पत्तियों पर लंबे समय तक पानी न रहे।",
+            "लगातार आलू की खेती करने के बजाय जहां संभव हो फसल चक्र अपनाएं।"
+          ],
+          "local_prevention": [
+            "किसी भी रासायनिक उपाय से पहले सस्य क्रियाओं और स्वच्छता उपायों को प्राथमिकता दें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ആരോഗ്യമുള്ള വിത്തു കിഴങ്ങുകൾ ഉപയോഗിക്കുകയും കൃഷിയിട ശുചിത്വം പാലിക്കുകയും ചെയ്യുക.",
+            "വിളവെടുപ്പിനു ശേഷം രോഗം ബാധിച്ച വിള അവശിഷ്ടങ്ങൾ നീക്കം ചെയ്യുകയോ ശരിയായി സംസ്കരിക്കുകയോ ചെയ്യുക.",
+            "സസ്യങ്ങൾക്ക് സമീകൃത പോഷണം നൽകുകയും കൂടുതൽ സമയമുള്ള സമ്മർദ്ദം ഒഴിവാക്കുകയും ചെയ്യുക.",
+            "ഇലകളിൽ കൂടുതൽ സമയം നനവ് നിൽക്കാത്ത രീതിയിലുള്ള അകലവും നനരീതികളും സ്വീകരിക്കുക.",
+            "തുടർച്ചയായി ഉരുളക്കിഴങ്ങ് കൃഷി ചെയ്യാതെ വിളകൾ മാറി കൃഷി ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "രാസപ്രയോഗത്തിന് മുമ്പ് കാർഷിക ശുചിത്വ രീതികൾക്ക് മുൻഗണന നൽകുക."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన విత్తన దుంపలను ఉపయోగించండి మరియు మంచి పొలం పరిశుభ్రతను పాటించండి.",
+            "పంట కోత తర్వాత సోకిన పంట వ్యర్థాలను తొలగించండి లేదా నిర్వహించండి.",
+            "సమతుల్య మొక్కల పోషణను నిర్వహించండి మరియు ఎక్కువసేపు మొక్కల ఒత్తిడిని నివారించండి.",
+            "ఆకులపై ఎక్కువసేపు తడిని తగ్గించే తగినంత అంతరం మరియు నీటిపారుదల పద్ధతులను ఉపయోగించండి.",
+            "నిరంతర బంగాళాదుంప సాగుకు బదులుగా సాధ్యమైన చోట పంట మార్పిడి చేయండి."
+          ],
+          "local_prevention": [
+            "ఏదైనా రసాయన జోక్యానికి ముందు సాగు మరియు పరిశుభ్రత చర్యలకు ప్రాధాన్యత ఇవ్వండి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "potato",
+      "class_name": "Late blight",
+      "class_type": "disease",
+      "prevention": [
+        "Plant healthy, disease-free seed tubers.",
+        "Avoid leaving infected volunteer potatoes or cull piles near the field.",
+        "Maintain good field drainage and avoid prolonged leaf wetness.",
+        "Remove infected foliage/residue appropriately to reduce inoculum.",
+        "During cool, wet weather, increase field scouting and act early on confirmed disease."
+      ],
+      "local_prevention": [
+        "Late blight risk rises under cool, wet conditions; field sanitation and healthy seed are foundational."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான, நோய் தாக்காத விதை கிழங்குகளை நடவு செய்யவும்.",
+            "பாதிக்கப்பட்ட தான்தோன்றி உருளைக்கிழங்குகள் அல்லது அழுகிய கழிவுக் குவியல்களை வயலுக்கு அருகில் விடுவதைத் தவிர்க்கவும்.",
+            "நல்ல வயல் வடிகால் வசதியை பராமரிக்கவும் மற்றும் நீண்ட இலை ஈரப்பதத்தைத் தவிர்க்கவும்.",
+            "நோய் பரவலைக் குறைக்க பாதிக்கப்பட்ட இலைகள் மற்றும் எச்சங்களை முறையாக அகற்றவும்.",
+            "குளிர்ந்த, ஈரமான காலநிலையில் கள ஆய்வை அதிகரித்து ஆரம்பத்திலேயே நடவடிக்கை எடுக்கவும்."
+          ],
+          "local_prevention": [
+            "குளிர்ந்த, ஈரமான நிலையில் பின்கால கருகல் ஆபத்து அதிகரிக்கிறது; வயல் தூய்மையும் ஆரோக்கியமான விதையுமே அடிப்படை."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ और रोगमुक्त बीज कंद लगाएं।",
+            "खेत के पास संक्रमित आलू या खराब आलू के ढेर छोड़ने से बचें।",
+            "खेत में अच्छी जल निकासी बनाए रखें और पत्तियों के लंबे समय तक गीले रहने से बचें।",
+            "संक्रमण कम करने के लिए संक्रमित पत्तियों और अवशेषों को उचित रूप से हटाएं।",
+            "ठंडे और नम मौसम में खेत का निरीक्षण बढ़ाएं और रोग की पुष्टि होने पर शीघ्र कार्रवाई करें।"
+          ],
+          "local_prevention": [
+            "ठंडी और नम स्थितियों में पछेती झुलसा का खतरा बढ़ जाता है; खेत की स्वच्छता और स्वस्थ बीज बुनियादी हैं।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "രോഗമില്ലാത്ത നല്ല വിത്തു കിഴങ്ങുകൾ നടുക.",
+            "രോഗം ബാധിച്ച ഉരുളക്കിഴങ്ങുകളോ പാഴ് അവശിഷ്ടങ്ങളോ പാടത്തിന് സമീപം ഉപേക്ഷിക്കുന്നത് ഒഴിവാക്കുക.",
+            "നല്ല നീർവാർച്ച ഉറപ്പാക്കുകയും ഇലകൾ കൂടുതൽ സമയം നനഞ്ഞിരിക്കുന്നത് ഒഴിവാക്കുകയും ചെയ്യുക.",
+            "രോഗ ഉറവിടം ഇല്ലാതാക്കാൻ രോഗം ബാധിച്ച ഇലകളും അവശിഷ്ടങ്ങളും ഉചിതമായി നീക്കം ചെയ്യുക.",
+            "തണുപ്പും ഈർപ്പവുമുള്ള കാലാവസ്ഥയിൽ കൃഷിയിട നിരീക്ഷണം വർദ്ധിപ്പിക്കുകയും രോഗലക്ഷണങ്ങൾ കണ്ടാലുടൻ നടപടിയെടുക്കുകയും ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "തണുപ്പും ഈർപ്പവുമുള്ള സാഹചര്യങ്ങളിൽ ലേറ്റ് ബ്ലൈറ്റ് സാധ്യത കൂടുന്നു; കൃഷിയിട ശുചിത്വവും നല്ല വിത്തും അത്യന്താപേക്ഷിതമാണ്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన, తెగులు లేని విత్తన దుంపలను నాటండి.",
+            "సోకిన బంగాళాదుంపలు లేదా వ్యర్థాల కుప్పలను పొలం దగ్గర వదిలివేయడం నివారించండి.",
+            "మంచి పొలం నీటి పారుదలని నిర్వహించండి మరియు ఎక్కువసేపు ఆకుల తడిని నివారించండి.",
+            "తెగులు మూలాన్ని తగ్గించడానికి సోకిన ఆకులు/వ్యర్థాలను తగిన విధంగా తొలగించండి.",
+            "చల్లని, తడి వాతావరణంలో పొలం తనిఖీని పెంచండి మరియు నిర్ధారించబడిన వ్యాధిపై ముందుగానే చర్య తీసుకోండి."
+          ],
+          "local_prevention": [
+            "చల్లని, తడి పరిస్థితులలో లేటు బ్లైట్ ప్రమాదం పెరుగుతుంది; పొలం పరిశుభ్రత మరియు ఆరోగ్యకరమైన విత్తనాలు ప్రాథమికమైనవి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "potato",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Use certified/healthy seed tubers.",
+        "Maintain drainage, balanced nutrition and appropriate spacing.",
+        "Rotate crops where practical and remove volunteer/cull potatoes.",
+        "Scout regularly for early disease and pest signs."
+      ],
+      "local_prevention": [],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/ta/crop_protection/crop_pdf/potato.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "சான்றளிக்கப்பட்ட மற்றும் ஆரோக்கியமான விதை கிழங்குகளைப் பயன்படுத்தவும்.",
+            "வடிகால், சமச்சீரான ஊட்டச்சத்து மற்றும் சரியான இடைவெளியை பராமரிக்கவும்.",
+            "சாத்தியமான இடங்களில் பயிர் சுழற்சி செய்யவும் மற்றும் தான்தோன்றி/கழித்துக்கட்டிய உருளைக்கிழங்குகளை அகற்றவும்.",
+            "ஆரம்பகால நோய் மற்றும் பூச்சி அறிகுறிகளை தொடர்ந்து ஆய்வு செய்யவும்."
+          ],
+          "local_prevention": []
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "प्रमाणित या स्वस्थ बीज कंदों का उपयोग करें।",
+            "जल निकासी, संतुलित पोषण और उचित दूरी बनाए रखें।",
+            "फसल चक्र अपनाएं और स्वतः उगे या बेकार आलुओं को हटा दें।",
+            "शुरुआती बीमारी और कीट के लक्षणों के लिए नियमित निरीक्षण करें।"
+          ],
+          "local_prevention": []
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "സാക്ഷ്യപ്പെടുത്തിയ നല്ല വിത്തു കിഴങ്ങുകൾ ഉപയോഗിക്കുക.",
+            "ഡ്രെയിനേജ്, സമീകൃത പോഷണം, കൃത്യമായ അകലം എന്നിവ ഉറപ്പാക്കുക.",
+            "വിള പരിക്രമണം നടത്തുകയും ആവശ്യമില്ലാത്ത ഉരുളക്കിഴങ്ങ് അവശിഷ്ടങ്ങൾ മാറ്റുകയും ചെയ്യുക.",
+            "പ്രാരംഭ രോഗ-കീട ലക്ഷണങ്ങൾ കണ്ടെത്താൻ കൃത്യമായി നിരീക്ഷിക്കുക."
+          ],
+          "local_prevention": []
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ధృవీకరించబడిన/ఆరోగ్యకరమైన విత్తన దుంపలను ఉపయోగించండి.",
+            "నీటి పారుదల, సమతుల్య పోషణ మరియు సరైన అంతరాన్ని నిర్వహించండి.",
+            "సాధ్యమైన చోట పంట మార్పిడి చేయండి మరియు అవాంఛిత బంగాళాదుంపలను తొలగించండి.",
+            "ప్రారంభ వ్యాధి మరియు తెగులు సంకేతాల కోసం క్రమం తప్పకుండా తనిఖీ చేయండి."
+          ],
+          "local_prevention": []
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Gray leaf spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use hybrids with suitable resistance/tolerance where available.",
+        "Rotate away from continuous corn where practical.",
+        "Manage infected residue to reduce the local inoculum source.",
+        "Avoid unnecessarily dense canopies and prolonged leaf wetness.",
+        "Increase scouting under warm, humid conditions."
+      ],
+      "local_prevention": [
+        "Humid South-Indian conditions can favor foliar disease development; prioritize canopy drying and residue management."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "கிடைக்கும் இடங்களில் பொருத்தமான எதிர்ப்புத் திறன் கொண்ட வீரிய ஒட்டு ரகங்களைப் பயன்படுத்தவும்.",
+            "சாத்தியமான இடங்களில் தொடர்ந்து மக்காச்சோளம் பயிரிடாமல் பயிர் சுழற்சி செய்யவும்.",
+            "நோய் கிருமியின் மூலத்தைக் குறைக்க பாதிக்கப்பட்ட பயிர் எச்சங்களை முறையாக மேலாண்மை செய்யவும்.",
+            "தேவையற்ற நெருக்கமான இலைப்பகுதி மற்றும் நீண்ட இலை ஈரப்பதத்தைத் தவிர்க்கவும்.",
+            "வெப்பமான, ஈரப்பதமான நிலைகளில் கள ஆய்வை அதிகரிக்கவும்."
+          ],
+          "local_prevention": [
+            "தென்னிந்திய ஈரப்பதம் இலை நோய்களுக்கு சாதகமாக இருக்கும்; இலைகளை உலர்த்துதல் மற்றும் கழிவு மேலாண்மைக்கு முன்னுரிமை அளிக்கவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "उपलब्ध होने पर उपयुक्त प्रतिरोधी संकर किस्मों का उपयोग करें।",
+            "जहां संभव हो लगातार मक्का की खेती से हटकर फसल चक्र अपनाएं।",
+            "रोग के स्रोत को कम करने के लिए संक्रमित अवशेषों का उचित प्रबंधन करें।",
+            "अनावश्यक घनी पत्तियों और लंबे समय तक पत्तियों की नमी से बचें।",
+            "गर्म और आर्द्र परिस्थितियों में खेत का निरीक्षण बढ़ाएं।"
+          ],
+          "local_prevention": [
+            "दक्षिण भारत की आर्द्र स्थितियां पत्ती रोगों को बढ़ावा दे सकती हैं; पत्तियों को सुखाने और अवशेष प्रबंधन को प्राथमिकता दें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ലഭ്യമായ അനുയോജ്യമായ പ്രതിരോധ സങ്കരയിനങ്ങൾ ഉപയോഗിക്കുക.",
+            "സാധ്യമാകുന്നിടത്ത് തുടർച്ചയായി ചോളം കൃഷി ചെയ്യാതെ വിള പരിക്രമണം നടത്തുക.",
+            "രോഗാണുക്കൾ പടരുന്നത് കുറയ്ക്കാൻ രോഗബാധിതമായ അവശിഷ്ടങ്ങൾ ശരിയായി നിർമാർജ്ജനം ചെയ്യുക.",
+            "അനാവശ്യമായ തിങ്ങിനിറഞ്ഞ ഇലത്തഴപ്പും കൂടുതൽ സമയമുള്ള നനവും ഒഴിവാക്കുക.",
+            "ചൂടും ഈർപ്പവുമുള്ള കാലാവസ്ഥയിൽ കൃഷിയിട നിരീക്ഷണം ശക്തമാക്കുക."
+          ],
+          "local_prevention": [
+            "ദക്ഷിണേന്ത്യയിലെ ഈർപ്പമുള്ള അന്തരീക്ഷം ഇലരോഗങ്ങൾക്ക് കാരണമായേക്കാം; ഇലകൾ ഉണക്കി സൂക്ഷിക്കുന്നതിനും അവശിഷ്ട പരിപാലനത്തിനും മുൻഗണന നൽകുക."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అందుబాటులో ఉన్న చోట తగిన నిరోధక హైబ్రిడ్‌లను ఉపయోగించండి.",
+            "సాధ్యమైన చోట నిరంతర మొక్కజొన్న కాకుండా పంట మార్పిడి చేయండి.",
+            "స్థానిక తెగులు మూలాన్ని తగ్గించడానికి సోకిన వ్యర్థాలను సరిగ్గా నిర్వహించండి.",
+            "అనవసరమైన దట్టమైన ఆకులు మరియు ఎక్కువసేపు ఆకుల తడిని నివారించండి.",
+            "వెచ్చని, తేమతో కూడిన పరిస్థితులలో తనిఖీని పెంచండి."
+          ],
+          "local_prevention": [
+            "దక్షిణ భారతదేశ తేమతో కూడిన పరిస్థితులు ఆకు తెగుళ్లకు అనుకూలం; ఆకులను ఆరబెట్టడం మరియు వ్యర్థాల నిర్వహణకు ప్రాధాన్యత ఇవ్వండి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Common rust",
+      "class_type": "disease",
+      "prevention": [
+        "Use resistant/tolerant hybrids where available.",
+        "Maintain adequate spacing and airflow.",
+        "Avoid excessive canopy humidity and prolonged leaf wetness.",
+        "Scout regularly during favorable humid conditions.",
+        "Maintain balanced crop nutrition and avoid unnecessary plant stress."
+      ],
+      "local_prevention": [
+        "General integrated foliar-disease prevention; do not infer a chemical treatment from the class alone."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "கிடைக்கும் இடங்களில் எதிர்ப்பு ரக வீரிய ஒட்டுகளைப் பயன்படுத்தவும்.",
+            "போதுமான இடைவெளி மற்றும் காற்றோட்டத்தை பராமரிக்கவும்.",
+            "இலைப்பகுதியில் அதிக ஈரப்பதம் மற்றும் இலைகளில் நீண்ட நேரம் ஈரம் தங்குவதைத் தவிர்க்கவும்.",
+            "நோய் பரவ சாதகமான ஈரப்பத காலங்களில் தொடர்ந்து ஆய்வு செய்யவும்.",
+            "சமச்சீரான பயிர் ஊட்டச்சத்தை பராமரிக்கவும் மற்றும் தேவையற்ற பயிர் அழுத்தத்தைத் தவிர்க்கவும்."
+          ],
+          "local_prevention": [
+            "பொதுவான இலை நோய் தடுப்பு; வகையை மட்டும் வைத்து ரசாயன சிகிச்சையை முடிவு செய்ய வேண்டாம்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "उपलब्ध होने पर प्रतिरोधी संकर किस्मों का उपयोग करें।",
+            "उचित दूरी और हवा का प्रवाह बनाए रखें।",
+            "अत्यधिक पत्ती नमी और पत्तियों पर लंबे समय तक पानी बने रहने से बचें।",
+            "अनुकूल आर्द्र परिस्थितियों में नियमित रूप से निरीक्षण करें।",
+            "फसल का संतुलित पोषण बनाए रखें और अनावश्यक पौधों के तनाव से बचें।"
+          ],
+          "local_prevention": [
+            "सामान्य एकीकृत पत्ती रोग रोकथाम; केवल वर्ग से रासायनिक उपचार का अनुमान न लगाएं।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ലഭ്യമായ പ്രതിരോധ സങ്കരയിനങ്ങൾ ഉപയോഗിക്കുക.",
+            "മതിയായ അകലവും വായുസഞ്ചാരവും നിലനിർത്തുക.",
+            "ഇലകളിൽ അമിത ഈർപ്പവും കൂടുതൽ സമയം വെള്ളം തങ്ങിനിൽക്കുന്നതും ഒഴിവാക്കുക.",
+            "രോഗാനുകൂലമായ ഈർപ്പമുള്ള സാഹചര്യങ്ങളിൽ കൃത്യമായി നിരീക്ഷിക്കുക.",
+            "വിളകൾക്ക് സമീകൃത പോഷണം നൽകുകയും അനാവശ്യ സമ്മർദ്ദങ്ങൾ ഒഴിവാക്കുകയും ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "പൊതുവായ ഇലരോഗ സംയോജിത പ്രതിരോധം; രോഗവിഭാഗം മാത്രം നോക്കി രാസചികിത്സ നിശ്ചയിക്കരുത്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అందుబాటులో ఉన్న చోట నిరోధక హైబ్రిడ్‌లను ఉపయోగించండి.",
+            "తగినంత అంతరం మరియు గాలి ప్రసరణను నిర్వహించండి.",
+            "ఆకులపై అధిక తేమ మరియు ఎక్కువ సమయం తడి ఉండటాన్ని నివారించండి.",
+            "అనుకూలమైన తేమ పరిస్థితులలో క్రమం తప్పకుండా తనిఖీ చేయండి.",
+            "సమతుల్య పంట పోషణను నిర్వహించండి మరియు అనవసరమైన మొక్కల ఒత్తిడిని నివారించండి."
+          ],
+          "local_prevention": [
+            "సాధారణ సమీకృత ఆకు తెగులు నివారణ; తరగతి ఆధారంగా మాత్రమే రసాయన చికిత్సను నిర్ణయించవద్దు."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Northern leaf blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use hybrids with resistance/tolerance where available.",
+        "Rotate away from continuous corn where practical.",
+        "Reduce or properly manage infected corn residue.",
+        "Maintain adequate field airflow and avoid prolonged leaf wetness.",
+        "Scout early when humid/wet conditions persist."
+      ],
+      "local_prevention": [
+        "Resistance plus cultural practices are the main preventive foundation."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/northern-corn-leaf-blight/"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "கிடைக்கும் இடங்களில் நோய் எதிர்ப்புத் திறன் கொண்ட வீரிய ஒட்டு ரகங்களைப் பயன்படுத்தவும்.",
+            "சாத்தியமான இடங்களில் தொடர்ந்து மக்காச்சோளம் பயிரிடாமல் பயிர் சுழற்சி செய்யவும்.",
+            "பாதிக்கப்பட்ட மக்காச்சோள பயிர் எச்சங்களை குறைக்கவும் அல்லது முறையாக அகற்றவும்.",
+            "வயலில் போதுமான காற்றோட்டத்தை பராமரிக்கவும் மற்றும் நீண்ட இலை ஈரப்பதத்தைத் தவிர்க்கவும்.",
+            "ஈரப்பதமான/மழைக்கால சூழல் நீடிக்கும் போது ஆரம்பத்திலேயே பயிரை ஆய்வு செய்யவும்."
+          ],
+          "local_prevention": [
+            "நோய் எதிர்ப்புத் திறன் மற்றும் உழவியல் முறைகளே முதன்மையான தடுப்பு அடித்தளமாகும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "उपलब्ध होने पर प्रतिरोधी या सहनशील संकर किस्मों का उपयोग करें।",
+            "जहां संभव हो लगातार मक्का की खेती से हटकर फसल चक्र अपनाएं।",
+            "संक्रमित मक्का के अवशेषों को कम करें या उनका उचित प्रबंधन करें।",
+            "खेत में पर्याप्त हवा का प्रवाह बनाए रखें और पत्तियों के लंबे समय तक गीले रहने से बचें।",
+            "आर्द्र या नम स्थिति बने रहने पर जल्दी और नियमित निरीक्षण करें।"
+          ],
+          "local_prevention": [
+            "रोग प्रतिरोधक क्षमता और सस्य क्रियाएं ही मुख्य रोकथाम का आधार हैं।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ലഭ്യമാകുന്നിടത്ത് രോഗപ്രതിരോധ ശേഷിയുള്ള സങ്കരയിനങ്ങൾ ഉപയോഗിക്കുക.",
+            "സാധ്യമാകുന്നിടത്ത് തുടർച്ചയായി ചോളം കൃഷി ചെയ്യാതെ വിള പരിക്രമണം നടത്തുക.",
+            "രോഗം ബാധിച്ച ചോള അവശിഷ്ടങ്ങൾ കുറയ്ക്കുകയോ ശരിയായി സംസ്കരിക്കുകയോ ചെയ്യുക.",
+            "കൃഷിയിടത്തിൽ നല്ല വായുസഞ്ചാരം ഉറപ്പാക്കുകയും ഇലകളിൽ കൂടുതൽ സമയം ഈർപ്പം നിൽക്കുന്നത് ഒഴിവാക്കുകയും ചെയ്യുക.",
+            "ഈർപ്പവും നനവുമുള്ള കാലാവസ്ഥ തുടരുമ്പോൾ കൃഷിയിടം നേരത്തെ നിരീക്ഷിക്കുക."
+          ],
+          "local_prevention": [
+            "പ്രതിരോധ ശേഷിയും ശരിയായ കൃഷിരീതികളുമാണ് പ്രധാന പ്രതിരോധ അടിത്തറ."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అందుబాటులో ఉన్న చోట నిరోధకత కలిగిన హైబ్రిడ్‌లను ఉపయోగించండి.",
+            "సాధ్యమైన చోట నిరంతర మొక్కజొన్న కాకుండా పంట మార్పిడి చేయండి.",
+            "సోకిన మొక్కజొన్న వ్యర్థాలను తగ్గించండి లేదా సరిగ్గా నిర్వహించండి.",
+            "పొలంలో తగినంత గాలి ప్రసరణను నిర్వహించండి మరియు ఎక్కువసేపు ఆకుల తడిని నివారించండి.",
+            "తేమ/తడి పరిస్థితులు కొనసాగినప్పుడు ముందుగానే తనిఖీ చేయండి."
+          ],
+          "local_prevention": [
+            "నిరోధకత మరియు సాగు పద్ధతులు ప్రధాన నివారణ పునాది."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Healthy",
+      "class_type": "healthy",
+      "prevention": [
+        "Use healthy seed and suitable resistant/tolerant hybrids.",
+        "Maintain balanced nutrition, drainage and appropriate plant density.",
+        "Manage crop residue and avoid continuous corn where practical.",
+        "Scout regularly for foliar disease and insect damage."
+      ],
+      "local_prevention": [],
+      "notes": [],
+      "sources": [
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/gray-leaf-spot/",
+        "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/northern-corn-leaf-blight/"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான விதைகள் மற்றும் பொருத்தமான நோய் எதிர்ப்பு வீரிய ஒட்டு ரகங்களைப் பயன்படுத்தவும்.",
+            "சமச்சீரான ஊட்டச்சத்து, வடிகால் மற்றும் சரியான பயிர் அடர்த்தியை பராமரிக்கவும்.",
+            "பயிர் எச்சங்களை மேலாண்மை செய்யவும் மற்றும் தொடர்ந்து மக்காச்சோளம் பயிரிடுவதைத் தவிர்க்கவும்.",
+            "இலை நோய்கள் மற்றும் பூச்சி சேதங்களை தொடர்ந்து ஆய்வு செய்யவும்."
+          ],
+          "local_prevention": []
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ बीज और उपयुक्त प्रतिरोधी संकर किस्मों का उपयोग करें।",
+            "संतुलित पोषण, जल निकासी और उचित पौधों का घनत्व बनाए रखें।",
+            "फसल अवशेषों का प्रबंधन करें और जहां संभव हो लगातार मक्का लगाने से बचें।",
+            "पत्ती रोगों और कीटों के नुकसान की नियमित जांच करें।"
+          ],
+          "local_prevention": []
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "നല്ല വിത്തുകളും അനുയോജ്യമായ പ്രതിരോധ സങ്കരയിനങ്ങളും ഉപയോഗിക്കുക.",
+            "സമീകൃത വളപ്രയോഗം, ഡ്രെയിനേജ്, കൃത്യമായ നടീൽ സാന്ദ്രത എന്നിവ പാലിക്കുക.",
+            "വിള അവശിഷ്ടങ്ങൾ സംസ്കരിക്കുക, സാധ്യമാകുന്നിടത്ത് തുടർച്ചയായി ചോളം കൃഷി ചെയ്യുന്നത് ഒഴിവാക്കുക.",
+            "ഇലരോഗങ്ങളും കീടബാധകളും ഉണ്ടോയെന്ന് പതിവായി പരിശോധിക്കുക."
+          ],
+          "local_prevention": []
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన విత్తనాలు మరియు తగిన నిరోధక హైబ్రిడ్‌లను ఉపయోగించండి.",
+            "సమతుల్య పోషణ, నీటి పారుదల మరియు సరైన మొక్కల సాంద్రతను నిర్వహించండి.",
+            "పంట వ్యర్థాలను నిర్వహించండి మరియు సాధ్యమైన చోట నిరంతరంగా మొక్కజొన్న సాగును నివారించండి.",
+            "ఆకు తెగుళ్లు మరియు కీటకాల నష్టం కోసం క్రమం తప్పకుండా తనిఖీ చేయండి."
+          ],
+          "local_prevention": []
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Bacterial leaf blight",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy seed and resistant/tolerant varieties where recommended.",
+        "Avoid excessive nitrogen application and maintain balanced nutrition.",
+        "Manage field water carefully and avoid prolonged unnecessary standing water when disease is developing.",
+        "Maintain clean field sanitation and remove heavily infected material where practical.",
+        "Use integrated disease-management guidance from the local agriculture department."
+      ],
+      "local_prevention": [
+        "Drainage/water management is particularly important when bacterial blight is developing."
+      ],
+      "notes": [],
+      "sources": [
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2305956&lang=2&reg=48",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "பரிந்துரைக்கப்பட்ட இடங்களில் ஆரோக்கியமான விதைகள் மற்றும் நோய் எதிர்ப்பு ரகங்களைப் பயன்படுத்தவும்.",
+            "அதிகப்படியான நைட்ரஜன் இடுவதைத் தவிர்த்து சமச்சீரான ஊட்டச்சத்தை பராமரிக்கவும்.",
+            "வயல் நீரை கவனமாக நிர்வகிக்கவும்; நோய் உருவாகும்போது தேவையற்ற நீர் தேங்குவதைத் தவிர்க்கவும்.",
+            "வயல் தூய்மையை பராமரிக்கவும் மற்றும் சாத்தியமான இடங்களில் தீவிரமாக பாதிக்கப்பட்ட பகுதிகளை அகற்றவும்.",
+            "உள்ளூர் வேளாண்மைத் துறையின் ஒருங்கிணைந்த நோய் மேலாண்மை வழிகாட்டலைப் பின்பற்றவும்."
+          ],
+          "local_prevention": [
+            "பாக்டீரியா கருகல் உருவாகும்போது வடிகால் மற்றும் நீர் மேலாண்மை மிகவும் முக்கியமானது."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "जहां अनुशंसित हो वहां स्वस्थ बीज और प्रतिरोधी किस्मों का उपयोग करें।",
+            "अत्यधिक नाइट्रोजन के उपयोग से बचें और संतुलित पोषण बनाए रखें।",
+            "खेत के पानी का ध्यानपूर्वक प्रबंधन करें और रोग फैलने पर अनावश्यक पानी जमा न होने दें।",
+            "खेत की साफ-सफाई बनाए रखें और जहां संभव हो अत्यधिक संक्रमित सामग्री को हटा दें।",
+            "स्थानीय कृषि विभाग के एकीकृत रोग प्रबंधन मार्गदर्शन का उपयोग करें।"
+          ],
+          "local_prevention": [
+            "बैक्टीरियल ब्लाइट फैलने पर जल निकासी और जल प्रबंधन विशेष रूप से महत्वपूर्ण है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ശുപാർശ ചെയ്യപ്പെട്ട പ്രതിരോധ ശേഷിയുള്ള വിത്തിനങ്ങളും നല്ല വിത്തും ഉപയോഗിക്കുക.",
+            "അമിത നൈട്രജൻ പ്രയോഗം ഒഴിവാക്കി സമീകൃത പോഷണം നിലനിർത്തുക.",
+            "പാടത്തെ വെള്ളം ശ്രദ്ധയോടെ കൈകാര്യം ചെയ്യുക, രോഗം പടരുമ്പോൾ വെള്ളം കെട്ടിക്കിടക്കുന്നത് ഒഴിവാക്കുക.",
+            "കൃഷിയിടം വൃത്തിയായി സൂക്ഷിക്കുക, രോഗം രൂക്ഷമായ ഭാഗങ്ങൾ നീക്കം ചെയ്യുക.",
+            "പ്രാദേശിക കൃഷിഭവന്റെയോ കാർഷിക വകുപ്പിന്റെയോ സംയോജിത രോഗനിയന്ത്രണ മാർഗ്ഗനിർദ്ദേശങ്ങൾ പാലിക്കുക."
+          ],
+          "local_prevention": [
+            "ബാക്ടീരിയൽ ബ്ലൈറ്റ് ഉണ്ടാകുമ്പോൾ ഡ്രെയിനേജ് അല്ലെങ്കിൽ ജലപരിപാലനം വളരെ പ്രധാനമാണ്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "సిఫార్సు చేయబడిన చోట ఆరోగ్యకరమైన విత్తనాలు మరియు నిరోధక రకాలను ఉపయోగించండి.",
+            "అధిక నత్రజని వాడకాన్ని నివారించి సమతుల్య పోషణను నిర్వహించండి.",
+            "పొలం నీటిని జాగ్రత్తగా నిర్వహించండి మరియు తెగులు వ్యాపిస్తున్నప్పుడు అనవసరమైన నీటి నిల్వను నివారించండి.",
+            "పరిశుభ్రమైన పొలం పరిశుభ్రతను నిర్వహించండి మరియు వీలైనంత వరకు తీవ్రంగా సోకిన పదార్థాలను తొలగించండి.",
+            "స్థానిక వ్యవసాయ శాఖ నుండి సమీకృత తెగులు యాజమాన్య మార్గదర్శకాలను ఉపయోగించండి."
+          ],
+          "local_prevention": [
+            "బాక్టీరియల్ బ్లైట్ అభివృద్ధి చెందుతున్నప్పుడు నీటి పారుదల మరియు నిర్వహణ చాలా ముఖ్యం."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Brown spot",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy, quality seed and avoid carrying infected seed into the next crop.",
+        "Maintain balanced plant nutrition, especially avoiding nutrient stress.",
+        "Manage water so the crop does not undergo prolonged moisture stress.",
+        "Remove or properly manage infected crop residues and volunteer rice.",
+        "Use locally recommended tolerant/resistant varieties where available."
+      ],
+      "local_prevention": [
+        "Brown spot can be associated with nutrient and water stress; maintaining crop vigor is a key preventive measure."
+      ],
+      "notes": [],
+      "sources": [
+        "https://databases.nbair.res.in/rice/subpestdetails.php?user_id=101",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான தரமான விதைகளைப் பயன்படுத்தவும்; அடுத்த பருவத்திற்கு நோய் தாக்கிய விதைகளைக் கொண்டு செல்வதைத் தவிர்க்கவும்.",
+            "சமச்சீரான தாவர ஊட்டச்சத்தை பராமரிக்கவும், குறிப்பாக ஊட்டச்சத்து பற்றாக்குறை அழுத்தத்தைத் தவிர்க்கவும்.",
+            "பயிர் நீண்ட ஈரப்பத அழுத்தத்திற்கு உட்படாதவாறு தண்ணீரை நிர்வகிக்கவும்.",
+            "பாதிக்கப்பட்ட பயிர் எச்சங்கள் மற்றும் தான்தோன்றி நெற்பயிர்களை அகற்றவும் அல்லது முறையாக மேலாண்மை செய்யவும்.",
+            "கிடைக்கும் இடங்களில் உள்ளூரில் பரிந்துரைக்கப்பட்ட தாங்கும் திறன் கொண்ட ரகங்களைப் பயன்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "பழுப்பு புள்ளி ஊட்டச்சத்து மற்றும் நீர் அழுத்தத்துடன் தொடர்புடையது; பயிர் வீரியத்தை பராமரிப்பதே முக்கிய தடுப்பு நடவடிக்கையாகும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ और गुणवत्तापूर्ण बीज का उपयोग करें और अगली फसल में संक्रमित बीज ले जाने से बचें।",
+            "पौधों का संतुलित पोषण बनाए रखें, विशेष रूप से पोषक तत्वों के तनाव से बचें।",
+            "जल प्रबंधन इस प्रकार करें कि फसल लंबे समय तक नमी के तनाव में न रहे।",
+            "संक्रमित फसल अवशेषों और स्वतः उगे धान को हटाएं या उचित प्रबंधन करें।",
+            "उपलब्ध होने पर स्थानीय रूप से अनुशंसित सहनशील/प्रतिरोधी किस्मों का उपयोग करें।"
+          ],
+          "local_prevention": [
+            "ब्राउन स्पॉट पोषक तत्वों और पानी के तनाव से जुड़ा हो सकता है; फसल को स्वस्थ रखना एक प्रमुख उपाय है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ഗുണനിലവാരമുള്ള നല്ല വിത്തുകൾ ഉപയോഗിക്കുക, രോഗബാധയുള്ള വിത്തുകൾ അടുത്ത കൃഷിയിലേക്ക് ഉപയോഗിക്കാതിരിക്കുക.",
+            "സമീകൃത പോഷണം ഉറപ്പാക്കുക, പ്രത്യേകിച്ചും പോഷകക്കമ്മി മൂലമുള്ള സമ്മർദ്ദം ഒഴിവാക്കുക.",
+            "വിളകൾക്ക് ദീർഘകാല ജലക്ഷാമം ഉണ്ടാകാത്ത രീതിയിൽ നന നിയന്ത്രിക്കുക.",
+            "രോഗം ബാധിച്ച വിള അവശിഷ്ടങ്ങളും തനിയെ വളർന്ന നെൽച്ചെടികളും നീക്കം ചെയ്യുക.",
+            "ലഭ്യമാകുന്നിടത്ത് പ്രാദേശികമായി നിർദ്ദേശിച്ചിട്ടുള്ള പ്രതിരോധ ശേഷിയുള്ള ഇനങ്ങൾ ഉപയോഗിക്കുക."
+          ],
+          "local_prevention": [
+            "തവിട്ടു പുള്ളിക്കുത്ത് പോഷക-ജല സമ്മർദ്ദങ്ങളുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു; വിളയുടെ ആരോഗ്യം നിലനിർത്തുകയാണ് പ്രധാന പ്രതിരോധ മാർഗ്ഗം."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన, నాణ్యమైన విత్తనాన్ని ఉపయోగించండి మరియు తదుపరి పంటకు సోకిన విత్తనాన్ని తీసుకెళ్లడం నివారించండి.",
+            "సమతుల్య మొక్కల పోషణను నిర్వహించండి, ముఖ్యంగా పోషక ఒత్తిడిని నివారించండి.",
+            "పంట ఎక్కువసేపు తేమ ఒత్తిడికి గురికాకుండా నీటిని నిర్వహించండి.",
+            "సోకిన పంట వ్యర్థాలను మరియు స్వచ్ఛందంగా పెరిగిన వరిని తొలగించండి లేదా సరిగ్గా నిర్వహించండి.",
+            "అందుబాటులో ఉన్న చోట స్థానికంగా సిఫార్సు చేయబడిన సహనశీల/నిరోధక రకాలను ఉపయోగించండి."
+          ],
+          "local_prevention": [
+            "బ్రౌన్ స్పాట్ పోషకాలు మరియు నీటి ఒత్తిడితో సంబంధం కలిగి ఉంటుంది; పంట బలాన్ని కాపాడటం ప్రధాన నివారణ చర్య."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Leaf smut",
+      "class_type": "disease",
+      "prevention": [
+        "Use healthy, clean seed and avoid planting visibly infected seed lots.",
+        "Maintain balanced nutrition and avoid excessive nitrogen.",
+        "Remove/manage infected residues after harvest.",
+        "Use suitable tolerant/resistant varieties when locally recommended.",
+        "Maintain good field sanitation and avoid carrying infected material between fields."
+      ],
+      "local_prevention": [
+        "The provided official rice IPM material supports integrated sanitation, healthy seed and balanced crop management; no unsupported chemical prescription is included."
+      ],
+      "notes": [],
+      "sources": [
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ஆரோக்கியமான, சுத்தமான விதைகளைப் பயன்படுத்தவும்; பாதிக்கப்பட்ட விதைகளை நடுவதைத் தவிர்க்கவும்.",
+            "சமச்சீரான ஊட்டச்சத்தை பராமரிக்கவும் மற்றும் அதிகப்படியான நைட்ரஜனைத் தவிர்க்கவும்.",
+            "அறுவடைக்குப் பிறகு பாதிக்கப்பட்ட பயிர் எச்சங்களை அகற்றவும் அல்லது நிர்வகிக்கவும்.",
+            "உள்ளூரில் பரிந்துரைக்கப்படும் போது பொருத்தமான எதிர்ப்பு ரகங்களைப் பயன்படுத்தவும்.",
+            "நல்ல வயல் தூய்மையை பராமரிக்கவும் மற்றும் பாதிக்கப்பட்ட பகுதிகளை வேறு வயல்களுக்கு கொண்டு செல்வதைத் தவிர்க்கவும்."
+          ],
+          "local_prevention": [
+            "அதிகாரப்பூர்வ நெல் IPM வழிகாட்டல் தூய்மை, ஆரோக்கியமான விதை மற்றும் சமச்சீர் மேலாண்மையை ஆதரிக்கிறது; ஆதாரமற்ற ரசாயன பரிந்துரைகள் இல்லை."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "स्वस्थ, साफ बीज का उपयोग करें और संक्रमित बीजों की बुवाई से बचें।",
+            "संतुलित पोषण बनाए रखें और अत्यधिक नाइट्रोजन से बचें।",
+            "कटाई के बाद संक्रमित अवशेषों को हटाएं या प्रबंधित करें।",
+            "स्थानीय रूप से अनुशंसित होने पर उपयुक्त सहनशील किस्मों का उपयोग करें।",
+            "खेत की अच्छी स्वच्छता बनाए रखें और खेतों के बीच संक्रमित सामग्री ले जाने से बचें।"
+          ],
+          "local_prevention": [
+            "आधिकारिक धान IPM सामग्री स्वच्छता, स्वस्थ बीज और संतुलित फसल प्रबंधन का समर्थन करती है; कोई अनधिकृत रासायनिक नुस्खा शामिल नहीं है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ആരോഗ്യമുള്ള നല്ല വിത്തുകൾ ഉപയോഗിക്കുക, രോഗലക്ഷണങ്ങൾ കാണുന്ന വിത്തുകൾ നടരുത്.",
+            "സമീകൃത പോഷണം നിലനിർത്തുക, അമിത നൈട്രജൻ പ്രയോഗം ഒഴിവാക്കുക.",
+            "വിളവെടുപ്പിന് ശേഷം രോഗബാധിത അവശിഷ്ടങ്ങൾ മാറ്റി സംസ്കരിക്കുക.",
+            "പ്രാദേശികമായി ശുപാർശ ചെയ്തിട്ടുള്ള അനുയോജ്യമായ പ്രതിരോധ ഇനങ്ങൾ ഉപയോഗിക്കുക.",
+            "കൃഷിയിട ശുചിത്വം പാലിക്കുക, രോഗബാധിതമായ ഭാഗങ്ങൾ മറ്റ് പാടങ്ങളിലേക്ക് കൊണ്ടുപോകുന്നത് ഒഴിവാക്കുക."
+          ],
+          "local_prevention": [
+            "ഔദ്യോഗിക നെല്ല് IPM ശുചിത്വം, നല്ല വിത്ത്, സമീകൃത പരിപാലനം എന്നിവ പിന്തുണയ്ക്കുന്നു; സ്ഥിരീകരിക്കാത്ത രാസ നിർദ്ദേശങ്ങൾ ഉൾപ്പെടുത്തിയിട്ടില്ല."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ఆరోగ్యకరమైన, శుభ్రమైన విత్తనాలను ఉపయోగించండి మరియు సోకిన విత్తనాలను నాటడం నివారించండి.",
+            "సమతుల్య పోషణను నిర్వహించండి మరియు అధిక నత్రజనిని నివారించండి.",
+            "పంట కోత తర్వాత సోకిన వ్యర్థాలను తొలగించండి/నిర్వహించండి.",
+            "స్థానికంగా సిఫార్సు చేయబడినప్పుడు తగిన సహనశీల/నిరోధక రకాలను ఉపయోగించండి.",
+            "మంచి పొలం పరిశుభ్రతను నిర్వహించండి మరియు పొలాల మధ్య సోకిన పదార్థాలను తీసుకెళ్లడం నివారించండి."
+          ],
+          "local_prevention": [
+            "అందించిన అధికారిక వరి IPM సామగ్రి పరిశుభ్రత, ఆరోగ్యకరమైన విత్తనం మరియు సమతుల్య పంట నిర్వహణకు మద్దతు ఇస్తుంది; ఎటువంటి ఆధారాలు లేని రసాయన మందులు చేర్చబడలేదు."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Brown planthopper",
+      "class_type": "pest",
+      "prevention": [
+        "Avoid excessive nitrogen fertilization and very dense planting.",
+        "Use balanced fertilizer, especially split nitrogen applications.",
+        "Maintain appropriate field water management; drainage/alternate wetting and drying can reduce outbreak conditions.",
+        "Prefer resistant/tolerant varieties where available.",
+        "Use synchronized planting and avoid unnecessary continuous rice cultivation."
+      ],
+      "local_prevention": [
+        "Do not recommend routine broad-spectrum spraying; preserve natural enemies and use threshold-based IPM."
+      ],
+      "notes": [],
+      "sources": [
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "அதிகப்படியான நைட்ரஜன் உரமிடுதல் மற்றும் மிகவும் நெருக்கமான நடவைத் தவிர்க்கவும்.",
+            "சமச்சீர் உரம், குறிப்பாக நைட்ரஜனை பிரித்து இடும் முறையைப் பயன்படுத்தவும்.",
+            "சரியான நீர் மேலாண்மையை பராமரிக்கவும்; வடிகால் மற்றும் மாறி மாறி நனைத்து உலர்த்துதல் பூச்சி பாதிப்பைக் குறைக்கும்.",
+            "கிடைக்கும் இடங்களில் நோய் எதிர்ப்புத் திறன் கொண்ட ரகங்களுக்கு முன்னுரிமை அளிக்கவும்.",
+            "ஒரே சீரான பருவத்தில் நடவு செய்யவும்; தொடர்ந்து நெல் பயிரிடுவதைத் தவிர்க்கவும்."
+          ],
+          "local_prevention": [
+            "வழக்கமான வீரிய தெளிப்பை தவிர்க்கவும்; இயற்கை எதிரிகளைப் பாதுகாத்து வரம்பு அடிப்படையிலான IPM-ஐப் பயன்படுத்தவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "अत्यधिक नाइट्रोजन उर्वरक और बहुत सघन रोपाई से बचें।",
+            "संतुलित उर्वरक का प्रयोग करें, विशेष रूप से नाइट्रोजन को कई बार में दें।",
+            "खेत में उचित जल प्रबंधन बनाए रखें; जल निकासी और बारी-बारी से गीला-सूखा रखना प्रकोप को कम कर सकता है।",
+            "उपलब्ध होने पर प्रतिरोधी या सहनशील किस्मों को प्राथमिकता दें।",
+            "एक साथ बुवाई करें और अनावश्यक निरंतर धान की खेती से बचें।"
+          ],
+          "local_prevention": [
+            "नियमित व्यापक छिड़काव की सिफारिश न करें; प्राकृतिक शत्रुओं को बचाएं और सीमा-आधारित IPM का उपयोग करें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "അമിത നൈട്രജൻ വളപ്രയോഗവും തിങ്ങിനിറഞ്ഞ നടീലും ഒഴിവാക്കുക.",
+            "സമീകൃത വളപ്രയോഗം നടത്തുക, പ്രത്യേകിച്ച് നൈട്രജൻ പല തവണകളായി നൽകുക.",
+            "ശരിയായ ജലപരിപാലനം നടത്തുക; ഒന്നിടവിട്ട് നനയ്ക്കുകയും ഉണക്കുകയും ചെയ്യുന്നത് കീടബാധ കുറയ്ക്കാൻ സഹായിക്കും.",
+            "ലഭ്യമാകുന്നിടത്ത് പ്രതിരോധ ശേഷിയുള്ള വിത്തിനങ്ങൾക്ക് മുൻഗണന നൽകുക.",
+            "ഒരുമിച്ച് നടീൽ നടത്തുകയും തുടർച്ചയായി നെല്ല് കൃഷി ചെയ്യുന്നത് ഒഴിവാക്കുകയും ചെയ്യുക."
+          ],
+          "local_prevention": [
+            "പതിവായുള്ള വ്യാപക കീടനാശിനി തളിക്കൽ ഒഴിവാക്കുക; മിത്രകീടങ്ങളെ സംരക്ഷിച്ച് ലക്ഷണാധിഷ്ഠിത IPM നടപ്പിലാക്കുക."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అధిక నత్రజని ఎరువులు మరియు చాలా దట్టమైన నాటడం నివారించండి.",
+            "సమతుల్య ఎరువులను ఉపయోగించండి, ముఖ్యంగా నత్రజనిని విడతల వారీగా వేయండి.",
+            "సరైన పొలం నీటి నిర్వహణను నిర్వహించండి; ఆరుతడి మరియు తడిపారి ఆరబెట్టడం వల్ల తెగులు తీవ్రత తగ్గుతుంది.",
+            "అందుబాటులో ఉన్న చోట నిరోధక/సహనశీల రకాలను ప్రాధాన్యత ఇవ్వండి.",
+            "సమకాలీకరించబడిన నాట్లు వేయండి మరియు అనవసరమైన నిరంతర వరి సాగును నివారించండి."
+          ],
+          "local_prevention": [
+            "సాధారణ విస్తృత శ్రేణి స్ప్రేలను సిఫార్సు చేయవద్దు; సహజ శత్రువులను కాపాడి పరిమితి ఆధారిత IPM ఉపయోగించండి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Asiatic rice borer",
+      "class_type": "pest",
+      "prevention": [
+        "Use synchronized planting where practical.",
+        "Avoid very close planting and prolonged water stagnation.",
+        "Use locally recommended resistant/tolerant varieties where available.",
+        "Remove/destroy egg masses and heavily infested plant parts when feasible.",
+        "Use pheromone traps and biological control as part of an IPM programme."
+      ],
+      "local_prevention": [
+        "The label is preserved exactly as supplied by the model plan; the source used for prevention is the Indian rice yellow stem-borer/Scirpophaga incertulas guidance."
+      ],
+      "notes": [],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/rice/crop_prot_crop_insectpest%20_cereals_paddy_4.html"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "சாத்தியமான இடங்களில் ஒரே நேரத்தில் நடவு செய்யும் முறையைக் கையாளவும்.",
+            "மிக நெருக்கமான நடவு மற்றும் நீண்ட நேரம் நீர் தேங்குவதைத் தவிர்க்கவும்.",
+            "கிடைக்கும் இடங்களில் உள்ளூரில் பரிந்துரைக்கப்பட்ட எதிர்ப்பு ரகங்களைப் பயன்படுத்தவும்.",
+            "சாத்தியமான போது முட்டை குவியல்கள் மற்றும் அதிகம் தாக்கப்பட்ட பாகங்களை அகற்றி அழிக்கவும்.",
+            "IPM திட்டத்தின் ஒரு பகுதியாக இனக்கவர்ச்சி பொறிகள் மற்றும் உயிரியல் கட்டுப்பாட்டைப் பயன்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "மாதிரிப் பெயர் அப்படியே உள்ளது; தடுப்புக்கு இந்திய நெல் மஞ்சள் தண்டு துளைப்பான் / Scirpophaga incertulas வழிகாட்டல் பயன்படுத்தப்பட்டுள்ளது."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "जहां व्यावहारिक हो एक साथ रोपाई करें।",
+            "बहुत पास-पास रोपाई और लंबे समय तक जलभराव से बचें।",
+            "उपलब्ध होने पर स्थानीय रूप से अनुशंसित प्रतिरोधी किस्मों का उपयोग करें।",
+            "संभव होने पर अंडे के समूहों और अत्यधिक संक्रमित भागों को हटाकर नष्ट करें।",
+            "IPM कार्यक्रम के तहत फेरोमोन ट्रैप और जैविक नियंत्रण का उपयोग करें।"
+          ],
+          "local_prevention": [
+            "लेबल बिल्कुल मॉडल योजना के अनुसार है; रोकथाम के लिए भारतीय धान पीला तना छेदक / Scirpophaga incertulas मार्गदर्शन का उपयोग किया गया है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "സാധ്യമാകുന്നിടത്ത് ഒരേ സമയത്തുള്ള നടീൽ രീതി അവലംബിക്കുക.",
+            "വളരെ അടുത്തുള്ള നടീലും ദീർഘനേരം വെള്ളക്കെട്ട് നിൽക്കുന്നതും ഒഴിവാക്കുക.",
+            "ലഭ്യമാകുന്നിടത്ത് പ്രാദേശികമായി ശുപാർശ ചെയ്യപ്പെട്ട പ്രതിരോധ ഇനങ്ങൾ ഉപയോഗിക്കുക.",
+            "മുട്ടക്കൂട്ടങ്ങളും കീടങ്ങൾ കൂടുതലുള്ള ചെടിയുടെ ഭാഗങ്ങളും കണ്ടെത്തി നശിപ്പിക്കുക.",
+            "IPM പരിപാടിയുടെ ഭാഗമായി ഫെറമോൺ കെണികളും ജൈവ നിയന്ത്രണവും ഉപയോഗിക്കുക."
+          ],
+          "local_prevention": [
+            "മോഡൽ പ്ലാൻ നൽകിയ ലേബൽ അതേപടി നിലനിർത്തിയിരിക്കുന്നു; ഇന്ത്യൻ നെല്ല് മഞ്ഞത്തണ്ടുതുരപ്പൻ / Scirpophaga incertulas നിർദ്ദേശങ്ങളാണ് പ്രതിരോധത്തിനായി നൽകിയിട്ടുള്ളത്."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "సాధ్యమైన చోట సమకాలీకరించబడిన నాట్లు వేయండి.",
+            "చాలా దగ్గరగా నాటడం మరియు ఎక్కువసేపు నీరు నిలబడటం నివారించండి.",
+            "అందుబాటులో ఉన్న చోట స్థానికంగా సిఫార్సు చేయబడిన నిరోధక రకాలను ఉపయోగించండి.",
+            "వీలైనప్పుడు గుడ్ల సమూహాలను మరియు తీవ్రంగా తెగులు సోకిన మొక్క భాగాలను తొలగించి నాశనం చేయండి.",
+            "IPM కార్యక్రమంలో భాగంగా ఫెరోమోన్ ఉచ్చులు మరియు జీవ నియంత్రణను ఉపయోగించండి."
+          ],
+          "local_prevention": [
+            "మోడల్ ప్రణాళిక అందించిన విధంగా లేబుల్ భద్రపరచబడింది; నివారణ కోసం ఉపయోగించిన మూలం భారతీయ వరి పసుపు కాండం తొలిచే పురుగు / Scirpophaga incertulas మార్గదర్శకత్వం."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "rice",
+      "class_name": "Rice leaf roller",
+      "class_type": "pest",
+      "prevention": [
+        "Avoid excessive nitrogen and overly dense crop canopies.",
+        "Conserve natural enemies and avoid unnecessary broad-spectrum insecticide use.",
+        "Monitor leaf-folding damage regularly and use threshold-based IPM.",
+        "Use biological-control options such as parasitoids where locally recommended.",
+        "Maintain field sanitation and synchronized crop management where practical."
+      ],
+      "local_prevention": [
+        "The class label is preserved exactly; prevention follows rice leaf-folder IPM guidance."
+      ],
+      "notes": [],
+      "sources": [
+        "https://epubs.icar.org.in/index.php/OIJR/article/view/109810",
+        "https://niphm.gov.in/IPMPackages/Rice.pdf"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "அதிகப்படியான நைட்ரஜன் உரங்கள் மற்றும் அதிக நெருக்கமான பயிர் நடவைத் தவிர்க்கவும்.",
+            "இயற்கை எதிரிகளைப் பாதுகாத்து தேவையற்ற வீரிய பூச்சிக்கொல்லி பயன்பாட்டைத் தவிர்க்கவும்.",
+            "இலை சுருட்டு சேதத்தை தொடர்ந்து கண்காணித்து வரம்பு அடிப்படையிலான IPM-ஐப் பயன்படுத்தவும்.",
+            "உள்ளூரில் பரிந்துரைக்கப்பட்ட இடங்களில் ஒட்டுண்ணிகள் போன்ற உயிரியல் கட்டுப்பாட்டு முறைகளைப் பயன்படுத்தவும்.",
+            "வயல் தூய்மையை பராமரிக்கவும் மற்றும் சாத்தியமான இடங்களில் ஒருங்கிணைந்த பயிர் நிர்வாகத்தை மேற்கொள்ளவும்."
+          ],
+          "local_prevention": [
+            "மாதிரிப் பெயர் அப்படியே வைக்கப்பட்டுள்ளது; தடுப்பு முறைகள் நெல் இலை சுருட்டுப்புழு IPM வழிகாட்டலைப் பின்பற்றுகின்றன."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "अत्यधिक नाइट्रोजन और बहुत घने पौधों से बचें।",
+            "प्राकृतिक शत्रुओं का संरक्षण करें और व्यापक कीटनाशकों के अनावश्यक उपयोग से बचें।",
+            "पत्ती मोड़क क्षति की नियमित निगरानी करें और सीमा-आधारित IPM का उपयोग करें।",
+            "जहां स्थानीय रूप से अनुशंसित हो वहां परजीवियों जैसे जैविक नियंत्रण विकल्पों का उपयोग करें।",
+            "खेत की स्वच्छता बनाए रखें और जहां संभव हो समकालिक फसल प्रबंधन करें।"
+          ],
+          "local_prevention": [
+            "वर्ग लेबल यथावत है; रोकथाम धान पत्ती लपेटक IPM मार्गदर्शन का पालन करती है।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "അമിത നൈട്രജൻ ഉപയോഗവും വളരെ തിങ്ങിനിറഞ്ഞ നടീലും ഒഴിവാക്കുക.",
+            "മിത്രകീടങ്ങളെ സംരക്ഷിക്കുക, അനാവശ്യ വീര്യമേറിയ കീടനാശിനി പ്രയോഗങ്ങൾ ഒഴിവാക്കുക.",
+            "ഇലചുരുട്ടി ആക്രമണം പതിവായി നിരീക്ഷിക്കുകയും പരിധി അടിസ്ഥാനമാക്കിയുള്ള IPM ഉപയോഗിക്കുകയും ചെയ്യുക.",
+            "പ്രാദേശികമായി ശുപാർശ ചെയ്തിട്ടുള്ള പരാദങ്ങൾ പോലുള്ള ജൈവ നിയന്ത്രണ മാർഗ്ഗങ്ങൾ ഉപയോഗിക്കുക.",
+            "കൃഷിയിട ശുചിത്വവും പ്രായോഗികമായ സമന്വയ വിളപരിപാലനവും നടപ്പിലാക്കുക."
+          ],
+          "local_prevention": [
+            "ക്ലാസ് ലേബൽ അതേപടി നിലനിർത്തിയിരിക്കുന്നു; പ്രതിരോധം നെല്ല് ഇലചുരുട്ടി IPM നിർദ്ദേശങ്ങൾ പാലിക്കുന്നു."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అధిక నత్రజని మరియు చాలా దట్టమైన మొక్కల సాంద్రతను నివారించండి.",
+            "సహజ శత్రువులను సంరక్షించండి మరియు అనవసరమైన విస్తృత శ్రేణి పురుగుమందుల వాడకాన్ని నివారించండి.",
+            "ఆకుచుట్టు నష్టాన్ని క్రమం తప్పకుండా పర్యవేక్షించండి మరియు పరిమితి ఆధారిత IPM ఉపయోగించండి.",
+            "స్థానికంగా సిఫార్సు చేయబడిన చోట పరాన్నజీవుల వంటి జీవ నియంత్రణ ఎంపికలను ఉపయోగించండి.",
+            "పొలం పరిశుభ్రతను నిర్వహించండి మరియు సాధ్యమైన చోట సమకాలీకరించబడిన పంట నిర్వహణను చేపట్టండి."
+          ],
+          "local_prevention": [
+            "తరగతి లేబుల్ ఖచ్చితంగా భద్రపరచబడింది; నివారణ వరి ఆకుచుట్టు పురుగు IPM మార్గదర్శకాలను అనుసరిస్తుంది."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Corn borer",
+      "class_type": "pest",
+      "prevention": [
+        "Use locally recommended resistant/tolerant hybrids where available.",
+        "Destroy or properly manage crop residues after harvest to reduce carry-over.",
+        "Scout early for egg masses and larval damage.",
+        "Maintain field sanitation and avoid leaving heavily infested residues.",
+        "Use pheromone/monitoring tools and biological control where available."
+      ],
+      "local_prevention": [
+        "The exact IP102 class identity should be verified against the actual dataset folder before adding a species-specific scientific name."
+      ],
+      "notes": [],
+      "sources": [
+        "https://epubs.icar.org.in/index.php/IndFarm/article/view/116540"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "கிடைக்கும் இடங்களில் உள்ளூரில் பரிந்துரைக்கப்பட்ட எதிர்ப்பு ரக வீரிய ஒட்டுகளைப் பயன்படுத்தவும்.",
+            "நோய் பரவலைக் குறைக்க அறுவடைக்கு பின் பயிர் எச்சங்களை அழிக்கவும் அல்லது முறையாக மேலாண்மை செய்யவும்.",
+            "முட்டை குவியல்கள் மற்றும் புழுக்களின் சேதத்தை ஆரம்பத்திலேயே கண்டறிய ஆய்வு செய்யவும்.",
+            "வயல் தூய்மையை பராமரிக்கவும் மற்றும் அதிக பூச்சி பாதித்த பயிர் எச்சங்களை விடுவதைத் தவிர்க்கவும்.",
+            "கிடைக்கும் இடங்களில் இனக்கவர்ச்சி பொறிகள் மற்றும் உயிரியல் கட்டுப்பாட்டு முறைகளைப் பயன்படுத்தவும்."
+          ],
+          "local_prevention": [
+            "குறிப்பிட்ட அறிவியல் பெயரைச் சேர்ப்பதற்கு முன் உண்மையான தரவுத்தொகுப்புடன் IP102 வகையை சரிபார்க்க வேண்டும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "उपलब्ध होने पर स्थानीय रूप से अनुशंसित प्रतिरोधी संकर किस्मों का उपयोग करें।",
+            "रोग आगे फैलने से रोकने के लिए कटाई के बाद फसल अवशेषों को नष्ट या उचित प्रबंधन करें।",
+            "अंडों के समूहों और लार्वा के नुकसान के लिए शुरुआत में ही निरीक्षण करें।",
+            "खेत की स्वच्छता बनाए रखें और अत्यधिक संक्रमित अवशेष छोड़ने से बचें।",
+            "उपलब्ध होने पर फेरोमोन ट्रैप और जैविक नियंत्रण का उपयोग करें।"
+          ],
+          "local_prevention": [
+            "विशिष्ट वैज्ञानिक नाम जोड़ने से पहले वास्तविक डेटासेट फ़ोल्डर के साथ सटीक IP102 वर्ग की पुष्टि की जानी चाहिए।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "ലഭ്യമാകുന്നിടത്ത് പ്രാദേശികമായി ശുപാർശ ചെയ്ത പ്രതിരോധ സങ്കരയിനങ്ങൾ ഉപയോഗിക്കുക.",
+            "രോഗം പടരുന്നത് കുറയ്ക്കാൻ വിളവെടുപ്പിനു ശേഷം വിള അവശിഷ്ടങ്ങൾ നശിപ്പിക്കുകയോ കൃത്യമായി സംസ്‌കരിക്കുകയോ ചെയ്യുക.",
+            "മുട്ടക്കൂട്ടങ്ങളും പുഴുക്കളുടെ കേടുപാടുകളും തുടക്കത്തിൽ തന്നെ നിരീക്ഷിക്കുക.",
+            "കൃഷിയിടം വൃത്തിയായി സൂക്ഷിക്കുക, കീടബാധയേറ്റ അവശിഷ്ടങ്ങൾ കൃഷിയിടത്തിൽ കൂട്ടിയിടരുത്.",
+            "ലഭ്യമാകുന്നിടത്ത് ഫെറമോൺ കെണികളും ജൈവ നിയന്ത്രണ മാർഗ്ഗങ്ങളും ഉപയോഗിക്കുക."
+          ],
+          "local_prevention": [
+            "ശാസ്ത്രീയ നാമം നൽകുന്നതിന് മുമ്പ് യഥാർത്ഥ ഡാറ്റാസെറ്റുമായി IP102 ക്ലാസ് ഒത്തുനോക്കി ഉറപ്പുവരുത്തണം."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "అందుబాటులో ఉన్న చోట స్థానికంగా సిఫార్సు చేయబడిన నిరోధక హైబ్రిడ్‌లను ఉపయోగించండి.",
+            "తెగులు కొనసాగకుండా తగ్గించడానికి పంట కోత తర్వాత పంట వ్యర్థాలను నాశనం చేయండి లేదా సరిగ్గా నిర్వహించండి.",
+            "గుడ్ల సమూహాలు మరియు లద్దె పురుగుల నష్టం కోసం ముందుగానే గమనించండి.",
+            "పొలం పరిశుభ్రతను నిర్వహించండి మరియు తీవ్రంగా తెగులు సోకిన వ్యర్థాలను వదిలివేయడం నివారించండి.",
+            "అందుబాటులో ఉన్న చోట ఫెరోమోన్ సాధనాలు మరియు జీవ నియంత్రణను ఉపయోగించండి."
+          ],
+          "local_prevention": [
+            "జాతి నిర్దిష్ట శాస్త్రీయ నామాన్ని జోడించే ముందు వాస్తవ డేటాసెట్ ఫోల్డర్‌తో ఖచ్చితమైన IP102 తరగతిని ధృవీకరించాలి."
+          ]
+        }
+      }
+    },
+    {
+      "crop": "corn",
+      "class_name": "Armyworm",
+      "class_type": "pest",
+      "prevention": [
+        "Scout maize early and frequently for larvae and fresh feeding damage.",
+        "Remove and destroy visible larval infestations where practical.",
+        "Maintain field sanitation and manage weeds that can provide shelter/host sites.",
+        "Use biological and botanical IPM options where locally recommended.",
+        "Avoid unnecessary insecticide use so natural enemies are conserved."
+      ],
+      "local_prevention": [
+        "This prevention entry is intentionally IPM-focused and does not prescribe a chemical dose. The exact IP102 label should be verified before assigning a scientific name."
+      ],
+      "notes": [],
+      "sources": [
+        "https://nibsm.org/images/newdata/Technical-Bulletin-Maize.pdf",
+        "https://epubs.icar.org.in/index.php/IndFarm/article/view/116540"
+      ],
+      "translations": {
+        "ta": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "மக்காச்சோளத்தில் புழுக்கள் மற்றும் புதிய சேதங்களை ஆரம்பத்திலேயே அடிக்கடி ஆய்வு செய்யவும்.",
+            "சாத்தியமான இடங்களில் தென்படும் புழுக்களை அகற்றி அழிக்கவும்.",
+            "வயல் தூய்மையை பராமரிக்கவும் மற்றும் பூச்சிகளுக்கு அடைக்கலம் தரும் களைகளை கட்டுப்படுத்தவும்.",
+            "உள்ளூரில் பரிந்துரைக்கப்பட்ட இடங்களில் உயிரியல் மற்றும் இயற்கை பூச்சி மேலாண்மை (IPM) முறைகளைப் பயன்படுத்தவும்.",
+            "இயற்கை எதிரி பூச்சிகளைப் பாதுகாக்க தேவையற்ற பூச்சிக்கொல்லி பயன்பாட்டைத் தவிர்க்கவும்."
+          ],
+          "local_prevention": [
+            "இத்தடுப்பு குறிப்பு IPM சார்ந்ததாகும், ரசாயன அளவை பரிந்துரைக்கவில்லை. அறிவியல் பெயரை இடுமுன் IP102 லேபிளை சரிபார்க்கவும்."
+          ]
+        },
+        "hi": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "मक्का में लार्वा और नए नुकसान के लिए जल्दी और बार-बार निरीक्षण करें।",
+            "जहां संभव हो दिखाई देने वाले लार्वा को हटाकर नष्ट कर दें।",
+            "खेत की स्वच्छता बनाए रखें और खरपतवारों को नियंत्रित करें जो कीटों को आश्रय दे सकते हैं।",
+            "जहां स्थानीय रूप से अनुशंसित हो वहां जैविक और वानस्पतिक IPM विकल्पों का उपयोग करें।",
+            "अनावश्यक कीटनाशकों के प्रयोग से बचें ताकि प्राकृतिक मित्र कीट सुरक्षित रहें।"
+          ],
+          "local_prevention": [
+            "यह रोकथाम प्रविष्टि IPM-केंद्रित है और रासायनिक खुराक नहीं बताती है। वैज्ञानिक नाम देने से पहले सटीक IP102 लेबल की पुष्टि करें।"
+          ]
+        },
+        "ml": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "മക്കച്ചോളത്തിൽ പുഴുക്കളുടെ ആക്രമണവും പുതിയ നാശനഷ്ടങ്ങളും തുടക്കത്തിലേ നിരീക്ഷിക്കുക.",
+            "കണ്ടെത്താൻ സാധിക്കുന്ന പുഴുക്കളെ പെറുക്കി നശിപ്പിക്കുക.",
+            "കൃഷിയിട ശുചിത്വം പാലിക്കുക, കീടങ്ങൾക്ക് ആതിഥേയത്വം നൽകുന്ന കളകൾ നിയന്ത്രിക്കുക.",
+            "പ്രാദേശികമായി നിർദ്ദേശിക്കപ്പെട്ടിട്ടുള്ള ജൈവ-സസ്യ അധിഷ്ഠിത IPM മാർഗ്ഗങ്ങൾ സ്വീകരിക്കുക.",
+            "പ്രകൃതിദത്ത മിത്രകീടങ്ങളെ സംരക്ഷിക്കാൻ അനാവശ്യ കീടനാശിനി പ്രയോഗം ഒഴിവാക്കുക."
+          ],
+          "local_prevention": [
+            "ഈ പ്രതിരോധ കുറിപ്പ് IPM അടിസ്ഥാനമാക്കിയുള്ളതാണ്, രാസ അളവുകൾ നിർദ്ദേശിക്കുന്നില്ല. ശാസ്ത്രീയ നാമം നൽകുന്നതിന് മുമ്പ് IP102 ലേബൽ പരിശോധിക്കണം."
+          ]
+        },
+        "te": {
+          "review_status": "draft_needs_native_and_expert_review",
+          "prevention": [
+            "మొక్కజొన్నలో లద్దె పురుగులు మరియు కొత్త నష్టం కోసం ముందుగానే మరియు తరచుగా తనిఖీ చేయండి.",
+            "సాధ్యమైన చోట కనిపించే లద్దె పురుగులను తొలగించి నాశనం చేయండి.",
+            "పొలం పరిశుభ్రతను నిర్వహించండి మరియు తెగుళ్లకు ఆశ్రయం కల్పించే కలుపు మొక్కలను నియంత్రించండి.",
+            "స్థానికంగా సిఫార్సు చేయబడిన చోట జీవ మరియు వృక్షసంబంధ IPM ఎంపికలను ఉపయోగించండి.",
+            "సహజ శత్రువులను కాపాడటానికి అనవసరమైన పురుగుమందుల వాడకాన్ని నివారించండి."
+          ],
+          "local_prevention": [
+            "ఈ నివారణ అంశం ఉద్దేశపూర్వకంగా IPM-కేంద్రీకృతమైనది మరియు రసాయన మోతాదును సూచించదు. శాస్త్రీయ నామాన్ని కేటాయించే ముందు ఖచ్చితమైన IP102 లేబుల్‌ని ధృవీకరించాలి."
+          ]
+        }
+      }
+    }
+  ]
+}

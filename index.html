@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Phyto · Agricultural Assistant</title>
+    <meta name="description" content="Phyto - Offline-first agricultural assistant for crop leaf disease detection, treatment advice, and government schemes for farmers." />
+    <meta property="og:title" content="Phyto · Agricultural Assistant" />
+    <meta property="og:description" content="Offline-first agricultural assistant for crop leaf disease detection and farming guidance." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#F1E9D2" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Phyto" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+
+    <!-- Instant Inline Settings Init to Prevent Theme/Font Flash -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('phyto_settings');
+          var settings = saved ? JSON.parse(saved) : null;
+          var theme = settings && settings.theme;
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            if (settings) {
+              settings.theme = theme;
+              localStorage.setItem('phyto_settings', JSON.stringify(settings));
+            }
+          }
+          document.documentElement.setAttribute('data-theme', theme);
+
+          var metaTheme = document.querySelector('meta[name="theme-color"]');
+          if (metaTheme) {
+            metaTheme.setAttribute('content', theme === 'dark' ? '#1A1613' : '#F1E9D2');
+          }
+
+          var rawSize = (settings && settings.textSize) || 'default';
+          var textSize = (rawSize === 'larger' || rawSize === 'largest') ? 'large' : rawSize;
+          var scaleMap = {
+            small: '87.5%',
+            default: '100%',
+            large: '112.5%'
+          };
+          if (scaleMap[textSize]) {
+            document.documentElement.style.fontSize = scaleMap[textSize];
+          }
+
+          var lang = (settings && settings.language) || 'en';
+          document.documentElement.setAttribute('lang', lang);
+        } catch (e) {
+          console.warn('Settings init error', e);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--color-bg)] text-[var(--color-text)] antialiased select-none selection:bg-blue-100 selection:text-blue-900 transition-colors duration-150">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.log('SW registration note:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

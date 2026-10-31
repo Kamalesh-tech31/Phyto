@@ -1,0 +1,1326 @@
+{
+  "version": 2,
+  "generated_at": "2026-10-31T14:50:00Z",
+  "clips": {
+    "en/page_scan_home.mp3": {
+      "hash": "35b8590d81180c9a",
+      "text": "Check your crop. Take one clear photo of a single leaf. Phyto tells you what is wrong and what to do.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_photo_check.mp3": {
+      "hash": "91b1804c8b03bfd1",
+      "text": "Photo check page. Please verify sharpness, daylight, and distance before analyzing.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_analyzing.mp3": {
+      "hash": "52c4356603365680",
+      "text": "Analyzing leaf cells and spotting fungal lesions offline.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_result_uncertain.mp3": {
+      "hash": "d1cc4aa1d08e273b",
+      "text": "Low confidence scan. I am not sure yet. The photo is unclear. Please retake photo in daylight.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_history.mp3": {
+      "hash": "32c017b49b28ce06",
+      "text": "This is your scan history. All leaf diagnoses are saved on this phone.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_schemes.mp3": {
+      "hash": "a025f4a0845359f5",
+      "text": "Government schemes page. Browse agricultural subsidies and plant protection grants for vegetable farmers.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/page_settings.mp3": {
+      "hash": "06e004eaa5534bac",
+      "text": "Settings and farmer assistant. You can switch language, download offline packages, and adjust voice speed.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/voice_not_leaf.mp3": {
+      "hash": "fa0cc10699776c3d",
+      "text": "Please upload a photo of a plant leaf.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_early_blight_overview.mp3": {
+      "hash": "a86dbac3e2fc411f",
+      "text": "Tomato Early Blight. Concentric bullseye rings with yellow margins on lower mature leaves.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_early_blight_treatment.mp3": {
+      "hash": "8c466bbb532f772b",
+      "text": "Step 1: Remove and burn the infected lower leaves. Step 2: Spray a neem-based solution in the evening. Step 3: Water at the base, not over the leaves. If it keeps spreading, use a fungicide registered for tomato. Follow the label exactly and wear gloves and a mask when spraying.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_early_blight_prevention.mp3": {
+      "hash": "638b22b70938daa8",
+      "text": "Step 1: Mulch the soil around plants to prevent soil spores splashing onto lower leaves. Step 2: Maintain 45-60 cm distance between tomato plants for healthy air circulation. Step 3: Practice 3-year crop rotation; avoid planting tomatoes after potatoes or eggplants. Farmer pro tip: Thoroughly destroy crop residue after harvest to break the fungal pathogen cycle for the next season.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_late_blight_overview.mp3": {
+      "hash": "33fed8580ac20641",
+      "text": "Tomato Late Blight. Fast spreading dark greasy spots with whitish downy fungal growth underneath.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_late_blight_treatment.mp3": {
+      "hash": "691f253cf05274b5",
+      "text": "Step 1: Remove and destroy severely infected plants immediately. Step 2: Spray a copper-based or approved protective fungicide to shield surrounding crops. Step 3: Avoid moisture on foliage. Wear protective gear and strictly follow label dosage instructions.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_late_blight_prevention.mp3": {
+      "hash": "56e2c3c29374ecf9",
+      "text": "Step 1: Use only certified healthy seeds and transplants. Step 2: Ensure adequate spacing and airflow so foliage dries quickly. Step 3: Scout fields regularly during rainy or humid spells. Farmer pro tip: Cool, wet weather accelerates late blight; take action at the first sign of water-soaked spots.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_healthy_overview.mp3": {
+      "hash": "bde957e2da12bec5",
+      "text": "Healthy Tomato leaf. Vibrant green foliage with intact margins and no visible lesions.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_healthy_treatment.mp3": {
+      "hash": "2b0aa45822a73b25",
+      "text": "No treatment required. Your tomato foliage is healthy, vibrant, and free of active fungal lesions.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_healthy_prevention.mp3": {
+      "hash": "0372e1d7292d3aad",
+      "text": "Prevention tips: Maintain balanced nutrition and steady watering. Keep foliage dry and space plants adequately for good air movement.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "ta/page_scan_home.mp3": {
+      "hash": "38bec5a03edc1e0f",
+      "text": "உங்கள் பயிரை சோதிக்கவும். ஒரே ஒரு இலையின் தெளிவான புகைப்படத்தை எடுக்கவும். என்ன பிரச்சனை மற்றும் என்ன செய்ய வேண்டும் என்பதை பைட்டோ கூறும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_photo_check.mp3": {
+      "hash": "870306added728b1",
+      "text": "புகைப்பட சோதனை பக்கம். தெளிவு, வெளிச்சம் மற்றும் தூரத்தை சரிபார்த்து பகுப்பாய்வு செய்யவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_analyzing.mp3": {
+      "hash": "45ebf6f846a254df",
+      "text": "இலை செல்களை ஸ்கேன் செய்து ஆஃப்லைனில் பூஞ்சை அறிகுறிகளை கண்டறிகிறது.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_result_uncertain.mp3": {
+      "hash": "cd4ea9f7e92a55e2",
+      "text": "குறைந்த நம்பிக்கை. படம் தெளிவாக இல்லை. தயவுசெய்து பகல் வெளிச்சத்தில் மீண்டும் படம் எடுக்கவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_history.mp3": {
+      "hash": "37c5bc669253a8b3",
+      "text": "இது உங்கள் ஸ்கேன் வரலாறு. போனில் சேமிக்கப்பட்ட அனைத்து பரிசோதனைகளும் இங்கு உள்ளன.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_schemes.mp3": {
+      "hash": "88336373d6d1b05c",
+      "text": "அரசு திட்டங்கள். காய்கறி விவசாயிகளுக்கான மானியங்கள் மற்றும் பயிர் பாதுகாப்பு உதவிகளை காண்க.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/page_settings.mp3": {
+      "hash": "e6acf75f2206d2c0",
+      "text": "அமைப்புகள் மற்றும் விவசாயி உதவியாளர். மொழியை மாற்றவும், ஆஃப்லைன் தொகுப்புகளை பதிவிறக்கவும், குரல் வேகத்தை மாற்றவும் முடியும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/voice_not_leaf.mp3": {
+      "hash": "3f5bc78aa372d804",
+      "text": "தயவுசெய்து தாவர இலையின் புகைப்படத்தைப் பதிவேற்றவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_early_blight_overview.mp3": {
+      "hash": "32a809f5bd2dd4a8",
+      "text": "தக்காளி ஆரம்பகால கருகல். முதிர்ந்த இலைகளில் மஞ்சள் விளிம்புடன் கூடிய வட்ட வளைய புள்ளிகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_early_blight_treatment.mp3": {
+      "hash": "b53507ca3229b99e",
+      "text": "படி 1: பாதிக்கப்பட்ட கீழ் இலைகளை அகற்றி எரிக்கவும். படி 2: மாலையில் வேப்ப எண்ணெய் கரைசலை தெளிக்கவும். படி 3: இலைகளின் மேல் தெளிக்காமல் செடியின் அடியில் தண்ணீர் ஊற்றவும். நோய் தொடர்ந்தால் தக்காளிக்கு அங்கீகரிக்கப்பட்ட பூஞ்சைக்கொல்லியைப் பயன்படுத்தவும். லேபிளை சரியாகப் பின்பற்றி கையுறைகள் மற்றும் முகமூடி அணியவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_early_blight_prevention.mp3": {
+      "hash": "14c182e3204f6d89",
+      "text": "படி 1: மண்ணில் உள்ள வித்துக்கள் கீழ் இலைகளில் தெறிப்பதைத் தடுக்க செடிகளைச் சுற்றி மூடாக்கு போடவும். படி 2: ஆரோக்கியமான காற்றோட்டத்திற்கு தக்காளி செடிகளுக்கு இடையே 45-60 செ.மீ இடைவெளி விடவும். படி 3: 3 ஆண்டு பயிர் சுழற்சியைப் பின்பற்றவும்; உருளைக்கிழங்கு அல்லது கத்தரிக்குப் பின் தக்காளி நடுவத்தைத் தவிர்க்கவும். விவசாயி குறிப்பு: அடுத்த பருவத்திற்கான பூஞ்சை சுழற்சியை உடைக்க அறுவடைக்கு பின் பயிர் கழிவுகளை அழிக்கவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_late_blight_overview.mp3": {
+      "hash": "57da04dce6835609",
+      "text": "தக்காளி பின்கால கருகல். இலைகளின் அடியில் வெள்ளை பூஞ்சையுடன் கூடிய வேகமாக பரவும் கரும் புள்ளிகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_late_blight_treatment.mp3": {
+      "hash": "d788506010c0cb51",
+      "text": "படி 1: கடுமையாக பாதிக்கப்பட்ட செடிகளை உடனே அகற்றி அழிக்கவும். படி 2: சுற்றியுள்ள பயிர்களைப் பாதுகாக்க தாமிரம் சார்ந்த பூஞ்சைக்கொல்லியைத் தெளிக்கவும். படி 3: இலைகளில் ஈரப்பதம் தங்குவதைத் தவிர்க்கவும். பாதுகாப்பு கவசங்களை அணிந்து லேபிள் அளவை கண்டிப்பாகப் பின்பற்றவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_late_blight_prevention.mp3": {
+      "hash": "21db4cc64c45c374",
+      "text": "படி 1: சான்றளிக்கப்பட்ட ஆரோக்கியமான விதைகள் மற்றும் நாற்றுகளை மட்டுமே பயன்படுத்தவும். படி 2: இலைகள் விரைவாக உலர போதுமான இடைவெளி மற்றும் காற்றோட்டத்தை உறுதிப்படுத்தவும். படி 3: மழைக்காலங்களில் வயலை அடிக்கடி ஆய்வு செய்யவும். விவசாயி குறிப்பு: குளிர்ந்த, ஈரமான வானிலை பின்கால கருகலை விரைவுபடுத்தும்; நீர் கசிவு போன்ற புள்ளிகள் தெரிந்த உடனே செயல்படவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_healthy_overview.mp3": {
+      "hash": "7264de3c59db7d2a",
+      "text": "ஆரோக்கியமான தக்காளி இலை. புள்ளிகள் அல்லது நோய்த்தொற்று இன்றி நல்ல பசுமையாக உள்ளது.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_healthy_treatment.mp3": {
+      "hash": "ab42d73d10429443",
+      "text": "சிகிச்சை எதுவும் தேவையில்லை. உங்கள் தக்காளி இலைகள் பூஞ்சை தொற்றுகள் இன்றி ஆரோக்கியமாகவும் பசுமையாகவும் உள்ளன.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_healthy_prevention.mp3": {
+      "hash": "d5c64b3272849f73",
+      "text": "தடுப்பு குறிப்புகள்: சமச்சீரான ஊட்டச்சத்து மற்றும் சீரான பாசனத்தை பராமரிக்கவும். இலைகளை உலர்வாக வைத்து நல்ல காற்றோட்டத்திற்கு போதுமான இடைவெளி விடவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "hi/page_scan_home.mp3": {
+      "hash": "b0bbeb6bb06f47d0",
+      "text": "अपनी फसल की जांच करें। एक पत्ती की स्पष्ट फोटो लें। फाइटो बताएगा कि क्या समस्या है और क्या उपाय करना है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_photo_check.mp3": {
+      "hash": "0c26de56ce17c00d",
+      "text": "फोटो जांच पृष्ठ। कृपया विश्लेषण से पहले स्पष्टता, रोशनी और दूरी की पुष्टि करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_analyzing.mp3": {
+      "hash": "246b36d8c807b0b8",
+      "text": "पत्ती की कोशिकाओं को स्कैन कर ऑफ़लाइन फंगल लक्षणों की पहचान की जा रही है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_result_uncertain.mp3": {
+      "hash": "c7e6f9ca017324bf",
+      "text": "कम विश्वास वाला स्कैन। अभी निश्चित नहीं है। फोटो अस्पष्ट है। कृपया दिन के उजाले में दोबारा फोटो लें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_history.mp3": {
+      "hash": "809944550869406a",
+      "text": "यह आपका स्कैन इतिहास है। आपके फोन में सुरक्षित सभी फसल जांच रिकॉर्ड यहाँ हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_schemes.mp3": {
+      "hash": "7498fb851d07fff1",
+      "text": "सरकारी योजनाएं। सब्जी उत्पादकों के लिए सब्सिडी और पादप संरक्षण अनुदान देखें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/page_settings.mp3": {
+      "hash": "1689fe1509aa5e3b",
+      "text": "सेटिंग्स और किसान सहायक। आप भाषा बदल सकते हैं, ऑफ़लाइन पैकेज डाउनलोड कर सकते हैं और आवाज़ की गति समायोजित कर सकते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/voice_not_leaf.mp3": {
+      "hash": "f7a59d38686dd53c",
+      "text": "कृपया पौधे की पत्ती की फोटो अपलोड करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_early_blight_overview.mp3": {
+      "hash": "3bc49c35c697873d",
+      "text": "टमाटर अगेती झुलसा। निचली परिपक्व पत्तियों पर पीले किनारों वाले संकेंद్రీయ छल्ले।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_early_blight_treatment.mp3": {
+      "hash": "3541b27b8057d78e",
+      "text": "चरण 1: संक्रमित निचली पत्तियों को हटाकर जला दें। चरण 2: शाम को नीम आधारित घोल का छिड़काव करें। चरण 3: पत्तियों पर नहीं, तने के आधार पर पानी दें। यदि यह फैलता रहे, तो टमाटर के लिए पंजीकृत कवकनाशी का उपयोग करें। लेबल का पालन करें और छिड़काव करते समय दस्ताने और मास्क पहनें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_early_blight_prevention.mp3": {
+      "hash": "efc45c2ccc10a413",
+      "text": "चरण 1: मिट्टी के बीजाणुओं को निचली पत्तियों पर छिटकने से रोकने के लिए पौधों के चारों ओर मल्चिंग करें। चरण 2: हवा के संचार के लिए टमाटर के पौधों के बीच 45-60 सेमी की दूरी रखें। चरण 3: 3 साल का फसल चक्र अपनाएं; आलू या बैंगन के बाद टमाटर लगाने से बचें। किसान सुझाव: अगले सीजन के लिए कवक चक्र को तोड़ने के लिए कटाई के बाद फसल अवशेषों को पूरी तरह नष्ट कर दें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_late_blight_overview.mp3": {
+      "hash": "58b50f558dd0e893",
+      "text": "टमाटर पछेती झुलसा। नीचे सफेद फफूंद के साथ तेजी से फैलने वाले गहरे तैलीय धब्बे।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_late_blight_treatment.mp3": {
+      "hash": "4ff2a8bdb33a22a0",
+      "text": "चरण 1: गंभीर रूप से संक्रमित पौधों को तुरंत हटाकर नष्ट कर दें। चरण 2: आस-पास की फसलों की सुरक्षा के लिए तांबा आधारित कवकनाशी का छिड़काव करें। चरण 3: पत्तियों पर नमी से बचें। सुरक्षात्मक गियर पहनें और खुराक निर्देशों का सख्ती से पालन करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_late_blight_prevention.mp3": {
+      "hash": "6dcd47f1c30da9a4",
+      "text": "चरण 1: केवल प्रमाणित स्वस्थ बीज और पौध का ही उपयोग करें। चरण 2: उचित दूरी और हवा का संचार सुनिश्चित करें ताकि पत्तियां जल्दी सूखें। चरण 3: बरसात या आर्द्र मौसम में नियमित निरीक्षण करें। किसान सुझाव: ठंडा, नम मौसम पछेती झुलसा को तेज करता है; पानीदार धब्बे दिखते ही कार्रवाई करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_healthy_overview.mp3": {
+      "hash": "f4803e8425f84665",
+      "text": "स्वस्थ टमाटर की पत्ती। बिना किसी धब्बे या घाव के स्वस्थ और हरी पत्ती।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_healthy_treatment.mp3": {
+      "hash": "5a060bfc94275899",
+      "text": "किसी उपचार की आवश्यकता नहीं है। आपके टमाटर की पत्तियां स्वस्थ, हरी-भरी और कवक से मुक्त हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_healthy_prevention.mp3": {
+      "hash": "4a6200bffca8bd80",
+      "text": "रोकथाम के उपाय: संतुलित पोषण और नियमित सिंचाई बनाए रखें। पत्तियों को सूखा रखें और हवा के संचार के लिए उचित दूरी रखें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "ml/page_scan_home.mp3": {
+      "hash": "5e8d07cba800df45",
+      "text": "നിങ്ങളുടെ വിള പരിശോധിക്കുക. ഒരൊറ്റ ഇലയുടെ വ്യക്തമായ ഫോട്ടോയെടുക്കുക. പ്രശ്നവും പരിഹാരവും ഫൈറ്റോ പറയും.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_photo_check.mp3": {
+      "hash": "897393a8133c83c3",
+      "text": "ഫോട്ടോ പരിശോധന. വ്യക്തതയും വെളിച്ചവും അകലവും നല്ലതാണെന്ന് ഉറപ്പുവരുത്തുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_analyzing.mp3": {
+      "hash": "d0b2004cdefc0685",
+      "text": "ഇലയിലെ കോശഘടനകളും കുമിൾ ലക്ഷണങ്ങളും ഓഫ്‌ലൈനായി വിശകലനം ചെയ്യുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_result_uncertain.mp3": {
+      "hash": "9793ed0a9b77a2cb",
+      "text": "കുറഞ്ഞ വിശ്വാസ്യത. ഇതുവരെ ഉറപ്പില്ല. ഫോട്ടോ അവ്യക്തമാണ്. നല്ല വെളിച്ചത്തിൽ ഒരു ചാൺ അകലെ നിന്ന് വീണ്ടും ഫോട്ടോയെടുക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_history.mp3": {
+      "hash": "a3d56d03457bdb55",
+      "text": "സ്കാൻ ചരിത്രം. ഫോണിൽ സൂക്ഷിച്ചിരിക്കുന്ന മുൻകാല പരിശോധനാ ഫലങ്ങൾ ഇവിടെ കാണാം.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_schemes.mp3": {
+      "hash": "330e2213683ea284",
+      "text": "സർക്കാർ പദ്ധതികൾ. പച്ചക്കറി കർഷകർക്കുള്ള സബ്സിഡികളും കാർഷിക ആനുകൂല്യങ്ങളും ഇവിടെ കാണാം.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/page_settings.mp3": {
+      "hash": "8f91df0e92307d29",
+      "text": "സെറ്റിംഗ്സും കർഷക സഹായിയും. ഭാഷ മാറ്റാനും ഓഫ്‌ലൈൻ പാക്ക് ഡൗൺലോഡ് ചെയ്യാനും ശബ്ദവേഗത ക്രമീകരിക്കാനും സാധിക്കും.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/voice_not_leaf.mp3": {
+      "hash": "bdeba3a90ab8be42",
+      "text": "ദയവായി ചെടിയുടെ ഇലയുടെ ഫോട്ടോ അപ്ലോഡ് ചെയ്യുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_early_blight_overview.mp3": {
+      "hash": "734f9df4811f9b14",
+      "text": "തക്കാളി നേരത്തെയുള്ള കരിച്ചിൽ. അടിയിലെ ഇലകളിൽ മഞ്ഞ വരികളോടുകൂടിയ ലക്ഷ്യബോർഡ് പോലുള്ള പാടുകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_early_blight_treatment.mp3": {
+      "hash": "4994373d4ce49459",
+      "text": "ഘട്ടം 1: രോഗം ബാധിച്ച അടിയിലെ ഇലകൾ പറിച്ച് നശിപ്പിക്കുക. ഘട്ടം 2: വൈകുന്നേരങ്ങളിൽ വേപ്പെണ്ണ മിശ്രിതം തളിക്കുക. ഘട്ടം 3: ഇലകളിൽ വീഴാതെ ചുവട്ടിൽ മാത്രം നനയ്ക്കുക. രോഗം പടരുകയാണെങ്കിൽ അംഗീകൃത കുമിൾനാശിനി നിർദ്ദേശാനുസരണം ഉപയോഗിക്കുക. തളിക്കുമ്പോൾ കയ്യുറകളും മാസ്കും ധരിക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_early_blight_prevention.mp3": {
+      "hash": "51ca8ff2a9de3bd4",
+      "text": "ഘട്ടം 1: മണ്ണിൽ നിന്നുള്ള കുമിൾ ബീജങ്ങൾ ഇലകളിൽ തെറിക്കാതിരിക്കാൻ പുതയിടുക. ഘട്ടം 2: നല്ല വായുസഞ്ചാരത്തിനായി ചെടികൾ തമ്മിൽ 45-60 സെ.മീ അകലം പാലിക്കുക. ഘട്ടം 3: മൂന്ന് വർഷത്തെ വിള പരിക്രമണം നടത്തുക; ഉരുളക്കിഴങ്ങിന് ശേഷമോ വഴുതനയ്ക്ക് ശേഷമോ തക്കാളി നടരുത്. കർഷക ടിപ്പ്: അടുത്ത സീസണിലേക്ക് രോഗം പടരാതിരിക്കാൻ വിളവെടുപ്പിനു ശേഷം വിള അവശിഷ്ടങ്ങൾ പൂർണ്ണമായി നശിപ്പിക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_late_blight_overview.mp3": {
+      "hash": "4cfd2b3e2764d9b7",
+      "text": "തക്കാളി വൈകിയുള്ള കരിച്ചിൽ. ഇലയുടെ അടിയിൽ വെളുത്ത പൂപ്പോടുകൂടി വേഗത്തിൽ പടരുന്ന കറുത്ത പാടുകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_late_blight_treatment.mp3": {
+      "hash": "78bd28f6bdfab10e",
+      "text": "ഘട്ടം 1: ഗുരുതരമായി രോഗം ബാധിച്ച ചെടികൾ ഉടൻ തന്നെ പിഴുതുമാറ്റി നശിപ്പിക്കുക. ഘട്ടം 2: മറ്റ് ചെടികളിലേക്ക് പടരാതിരിക്കാൻ കോപ്പർ അടങ്ങിയ കുമിൾനാശിനി തളിക്കുക. ഘട്ടം 3: ഇലകളിൽ നനവ് നിൽക്കുന്നത് ഒഴിവാക്കുക. സുരക്ഷാ മുൻകരുതലുകൾ പാലിച്ച് മാത്രം മരുന്ന് തളിക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_late_blight_prevention.mp3": {
+      "hash": "e18d2bc2ae7dd0aa",
+      "text": "ഘട്ടം 1: സാക്ഷ്യപ്പെടുത്തിയ നല്ല വിത്തുകളും തൈകളും മാത്രം ഉപയോഗിക്കുക. ഘട്ടം 2: ഇലകൾ വേഗം ഉണങ്ങുന്നതിനായി കൃത്യമായ അകലവും വായുസഞ്ചാരവും ഉറപ്പാക്കുക. ഘട്ടം 3: മഴക്കാലത്തോ ഈർപ്പമുള്ള കാലാവസ്ഥയിലോ പാടം പതിവായി നിരീക്ഷിക്കുക. കർഷക ടിപ്പ്: തണുപ്പും ഈർപ്പവും രോഗം വേഗത്തിൽ പടർത്തും; വെള്ളം നനഞ്ഞ പോലുള്ള പാടുകൾ കണ്ടാലുടൻ പ്രതിരോധ നടപടികൾ സ്വീകരിക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_healthy_overview.mp3": {
+      "hash": "84eef84ce349a299",
+      "text": "ആരോഗ്യമുള്ള തക്കാളി ഇല. രോഗബാധകളൊന്നുമില്ലാത്ത നല്ല പച്ച ഇലകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_healthy_treatment.mp3": {
+      "hash": "86680ba9d4944ebf",
+      "text": "ചികിത്സ ആവശ്യമില്ല. നിങ്ങളുടെ തക്കാളി ഇലകൾ രോഗബാധകളൊന്നുമില്ലാതെ തികച്ചും ആരോഗ്യത്തോടെയിരിക്കുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_healthy_prevention.mp3": {
+      "hash": "47823be0da71a0cf",
+      "text": "പ്രതിരോധ മാർഗ്ഗങ്ങൾ: സമീകൃത വളപ്രയോഗവും കൃത്യമായ നനയും നൽകുക. ഇലകൾ ഉണക്കി സൂക്ഷിക്കുകയും നല്ല വായുസഞ്ചാരത്തിനായി അകലം പാലിക്കുകയും ചെയ്യുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "te/page_scan_home.mp3": {
+      "hash": "d0d9b31822d632c9",
+      "text": "మీ పంటను తనిఖీ చేయండి. ఒకే ఒక ఆకు స్పష్టమైన ఫోటో తీయండి. సమస్య ఏమిటో, ఏం చేయాలో ఫైటో చెబుతుంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_photo_check.mp3": {
+      "hash": "21b477784f5aef3a",
+      "text": "ఫోటో తనిఖీ పేజీ. విశ్లేషణకు ముందు స్పష్టత, వెలుతురు మరియు దూరాన్ని నిర్ధారించుకోండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_analyzing.mp3": {
+      "hash": "d4c3fcddddd46e38",
+      "text": "ఆకు కణజాలాన్ని స్కాన్ చేస్తూ ఆఫ్‌లైన్‌లో శిలీంధ్ర లక్షణాలను గుర్తిస్తోంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_result_uncertain.mp3": {
+      "hash": "d11f2f1141b66254",
+      "text": "తక్కువ ఖచ్చితత్వం. ఇంకా ఖచ్చితంగా లేదు. ఫోటో స్పష్టంగా లేదు. దయచేసి పగటి వెలుతురులో మళ్లీ ఫోటో తీయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_history.mp3": {
+      "hash": "81ed2cdc3a3ba2f9",
+      "text": "ఇది మీ స్కాన్ చరిత్ర. ఫోన్‌లో భద్రపరచబడిన పంట నిర్ధారణ రికార్డులన్నీ ఇక్కడ ఉంటాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_schemes.mp3": {
+      "hash": "6c6de3a984507114",
+      "text": "ప్రభుత్వ పథకాలు. కూరగాయల రైతుల కోసం రాయితీలు మరియు సస్యరక్షణ సహాయాలను చూడండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/page_settings.mp3": {
+      "hash": "f425b517f42869a1",
+      "text": "సెట్టింగ్‌లు మరియు రైతు సహాయకుడు. మీరు భాష మార్చుకోవచ్చు, ఆఫ్‌లైన్ ప్యాక్‌లను డౌన్‌లోడ్ చేయవచ్చు మరియు వాయిస్ వేగాన్ని మార్చవచ్చు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/voice_not_leaf.mp3": {
+      "hash": "ab3bf1273c11c288",
+      "text": "దయచేసి మొక్క ఆకు ఫోటోను అప్లోడ్ చేయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_early_blight_overview.mp3": {
+      "hash": "b436e31b318f3666",
+      "text": "టమోటా ముందస్తు ఎండు తెగులు. కింది ముదిరిన ఆకులపై పసుపు అంచులతో కూడిన గుండ్రని వలయాలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_early_blight_treatment.mp3": {
+      "hash": "4463f0bb3ed7d718",
+      "text": "దశ 1: సోకిన కింది ఆకులను తొలగించి కాల్చివేయండి. దశ 2: సాయంత్రం వేళల్లో వేప ఆధారిత ద్రావణాన్ని పిచికారీ చేయండి. దశ 3: ఆకులపై కాకుండా మొదట్లో నీరు పోయండి. ఇది వ్యాపిస్తూ ఉంటే, టమోటా కోసం నమోదు చేయబడిన శిలీంధ్ర సంహారిణిని ఉపయోగించండి. లేబుల్ సూచనలను ఖచ్చితంగా పాటించండి మరియు పిచికారీ చేసేటప్పుడు చేతి తొడుగులు మరియు మాస్క్ ధరించండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_early_blight_prevention.mp3": {
+      "hash": "cbdc42a337c56fd3",
+      "text": "దశ 1: నేలలోని బీజాలు కింది ఆకులపై చిందకుండా మొక్కల చుట్టూ మల్చింగ్ చేయండి. దశ 2: మంచి గాలి ప్రసరణ కోసం టమోటా మొక్కల మధ్య 45-60 cm దూరం పాటించండి. దశ 3: 3 సంవత్సరాల పంట మార్పిడిని పాటించండి; బంగాళాదుంప లేదా వంకాయ తర్వాత టమోటాలు నాటడం నివారించండి. రైతు అనుభవ చిట్కా: తదుపరి సీజన్ కోసం శిలీంధ్ర వ్యాధి చక్రాన్ని విచ్ఛిన్నం చేయడానికి పంట కోత తర్వాత పంట వ్యర్థాలను పూర్తిగా నాశనం చేయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_late_blight_overview.mp3": {
+      "hash": "589c2d00e6944689",
+      "text": "టమోటా లేటు ఎండు తెగులు. ఆకు అడుగున తెల్లటి బూజుతో కూడిన వేగంగా వ్యాపించే ముదురు మచ్చలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_late_blight_treatment.mp3": {
+      "hash": "a2be2f01d1762e6e",
+      "text": "దశ 1: తీవ్రంగా ప్రభావితమైన మొక్కలను వెంటనే తొలగించి నాశనం చేయండి. దశ 2: చుట్టుపక్కల పంటలను రక్షించడానికి రాగి ఆధారిత లేదా ఆమోదించబడిన రక్షణ శిలీంధ్ర సంహారిణిని పిచికారీ చేయండి. దశ 3: ఆకులపై తేమను నివారించండి. రక్షిత దుస్తులు ధరించి లేబుల్ మోతాదు సూచనలను ఖచ్చితంగా పాటించండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_late_blight_prevention.mp3": {
+      "hash": "94610efe93268e0a",
+      "text": "దశ 1: ధృవీకరించబడిన ఆరోగ్యకరమైన విత్తనాలు మరియు నారును మాత్రమే ఉపయోగించండి. దశ 2: ఆకులు త్వరగా ఆరడానికి తగినంత అంతరం మరియు గాలి ప్రసరణను నిర్ధారించండి. దశ 3: వర్షాకాలంలో క్రమం తప్పకుండా పొలాన్ని తనిఖీ చేయండి. రైతు అనుభవ చిట్కా: చల్లని, తడి వాతావరణం లేటు బ్లైట్ వ్యాప్తిని వేగవంతం చేస్తుంది; లక్షణాలు కనిపించిన వెంటనే చర్య తీసుకోండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_healthy_overview.mp3": {
+      "hash": "2cd615002ca619b8",
+      "text": "ఆరోగ్యకరమైన టమోటా ఆకు. ఎటువంటి మచ్చలు లేని ఆరోగ్యకరమైన పచ్చని ఆకు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_healthy_treatment.mp3": {
+      "hash": "2edf31e0ec54ac90",
+      "text": "చికిత్స అవసరం లేదు. మీ టమోటా ఆకులు ఎటువంటి చురుకైన తెగులు లక్షణాలు లేకుండా ఆరోగ్యంగా మరియు బలంగా ఉన్నాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_healthy_prevention.mp3": {
+      "hash": "0904f1c59cd301b6",
+      "text": "నివారణ చిట్కాలు: సమతుల్య పోషణ మరియు క్రమమైన నీటిపారుదలని కొనసాగించండి. ఆకులు పొడిగా ఉండేలా చూసుకోండి మరియు మంచి గాలి ప్రసరణ కోసం మొక్కల మధ్య తగినంత దూరం ఉంచండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "en/photo_check_notice_not_leaf.mp3": {
+      "hash": "fa0cc10699776c3d",
+      "text": "Please upload a photo of a plant leaf.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/voice_not_plant.mp3": {
+      "hash": "99aaa3250bd3935a",
+      "text": "Not a supported crop leaf or pest. Please frame a supported crop leaf or pest in good light.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/certainty_band_high.mp3": {
+      "hash": "7a1a11f56bb319d1",
+      "text": "High certainty.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/certainty_band_medium.mp3": {
+      "hash": "514a8740e81cd4ba",
+      "text": "Moderate certainty.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/certainty_band_low.mp3": {
+      "hash": "db3334dd7e2478f5",
+      "text": "Low certainty. Retake photo if needed.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/also_possible_intro.mp3": {
+      "hash": "9f8f2f5d5768f9cd",
+      "text": "Also possible:",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/grape_notice_voice.mp3": {
+      "hash": "50a9ebb8c35ae512",
+      "text": "Grape support is coming soon. Only early disease and rot screening is currently available.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_notice_voice.mp3": {
+      "hash": "e217dcf8d88c66d1",
+      "text": "Pest observation detected. Check under the leaves and inspect crop stem.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/corn_common_rust_overview.mp3": {
+      "hash": "9f7bfac918022310",
+      "text": "Corn Common Rust. Raised golden-brown pustules appear on upper and lower leaf surfaces.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/corn_gray_leaf_spot_overview.mp3": {
+      "hash": "6dd25e72626c3afb",
+      "text": "Corn Gray Leaf Spot. Rectangular tan to gray lesions develop bounded by leaf veins.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/corn_healthy_overview.mp3": {
+      "hash": "f691636e938eec2b",
+      "text": "Healthy Corn leaf. Foliage is clear and green with no active fungal lesions.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/corn_northern_leaf_blight_overview.mp3": {
+      "hash": "eb75afabcd2cee2a",
+      "text": "Corn Northern Leaf Blight. Long cigar-shaped grayish-green to tan lesions on foliage.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/grape_black_rot_overview.mp3": {
+      "hash": "e2e1f991c058e758",
+      "text": "Grape Black Rot. Circular reddish-brown leaf spots with tiny dark fruiting bodies.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/grape_esca_overview.mp3": {
+      "hash": "84faef6e7442c3ae",
+      "text": "Grape Esca disease. Distinctive tiger-stripe yellow and brown scorching between veins.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/grape_leaf_blight_overview.mp3": {
+      "hash": "b947a23db978c0dd",
+      "text": "Grape Leaf Blight. Irregular dark brown lesions coalesce causing premature leaf dry-up.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_armyworm_overview.mp3": {
+      "hash": "14f16f17334d4bb5",
+      "text": "Fall Armyworm observation. Ragged foliage chewing holes and sawdust-like frass on whorls.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_asiatic_rice_borer_overview.mp3": {
+      "hash": "9208189a9d0351a5",
+      "text": "Asiatic Rice Borer observation. Dead hearts during vegetative phase and whiteheads at maturity.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_brown_planthopper_overview.mp3": {
+      "hash": "cbed7415679a1bb3",
+      "text": "Brown Planthopper observation. Sap sucking at stem bases causing circular hopper burn drying.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_corn_borer_overview.mp3": {
+      "hash": "8515432986533021",
+      "text": "Corn Borer observation. Tunnels inside stems with broken tassels and leaf shot holes.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/pest_rice_leaf_roller_overview.mp3": {
+      "hash": "3fd24efc19ce4310",
+      "text": "Rice Leaf Roller observation. Leaves folded longitudinally with white transparent streaks.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/potato_early_blight_overview.mp3": {
+      "hash": "2b64ef68c224842c",
+      "text": "Potato Early Blight. Target-like concentric rings on older lower foliage spreading upward.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/potato_healthy_overview.mp3": {
+      "hash": "6203f57b7b331421",
+      "text": "Healthy Potato foliage. Green vigorous leaves without fungal lesions or signs of rot.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/potato_late_blight_overview.mp3": {
+      "hash": "f26b1022ee5ded30",
+      "text": "Potato Late Blight. Rapid water-soaked dark lesions with white mold under humid conditions.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_bacterial_spot_overview.mp3": {
+      "hash": "1a52ec9e5638aa3e",
+      "text": "Tomato Bacterial Spot. Small dark water-soaked spots with yellow halos on leaves and stems.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_leaf_mold_overview.mp3": {
+      "hash": "1d8fd23a9378cfe9",
+      "text": "Tomato Leaf Mold. Pale green or yellow spots on upper surface with olive-green mold below.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_septoria_leaf_spot_overview.mp3": {
+      "hash": "8246172439b75d75",
+      "text": "Tomato Septoria Leaf Spot. Numerous small circular spots with gray centers and dark brown margins.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "en/tomato_yellow_leaf_curl_overview.mp3": {
+      "hash": "dce2cef62e606177",
+      "text": "Tomato Yellow Leaf Curl Virus. Severe upward cupping, leaf yellowing, and stunted plant growth.",
+      "available": true,
+      "voice": "en-IN-NeerjaNeural"
+    },
+    "ta/photo_check_notice_not_leaf.mp3": {
+      "hash": "3f5bc78aa372d804",
+      "text": "தயவுசெய்து தாவர இலையின் புகைப்படத்தைப் பதிவேற்றவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/voice_not_plant.mp3": {
+      "hash": "2b83dc475df0f743",
+      "text": "ஆதரிக்கப்படும் பயிர் இலை அல்லது பூச்சி அல்ல. நல்ல வெளிச்சத்தில் ஒரு பயிர் இலையை படம் எடுக்கவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/certainty_band_high.mp3": {
+      "hash": "4b9eb96dbebd622b",
+      "text": "அதிக நிச்சயத்தன்மை.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/certainty_band_medium.mp3": {
+      "hash": "3ae798ec99b82a04",
+      "text": "மிதமான நிச்சயத்தன்மை.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/certainty_band_low.mp3": {
+      "hash": "efc3d1c027eb0f84",
+      "text": "குறைந்த நிச்சயத்தன்மை. தேவைப்பட்டால் மீண்டும் படம் எடுக்கவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/also_possible_intro.mp3": {
+      "hash": "93523fb28544bf81",
+      "text": "இதுவாகவும் இருக்கலாம்:",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/grape_notice_voice.mp3": {
+      "hash": "07ae325baffd78fb",
+      "text": "திராட்சை ஆதரவு விரைவில் வருகிறது. ஆரம்பகால நோய் மற்றும் அழுகல் கண்டறிதல் மட்டுமே தற்போது கிடைக்கிறது.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_notice_voice.mp3": {
+      "hash": "5047edf47929a6a3",
+      "text": "பூச்சி பாதிப்பு கண்டறியப்பட்டது. இலைகளின் அடிப்பகுதியை சரிபார்த்து தண்டை ஆய்வு செய்யவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/corn_common_rust_overview.mp3": {
+      "hash": "0576281779e6ad34",
+      "text": "மக்காச்சோள துரு நோய். இலைகளின் இருபுறமும் தவிட்டு நிறப் கொப்புளங்கள் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/corn_gray_leaf_spot_overview.mp3": {
+      "hash": "34a0c0a0c755f614",
+      "text": "மக்காச்சோள சாம்பல் இலைப்புள்ளி. நரம்புகளுக்கு இடையே செவ்வக வடிவ சாம்பல் நிற புள்ளிகள் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/corn_healthy_overview.mp3": {
+      "hash": "5509af329c1dc59e",
+      "text": "ஆரோக்கியமான மக்காச்சோள இலை. பூஞ்சை பாதிப்புகள் இன்றி இலை பசுமையாக உள்ளது.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/corn_northern_leaf_blight_overview.mp3": {
+      "hash": "ab174ec07fa1d214",
+      "text": "மக்காச்சோள வடக்கு இலை கருகல். சுருட்டு வடிவ நீண்ட சாம்பல்-பச்சை புள்ளிகள் இலைகளில் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/grape_black_rot_overview.mp3": {
+      "hash": "90b16d29a4c79d77",
+      "text": "திராட்சை கருப்பு அழுகல். சிறிய கரும்புள்ளிகளுடன் கூடிய வட்ட வடிவ செம்பழுப்பு இலைப்புள்ளிகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/grape_esca_overview.mp3": {
+      "hash": "46b26cce65dc2259",
+      "text": "திராட்சை எஸ்கா நோய். நரம்புகளுக்கு இடையே புலி வரி போன்ற மஞ்சள் மற்றும் பழுப்பு கருகல்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/grape_leaf_blight_overview.mp3": {
+      "hash": "a71a80777f4977a5",
+      "text": "திராட்சை இலை கருகல். ஒழுங்கற்ற அடர் பழுப்பு நிற புள்ளிகள் இணைந்து இலைகளை உலரச் செய்யும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_armyworm_overview.mp3": {
+      "hash": "18890f0fa2d77fa0",
+      "text": "படைப்புழு பாதிப்பு. இலைகளில் ஒழுங்கற்ற துளைகள் மற்றும் மரத்தூள் போன்ற கழிவுகள் காணப்படும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_asiatic_rice_borer_overview.mp3": {
+      "hash": "81e34a210eca716c",
+      "text": "ஆசிய நெல் தண்டு துளைப்பான். நடுக்குருத்து காய்ந்து போதல் மற்றும் வெண் கதிர் அறிகுறிகள் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_brown_planthopper_overview.mp3": {
+      "hash": "7db519c925ff95be",
+      "text": "பழுப்பு வெட்டுக்கிளி. தண்டுப் பகுதியில் சாறு உறிஞ்சி பயிரை வட்டமாக எரியச் செய்து உலர வைக்கும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_corn_borer_overview.mp3": {
+      "hash": "2be8dd16a36bb71d",
+      "text": "மக்காச்சோள தண்டு துளைப்பான். தண்டின் உள்ளே துளையிட்டு கதிர் உடைந்து தொங்குதல் மற்றும் இலை துளைகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/pest_rice_leaf_roller_overview.mp3": {
+      "hash": "f3b72370b7fa6a28",
+      "text": "நெல் இலை சுருட்டுப்புழு. இலைகள் நீளவாக்கில் சுருட்டப்பட்டு வெள்ளை நிற கோடுகள் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/potato_early_blight_overview.mp3": {
+      "hash": "e3240f9bc151eaa2",
+      "text": "உருளைக்கிழங்கு ஆரம்பகால கருகல். கீழ்ப்பகுதி இலைகளில் வட்ட வளைய புள்ளிகள் தோன்றி மேலே பரவும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/potato_healthy_overview.mp3": {
+      "hash": "5e4101091f3bc91f",
+      "text": "ஆரோக்கியமான உருளைக்கிழங்கு இலைகள். பூஞ்சை அல்லது அழுகல் அறிகுறிகள் இன்றி செழிப்பாக உள்ளது.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/potato_late_blight_overview.mp3": {
+      "hash": "129bb04de672814e",
+      "text": "உருளைக்கிழங்கு பின்கால கருகல். ஈரப்பதமான நிலையில் வெள்ளை பூஞ்சையுடன் கூடிய கரும் புள்ளிகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_bacterial_spot_overview.mp3": {
+      "hash": "271ff213025870c8",
+      "text": "தக்காளி பாக்டீரியா புள்ளி. மஞ்சள் வளையத்துடன் கூடிய சிறிய கரும்புள்ளிகள் இலைகளில் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_leaf_mold_overview.mp3": {
+      "hash": "9e8bb7c00e96e268",
+      "text": "தக்காளி இலை பூஞ்சை. இலை மேற்பரப்பில் மஞ்சள் புள்ளிகளும் அடியில் ஆலிவ்-பச்சை பூஞ்சையும் தோன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_septoria_leaf_spot_overview.mp3": {
+      "hash": "3d1491f675295250",
+      "text": "தக்காளி செப்டோரியா இலைப்புள்ளி. சாம்பல் நடுப்பகுதியும் அடர் பழுப்பு விளிம்பும் கொண்ட சிறிய வட்ட புள்ளிகள்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "ta/tomato_yellow_leaf_curl_overview.mp3": {
+      "hash": "cacf964873b04854",
+      "text": "தக்காளி மஞ்சள் இலை சுருள். இலைகள் மேல்நோக்கி கிண்ணம் போல சுருண்டு செடி வளர்ச்சி குன்றும்.",
+      "available": true,
+      "voice": "ta-IN-PallaviNeural"
+    },
+    "hi/photo_check_notice_not_leaf.mp3": {
+      "hash": "f7a59d38686dd53c",
+      "text": "कृपया पौधे की पत्ती की फोटो अपलोड करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/voice_not_plant.mp3": {
+      "hash": "3c8f84e728619503",
+      "text": "समर्थित फसल की पत्ती या कीट नहीं है। कृपया अच्छी रोशनी में समर्थित फसल की पत्ती या कीट की फोटो लें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/certainty_band_high.mp3": {
+      "hash": "6ba641d439ea8bdc",
+      "text": "उच्च निश्चितता।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/certainty_band_medium.mp3": {
+      "hash": "e7e9c8ac455d57ae",
+      "text": "मध्यम निश्चितता।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/certainty_band_low.mp3": {
+      "hash": "e3ee31b3e254d3ae",
+      "text": "कम निश्चितता। यदि आवश्यक हो तो दोबारा फोटो लें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/also_possible_intro.mp3": {
+      "hash": "6b3123f3f12068b1",
+      "text": "यह भी संभव है:",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/grape_notice_voice.mp3": {
+      "hash": "771a1dad647198f3",
+      "text": "अंगूर सहायता जल्द आ रही है। वर्तमान में केवल प्रारंभिक रोग और सड़न जांच उपलब्ध है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_notice_voice.mp3": {
+      "hash": "55637bf48b79bb65",
+      "text": "कीट का अवलोकन हुआ। पत्तियों के नीचे जांचें और फसल के तने का निरीक्षण करें।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/corn_common_rust_overview.mp3": {
+      "hash": "a25b52facba2e8e5",
+      "text": "मक्का का सामान्य रतुआ। पत्तियों की ऊपरी और निचली सतहों पर सुनहरे भूरे रंग के दाने दिखाई देते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/corn_gray_leaf_spot_overview.mp3": {
+      "hash": "667865b6aac2ffe3",
+      "text": "मक्का का ग्रे लीफ स्पॉट। पत्ती की नसों के बीच आयताकार धूसर धब्बे बनते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/corn_healthy_overview.mp3": {
+      "hash": "d194cae021e9fcbe",
+      "text": "स्वस्थ मक्का की पत्ती। पत्ते साफ और हरे हैं, कोई कवक के लक्षण नहीं हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/corn_northern_leaf_blight_overview.mp3": {
+      "hash": "9319f505e04f69c6",
+      "text": "मक्का उत्तरी पत्ती झुलसा। पत्तियों पर लंबे सिगार के आकार के भूरे-हरे धब्बे बनते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/grape_black_rot_overview.mp3": {
+      "hash": "06f18453a4305c4e",
+      "text": "अंगूर काला सड़न। छोटे काले बिंदुओं के साथ गोलाकार लाल-भूरे रंग के धब्बे।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/grape_esca_overview.mp3": {
+      "hash": "dba119a9cb2c64ca",
+      "text": "अंगूर एस्का रोग। नसों के बीच बाघ की धारियों जैसी पीली और भूरी झुलसन।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/grape_leaf_blight_overview.mp3": {
+      "hash": "a1a0b7b5b3ce6cd8",
+      "text": "अंगूर पत्ती झुलसा। अनियमित गहरे भूरे रंग के धब्बे मिलकर पत्तियों को समय से पहले सूखा देते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_armyworm_overview.mp3": {
+      "hash": "949b86095ee6d4b1",
+      "text": "फॉल आर्मीवर्म कीट। पत्तियों में चबाने के छेद और लकड़ी के बुरादे जैसा मल दिखाई देता है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_asiatic_rice_borer_overview.mp3": {
+      "hash": "830903f083ec02b9",
+      "text": "एशियाई धान तना छेदक। वानस्पतिक अवस्था में मृत तना और पकने पर सफेद बालियां बनती हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_brown_planthopper_overview.mp3": {
+      "hash": "4ce2fa2f881432e9",
+      "text": "भूरा पौध फुदका। तने के आधार से रस चूसकर गोलाकार क्षेत्र में फसल को सुखा देता है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_corn_borer_overview.mp3": {
+      "hash": "ce739b57e6d2f2b8",
+      "text": "मक्का तना छेदक। तने के अंदर सुरंग बनाता है जिससे डंठल टूट जाते हैं और पत्तियों में छेद हो जाते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/pest_rice_leaf_roller_overview.mp3": {
+      "hash": "6e1ca5a27b09f6be",
+      "text": "धान पत्ती लपेटक। पत्तियां लंबाई में मुड़ जाती हैं और सफेद पारदर्शी धारियां दिखाई देती हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/potato_early_blight_overview.mp3": {
+      "hash": "782176abe25d12d4",
+      "text": "आलू अगेती झुलसा। निचली पुरानी पत्तियों पर संकेंद్రీય छल्ले बनते हैं जो ऊपर की ओर फैलते हैं।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/potato_healthy_overview.mp3": {
+      "hash": "a0f309ab6c22cf12",
+      "text": "स्वस्थ आलू की पत्तियां। बिना किसी कवक या सड़न के हरे-भरे पत्ते।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/potato_late_blight_overview.mp3": {
+      "hash": "b924d9bdda4a38f2",
+      "text": "आलू पछेती झुलसा। नम परिस्थितियों में सफेद फफूंद के साथ तेजी से फैलने वाले पानीदार काले धब्बे।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_bacterial_spot_overview.mp3": {
+      "hash": "fc439f2f74d3f8d9",
+      "text": "टमाटर जीवाणु धब्बा। पत्तियों और तनों पर पीले घेरे वाले छोटे गहरे पानीदार धब्बे।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_leaf_mold_overview.mp3": {
+      "hash": "88cba110c464df17",
+      "text": "टमाटर पत्ती फफूंद। ऊपरी सतह पर हल्के हरे या पीले धब्बे और नीचे जैतून-हरे रंग की फफूंद।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_septoria_leaf_spot_overview.mp3": {
+      "hash": "3ef7b12052769522",
+      "text": "टमाटर सेप्टोरिया लीफ स्पॉट। धूसर केंद्र और गहरे भूरे किनारों वाले कई छोटे गोलाकार धब्बे।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "hi/tomato_yellow_leaf_curl_overview.mp3": {
+      "hash": "90c10add294733cf",
+      "text": "टमाटर पीला पत्ती मरोड़ वायरस। पत्तियां ऊपर की ओर मुड़ जाती हैं, पीली पड़ जाती हैं और पौधा बौना रह जाता है।",
+      "available": true,
+      "voice": "hi-IN-SwaraNeural"
+    },
+    "ml/photo_check_notice_not_leaf.mp3": {
+      "hash": "bdeba3a90ab8be42",
+      "text": "ദയവായി ചെടിയുടെ ഇലയുടെ ഫോട്ടോ അപ്ലോഡ് ചെയ്യുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/voice_not_plant.mp3": {
+      "hash": "5fcf38829ad2ccd8",
+      "text": "പിന്തുണയുള്ള വിളയുടെ ഇലയോ കീടമോ അല്ല. നല്ല വെളിച്ചത്തിൽ ഇല വ്യക്തമായി കാണത്തക്ക വിധം വീണ്ടും ഫോട്ടോയെടുക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/certainty_band_high.mp3": {
+      "hash": "aa41391e2c6b8d0d",
+      "text": "ഉയർന്ന ഉറപ്പ്.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/certainty_band_medium.mp3": {
+      "hash": "0247d223518c9995",
+      "text": "ഇടത്തരം ഉറപ്പ്.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/certainty_band_low.mp3": {
+      "hash": "e686ff776fe0991e",
+      "text": "കുറഞ്ഞ ഉറപ്പ്. ആവശ്യമെങ്കിൽ വീണ്ടും ഫോട്ടോ എടുക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/also_possible_intro.mp3": {
+      "hash": "574fac90a72d0271",
+      "text": "ഇതും സാധ്യതയുണ്ട്:",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/grape_notice_voice.mp3": {
+      "hash": "f7c49eb7d62f7f63",
+      "text": "മുന്തിരി പിന്തുണ ഉടൻ വരുന്നു. പ്രാരംഭ രോഗ പരിശോധന മാത്രമേ ഇപ്പോൾ ലഭ്യമാകൂ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_notice_voice.mp3": {
+      "hash": "788d770b8900ea14",
+      "text": "കീടബാധ കണ്ടെത്തി. ഇലകളുടെ അടിഭാഗം പരിശോധിച്ച് വിളയുടെ തണ്ട് നിരീക്ഷിക്കുക.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/corn_common_rust_overview.mp3": {
+      "hash": "a95ecf924a47e42e",
+      "text": "മക്കച്ചോള തുരുമ്പ് രോഗം. ഇലകളിൽ തവിട്ടുനിറത്തിലുള്ള തുരുമ്പ് പാടുകൾ പ്രത്യക്ഷപ്പെടുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/corn_gray_leaf_spot_overview.mp3": {
+      "hash": "8b559e133573d5e8",
+      "text": "മക്കച്ചോള ചാര ഇലപ്പുള്ളി. ഇലയുടെ ഞരമ്പുകൾക്കിടയിൽ ചതുരാകൃതിയിലുള്ള ചാരനിറ പാടുകൾ കാണപ്പെടുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/corn_healthy_overview.mp3": {
+      "hash": "ba5561f38af5125b",
+      "text": "ആരോഗ്യമുള്ള മക്കച്ചോള ഇല. കുമിൾ ബാധകളില്ലാതെ ഇല പച്ചയായി നിലനിൽക്കുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/corn_northern_leaf_blight_overview.mp3": {
+      "hash": "f95ab0ff5ec3d115",
+      "text": "മക്കച്ചോള വടക്കൻ ഇലക്കരിച്ചിൽ. ചുരുട്ടിന്റെ ആകൃതിയിലുള്ള നീളമുള്ള ചാരനിറ പാടുകൾ ഇലകളിൽ കാണുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/grape_black_rot_overview.mp3": {
+      "hash": "d90037002049dbcb",
+      "text": "മുന്തിരി കറുത്ത ചീയൽ. ചെറിയ കറുത്ത കുത്തുകളോടുകൂടിയ വൃത്താകൃതിയിലുള്ള ചുവപ്പു കലർന്ന തവിട്ടുനിറ പാടുകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/grape_esca_overview.mp3": {
+      "hash": "0d1d8568b5329917",
+      "text": "മുന്തിരി എസ്ക രോഗം. ഞരമ്പുകൾക്കിടയിൽ കടുവ വരകൾ പോലുള്ള മഞ്ഞയും തവിട്ടുനിറവുമായ കരിച്ചിൽ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/grape_leaf_blight_overview.mp3": {
+      "hash": "f59fb986f9e7f0ee",
+      "text": "മുന്തിരി ഇലക്കരിച്ചിൽ. ക്രമരഹിതമായ ഇരുണ്ട തവിട്ടുനിറ പാടുകൾ ഒത്തുചേർന്ന് ഇലകൾ ഉണങ്ങിപ്പോകുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_armyworm_overview.mp3": {
+      "hash": "624a31bcbcafd7c1",
+      "text": "പടപ്പുഴു ബാധ. ഇലകളിൽ വലിയ ദ്വാരങ്ങളും ഈർച്ചപ്പൊടി പോലുള്ള അവശിഷ്ടങ്ങളും കാണപ്പെടുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_asiatic_rice_borer_overview.mp3": {
+      "hash": "a7d8db0d96414749",
+      "text": "ഏഷ്യൻ നെല്ല് തണ്ടുതുരപ്പൻ. വളർച്ചാ ഘട്ടത്തിൽ നടുക്കുരുത്ത് ഉണങ്ങുന്നതും മൂപ്പെത്തുമ്പോൾ വെൺകതിരും കാണപ്പെടുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_brown_planthopper_overview.mp3": {
+      "hash": "5f25e9757d8a71fd",
+      "text": "തവിട്ടുചാഴി ആക്രമണം. തണ്ടിന്റെ അടിഭാഗത്ത് നിന്ന് നീരൂറ്റിക്കുടിക്കുന്നതിലൂടെ വട്ടത്തിൽ ചെടികൾ കരിഞ്ഞുണങ്ങുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_corn_borer_overview.mp3": {
+      "hash": "940ebdeecc18a880",
+      "text": "മക്കച്ചോള തണ്ടുതുരപ്പൻ. തണ്ടുകൾ തുരന്ന് നശിപ്പിക്കുകയും ഇലകളിൽ ചെറിയ ദ്വാരങ്ങൾ ഉണ്ടാക്കുകയും ചെയ്യുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/pest_rice_leaf_roller_overview.mp3": {
+      "hash": "9d9bb693c8ddd607",
+      "text": "ഇലചുരുട്ടിപ്പുഴു. ഇലകൾ നീളത്തിൽ ചുരുട്ടി ഉള്ളിലിരുന്ന് പച്ചപ്പ് കാർന്നുതിന്നുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/potato_early_blight_overview.mp3": {
+      "hash": "93113dc46df536fd",
+      "text": "ഉരുളക്കിഴങ്ങ് നേരത്തെയുള്ള കരിച്ചിൽ. അടിയിലെ പഴയ ഇലകളിൽ വളയങ്ങളോടുകൂടിയ പാടുകൾ ഉണ്ടാകുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/potato_healthy_overview.mp3": {
+      "hash": "9b34bd8b7f598e79",
+      "text": "ആരോഗ്യമുള്ള ഉരുളക്കിഴങ്ങ് ഇല. രോഗലക്ഷണങ്ങളൊന്നുമില്ലാതെ തഴച്ചുവളരുന്ന പച്ച ഇലകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/potato_late_blight_overview.mp3": {
+      "hash": "1e425d43620c12b6",
+      "text": "ഉരുളക്കിഴങ്ങ് വൈകിയുള്ള കരിച്ചിൽ. ഈർപ്പമുള്ള അന്തരീക്ഷത്തിൽ വെളുത്ത പൂപ്പോടുകൂടിയ വേഗത്തിൽ പടരുന്ന പാടുകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_bacterial_spot_overview.mp3": {
+      "hash": "2da40e4d6393f189",
+      "text": "തക്കാളി ബാക്ടീരിയൽ പുള്ളിക്കുത്ത്. മഞ്ഞ വളയങ്ങളോടുകൂടിയ ചെറിയ ഇരുണ്ട പുള്ളിക്കുത്തുകൾ ഇലകളിൽ കാണുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_leaf_mold_overview.mp3": {
+      "hash": "f1294cb086ea842a",
+      "text": "തക്കാളി ഇലപ്പൂപ്പ്. ഇലയുടെ മുകൾഭാഗത്ത് മഞ്ഞപ്പാടുകളും അടിയിൽ ഒലിവ് പച്ച പൂപ്പും കാണുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_septoria_leaf_spot_overview.mp3": {
+      "hash": "bf0504112e95d7a4",
+      "text": "തക്കാളി സെപ്റ്റോറിയ ഇലപ്പുള്ളി. ചാരനിറമുള്ള മധ്യഭാഗവും ഇരുണ്ട തവിട്ടുനിറ അതിരുകളുമുള്ള ചെറിയ വൃത്താകൃതിയിലുള്ള പാടുകൾ.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "ml/tomato_yellow_leaf_curl_overview.mp3": {
+      "hash": "a5da99dd115c1be5",
+      "text": "തക്കാളി മഞ്ഞളിപ്പ് ഇലച്ചുരുൾ വൈറസ്. ഇലകൾ മുകളിലേക്ക് ചുരുളുകയും മഞ്ഞളിക്കുകയും ചെടിയുടെ വളർച്ച മുരടിക്കുകയും ചെയ്യുന്നു.",
+      "available": true,
+      "voice": "ml-IN-SobhanaNeural"
+    },
+    "te/photo_check_notice_not_leaf.mp3": {
+      "hash": "ab3bf1273c11c288",
+      "text": "దయచేసి మొక్క ఆకు ఫోటోను అప్లోడ్ చేయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/voice_not_plant.mp3": {
+      "hash": "223473212c391af5",
+      "text": "మద్దతు ఉన్న పంట ఆకు లేదా తెగులు కాదు. దయచేసి మంచి వెలుతురులో ఒక పంట ఆకు లేదా తెగులు ఫోటో తీయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/certainty_band_high.mp3": {
+      "hash": "f2fc7d5fac65e5a5",
+      "text": "అధిక ఖచ్చితత్వం.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/certainty_band_medium.mp3": {
+      "hash": "edb2cecb2f3c6368",
+      "text": "మితమైన ఖచ్చితత్వం.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/certainty_band_low.mp3": {
+      "hash": "58de6346545f9fd5",
+      "text": "తక్కువ ఖచ్చితత్వం. అవసరమైతే ఫోటోను మళ్లీ తీయండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/also_possible_intro.mp3": {
+      "hash": "fde2901edff14eeb",
+      "text": "ఇది కూడా సాధ్యమే:",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/grape_notice_voice.mp3": {
+      "hash": "e3d46fc53046fdf4",
+      "text": "ద్రాక్ష మద్దతు త్వరలో వస్తుంది. ప్రస్తుతం ప్రారంభ వ్యాధి మరియు కుళ్లు పరీక్ష మాత్రమే అందుబాటులో ఉంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_notice_voice.mp3": {
+      "hash": "ed4f8b7889c9b5bd",
+      "text": "తెగులు గమనించబడింది. ఆకుల కింద తనిఖీ చేసి పంట కాండాన్ని పరిశీలించండి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/corn_common_rust_overview.mp3": {
+      "hash": "d65dfa1410891bdf",
+      "text": "మొక్కజొన్న తుప్పు తెగులు. ఆకుల పై మరియు కింది ఉపరితలాలపై గోధుమ రంగు పొక్కులు కనిపిస్తాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/corn_gray_leaf_spot_overview.mp3": {
+      "hash": "25bc1977c2f6aebe",
+      "text": "మొక్కజొన్న బూడిద రంగు ఆకు మచ్చ. ఆకు ఈనెల మధ్య దీర్ఘచతురస్రాకార బూడిద రంగు మచ్చలు ఏర్పడతాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/corn_healthy_overview.mp3": {
+      "hash": "58749851300b4b93",
+      "text": "ఆరోగ్యకరమైన మొక్కజొన్న ఆకు. ఎటువంటి తెగులు మచ్చలు లేకుండా ఆకు పచ్చగా ఉంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/corn_northern_leaf_blight_overview.mp3": {
+      "hash": "b84e723bdcc65bd3",
+      "text": "మొక్కజొన్న ఉత్తర ఆకు ఎండు తెగులు. ఆకులపై పొడవాటి చుట్ట ఆకారంలో బూడిద-ఆకుపచ్చ మచ్చలు కనిపిస్తాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/grape_black_rot_overview.mp3": {
+      "hash": "b336e0b851cf852e",
+      "text": "ద్రాక్ష నల్ల కుళ్లు. చిన్న నల్లటి చుక్కలతో కూడిన గుండ్రని ఎరుపు-గోధుమ ఆకు మచ్చలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/grape_esca_overview.mp3": {
+      "hash": "889f29bb2af3ff42",
+      "text": "ద్రాక్ష ఎస్కా తెగులు. ఈనెల మధ్య పులి చారల వంటి పసుపు మరియు గోధుమ రంగు ఎండిపోవడం.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/grape_leaf_blight_overview.mp3": {
+      "hash": "bfb63aa0e6a945bf",
+      "text": "ద్రాక్ష ఆకు ఎండు తెగులు. క్రమరహిత ముదురు గోధుమ రంగు మచ్చలు కలిసి ఆకులు ఎండిపోయేలా చేస్తాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_armyworm_overview.mp3": {
+      "hash": "1047ebd60b9acb99",
+      "text": "లద్దె పురుగు తెగులు. ఆకులలో పెద్ద రంధ్రాలు మరియు రంపపు పొట్టు వంటి విసర్జన కనిపిస్తుంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_asiatic_rice_borer_overview.mp3": {
+      "hash": "12212cd18c42b965",
+      "text": "ఆసియా వరి కాండం తొలిచే పురుగు. పైరు దశలో మొవ్వు చనిపోవడం మరియు ఈనిన దశలో తెల్ల కంకులు ఏర్పడతాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_brown_planthopper_overview.mp3": {
+      "hash": "85561609cd5e271b",
+      "text": "వరి సుడి దోమ. కాండం మొదట్లో రసం పీల్చి సుడి ఆకారంలో పైరు ఎండిపోయేలా చేస్తుంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_corn_borer_overview.mp3": {
+      "hash": "2bb616cac4c1275f",
+      "text": "మొక్కజొన్న కాండం తొలిచే పురుగు. కాండం లోపల సొరంగాలు చేసి కంకులు విరిగిపోయేలా చేస్తుంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/pest_rice_leaf_roller_overview.mp3": {
+      "hash": "8f7679d04f486a28",
+      "text": "వరి ఆకుచుట్టు పురుగు. ఆకులు నిలువుగా చుట్టబడి తెల్లటి చారలు ఏర్పడతాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/potato_early_blight_overview.mp3": {
+      "hash": "426dffdb865688aa",
+      "text": "బంగాళాదుంప ముందస్తు ఎండు తెగులు. పాత కింది ఆకులపై గుండ్రని వలయాల వంటి మచ్చలు ఏర్పడతాయి.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/potato_healthy_overview.mp3": {
+      "hash": "3f2d2df12fe70d71",
+      "text": "ఆరోగ్యకరమైన బంగాళాదుంప ఆకులు. ఎటువంటి తెగులు లేదా కుళ్లు మచ్చలు లేని ఆరోగ్యకరమైన ఆకులు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/potato_late_blight_overview.mp3": {
+      "hash": "180ff811f7cac27e",
+      "text": "బంగాళాదుంప లేటు ఎండు తెగులు. తేమతో కూడిన వాతావరణంలో తెల్లటి బూజుతో కూడిన ముదురు మచ్చలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_bacterial_spot_overview.mp3": {
+      "hash": "ddbf5253ac3bd3d3",
+      "text": "టమోటా బాక్టీరియల్ మచ్చ. ఆకులు మరియు కాండాలపై పసుపు రంగు వలయంతో కూడిన చిన్న ముదురు మచ్చలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_leaf_mold_overview.mp3": {
+      "hash": "1f69399b26577dc7",
+      "text": "టమోటా ఆకు బూజు. పై ఉపరితలంపై లేత పసుపు మచ్చలు మరియు కింది భాగంలో ఆలివ్-ఆకుపచ్చ బూజు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_septoria_leaf_spot_overview.mp3": {
+      "hash": "409bf5a4798bc5ee",
+      "text": "టమోటా సెప్టోరియా ఆకు మచ్చ. బూడిద రంగు కేంద్రం మరియు ముదురు గోధుమ అంచులు కలిగిన చిన్న గుండ్రని మచ్చలు.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    },
+    "te/tomato_yellow_leaf_curl_overview.mp3": {
+      "hash": "8adaac72712a4cd7",
+      "text": "టమోటా పసుపు ఆకు ముడత వైరస్. ఆకులు పైకి దోనెలా ముడుచుకుపోయి, పసుపు రంగులోకి మారి మొక్క ఎదుగుదల ఆగిపోతుంది.",
+      "available": true,
+      "voice": "te-IN-ShrutiNeural"
+    }
+  }
+}

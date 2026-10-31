@@ -1,0 +1,7 @@
+{
+  "input_size": 224,
+  "confidence_threshold": 0.6,
+  "ambiguity_threshold": 0.15,
+  "reject_class": "not_a_plant",
+  "model_version": "mobilenet_v3_small_v1"
+}
