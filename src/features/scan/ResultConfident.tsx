@@ -3,7 +3,7 @@ import { Language, PredictionResult } from '../../types';
 import { translations } from '../../data/translations';
 import { t } from '../../services/i18n';
 import { LeafGraphic } from '../../components/LeafGraphic';
-import { ChevronLeft, ChevronRight, ChevronDown, Bug, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Bug, ArrowRight } from 'lucide-react';
 
 interface ResultConfidentProps {
   prediction: PredictionResult;
@@ -23,7 +23,6 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
 }) => {
   const trans = translations[language];
   const [showPestModal, setShowPestModal] = useState(false);
-  const [isSchemesExpanded, setIsSchemesExpanded] = useState(false);
 
   // Check if there are related schemes for the diagnosis
   const hasRelatedSchemes = prediction.diseaseId !== 'healthy' && !prediction.isUncertain;
@@ -194,59 +193,21 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         <ArrowRight className="w-4 h-4 stroke-[2.2]" />
       </button>
 
-      {/* 5. Related Schemes Action Button (Secondary button with count badge & chevron) */}
+      {/* 5. Related Schemes Action Button */}
       {hasRelatedSchemes && (
-        <>
-          <button
-            type="button"
-            onClick={() => setIsSchemesExpanded(!isSchemesExpanded)}
-            aria-expanded={isSchemesExpanded}
-            aria-controls="related-schemes-panel"
-            className="mt-3 w-full min-h-[52px] py-3.5 px-4 retro-btn-secondary text-sm flex items-center justify-between retro-focus"
-          >
-            <div className="flex items-center gap-2">
-              <span>{t('related_schemes', undefined, language)}</span>
-              <span className="w-5 h-5 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0">
-                1
-              </span>
-            </div>
-            <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 ${
-                isSchemesExpanded ? 'rotate-180' : ''
-              }`}
-            />
-          </button>
-
-          {/* Inline Expandable Related Schemes Panel */}
-          {isSchemesExpanded && (
-            <div
-              id="related-schemes-panel"
-              className="mt-2 retro-card p-4 transition-all"
-            >
-              <div className="flex items-center justify-between pb-2 retro-divider">
-                <h4 className="font-editorial text-base font-bold text-[var(--color-ink)]">
-                  {language === 'ml'
-                    ? 'സുഭിക്ഷ കേരളം - പച്ചക്കറി വികസന പദ്ധതി'
-                    : 'Vegetable Development Programme'}
-                </h4>
-              </div>
-              <p className="text-xs text-[var(--color-muted)] mt-2 leading-relaxed">
-                {language === 'ml'
-                  ? 'തക്കാളി ചെടികൾക്ക് ജൈവ കുമിൾനാശിനികൾക്കും സ്പ്രേയർ ടാങ്കുകൾക്കും 50% സബ്സിഡി സഹായം.'
-                  : '50% subsidy on bio-fungicides and knapsack sprayers for tomato crop protection.'}
-              </p>
-              {onViewRelatedScheme && (
-                <button
-                  type="button"
-                  onClick={onViewRelatedScheme}
-                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--color-accent-text)] hover:underline retro-focus rounded-sm"
-                >
-                  <span>{language === 'ml' ? 'പദ്ധതി കാണുക →' : 'View scheme →'}</span>
-                </button>
-              )}
-            </div>
-          )}
-        </>
+        <button
+          type="button"
+          onClick={onViewRelatedScheme}
+          className="mt-3 w-full min-h-[52px] py-3.5 px-4 retro-btn-secondary text-sm flex items-center justify-between retro-focus"
+        >
+          <div className="flex items-center gap-2">
+            <span>{t('related_schemes', undefined, language)}</span>
+            <span className="w-5 h-5 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] border border-[var(--color-outline)] text-xs font-bold flex items-center justify-center shrink-0">
+              1
+            </span>
+          </div>
+          <ArrowRight className="w-4 h-4 stroke-[2.2]" />
+        </button>
       )}
 
       {/* 6. Disclaimer Text */}
