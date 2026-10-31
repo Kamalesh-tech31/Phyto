@@ -13,7 +13,36 @@ export type ScanStep =
 
 export type SeverityLevel = 'mild' | 'moderate' | 'severe';
 export type ConfidenceLevel = 'high' | 'medium' | 'low';
-export type DiseaseId = 'healthy' | 'early_blight' | 'late_blight' | 'uncertain';
+export type DiseaseId =
+  | 'healthy'
+  | 'early_blight'
+  | 'late_blight'
+  | 'uncertain'
+  | 'tomato_early_blight'
+  | 'tomato_late_blight'
+  | 'tomato_leaf_mold'
+  | 'tomato_septoria_leaf_spot'
+  | 'tomato_bacterial_spot'
+  | 'tomato_yellow_leaf_curl_virus'
+  | 'tomato_healthy'
+  | 'potato_early_blight'
+  | 'potato_late_blight'
+  | 'potato_healthy'
+  | 'corn_gray_leaf_spot'
+  | 'corn_common_rust'
+  | 'corn_northern_leaf_blight'
+  | 'corn_healthy'
+  | 'rice_bacterial_leaf_blight'
+  | 'rice_brown_spot'
+  | 'rice_leaf_smut'
+  | 'rice_brown_planthopper'
+  | 'rice_asiatic_rice_borer'
+  | 'rice_leaf_roller'
+  | 'corn_borer'
+  | 'armyworm'
+  | (string & {});
+
+export * from './pesticide_kb';
 
 export interface QualityCheckResult {
   sharpness: 'sharp' | 'blurry' | 'fair';
@@ -148,3 +177,6 @@ export interface FAQItem {
   speechText?: string;
   speechTextMl?: string;
 }
+
+export * from './price_kb';
+export * from './treatment_resolver';

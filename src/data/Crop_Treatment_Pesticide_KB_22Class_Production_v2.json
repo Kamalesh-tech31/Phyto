@@ -1,0 +1,934 @@
+{
+  "dataset_name": "Crop_Treatment_Pesticide_KB_22Class_Production_v2",
+  "version": "2.0",
+  "date": "2026-10-31",
+  "frozen_class_count": 22,
+  "schema_notes": {
+    "tier": "A = numeric dose from an Indian source; B = actives or limited dose, show with a badge; C = species or label check pending; N = no pesticide by design",
+    "display_mode": "full | actives_only | vector_control_only | crop_prompt | expert_only | no_treatment_needed | no_recommendation",
+    "chemical.display": "false means store but never show to the farmer; see hidden_reason",
+    "dose_basis": "per_hectare doses are NOT converted to tank mixes. Show as sourced and add \"ask your agriculture officer for the tank mix\"."
+  },
+  "records": [
+    {
+      "class_id": "tomato_early_blight",
+      "crop": "tomato",
+      "class_name": "Early blight",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source_plus_field_trial",
+      "chemical": [
+        {
+          "active": "mancozeb 75 WP",
+          "dose_text": "2.5 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true,
+          "note": "Best performer in Indian field trial (Indian J. Hort. 76(3), 2019): with seed treatment 2.5 g/kg seed, 66.8% disease reduction; three sprays at 15-day interval starting at first symptoms."
+        },
+        {
+          "active": "difenoconazole 25 EC",
+          "dose_text": "1 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true,
+          "note": "Second best in the same trial (62.9% reduction); at par with mancozeb."
+        },
+        {
+          "active": "chlorothalonil 75 WP",
+          "dose_text": "2 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true,
+          "note": "55.5% reduction in the same trial."
+        },
+        {
+          "active": "copper oxychloride",
+          "dose_text": "3 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true,
+          "note": "ICAR advisory rate. The OUAT trial used 4 g/L (50.9% reduction); show the ICAR rate and keep the label as final authority."
+        },
+        {
+          "active": "metalaxyl 4% + mancozeb 64%",
+          "dose_text": "1.5 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": false,
+          "hidden_reason": "Weakest treatment in the OUAT trial (31.5% reduction, 15.7% yield gain). Metalaxyl mainly targets oomycetes such as late blight, so the benefit here comes from mancozeb alone; recommend mancozeb instead."
+        }
+      ],
+      "ipm": [
+        "remove infected debris",
+        "crop rotation",
+        "disease-free seed/seedlings"
+      ],
+      "sources": [
+        "https://www.icar.gov.in/sites/default/files/Circulars/ICAR%20En-Kharif-Agro-Advisories%20for%20Farmers%202025.pdf",
+        "https://journal.iahs.org.in/index.php/ijh/article/download/384/1511"
+      ],
+      "review_notes": "v1 listed metalaxyl+mancozeb as a main option; replaced after checking Indian field-trial data."
+    },
+    {
+      "class_id": "tomato_late_blight",
+      "crop": "tomato",
+      "class_name": "Late blight",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "mancozeb 75 WP",
+          "dose_text": "3 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "potassium phosphonate 40 SC",
+          "dose_text": "4 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "fosetyl-Al 80 WP",
+          "dose_text": "2 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "disease-free seed",
+        "destroy infected debris",
+        "crop rotation"
+      ],
+      "sources": [
+        "https://www.celkau.in/Crops/Vegetables/tomato/lateblight.php"
+      ]
+    },
+    {
+      "class_id": "tomato_leaf_mold",
+      "crop": "tomato",
+      "class_name": "Leaf mold",
+      "type": "disease",
+      "tier": "B",
+      "display_mode": "actives_only",
+      "status": "evidence_available_india_label_not_verified",
+      "chemical": [
+        {
+          "active": "azoxystrobin",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "pyraclostrobin",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "propiconazole",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "tebuconazole",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "reduce canopy humidity",
+        "improve ventilation",
+        "remove infected leaves/debris"
+      ],
+      "sources": [
+        "https://journalijpss.com/index.php/IJPSS/article/view/5222",
+        "https://extension.umd.edu/sites/extension.umd.edu/files/2024-02/2024-2025%20Vegetable-Production-Recommendations-FINAL-8-Jan%2024_EB-236.pdf"
+      ],
+      "display_note": "Show only with a verification badge; do not invent a dose.",
+      "show_badge": "verification_pending"
+    },
+    {
+      "class_id": "tomato_septoria_leaf_spot",
+      "crop": "tomato",
+      "class_name": "Septoria leaf spot",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "fluxapyroxad 250 g/L + pyraclostrobin 250 g/L SC",
+          "dose_text": "200–250 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "remove/destroy affected plant parts",
+        "seed treatment with Trichoderma asperellum where locally advised",
+        "reduce leaf wetness"
+      ],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+      ]
+    },
+    {
+      "class_id": "tomato_bacterial_spot",
+      "crop": "tomato",
+      "class_name": "Bacterial spot",
+      "type": "disease",
+      "tier": "B",
+      "display_mode": "actives_only",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "copper hydroxide",
+          "dose_text": "use current registered label dose; TNAU advises fortnightly use",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "disease-free seed/seedlings",
+        "crop rotation",
+        "avoid working plants when foliage is wet",
+        "remove infected debris"
+      ],
+      "sources": [
+        "https://www.agritech.tnau.ac.in/ta/agrometeorologicaladvisory/pdf/tnau_acrc/2022/sep/PUDUKKOTTAI%20Advisory.pdf",
+        "https://ipm.ucanr.edu/agriculture/tomato/bacterial-spot/"
+      ],
+      "review_notes": "Source gives no numeric dose; app must say \"use the current registered label dose\"."
+    },
+    {
+      "class_id": "tomato_yellow_leaf_curl_virus",
+      "crop": "tomato",
+      "class_name": "Yellow leaf curl virus",
+      "type": "disease",
+      "tier": "B",
+      "display_mode": "vector_control_only",
+      "status": "no_curative_pesticide_vector_management_only",
+      "chemical": [
+        {
+          "active": "imidacloprid",
+          "dose_text": "vector management only; current registered label required",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "remove weed hosts",
+        "remove severely infected plants",
+        "use healthy seedlings",
+        "insect-proof nursery/barrier methods",
+        "monitor whiteflies"
+      ],
+      "sources": [
+        "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+      ],
+      "display_note": "Never describe the insecticide as curing the virus.",
+      "review_notes": "Never imply the insecticide cures the virus; it targets the whitefly vector only."
+    },
+    {
+      "class_id": "tomato_healthy",
+      "crop": "tomato",
+      "class_name": "Healthy",
+      "type": "healthy",
+      "tier": "N",
+      "display_mode": "no_treatment_needed",
+      "status": "no_pesticide",
+      "chemical": [],
+      "ipm": [
+        "routine scouting",
+        "balanced nutrition",
+        "good sanitation"
+      ],
+      "sources": []
+    },
+    {
+      "class_id": "potato_early_blight",
+      "crop": "potato",
+      "class_name": "Early blight",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_research_and_registry",
+      "chemical": [
+        {
+          "active": "mancozeb 75 WP",
+          "dose_text": "0.25% in Indian field-study schedule",
+          "dose_basis": "percent_solution",
+          "display": true
+        },
+        {
+          "active": "difenoconazole 25 EC",
+          "dose_text": "0.05% in Indian field-study schedule",
+          "dose_basis": "percent_solution",
+          "display": true
+        },
+        {
+          "active": "metalaxyl M + mancozeb",
+          "dose_text": "current registered use must be checked",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "remove infected debris",
+        "balanced fertilization",
+        "avoid prolonged leaf wetness"
+      ],
+      "sources": [
+        "https://saaer.org.in/journals/index.php/jae/article/view/649",
+        "https://acfiindia.com/search-pesticide"
+      ]
+    },
+    {
+      "class_id": "potato_late_blight",
+      "crop": "potato",
+      "class_name": "Late blight",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_research_and_registry",
+      "chemical": [
+        {
+          "active": "mancozeb 75 WP",
+          "dose_text": "0.25% in ICAR field study",
+          "dose_basis": "percent_solution",
+          "display": true
+        },
+        {
+          "active": "cymoxanil 8% + mancozeb 64% WP",
+          "dose_text": "0.25% in ICAR field study",
+          "dose_basis": "percent_solution",
+          "display": true
+        },
+        {
+          "active": "dimethomorph 50 WP",
+          "dose_text": "0.2% in ICAR field study",
+          "dose_basis": "percent_solution",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "preventive management",
+        "remove infected debris",
+        "avoid prolonged leaf wetness"
+      ],
+      "sources": [
+        "https://epubs.icar.org.in/index.php/IJAgS/article/view/147373",
+        "https://epubs.icar.org.in/index.php/PotatoJ/article/download/152001/59958/461282"
+      ]
+    },
+    {
+      "class_id": "potato_healthy",
+      "crop": "potato",
+      "class_name": "Healthy",
+      "type": "healthy",
+      "tier": "N",
+      "display_mode": "no_treatment_needed",
+      "status": "no_pesticide",
+      "chemical": [],
+      "ipm": [
+        "routine scouting",
+        "sanitation",
+        "balanced irrigation and nutrition"
+      ],
+      "sources": []
+    },
+    {
+      "class_id": "corn_gray_leaf_spot",
+      "crop": "corn",
+      "class_name": "Gray leaf spot",
+      "type": "disease",
+      "tier": "B",
+      "display_mode": "actives_only",
+      "status": "research_evidence_india_label_not_verified",
+      "chemical": [
+        {
+          "active": "azoxystrobin",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "pyraclostrobin",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "propiconazole",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        },
+        {
+          "active": "tebuconazole",
+          "dose_text": "dose not supplied",
+          "dose_basis": "no_numeric_dose",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "resistant/tolerant varieties",
+        "bury crop residues",
+        "crop rotation"
+      ],
+      "sources": [
+        "https://cals.cornell.edu/field-crops/corn/diseases-corn/management",
+        "https://www.plantix.net/en/library/plant-diseases/100107/grey-leaf-spot-of-maize/"
+      ],
+      "display_note": "Do not display a dose until current Indian registration/label is verified.",
+      "show_badge": "verification_pending"
+    },
+    {
+      "class_id": "corn_common_rust",
+      "crop": "corn",
+      "class_name": "Common rust",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "kresoxim-methyl 44.3 SC",
+          "dose_text": "1 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "tebuconazole",
+          "dose_text": "1 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "mancozeb",
+          "dose_text": "2 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "remove alternate hosts (Oxalis)",
+        "destroy infected residue"
+      ],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/maize_disease_new/maize_4.html"
+      ]
+    },
+    {
+      "class_id": "corn_northern_leaf_blight",
+      "crop": "corn",
+      "class_name": "Northern leaf blight",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "mancozeb",
+          "dose_text": "2–4 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "zineb",
+          "dose_text": "2–4 g/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "propiconazole 25 EC",
+          "dose_text": "1 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "bury/destroy infected stubble where locally permitted",
+        "crop sanitation"
+      ],
+      "sources": [
+        "https://agritech.tnau.ac.in/crop_protection/maize_disease_new/maize_2.html"
+      ]
+    },
+    {
+      "class_id": "corn_healthy",
+      "crop": "corn",
+      "class_name": "Healthy",
+      "type": "healthy",
+      "tier": "N",
+      "display_mode": "no_treatment_needed",
+      "status": "no_pesticide",
+      "chemical": [],
+      "ipm": [
+        "routine scouting",
+        "crop sanitation",
+        "balanced nutrition"
+      ],
+      "sources": []
+    },
+    {
+      "class_id": "rice_bacterial_leaf_blight",
+      "crop": "rice",
+      "class_name": "Bacterial leaf blight",
+      "type": "disease",
+      "tier": "B",
+      "display_mode": "full",
+      "status": "indian_source_but_local_label_verification_required",
+      "chemical": [
+        {
+          "active": "streptocycline",
+          "dose_text": "15 g/300 L/ha in older KAU source; use prohibited",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "regulatory_flag": "banned_india",
+          "hidden_reason": "Streptocycline (streptomycin sulphate + tetracycline hydrochloride) is completely banned for agricultural use in India effective 1 January 2024 under Ministry of Agriculture Gazette Notification S.O. 5295(E) due to antimicrobial resistance (AMR) concerns. Never display to farmers."
+        },
+        {
+          "active": "Pseudomonas fluorescens 1.5% LF",
+          "dose_text": "10 ml/L seedling dip for 30 min in ICAR advisory",
+          "dose_basis": "per_litre_or_tank",
+          "display": true
+        },
+        {
+          "active": "copper hydroxide 53.8% DF",
+          "dose_text": "use current registered label dose; protective spray at early disease onset",
+          "dose_basis": "no_numeric_dose",
+          "display": true,
+          "note": "Standard ICAR-NRRI/TNAU protective bactericide recommendation following the ban on agricultural antibiotics."
+        }
+      ],
+      "ipm": [
+        "disease-free seed",
+        "balanced nitrogen",
+        "field sanitation",
+        "avoid excessive nitrogen"
+      ],
+      "sources": [
+        "https://www.celkau.in/Crops/Cereals/Rice/pests.aspx",
+        "https://www.icar.gov.in/sites/default/files/2025-10/ICAR-En-Kharif-Agro-Advisories-for-Farmers-2025.pdf",
+        "https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_cereals_paddy_bacterial_leaf_blight.html"
+      ],
+      "show_badge": "check_local_label",
+      "review_notes": "Hid streptocycline following nationwide ban under Gazette Notification S.O. 5295(E) effective 1 January 2024; retained ICAR-recommended Pseudomonas fluorescens bioagent dip and added copper hydroxide protectant."
+    },
+    {
+      "class_id": "rice_brown_spot",
+      "crop": "rice",
+      "class_name": "Brown spot",
+      "type": "disease",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "mancozeb 75 WP",
+          "dose_text": "2 kg/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "propineb 50 WP",
+          "dose_text": "1.25 kg/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "hexaconazole 5 EC",
+          "dose_text": "800–1000 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        }
+      ],
+      "ipm": [
+        "balanced nutrition",
+        "seed health",
+        "field sanitation"
+      ],
+      "sources": [
+        "https://www.celkau.in/Library/pop2016.pdf",
+        "https://www.celkau.in/Crops/Cereals/Rice/pests.aspx"
+      ]
+    },
+    {
+      "class_id": "rice_leaf_smut",
+      "crop": "rice",
+      "class_name": "Leaf smut",
+      "type": "disease",
+      "tier": "N",
+      "display_mode": "no_recommendation",
+      "status": "no_recommended_pesticide",
+      "chemical": [],
+      "ipm": [
+        "avoid excessive nitrogen",
+        "remove/destroy infected residue",
+        "normal agronomic management"
+      ],
+      "sources": [
+        "https://plantdiseasehandbook.tamu.edu/food-crops/cereal-crops/rice/",
+        "https://www.lsuagcenter.com/NR/rdonlyres/41C7A6F2-E14A-4713-BFE1-724F8BE27509/75781/pub3115LeafSmutLOWRES.pdf",
+        "https://ipmdata.ipmcenters.org/source_report.cfm?pesttypeid=2&sectionid=7&sourceid=2478&template=pest&view=yes"
+      ],
+      "display_note": "Intentional abstention: do not substitute false-smut treatment. Sources say control measures are not recommended."
+    },
+    {
+      "class_id": "rice_brown_planthopper",
+      "crop": "rice",
+      "class_name": "Brown planthopper",
+      "type": "pest",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "thiamethoxam 25 WG",
+          "dose_text": "100 g/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "imidacloprid 200 SL",
+          "dose_text": "150 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "buprofezin 20 SL",
+          "dose_text": "800 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "ethofenprox 10 EC",
+          "dose_text": "750 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "acephate 75 SP",
+          "dose_text": "800 g/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "regulatory_flag": "proposed_restricted_use_india",
+          "hidden_reason": "Listed in the 2020 draft proposal to restrict use in India (incomplete resistance data for rice, toxic to bees). Verify current status before any display."
+        }
+      ],
+      "ipm": [
+        "scout insects per hill",
+        "avoid excessive nitrogen",
+        "drain fields where agronomically appropriate",
+        "direct spray to plant base when advised"
+      ],
+      "sources": [
+        "https://www.celkau.in/crops/Cereals/Rice/pests.aspx"
+      ]
+    },
+    {
+      "class_id": "rice_asiatic_rice_borer",
+      "crop": "rice",
+      "class_name": "Asiatic rice borer",
+      "type": "pest",
+      "tier": "C",
+      "display_mode": "expert_only",
+      "status": "hold_until_species_verified",
+      "chemical": [
+        {
+          "active": "chlorantraniliprole 18.5 SC",
+          "dose_text": "150 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "hidden_reason": "Held until the IP102 folder species is confirmed (source is Scirpophaga incertulas; IP102 label may be Chilo suppressalis)."
+        },
+        {
+          "active": "flubendiamide 20 WDG",
+          "dose_text": "125 g/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "hidden_reason": "Held until the IP102 folder species is confirmed (source is Scirpophaga incertulas; IP102 label may be Chilo suppressalis)."
+        },
+        {
+          "active": "cartap hydrochloride 50 SP",
+          "dose_text": "1 kg/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "hidden_reason": "Held until the IP102 folder species is confirmed (source is Scirpophaga incertulas; IP102 label may be Chilo suppressalis)."
+        },
+        {
+          "active": "spinosad 45 SC",
+          "dose_text": "100 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "hidden_reason": "Held until the IP102 folder species is confirmed (source is Scirpophaga incertulas; IP102 label may be Chilo suppressalis)."
+        }
+      ],
+      "ipm": [
+        "scout egg masses/moths",
+        "pheromone traps",
+        "residue management"
+      ],
+      "sources": [
+        "https://www.celkau.in/crops/Cereals/Rice/pests.aspx"
+      ],
+      "display_note": "Critical mapping issue: the KAU source is rice stem borer Scirpophaga incertulas, while the IP102 'Asiatic rice borer' label may map to Chilo suppressalis. Do not surface until the actual dataset folder/species is verified.",
+      "resolution_steps": [
+        "List the actual IP102 folder name and sample images used for this class.",
+        "Have an entomologist or KAU/TNAU extension officer confirm the species.",
+        "If it is Scirpophaga incertulas, set tier A and display_mode full; if Chilo suppressalis, find a source for that species or keep expert_only."
+      ]
+    },
+    {
+      "class_id": "rice_leaf_roller",
+      "crop": "rice",
+      "class_name": "Rice leaf roller",
+      "type": "pest",
+      "tier": "A",
+      "display_mode": "full",
+      "status": "verified_indian_source",
+      "chemical": [
+        {
+          "active": "chlorantraniliprole 18.5 SC",
+          "dose_text": "150 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "flubendiamide 20 WDG",
+          "dose_text": "125 g/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "cartap hydrochloride 50 SP",
+          "dose_text": "1 kg/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "indoxacarb 15.8 EC",
+          "dose_text": "200 ml/ha",
+          "dose_basis": "per_hectare",
+          "display": true
+        },
+        {
+          "active": "acephate 75 SP",
+          "dose_text": "800 g/ha",
+          "dose_basis": "per_hectare",
+          "display": false,
+          "regulatory_flag": "proposed_restricted_use_india",
+          "hidden_reason": "Listed in the 2020 draft proposal to restrict use in India (incomplete resistance data for rice, toxic to bees). Verify current status before any display."
+        }
+      ],
+      "ipm": [
+        "proper spacing",
+        "avoid excess nitrogen",
+        "scout for fresh leaf damage",
+        "Trichogramma/Bt where locally advised"
+      ],
+      "sources": [
+        "https://www.celkau.in/ecropdoctor/cereals/rice/leaffolder.php",
+        "https://www.celkau.in/crops/Cereals/Rice/pests.aspx"
+      ]
+    },
+    {
+      "class_id": "corn_borer",
+      "crop": "corn",
+      "class_name": "Corn borer",
+      "type": "pest",
+      "tier": "C",
+      "display_mode": "full",
+      "status": "fallback_source_species_check_required",
+      "chemical": [
+        {
+          "active": "chlorantraniliprole 20 SC",
+          "dose_text": "0.2–0.3 ml/L",
+          "dose_basis": "per_litre_or_tank",
+          "display": true,
+          "note": "ICAR-IIMR/AICRP source material. Species mapping for the dataset class still to be confirmed."
+        },
+        {
+          "active": "carbofuran 3 G",
+          "dose_text": "source-specific rate; current Indian label must be checked",
+          "dose_basis": "no_numeric_dose",
+          "display": false,
+          "regulatory_flag": "restricted_formulation_only",
+          "hidden_reason": "In India only carbofuran 3% CG (encapsulated granule) with approved crop labels remains allowed; other formulations were ordered stopped. A highly hazardous chemical, never shown as a default."
+        }
+      ],
+      "ipm": [
+        "scout whorl damage",
+        "residue management",
+        "biological IPM where available"
+      ],
+      "sources": [
+        "https://iimr.icar.gov.in/?p=1199",
+        "https://aicrpmaize.icar.gov.in/?p=1172"
+      ],
+      "display_note": "Do not treat carbofuran as a casual default; current label and exact species mapping must be verified.",
+      "show_badge": "species_check_pending"
+    },
+    {
+      "class_id": "armyworm",
+      "crop": "corn_or_rice",
+      "class_name": "Armyworm",
+      "type": "pest",
+      "tier": "B",
+      "display_mode": "crop_prompt",
+      "status": "crop_specific_species_mapping",
+      "requires_user_crop_choice": true,
+      "prompt_text": "Which crop is this? Armyworm treatment is different for corn and rice.",
+      "by_crop": {
+        "corn": {
+          "display_mode": "full",
+          "chemical": [
+            {
+              "active": "chlorantraniliprole 18.5 SC",
+              "dose_text": "0.4 ml/L in ICAR-IIMR fallback source",
+              "dose_basis": "per_litre_or_tank",
+              "display": true
+            },
+            {
+              "active": "spinetoram 11.7 SC",
+              "dose_text": "0.5 ml/L in AICRP maize source",
+              "dose_basis": "per_litre_or_tank",
+              "display": true
+            },
+            {
+              "active": "emamectin benzoate 5 SG",
+              "dose_text": "0.4 g/L in AICRP maize source",
+              "dose_basis": "per_litre_or_tank",
+              "display": true
+            }
+          ]
+        },
+        "rice": {
+          "display_mode": "expert_only",
+          "chemical": [
+            {
+              "active": "trichlorphon",
+              "dose_text": "KAU source mentions use but provides no dose",
+              "dose_basis": "no_numeric_dose",
+              "display": false,
+              "regulatory_flag": "banned_india",
+              "hidden_reason": "Trichlorfon use is completely banned in India since 31 Dec 2020 (S.O. 3951(E), 8 Aug 2018). Never display."
+            }
+          ],
+          "message": "No verified chemical recommendation is available for rice armyworm. Use the IPM steps and contact your agriculture officer."
+        }
+      },
+      "ipm": [
+        "crop-specific scouting",
+        "remove heavily infested material",
+        "Bt/biological control where locally advised"
+      ],
+      "sources": [
+        "https://www.celkau.in/crops/Cereals/Rice/pests.aspx",
+        "https://aicrpmaize.icar.gov.in/?p=1172",
+        "https://apagrisnet.gov.in/pdf/Gazette notification No 3591(E) .pdf"
+      ],
+      "display_note": "Corn armyworm and rice armyworm can be different species. Never reuse the corn treatment for rice."
+    }
+  ],
+  "global_rules": {
+    "use_exact_class_id": true,
+    "active_ingredient_level": true,
+    "never_invent_dose": true,
+    "never_recommend_pesticide_for_healthy": true,
+    "virus_is_not_cured_by_insecticide": true,
+    "verify_current_indian_registration_and_label_before_use": true,
+    "show_abstention_when_no_supported_chemical_exists": true,
+    "do_not_substitute_similar_disease_or_pest": true,
+    "do_not_infer_species_mapping_from_class_name_alone": true,
+    "never_display_entries_with_display_false": true,
+    "ask_crop_before_showing_armyworm": true,
+    "show_confidence_below_60_as_retake": true,
+    "always_append_safety_footer": true
+  },
+  "confidence_threshold": 0.6,
+  "safety_footer_en": "Check the current registered label, the waiting period before harvest and the protective equipment before spraying. Keep sprays away from children, food and water. This is guidance, not a replacement for your agriculture officer.",
+  "ui_strings": {
+    "retake": {
+      "en": "Not sure. Please retake the photo in good light.",
+      "ml": null
+    },
+    "healthy": {
+      "en": "Your plant looks healthy. No spray is needed.",
+      "ml": null
+    },
+    "virus": {
+      "en": "This virus cannot be cured by spraying. Spraying only controls the whitefly that spreads it. Remove infected plants.",
+      "ml": null
+    },
+    "no_recommendation": {
+      "en": "There is no recommended spray for this problem. Follow the prevention steps.",
+      "ml": null
+    },
+    "expert": {
+      "en": "Please show this to your agriculture officer before spraying.",
+      "ml": null
+    },
+    "pest_photo_hint": {
+      "en": "For pests, the insect itself must be visible in the photo.",
+      "ml": null
+    }
+  },
+  "regulatory_alerts": [
+    {
+      "active": "trichlorfon",
+      "status": "use banned in India from 31 Dec 2020",
+      "source": "https://apagrisnet.gov.in/pdf/Gazette notification No 3591(E) .pdf",
+      "action": "removed from display"
+    },
+    {
+      "active": "carbofuran",
+      "status": "only 3% CG with approved crop labels remains; other formulations ordered stopped",
+      "source": "https://pan-india.org/india-bans-four-highly-hazardous-pesticides-pan-india-welcomes-this-step/",
+      "action": "v1 listed 3 G; hidden"
+    },
+    {
+      "active": "acephate",
+      "status": "in the 2020 draft proposal for restricted use",
+      "source": "https://en.wikipedia.org/wiki/List_of_banned_and_restricted_pesticides_in_India",
+      "action": "hidden; verify current status"
+    },
+    {
+      "active": "carbosulfan",
+      "status": "ban proposed Aug 2026; not used in this KB",
+      "source": "https://www.business-standard.com/industry/agriculture/government-proposes-carbosulfan-ban-health-environment-risks-126082500364_1.html",
+      "action": "do not add"
+    }
+  ],
+  "quality_control": {
+    "verified_in_v2": [
+      "Tomato early blight ranking and doses against Indian J. Hort. 76(3):548-551 (2019)",
+      "Trichlorfon, carbofuran and acephate regulatory status (searched 2026-10-31)"
+    ],
+    "not_re_verified_in_v2": "All other doses are carried over from v1 sources and have not been re-checked line by line. Spot-check before the final demo.",
+    "still_open": {
+      "mapping_must_be_verified": [
+        "rice_asiatic_rice_borer",
+        "corn_borer",
+        "armyworm"
+      ],
+      "india_label_not_verified": [
+        "tomato_leaf_mold",
+        "corn_gray_leaf_spot"
+      ],
+      "translation_needed": "Fill ui_strings.ml and the advice text, then have an agriculture officer review it."
+    },
+    "intentional_no_pesticide": [
+      "tomato_healthy",
+      "potato_healthy",
+      "corn_healthy",
+      "rice_leaf_smut"
+    ],
+    "no_curative_pesticide": [
+      "tomato_yellow_leaf_curl_virus"
+    ]
+  }
+}

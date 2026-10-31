@@ -5,6 +5,7 @@ import {
   QualityCheckResult,
   SeverityLevel,
 } from '../types';
+import { pesticideKbService } from './pesticideKbService';
 
 /**
  * Pluggable Prediction Engine interface
@@ -82,7 +83,7 @@ class PredictionService implements IPredictionEngine {
   }
 
   /**
-   * Runs tomato disease diagnosis
+   * Runs crop disease/pest diagnosis across all 22 classes
    */
   public async predict(imageUrl: string, presetType?: string): Promise<PredictionResult> {
     // Simulate AI inference time (1.2 seconds for realistic model feel)
@@ -91,7 +92,7 @@ class PredictionService implements IPredictionEngine {
     const id = `scan_${Date.now()}`;
     const timestamp = Date.now();
 
-    // 1. Uncertain state (from screenshot 5)
+    // 1. Uncertain state
     if (presetType === 'blurry' || presetType === 'uncertain') {
       return {
         id,
@@ -116,7 +117,33 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 2. Late Blight state
+    // 2. Check if presetType is one of the 22 frozen classes
+    if (presetType && presetType !== 'early_blight' && presetType !== 'late_blight' && presetType !== 'healthy' && presetType !== 'custom') {
+      const kbRec = pesticideKbService.getRecordByClassId(presetType);
+      if (kbRec) {
+        const isHealthy = kbRec.type === 'healthy';
+        const isPest = kbRec.type === 'pest';
+        return {
+          id,
+          timestamp,
+          imageUrl,
+          crop: `${kbRec.crop.charAt(0).toUpperCase() + kbRec.crop.slice(1)} leaf`,
+          cropMl: `${kbRec.crop} ഇല`,
+          diseaseId: kbRec.class_id as DiseaseId,
+          diseaseName: kbRec.class_name,
+          diseaseNameMl: kbRec.class_name,
+          category: isPest ? 'Insect pest' : isHealthy ? 'Normal crop' : 'Foliar pathology',
+          categoryMl: isPest ? 'കീടബാധ' : isHealthy ? 'സാധാരണ വിളവ്' : 'രോഗബാധ',
+          confidence: 'high',
+          confidenceScore: 0.95,
+          affectedAreaPercent: isHealthy ? 0 : 35,
+          severity: isHealthy ? 'mild' : 'moderate',
+          isUncertain: false,
+        };
+      }
+    }
+
+    // 3. Late Blight state
     if (presetType === 'late_blight') {
       return {
         id,
@@ -124,7 +151,7 @@ class PredictionService implements IPredictionEngine {
         imageUrl,
         crop: 'Tomato leaf',
         cropMl: 'തക്കാളി ഇല',
-        diseaseId: 'late_blight',
+        diseaseId: 'tomato_late_blight',
         diseaseName: 'Late blight',
         diseaseNameMl: 'ലേറ്റ് ബ്ലൈറ്റ് (കരിമ്പൻ)',
         category: 'Oomycete / Water mold',
@@ -145,7 +172,7 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 3. Healthy state
+    // 4. Healthy state
     if (presetType === 'healthy') {
       return {
         id,
@@ -153,7 +180,7 @@ class PredictionService implements IPredictionEngine {
         imageUrl,
         crop: 'Tomato leaf',
         cropMl: 'തക്കാളി ഇല',
-        diseaseId: 'healthy',
+        diseaseId: 'tomato_healthy',
         diseaseName: 'Healthy leaf',
         diseaseNameMl: 'ആരോഗ്യമുള്ള ഇല',
         category: 'Normal crop',
@@ -166,14 +193,14 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 4. Default: Early Blight (Exact match to Reference Screenshot 3)
+    // 5. Default: Early Blight (Exact match to Reference Screenshot 3)
     return {
       id,
       timestamp,
       imageUrl,
       crop: 'Tomato leaf',
       cropMl: 'തക്കാളി ഇല',
-      diseaseId: 'early_blight',
+      diseaseId: 'tomato_early_blight',
       diseaseName: 'Early blight',
       diseaseNameMl: 'ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)',
       category: 'Fungal disease',

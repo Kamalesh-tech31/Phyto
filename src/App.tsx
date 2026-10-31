@@ -322,6 +322,8 @@ export default function App() {
               {scanStep === 'treatment' && (
                 <TreatmentDetail
                   diseaseId={selectedDiseaseId}
+                  crop={prediction?.crop}
+                  diseaseName={prediction?.diseaseName}
                   language={language}
                   onBack={() => setScanStep('result')}
                   onNavigateToSchemes={handleViewRelatedSchemeFromTreatment}
