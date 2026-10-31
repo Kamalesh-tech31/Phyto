@@ -15,14 +15,30 @@ export type ScanStep =
   | 'capture'         // Step 1: Scan / Home viewfinder
   | 'photo_check'     // Step 2: Quality checks (sharpness, light, shadow, distance)
   | 'analyzing'       // Step 3: Scanning AI animation
-  | 'result'          // Step 4: Diagnosis result (confident or uncertain)
+  | 'result'          // Step 4: Diagnosis result (confident, ambiguous, uncertain, or not-plant)
   | 'treatment'       // Guidance detail (Treatment & Prevention tabs + Price outlook)
   | 'scheme_context'; // Contextual scheme detail from Result or Treatment
-
 
 export type SeverityLevel = 'mild' | 'moderate' | 'severe';
 export type ConfidenceLevel = 'high' | 'medium' | 'low';
 export type DiseaseId = 'healthy' | 'early_blight' | 'late_blight' | 'uncertain' | string;
+
+export type InferenceStatus = 'CONFIDENT' | 'AMBIGUOUS' | 'UNCERTAIN' | 'NOT_PLANT';
+
+export interface CandidatePrediction {
+  label: string;
+  prob: number; // 0 to 1
+  plant: string;
+  plantMl: string;
+  condition: string;
+  conditionMl: string;
+  category: string;
+  categoryMl: string;
+  diseaseId: string;
+  isHealthy: boolean;
+  isPest: boolean;
+  isComingSoon?: boolean;
+}
 
 export interface QualityCheckResult {
   sharpness: 'sharp' | 'blurry' | 'fair';
@@ -101,8 +117,29 @@ export interface PredictionResult {
   categoryMl: string;
   confidence: ConfidenceLevel;
   confidenceScore: number; // e.g. 0.94
-  affectedAreaPercent: number; // e.g. 18
-  severity: SeverityLevel;
+  imageUrl: string;
+  timestamp: number;
+  inferenceStatus: InferenceStatus;
+  topCandidates: CandidatePrediction[];
+  secondCandidate?: CandidatePrediction;
+  isUncertain: boolean;
+  isAmbiguous: boolean;
+  isNotPlant: boolean;
+  isHealthy: boolean;
+  isPest: boolean;
+  isComingSoon: boolean;
+  uncertaintyReason?: string;
+  uncertaintyReasonMl?: string;
+  modelClassName?: string;
+  inferenceMs?: number;
+  modelVersion?: string;
+
+  // Optional backward-compatibility fields
+  severity?: SeverityLevel;
+  affectedAreaPercent?: number;
+  status?: 'supported' | 'healthy' | 'pest' | 'coming_soon';
+  grapeNotice?: boolean;
+  pestNotice?: boolean;
   pestWarning?: {
     name: string;
     nameMl: string;
@@ -111,15 +148,6 @@ export interface PredictionResult {
     details: string;
     detailsMl: string;
   };
-  isUncertain: boolean;
-  uncertaintyReason?: string;
-  uncertaintyReasonMl?: string;
-  imageUrl: string;
-  timestamp: number;
-  modelClassName?: string;
-  status?: 'supported' | 'healthy' | 'pest' | 'coming_soon';
-  grapeNotice?: boolean;
-  pestNotice?: boolean;
 }
 
 export interface ScanHistoryItem {
@@ -131,10 +159,13 @@ export interface ScanHistoryItem {
   diseaseName: string;
   diseaseNameMl: string;
   diseaseId: DiseaseId;
-  severity: SeverityLevel;
-  affectedAreaPercent: number;
   confidence: ConfidenceLevel;
-  isUncertain: boolean;
+  confidenceScore: number;
+  inferenceStatus: 'CONFIDENT' | 'AMBIGUOUS';
+  secondDiseaseName?: string;
+  severity?: SeverityLevel;
+  affectedAreaPercent?: number;
+  isUncertain?: boolean;
 }
 
 export interface SchemeItem {

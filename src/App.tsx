@@ -85,18 +85,34 @@ export default function App() {
             ? 'ഇല പരിശോധിക്കുന്നു. കോശഘടനകളും കുമിൾ ലക്ഷണങ്ങളും ഓഫ്‌ലൈനായി വിശകലനം ചെയ്യുന്നു.'
             : 'Checking your leaf cells and fungal symptoms offline.';
       } else if (scanStep === 'result') {
-        if (prediction?.isUncertain) {
+        if (!prediction) return;
+        const certaintyPct = Math.round(prediction.confidenceScore * 100);
+
+        if (prediction.isNotPlant) {
+          speechText =
+            language === 'ml'
+              ? 'വിളയോ കീടമോ അല്ല. ഇത് ഒരു വിളയുടെ ഇലയോ കീടമോ ആയി തോന്നുന്നില്ല. നല്ല വെളിച്ചത്തിൽ ഇല വ്യക്തമായി കാണത്തക്ക വിധം വീണ്ടും ഫോട്ടോയെടുക്കുക.'
+              : 'Not a crop leaf or supported pest. Please frame a supported crop leaf or pest in good light.';
+        } else if (prediction.isUncertain) {
           speechText =
             language === 'ml'
               ? 'കുറഞ്ഞ വിശ്വാസ്യത. ഇതുവരെ ഉറപ്പില്ല. ഫോട്ടോ അവ്യക്തമാണ്. നല്ല വെളിച്ചത്തിൽ ഒരു ചാൺ അകലെ നിന്ന് വീണ്ടും ഫോട്ടോയെടുക്കുക.'
-              : 'Low confidence scan. I am not sure yet. The photo is too blurry to tell a disease from a nutrient problem. Please retake photo in daylight.';
+              : 'Low confidence scan. I am not sure yet. The photo is unclear. Please retake photo in daylight.';
+        } else if (prediction.isAmbiguous) {
+          speechText =
+            language === 'ml'
+              ? `${prediction.cropMl} പരിശോധനാ ഫലം: ${prediction.diseaseNameMl} അല്ലെങ്കിൽ ${prediction.secondCandidate?.conditionMl}. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
+              : `${prediction.crop} scan: Could be ${prediction.diseaseName} or ${prediction.secondCandidate?.condition}. Model certainty is ${certaintyPct} percent.`;
+        } else if (prediction.isHealthy) {
+          speechText =
+            language === 'ml'
+              ? `${prediction.cropMl} ആരോഗ്യമുള്ള ഇല. രോഗലക്ഷണങ്ങളോ കീടങ്ങളോ കണ്ടെത്തിയില്ല. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
+              : `${prediction.crop} leaf looks healthy. No disease lesions or pests detected. Model certainty is ${certaintyPct} percent.`;
         } else {
           speechText =
             language === 'ml'
-              ? `തക്കാളി ഇല പരിശോധനാ ഫലം: ${prediction?.diseaseNameMl}. രോഗബാധ ${prediction?.affectedAreaPercent} ശതമാനം. കാഠിന്യം ${
-                  prediction?.severity === 'mild' ? 'ലഘുവായത്' : 'ഗുരുതരമായത്'
-                }. ബന്ധപ്പെട്ട സർക്കാർ പദ്ധതി: സുഭിക്ഷ കേരളം പച്ചക്കറി വികസന പദ്ധതി, കുമിൾനാശിനികൾക്ക് 50 ശതമാനം സബ്സിഡി ലഭിക്കും.`
-              : `Tomato leaf diagnosis: ${prediction?.diseaseName}, ${prediction?.category}. Confidence is high. Affected leaf area is ${prediction?.affectedAreaPercent} percent, severity is ${prediction?.severity}. Related scheme: Vegetable Development Programme, providing 50 percent subsidy on crop protection.`;
+              ? `${prediction.cropMl} പരിശോധനാ ഫലം: ${prediction.diseaseNameMl}. വിഭാഗം: ${prediction.categoryMl}. മോഡൽ ഉറപ്പ് ${certaintyPct} ശതമാനം.`
+              : `${prediction.crop} diagnosis: ${prediction.diseaseName}, ${prediction.category}. Model certainty is ${certaintyPct} percent.`;
         }
       } else if (scanStep === 'treatment') {
         speechText =
@@ -148,22 +164,27 @@ export default function App() {
       setPrediction(result);
       setSelectedDiseaseId(result.diseaseId);
 
-      // Save to IndexedDB Scan History automatically
-      const historyItem: ScanHistoryItem = {
-        id: result.id,
-        timestamp: result.timestamp,
-        imageUrl: result.imageUrl,
-        crop: result.crop,
-        cropMl: result.cropMl,
-        diseaseName: result.diseaseName,
-        diseaseNameMl: result.diseaseNameMl,
-        diseaseId: result.diseaseId,
-        severity: result.severity,
-        affectedAreaPercent: result.affectedAreaPercent,
-        confidence: result.confidence,
-        isUncertain: result.isUncertain,
-      };
-      await storageService.saveScan(historyItem);
+      // Save to IndexedDB Scan History ONLY if status is CONFIDENT or AMBIGUOUS (never UNCERTAIN or NOT_PLANT)
+      if (
+        result.inferenceStatus === 'CONFIDENT' ||
+        result.inferenceStatus === 'AMBIGUOUS'
+      ) {
+        const historyItem: ScanHistoryItem = {
+          id: result.id,
+          timestamp: result.timestamp,
+          imageUrl: result.imageUrl,
+          crop: result.crop,
+          cropMl: result.cropMl,
+          diseaseName: result.diseaseName,
+          diseaseNameMl: result.diseaseNameMl,
+          diseaseId: result.diseaseId,
+          confidence: result.confidence,
+          confidenceScore: result.confidenceScore,
+          inferenceStatus: result.inferenceStatus,
+          secondDiseaseName: result.secondCandidate?.condition,
+        };
+        await storageService.saveScan(historyItem);
+      }
 
       // Move to Result
       setScanStep('result');
@@ -190,56 +211,52 @@ export default function App() {
 
   // Select scan from history
   const handleSelectFromHistory = (item: ScanHistoryItem) => {
-    if (item.isUncertain) {
-      setPrediction({
-        id: item.id,
-        timestamp: item.timestamp,
-        imageUrl: item.imageUrl,
-        crop: item.crop,
-        cropMl: item.cropMl,
-        diseaseId: item.diseaseId,
-        diseaseName: item.diseaseName,
-        diseaseNameMl: item.diseaseNameMl,
-        category: 'Inconclusive scan',
-        categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
-        confidence: 'low',
-        confidenceScore: 0.38,
-        affectedAreaPercent: 0,
-        severity: item.severity,
-        isUncertain: true,
-      });
-      setScanStep('result');
-      setActiveTab('scan');
-    } else {
-      setPrediction({
-        id: item.id,
-        timestamp: item.timestamp,
-        imageUrl: item.imageUrl,
-        crop: item.crop,
-        cropMl: item.cropMl,
-        diseaseId: item.diseaseId,
-        diseaseName: item.diseaseName,
-        diseaseNameMl: item.diseaseNameMl,
-        category: 'Fungal disease',
-        categoryMl: 'ഫംഗസ് രോഗം',
-        confidence: item.confidence,
-        confidenceScore: 0.94,
-        affectedAreaPercent: item.affectedAreaPercent,
-        severity: item.severity,
-        pestWarning: {
-          name: 'Aphids',
-          nameMl: 'മുഞ്ഞ (Aphids)',
-          severityLabel: 'Pest · moderate',
-          severityLabelMl: 'കീടബാധ · ഇടത്തരം',
-          details: 'Sap-sucking pest cluster noted on leaf.',
-          detailsMl: 'ഇലയിൽ മുഞ്ഞയുടെ സാന്നിധ്യം കണ്ടെത്തി.',
+    setPrediction({
+      id: item.id,
+      timestamp: item.timestamp,
+      imageUrl: item.imageUrl,
+      crop: item.crop,
+      cropMl: item.cropMl,
+      diseaseId: item.diseaseId,
+      diseaseName: item.diseaseName,
+      diseaseNameMl: item.diseaseNameMl,
+      category: 'Diagnostic result',
+      categoryMl: 'പരിശോധനാ ഫലം',
+      confidence: item.confidence,
+      confidenceScore: item.confidenceScore || 0.9,
+      inferenceStatus: item.inferenceStatus || 'CONFIDENT',
+      topCandidates: [
+        {
+          label: item.diseaseId,
+          prob: item.confidenceScore || 0.9,
+          plant: item.crop,
+          plantMl: item.cropMl,
+          condition: item.diseaseName,
+          conditionMl: item.diseaseNameMl,
+          category: 'Diagnostic result',
+          categoryMl: 'പരിശോധനാ ഫലം',
+          diseaseId: item.diseaseId,
+          isHealthy:
+            item.diseaseId === 'healthy' ||
+            item.diseaseName.toLowerCase().includes('healthy'),
+          isPest: item.diseaseId.startsWith('pest_'),
+          isComingSoon:
+            item.crop === 'Grape' || item.diseaseId.startsWith('grape_'),
         },
-        isUncertain: false,
-      });
-      setSelectedDiseaseId(item.diseaseId);
-      setScanStep('result');
-      setActiveTab('scan');
-    }
+      ],
+      isUncertain: false,
+      isAmbiguous: item.inferenceStatus === 'AMBIGUOUS',
+      isNotPlant: false,
+      isHealthy:
+        item.diseaseId === 'healthy' ||
+        item.diseaseName.toLowerCase().includes('healthy'),
+      isPest: item.diseaseId.startsWith('pest_'),
+      isComingSoon:
+        item.crop === 'Grape' || item.diseaseId.startsWith('grape_'),
+    });
+    setSelectedDiseaseId(item.diseaseId);
+    setScanStep('result');
+    setActiveTab('scan');
   };
 
   return (

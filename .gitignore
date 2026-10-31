@@ -8,3 +8,6 @@ coverage/
 !.env.example
 eval_images/
 eval_results/
+test_images/
+fake_inputs/
+*.zip

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Language, PredictionResult } from '../../types';
 import { translations } from '../../data/translations';
 import { t } from '../../services/i18n';
 import { LeafGraphic } from '../../components/LeafGraphic';
 import {
   ChevronLeft,
-  ChevronRight,
-  Bug,
   ArrowRight,
   Sparkles,
   Info,
+  AlertTriangle,
+  CheckCircle,
 } from 'lucide-react';
 import { restricted22Service } from '../../services/restricted22Service';
+import classStatusData from '../../data/class_status.json';
 
 interface ResultConfidentProps {
   prediction: PredictionResult;
@@ -19,7 +20,6 @@ interface ResultConfidentProps {
   onBack: () => void;
   onSeeTreatment: () => void;
   onViewRelatedScheme?: () => void;
-  onPestClick?: () => void;
 }
 
 export const ResultConfident: React.FC<ResultConfidentProps> = ({
@@ -29,63 +29,51 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
   onSeeTreatment,
   onViewRelatedScheme,
 }) => {
-  const trans = translations[language];
-  const [showPestModal, setShowPestModal] = useState(false);
+  const trans = translations[language] || translations.en;
   const selectedState = restricted22Service.getSavedState();
 
+  const isHealthy = Boolean(
+    prediction.isHealthy ||
+    prediction.diseaseId === 'healthy' ||
+    prediction.diseaseName.toLowerCase().includes('healthy')
+  );
+
   const isGrape = Boolean(
+    prediction.isComingSoon ||
     prediction.grapeNotice ||
     prediction.crop === 'Grape' ||
-    prediction.status === 'coming_soon' ||
     (prediction.diseaseId && prediction.diseaseId.startsWith('grape_'))
   );
 
-  const isPestClass = Boolean(
+  const isPest = Boolean(
+    prediction.isPest ||
     prediction.pestNotice ||
-    prediction.status === 'pest' ||
     (prediction.diseaseId && prediction.diseaseId.startsWith('pest_'))
   );
 
-  // Evaluate schemes dynamically to determine matching scheme count and healthy gating
-  const schemesResult = restricted22Service.evaluateSchemes({
-    crop: prediction.crop,
-    diseaseIdOrName: prediction.diseaseName || prediction.diseaseId,
-    modelSeverity: prediction.severity,
-    selectedState,
-  });
+  const isAmbiguous = Boolean(
+    prediction.isAmbiguous ||
+    prediction.inferenceStatus === 'AMBIGUOUS'
+  );
 
-  // Healthy gate, Grape gate & uncertain filter
-  const hasRelatedSchemes =
-    !isGrape &&
-    prediction.diseaseId !== 'healthy' &&
-    !prediction.isUncertain &&
-    schemesResult.totalCount > 0;
+  // Softmax certainty percentage (0 - 100%)
+  const certaintyPercent = Math.round(prediction.confidenceScore * 100);
 
-  // Severity 3-segment progress bar helper with 1.5px outline
-  const getSeverityBars = () => {
-    if (prediction.severity === 'severe') {
-      return {
-        mild: 'bg-[var(--color-severity-mild)]',
-        moderate: 'bg-[var(--color-severity-moderate)]',
-        severe: 'bg-[var(--color-severity-severe)]',
-      };
-    }
-    if (prediction.severity === 'moderate') {
-      return {
-        mild: 'bg-[var(--color-severity-mild)]',
-        moderate: 'bg-[var(--color-severity-moderate)]',
-        severe: 'bg-[var(--color-inset)]',
-      };
-    }
-    // Mild
-    return {
-      mild: 'bg-[var(--color-severity-mild)]',
-      moderate: 'bg-[var(--color-inset)]',
-      severe: 'bg-[var(--color-inset)]',
-    };
-  };
+  // Evaluate schemes dynamically (gate healthy, grape, and uncertain scans)
+  const schemesResult = !isHealthy && !isGrape && !prediction.isUncertain
+    ? restricted22Service.evaluateSchemes({
+        crop: prediction.crop,
+        diseaseIdOrName: prediction.diseaseName || prediction.diseaseId,
+        selectedState,
+      })
+    : { totalCount: 0, centralCount: 0, stateCount: 0, stateShortlisted: [], centralShortlisted: [] };
 
-  const severityBars = getSeverityBars();
+  const hasRelatedSchemes = schemesResult.totalCount > 0;
+
+  // Filter top candidates for display
+  const topCandidates = prediction.topCandidates && prediction.topCandidates.length > 0
+    ? prediction.topCandidates.slice(0, 3)
+    : [];
 
   return (
     <div className="flex flex-col px-5 pt-2 pb-36 max-w-md mx-auto">
@@ -103,9 +91,8 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         </h2>
       </div>
 
-      {/* 1. Card 1: Disease Identity & Leaf Thumbnail */}
+      {/* 1. Card 1: Identity & Leaf Thumbnail */}
       <div className="mt-2 retro-card p-4 flex items-center gap-4">
-        {/* Leaf square thumbnail */}
         <div className="w-20 h-20 bg-[var(--color-vf-bg)] border border-[var(--color-outline)] rounded-[10px] overflow-hidden shrink-0">
           <LeafGraphic
             imageUrl={prediction.imageUrl}
@@ -114,12 +101,11 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
           />
         </div>
 
-        {/* Text details */}
-        <div className="flex flex-col">
-          <span className="text-xs font-semibold text-[var(--color-muted)]">
+        <div className="flex flex-col min-w-0">
+          <span className="text-xs font-semibold text-[var(--color-muted)] truncate">
             {language === 'ml' ? prediction.cropMl : prediction.crop}
           </span>
-          <h3 className="font-editorial text-2xl font-bold text-[var(--color-ink)] leading-tight">
+          <h3 className="font-editorial text-2xl font-bold text-[var(--color-ink)] leading-tight truncate">
             {language === 'ml' ? prediction.diseaseNameMl : prediction.diseaseName}
           </h3>
           <span className="mt-1.5 inline-block self-start px-2.5 py-0.5 bg-[var(--color-success-bg)] text-[var(--color-success-text)] border border-[var(--color-outline)] rounded-full text-xs font-bold">
@@ -127,6 +113,45 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
           </span>
         </div>
       </div>
+
+      {/* Ambiguity Alert: When top1 and top2 are within 15% */}
+      {isAmbiguous && prediction.secondCandidate && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-warning-bg)]/20 border-2 border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-[var(--color-warning-text)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {t('could_be_either', undefined, language)}
+              </h4>
+              <p className="text-xs text-[var(--color-ink)] mt-1 font-medium leading-relaxed">
+                1. <span className="font-bold">{language === 'ml' ? prediction.diseaseNameMl : prediction.diseaseName}</span> ({certaintyPercent}%)
+                <br />
+                2. <span className="font-bold">{language === 'ml' ? prediction.secondCandidate.conditionMl : prediction.secondCandidate.condition}</span> ({Math.round(prediction.secondCandidate.prob * 100)}%)
+              </p>
+              <p className="text-xs text-[var(--color-muted)] mt-2 leading-relaxed">
+                {t('ambiguous_advice', undefined, language)}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Healthy Positive State Card */}
+      {isHealthy && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-success-bg)]/20 border-2 border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-[var(--color-success-text)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {t('looks_healthy_title', undefined, language)}
+              </h4>
+              <p className="text-xs text-[var(--color-ink)] mt-1 leading-relaxed">
+                {t('looks_healthy_desc', undefined, language)}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Grape Coming Soon Notice */}
       {isGrape && (
@@ -151,7 +176,7 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
       )}
 
       {/* Pest Insect Visibility Notice */}
-      {isPestClass && (
+      {isPest && (
         <div className="mt-3.5 retro-card p-4 bg-[var(--color-selected-bg)]/40 border-[1.5px] border-[var(--color-outline)]">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-[var(--color-primary)] shrink-0 mt-0.5" />
@@ -160,117 +185,174 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
                 {t('pest_photo_notice_title', undefined, language)}
               </h4>
               <p className="text-xs text-[var(--color-ink)] mt-1 leading-relaxed">
-                {t('pest_photo_notice_desc', undefined, language)}
+                {language === 'ml'
+                  ? 'കീടത്തിന്റെ ചിത്രം തന്നെ വ്യക്തമായി വേണം (needs a close-up photo of the insect).'
+                  : 'Pest classes need a close-up photo of the insect itself, not just leaf damage.'}
               </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* 2. Card 2: Confidence & Severity Breakdown */}
+      {/* Class Status Notices */}
+      {prediction.modelClassName && (classStatusData as Record<string, any>)[prediction.modelClassName]?.status === 'disabled' && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-warning-bg)]/20 border-2 border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-[var(--color-warning-text)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {language === 'ml' ? 'ഇതുവരെ സ്ഥിരീകരിച്ചിട്ടില്ല' : 'Not reliably supported yet'}
+              </h4>
+              <p className="text-xs text-[var(--color-muted)] mt-1 leading-relaxed">
+                {language === 'ml'
+                  ? 'ഈ അവസ്ഥയ്ക്കുള്ള ഫീൽഡ് പരിശോധനാ ഡാറ്റ പരിമിതമാണ് (<10 ചിത്രങ്ങൾ).'
+                  : 'Under 10 field validation images available. Not reliably supported yet in field conditions.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {prediction.modelClassName && (classStatusData as Record<string, any>)[prediction.modelClassName]?.status === 'limited' && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-selected-bg)]/30 border border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <Info className="w-5 h-5 text-[var(--color-primary)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {language === 'ml' ? 'പരിമിതമായ പിന്തുണ' : 'Limited field support'}
+              </h4>
+              <p className="text-xs text-[var(--color-muted)] mt-1 leading-relaxed">
+                {language === 'ml'
+                  ? 'ഫീൽഡ് പരിശോധനയിൽ 50-70% കൃത്യത മാത്രം.'
+                  : 'Validation recall is 50-70%. Verify symptoms in person with extension staff.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 2. Card 2: Model Certainty & Candidates Breakdown */}
       <div className="mt-3.5 retro-card p-5">
         {/* Confidence Header */}
         <div className="flex items-center justify-between pb-3.5 retro-divider">
           <span className="text-sm font-bold text-[var(--color-ink)]">
-            {trans.confidence_label}
+            {t('model_certainty_title', undefined, language)}
           </span>
           <div className="flex items-center gap-2">
-            {/* 3-bar confidence indicator */}
+            {/* Visual certainty dots */}
             <div className="flex items-center gap-1" aria-hidden="true">
-              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
-              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
-              <span className="w-3.5 h-1.5 rounded-full bg-[var(--color-success-text)]" />
+              <span
+                className={`w-3.5 h-1.5 rounded-full ${
+                  prediction.confidence === 'high'
+                    ? 'bg-[var(--color-success-text)]'
+                    : 'bg-[var(--color-warning-text)]'
+                }`}
+              />
+              <span
+                className={`w-3.5 h-1.5 rounded-full ${
+                  prediction.confidence === 'high'
+                    ? 'bg-[var(--color-success-text)]'
+                    : 'bg-[var(--color-warning-text)]'
+                }`}
+              />
+              <span
+                className={`w-3.5 h-1.5 rounded-full ${
+                  prediction.confidence === 'high'
+                    ? 'bg-[var(--color-success-text)]'
+                    : 'bg-[var(--color-inset)]'
+                }`}
+              />
             </div>
-            <span className="px-2 py-0.5 bg-[var(--color-success-bg)] text-[var(--color-success-text)] border border-[var(--color-outline)] rounded-full text-xs font-bold">
-              {trans.confidence_high}
+            <span
+              className={`px-2 py-0.5 border border-[var(--color-outline)] rounded-full text-xs font-bold ${
+                prediction.confidence === 'high'
+                  ? 'bg-[var(--color-success-bg)] text-[var(--color-success-text)]'
+                  : 'bg-[var(--color-warning-bg)] text-[var(--color-warning-text)]'
+              }`}
+            >
+              {prediction.confidence === 'high'
+                ? t('certainty_high', undefined, language)
+                : t('certainty_medium', undefined, language)}
             </span>
           </div>
         </div>
 
-        {/* Affected Leaf Area & Severity */}
+        {/* Softmax Certainty % */}
         <div className="pt-4">
-          <div className="text-xs font-semibold text-[var(--color-muted)]">
-            {trans.affected_area_label}
+          <div className="flex items-baseline justify-between">
+            <div>
+              <div className="text-xs font-semibold text-[var(--color-muted)]">
+                {t('model_certainty_title', undefined, language)}
+              </div>
+              <div className="font-editorial text-4xl font-bold text-[var(--color-ink)] mt-1">
+                {certaintyPercent}%
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-baseline gap-3 mt-1">
-            <span className="font-editorial text-4xl font-bold text-[var(--color-ink)]">
-              {prediction.affectedAreaPercent}%
-            </span>
-            <span
-              className={`px-2.5 py-0.5 rounded-full text-xs font-bold capitalize border border-[var(--color-outline)] ${
-                prediction.severity === 'mild'
-                  ? 'bg-[var(--color-success-bg)] text-[var(--color-success-text)]'
-                  : prediction.severity === 'moderate'
-                  ? 'bg-[var(--color-warning-bg)] text-[var(--color-warning-text)]'
-                  : 'bg-[var(--color-danger-bg)] text-[var(--color-danger-text)]'
-              }`}
-            >
-              {prediction.severity === 'mild'
-                ? trans.severity_mild
-                : prediction.severity === 'moderate'
-                ? trans.severity_moderate
-                : trans.severity_severe}
-            </span>
-          </div>
-
-          {/* 3-segment severity bar with 1.5px outline */}
-          <div className="grid grid-cols-3 gap-2 mt-3.5" aria-hidden="true">
-            <div className={`h-2.5 rounded-full border-[1.5px] border-[var(--color-outline)] ${severityBars.mild}`} />
-            <div className={`h-2.5 rounded-full border-[1.5px] border-[var(--color-outline)] ${severityBars.moderate}`} />
-            <div className={`h-2.5 rounded-full border-[1.5px] border-[var(--color-outline)] ${severityBars.severe}`} />
-          </div>
-
-          <div className="grid grid-cols-3 text-[11px] font-bold text-[var(--color-muted)] mt-1.5">
-            <span>{trans.severity_mild}</span>
-            <span className="text-center">{trans.severity_moderate}</span>
-            <span className="text-right">{trans.severity_severe}</span>
-          </div>
+          {/* Top-3 Horizontal Candidate Bars */}
+          {topCandidates.length > 0 && (
+            <div className="mt-4 pt-3.5 border-t border-[var(--color-divider)]">
+              <div className="text-xs font-bold text-[var(--color-muted)] mb-2.5 uppercase tracking-wide">
+                {t('top_alternatives', undefined, language)}
+              </div>
+              <div className="space-y-2.5">
+                {topCandidates.map((cand, idx) => {
+                  const candProbPct = Math.round(cand.prob * 100);
+                  const isTop = idx === 0;
+                  return (
+                    <div key={cand.label} className="flex flex-col text-xs">
+                      <div className="flex justify-between items-center mb-1">
+                        <span
+                          className={`truncate max-w-[240px] ${
+                            isTop
+                              ? 'text-[var(--color-ink)] font-bold'
+                              : 'text-[var(--color-muted)] font-medium'
+                          }`}
+                        >
+                          {language === 'ml' ? cand.conditionMl : cand.condition}
+                        </span>
+                        <span className="font-bold text-[var(--color-ink)] shrink-0 ml-2">
+                          {candProbPct}%
+                        </span>
+                      </div>
+                      <div className="w-full h-2 rounded-full bg-[var(--color-inset)] overflow-hidden border border-[var(--color-outline)]/30">
+                        <div
+                          className={`h-full rounded-full transition-all duration-300 ${
+                            isTop
+                              ? 'bg-[var(--color-primary)]'
+                              : 'bg-[var(--color-muted)]/50'
+                          }`}
+                          style={{
+                            width: `${Math.max(4, Math.min(100, candProbPct))}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* 3. Card 3: Pest Observation on Leaf ("Also found" row) */}
-      {prediction.pestWarning && (
+      {/* 3. Primary Action Button: View Treatment & Prevention (Hidden for healthy) */}
+      {!isHealthy && (
         <button
-          onClick={() => setShowPestModal(true)}
-          className="mt-3.5 retro-card-press p-4 flex items-center justify-between text-left retro-focus"
+          onClick={onSeeTreatment}
+          className="mt-4 w-full min-h-[52px] py-3.5 px-4 retro-btn-primary text-sm flex items-center justify-center gap-2 retro-focus"
         >
-          <div>
-            <div className="text-xs text-[var(--color-muted)] font-medium">
-              {trans.also_found_title}
-            </div>
-            <div className="text-base font-bold text-[var(--color-ink)] mt-0.5">
-              {language === 'ml'
-                ? prediction.pestWarning.nameMl
-                : prediction.pestWarning.name}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-outline)] rounded-full text-xs font-bold">
-              {language === 'ml'
-                ? prediction.pestWarning.severityLabelMl
-                : prediction.pestWarning.severityLabel}
-            </span>
-            <ChevronRight className="w-5 h-5 text-[var(--color-muted)]" />
-          </div>
+          <span>
+            {isGrape
+              ? t('treatment_coming_soon', undefined, language)
+              : t('view_treatment_prevention', undefined, language)}
+          </span>
+          <ArrowRight className="w-4 h-4 stroke-[2.2]" />
         </button>
       )}
 
-      {/* 4. Primary Action Button: View Treatment & Prevention */}
-      <button
-        onClick={onSeeTreatment}
-        className="mt-4 w-full min-h-[52px] py-3.5 px-4 retro-btn-primary text-sm flex items-center justify-center gap-2 retro-focus"
-      >
-        <span>
-          {isGrape
-            ? t('treatment_coming_soon', undefined, language)
-            : t('view_treatment_prevention', undefined, language)}
-        </span>
-        <ArrowRight className="w-4 h-4 stroke-[2.2]" />
-      </button>
-
-      {/* 5. Related Schemes Action Button (Navigates to dedicated schemes page) */}
+      {/* 4. Related Schemes Action Button (Hidden for healthy and grape) */}
       {hasRelatedSchemes && (
         <button
           type="button"
@@ -285,49 +367,10 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         </button>
       )}
 
-      {/* 6. Disclaimer Text */}
+      {/* 5. Agriculture Officer Disclaimer Text */}
       <p className="text-xs text-[var(--color-muted)] mt-4 px-1 leading-relaxed">
         {trans.disclaimer_text}
       </p>
-
-      {/* Pest Information Modal */}
-      {showPestModal && prediction.pestWarning && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-          onClick={() => setShowPestModal(false)}
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm retro-card p-5"
-          >
-            <div className="flex items-center gap-2.5 text-[var(--color-ink)] mb-2">
-              <div className="w-8 h-8 rounded-full bg-[var(--color-warning-bg)] border border-[var(--color-outline)] text-[var(--color-warning-text)] flex items-center justify-center shrink-0">
-                <Bug className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-base text-[var(--color-ink)]">
-                {language === 'ml'
-                  ? prediction.pestWarning.nameMl
-                  : prediction.pestWarning.name}
-              </h3>
-            </div>
-
-            <p className="text-xs text-[var(--color-muted)] leading-relaxed mt-2">
-              {language === 'ml'
-                ? prediction.pestWarning.detailsMl
-                : prediction.pestWarning.details}
-            </p>
-
-            <button
-              onClick={() => setShowPestModal(false)}
-              className="mt-4 w-full py-2.5 retro-btn-primary text-xs font-bold retro-focus"
-            >
-              {language === 'ml' ? 'മനസ്സിലായി' : 'Understood'}
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

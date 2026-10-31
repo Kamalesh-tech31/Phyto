@@ -182,5 +182,17 @@
   "pest_photo_notice_desc": "The model was trained on photos of the insect, not just crop damage. Make sure the pest itself is visible in the frame.",
   "treatment_curating_note": "Detailed agronomic treatment for this condition is being curated. Please consult your local Krishi Bhavan / agriculture extension officer for chemical recommendations.",
   "not_sure_retake": "Not sure. Please retake the photo in good light.",
-  "treatment_coming_soon": "Treatment guidance coming soon"
+  "treatment_coming_soon": "Treatment guidance coming soon",
+  "model_certainty_title": "Model certainty",
+  "certainty_high": "High",
+  "certainty_medium": "Medium",
+  "certainty_low": "Low",
+  "also_possible": "Also possible",
+  "not_plant_title": "Not a crop leaf or pest",
+  "not_plant_desc": "This doesn't look like a crop leaf or supported pest. Please frame a supported crop leaf or pest in good light.",
+  "could_be_either": "Could be either of these:",
+  "ambiguous_advice": "The symptoms closely match two conditions. We advise retaking a close-up photo in even lighting to be certain.",
+  "looks_healthy_title": "Looks healthy",
+  "looks_healthy_desc": "No fungal lesions, bacterial spots, or known pests detected on this leaf.",
+  "top_alternatives": "Alternative candidates"
 }

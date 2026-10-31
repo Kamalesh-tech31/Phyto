@@ -317,9 +317,9 @@ async function runEvaluation() {
     let buffer256: Uint8ClampedArray;
 
     try {
-      qualityTensor4D = tf.tensor3d(decoded.data, [decoded.height, decoded.width, 4], 'int32');
+      qualityTensor4D = tf.tensor3d(decoded.data as any, [decoded.height, decoded.width, 4], 'int32');
       resizedQualityTensor = tf.image.resizeBilinear(qualityTensor4D, [256, 256]);
-      buffer256 = new Uint8ClampedArray(await resizedQualityTensor.data());
+      buffer256 = new Uint8ClampedArray(await resizedQualityTensor.data() as any);
     } finally {
       if (qualityTensor4D) qualityTensor4D.dispose();
       if (resizedQualityTensor) resizedQualityTensor.dispose();
@@ -339,7 +339,7 @@ async function runEvaluation() {
       256
     );
     const noise = computeImmerkaerNoise(gray, 256, 256);
-    const glare = computeGlareFraction(gray, 256, 256);
+    const glare = computeGlareFraction(gray as any, 256, 256);
     const coverage = computeLeafCoverage(buffer256, 256, 256);
 
     const qualityReport = {
