@@ -327,6 +327,7 @@ export default function App() {
               {/* Contextual Related Schemes View (Result → Related Schemes) */}
               {scanStep === 'scheme_context' && (
                 <SchemesList
+                  prediction={prediction}
                   language={language}
                   isOnline={isOnline}
                   highlightSchemeId={contextualSchemeId}
