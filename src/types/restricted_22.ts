@@ -1,4 +1,4 @@
-export type FrozenCrop = 'tomato' | 'potato' | 'corn' | 'rice';
+export type FrozenCrop = 'tomato' | 'potato' | 'corn' | 'rice' | 'grape';
 
 export type SupportedState = 'TN' | 'KL' | 'UP' | 'AP' | 'OTHER' | '';
 

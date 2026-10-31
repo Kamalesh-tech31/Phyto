@@ -22,7 +22,7 @@ export type ScanStep =
 
 export type SeverityLevel = 'mild' | 'moderate' | 'severe';
 export type ConfidenceLevel = 'high' | 'medium' | 'low';
-export type DiseaseId = 'healthy' | 'early_blight' | 'late_blight' | 'uncertain';
+export type DiseaseId = 'healthy' | 'early_blight' | 'late_blight' | 'uncertain' | string;
 
 export interface QualityCheckResult {
   sharpness: 'sharp' | 'blurry' | 'fair';
@@ -116,6 +116,10 @@ export interface PredictionResult {
   uncertaintyReasonMl?: string;
   imageUrl: string;
   timestamp: number;
+  modelClassName?: string;
+  status?: 'supported' | 'healthy' | 'pest' | 'coming_soon';
+  grapeNotice?: boolean;
+  pestNotice?: boolean;
 }
 
 export interface ScanHistoryItem {

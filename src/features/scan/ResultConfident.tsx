@@ -8,6 +8,8 @@ import {
   ChevronRight,
   Bug,
   ArrowRight,
+  Sparkles,
+  Info,
 } from 'lucide-react';
 import { restricted22Service } from '../../services/restricted22Service';
 
@@ -31,6 +33,19 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
   const [showPestModal, setShowPestModal] = useState(false);
   const selectedState = restricted22Service.getSavedState();
 
+  const isGrape = Boolean(
+    prediction.grapeNotice ||
+    prediction.crop === 'Grape' ||
+    prediction.status === 'coming_soon' ||
+    (prediction.diseaseId && prediction.diseaseId.startsWith('grape_'))
+  );
+
+  const isPestClass = Boolean(
+    prediction.pestNotice ||
+    prediction.status === 'pest' ||
+    (prediction.diseaseId && prediction.diseaseId.startsWith('pest_'))
+  );
+
   // Evaluate schemes dynamically to determine matching scheme count and healthy gating
   const schemesResult = restricted22Service.evaluateSchemes({
     crop: prediction.crop,
@@ -39,8 +54,9 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
     selectedState,
   });
 
-  // Healthy gate & uncertain filter
+  // Healthy gate, Grape gate & uncertain filter
   const hasRelatedSchemes =
+    !isGrape &&
     prediction.diseaseId !== 'healthy' &&
     !prediction.isUncertain &&
     schemesResult.totalCount > 0;
@@ -111,6 +127,45 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
           </span>
         </div>
       </div>
+
+      {/* Grape Coming Soon Notice */}
+      {isGrape && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-warning-bg)]/30 border-[1.5px] border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <Sparkles className="w-5 h-5 text-[var(--color-warning-text)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {t('grape_coming_soon_title', undefined, language)}
+              </h4>
+              <p className="text-xs text-[var(--color-ink)] mt-1 leading-relaxed">
+                {t('grape_coming_soon_desc', undefined, language)}
+              </p>
+              <div className="mt-2">
+                <span className="inline-block px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-[var(--color-surface)] border border-[var(--color-outline)] text-[var(--color-ink)]">
+                  {t('grape_no_healthy_note', undefined, language)}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Pest Insect Visibility Notice */}
+      {isPestClass && (
+        <div className="mt-3.5 retro-card p-4 bg-[var(--color-selected-bg)]/40 border-[1.5px] border-[var(--color-outline)]">
+          <div className="flex items-start gap-3">
+            <Info className="w-5 h-5 text-[var(--color-primary)] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-sm text-[var(--color-ink)]">
+                {t('pest_photo_notice_title', undefined, language)}
+              </h4>
+              <p className="text-xs text-[var(--color-ink)] mt-1 leading-relaxed">
+                {t('pest_photo_notice_desc', undefined, language)}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 2. Card 2: Confidence & Severity Breakdown */}
       <div className="mt-3.5 retro-card p-5">
@@ -207,7 +262,11 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
         onClick={onSeeTreatment}
         className="mt-4 w-full min-h-[52px] py-3.5 px-4 retro-btn-primary text-sm flex items-center justify-center gap-2 retro-focus"
       >
-        <span>{t('view_treatment_prevention', undefined, language)}</span>
+        <span>
+          {isGrape
+            ? t('treatment_coming_soon', undefined, language)
+            : t('view_treatment_prevention', undefined, language)}
+        </span>
         <ArrowRight className="w-4 h-4 stroke-[2.2]" />
       </button>
 
@@ -253,21 +312,18 @@ export const ResultConfident: React.FC<ResultConfidentProps> = ({
                   : prediction.pestWarning.name}
               </h3>
             </div>
+
             <p className="text-xs text-[var(--color-muted)] leading-relaxed mt-2">
               {language === 'ml'
                 ? prediction.pestWarning.detailsMl
                 : prediction.pestWarning.details}
             </p>
-            <div className="mt-4 p-3 bg-[var(--color-warning-bg)] border border-[var(--color-outline)] rounded-[12px] text-xs text-[var(--color-warning-text)] font-medium">
-              {language === 'ml'
-                ? 'പ്രതിവിധി: വേപ്പെണ്ണ മിശ്രിതം ഇലയുടെ അടിഭാഗത്ത് കൂടി തളിക്കുന്നത് മുഞ്ഞയെ ഫലപ്രദമായി നിയന്ത്രിക്കും.'
-                : 'Tip: Spraying neem oil solution directly under the leaves deters aphids without harming crops.'}
-            </div>
+
             <button
               onClick={() => setShowPestModal(false)}
-              className="mt-4 w-full min-h-[44px] retro-btn-surface py-2.5 text-xs font-bold retro-focus"
+              className="mt-4 w-full py-2.5 retro-btn-primary text-xs font-bold retro-focus"
             >
-              {t('close', undefined, language)}
+              {language === 'ml' ? 'മനസ്സിലായി' : 'Understood'}
             </button>
           </div>
         </div>

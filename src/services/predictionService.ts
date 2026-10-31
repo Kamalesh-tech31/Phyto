@@ -7,11 +7,13 @@ import {
   QualityCheckResult,
   SeverityLevel,
 } from '../types';
+import { modelService } from './modelService';
+import { mapModelClassName } from './classMappingAdapter';
+import { t } from './i18n';
 
 /**
  * Pluggable Prediction Engine interface
- * When a real TensorFlow.js model (.json + .bin weights) is loaded,
- * this interface will be implemented by the TF.js engine without touching UI components.
+ * Implemented by TensorFlow.js MobileNetV3 GraphModel engine for on-device inference.
  */
 export interface IPredictionEngine {
   checkQuality(imageUrl: string, presetType?: string): Promise<QualityCheckResult>;
@@ -144,7 +146,7 @@ class PredictionService implements IPredictionEngine {
       }
     }
 
-    // Default reference quality check matching screenshot #2
+    // Default reference quality check
     return {
       sharpness: 'sharp',
       sharpnessLabel: 'Sharp',
@@ -173,49 +175,16 @@ class PredictionService implements IPredictionEngine {
   }
 
   /**
-   * Runs tomato disease diagnosis
+   * Runs disease & pest prediction:
+   * - Preset demo samples retain their deterministic mock responses (Option to be decided by user)
+   * - Real camera captures and gallery uploads run through the TensorFlow.js GraphModel
    */
   public async predict(imageUrl: string, presetType?: string): Promise<PredictionResult> {
-    // Simulate AI inference time (1.2 seconds for realistic model feel)
-    await new Promise((r) => setTimeout(r, 1200));
-
     const id = `scan_${Date.now()}`;
     const timestamp = Date.now();
 
-    // Check if real photo failed quality / was blurry
-    if (imageUrl && !imageUrl.startsWith('sample:')) {
-      try {
-        const quality = await this.checkQuality(imageUrl, presetType);
-        if (!quality.isAcceptable || !quality.sharpnessPass) {
-          return {
-            id,
-            timestamp,
-            imageUrl,
-            crop: 'Tomato leaf',
-            cropMl: 'തക്കാളി ഇല',
-            diseaseId: 'uncertain',
-            diseaseName: 'I am not sure yet',
-            diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
-            category: 'Inconclusive scan',
-            categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
-            confidence: 'low',
-            confidenceScore: 0.38,
-            affectedAreaPercent: 0,
-            severity: 'mild',
-            isUncertain: true,
-            uncertaintyReason:
-              'The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.',
-            uncertaintyReasonMl:
-              'ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. തെറ്റായി പറയുന്നതിനേക്കാൾ വ്യക്തമായ ഫോട്ടോ ആവശ്യപ്പെടുന്നതാണ് നല്ലത്.',
-          };
-        }
-      } catch (e) {
-        console.warn('Quality check in predict:', e);
-      }
-    }
-
-    // 1. Uncertain state (from screenshot 5)
-    if (presetType === 'blurry' || presetType === 'uncertain') {
+    // 1. Preset samples (Preserving existing behavior for demo presets)
+    if (presetType === 'blurry' || presetType === 'uncertain' || (imageUrl && imageUrl.includes('blurry'))) {
       return {
         id,
         timestamp,
@@ -239,8 +208,7 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 2. Late Blight state
-    if (presetType === 'late_blight') {
+    if (presetType === 'late_blight' || (imageUrl && imageUrl.includes('late_blight'))) {
       return {
         id,
         timestamp,
@@ -268,8 +236,7 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 3. Healthy state
-    if (presetType === 'healthy') {
+    if (presetType === 'healthy' || (imageUrl && imageUrl.includes('healthy'))) {
       return {
         id,
         timestamp,
@@ -289,32 +256,185 @@ class PredictionService implements IPredictionEngine {
       };
     }
 
-    // 4. Default: Early Blight (Exact match to Reference Screenshot 3)
-    return {
-      id,
-      timestamp,
-      imageUrl,
-      crop: 'Tomato leaf',
-      cropMl: 'തക്കാളി ഇല',
-      diseaseId: 'early_blight',
-      diseaseName: 'Early blight',
-      diseaseNameMl: 'ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)',
-      category: 'Fungal disease',
-      categoryMl: 'ഫംഗസ് രോഗം',
-      confidence: 'high',
-      confidenceScore: 0.94,
-      affectedAreaPercent: 18,
-      severity: 'mild',
-      isUncertain: false,
-      pestWarning: {
-        name: 'Aphids',
-        nameMl: 'മുഞ്ഞ (Aphids)',
-        severityLabel: 'Pest · moderate',
-        severityLabelMl: 'കീടബാധ · ഇടത്തരം',
-        details: 'Small cluster of sap-sucking insects detected near midrib vein.',
-        detailsMl: 'ഇലയുടെ ഞരമ്പുകൾക്ക് സമീപം നീരൂറ്റിക്കുടിക്കുന്ന പ്രാണികളെ കണ്ടെത്തി.',
-      },
-    };
+    if (presetType === 'early_blight' || (imageUrl && imageUrl.startsWith('sample:'))) {
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Tomato leaf',
+        cropMl: 'തക്കാളി ഇല',
+        diseaseId: 'early_blight',
+        diseaseName: 'Early blight',
+        diseaseNameMl: 'ഏർലി ബ്ലൈറ്റ് (ഇലപ്പുള്ളി)',
+        category: 'Fungal disease',
+        categoryMl: 'ഫംഗസ് രോഗം',
+        confidence: 'high',
+        confidenceScore: 0.94,
+        affectedAreaPercent: 18,
+        severity: 'mild',
+        isUncertain: false,
+        pestWarning: {
+          name: 'Aphids',
+          nameMl: 'മുഞ്ഞ (Aphids)',
+          severityLabel: 'Pest · moderate',
+          severityLabelMl: 'കീടബാധ · ഇടത്തരം',
+          details: 'Small cluster of sap-sucking insects detected near midrib vein.',
+          detailsMl: 'ഇലയുടെ ഞരമ്പുകൾക്ക് സമീപം നീരൂറ്റിക്കുടിക്കുന്ന പ്രാണികളെ കണ്ടെത്തി.',
+        },
+      };
+    }
+
+    // 2. Real photo path: quality check first
+    try {
+      const quality = await this.checkQuality(imageUrl);
+      if (!quality.isAcceptable || !quality.sharpnessPass) {
+        return {
+          id,
+          timestamp,
+          imageUrl,
+          crop: 'Tomato leaf',
+          cropMl: 'തക്കാളി ഇല',
+          diseaseId: 'uncertain',
+          diseaseName: 'I am not sure yet',
+          diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+          category: 'Inconclusive scan',
+          categoryMl: 'വ്യക്തമല്ലാത്ത സ്കാൻ',
+          confidence: 'low',
+          confidenceScore: 0.38,
+          affectedAreaPercent: 0,
+          severity: 'mild',
+          isUncertain: true,
+          uncertaintyReason:
+            'The photo is too blurry to tell a disease from a nutrient problem. I would rather ask for a clearer photo than guess wrong.',
+          uncertaintyReasonMl:
+            'ഫോട്ടോ അവ്യക്തമായതിനാൽ രോഗമാണോ പോഷകക്കുറവാണോ എന്ന് വേർതിരിക്കാൻ സാധിക്കുന്നില്ല. തെറ്റായി പറയുന്നതിനേക്കാൾ വ്യക്തമായ ഫോട്ടോ ആവശ്യപ്പെടുന്നതാണ് നല്ലത്.',
+        };
+      }
+    } catch (e) {
+      console.warn('[PredictionService] Quality check warning:', e);
+    }
+
+    // 3. Run TensorFlow.js on-device inference
+    try {
+      const inference = await modelService.predict(imageUrl);
+
+      // Low confidence gate (< 0.60 as specified in labels.json)
+      const minConfidence = modelService.getLabelsConfig()?.min_confidence ?? 0.6;
+      if (inference.confidence < minConfidence) {
+        return {
+          id,
+          timestamp,
+          imageUrl,
+          crop: 'Crop leaf',
+          cropMl: 'വിളയുടെ ഇല',
+          diseaseId: 'uncertain',
+          diseaseName: 'I am not sure yet',
+          diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+          category: 'Low confidence',
+          categoryMl: 'കുറഞ്ഞ ആത്മവിശ്വാസം',
+          confidence: 'low',
+          confidenceScore: inference.confidence,
+          affectedAreaPercent: 0,
+          severity: 'mild',
+          isUncertain: true,
+          uncertaintyReason: t('not_sure_retake'),
+          uncertaintyReasonMl: 'ഉറപ്പില്ല. നല്ല വെളിച്ചത്തിൽ വീണ്ടും ഫോട്ടോയെടുക്കുക.',
+          modelClassName: inference.class_name,
+        };
+      }
+
+      // Map predicted class to UI & agronomic metadata
+      const mapping = mapModelClassName(inference.class_name);
+      if (!mapping) {
+        return {
+          id,
+          timestamp,
+          imageUrl,
+          crop: 'Crop leaf',
+          cropMl: 'വിളയുടെ ഇല',
+          diseaseId: 'uncertain',
+          diseaseName: 'I am not sure yet',
+          diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+          category: 'Unrecognized class',
+          categoryMl: 'തിരിച്ചറിയാത്ത വിഭാഗം',
+          confidence: 'low',
+          confidenceScore: inference.confidence,
+          affectedAreaPercent: 0,
+          severity: 'mild',
+          isUncertain: true,
+          uncertaintyReason: 'This condition is not recognized by the model.',
+          uncertaintyReasonMl: 'ഈ അവസ്ഥ മോഡൽ തിരിച്ചറിഞ്ഞിട്ടില്ല.',
+          modelClassName: inference.class_name,
+        };
+      }
+
+      const isHealthy = mapping.kind === 'healthy';
+      const isPest = mapping.kind === 'pest';
+      const isComingSoon = mapping.status === 'coming_soon';
+
+      const confidenceLevel: ConfidenceLevel = inference.confidence >= 0.85 ? 'high' : 'medium';
+
+      let affectedAreaPercent = 0;
+      let severity: SeverityLevel = 'mild';
+
+      if (isHealthy) {
+        affectedAreaPercent = 0;
+        severity = 'mild';
+      } else if (isPest) {
+        affectedAreaPercent = 15;
+        severity = 'moderate';
+      } else if (mapping.diseaseId.includes('late_blight')) {
+        affectedAreaPercent = 42;
+        severity = 'severe';
+      } else {
+        affectedAreaPercent = 20;
+        severity = 'mild';
+      }
+
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: mapping.cropDisplayName,
+        cropMl: mapping.cropDisplayNameMl,
+        diseaseId: mapping.diseaseId as DiseaseId,
+        diseaseName: mapping.diseaseName,
+        diseaseNameMl: mapping.diseaseNameMl,
+        category: mapping.category,
+        categoryMl: mapping.categoryMl,
+        confidence: confidenceLevel,
+        confidenceScore: inference.confidence,
+        affectedAreaPercent,
+        severity,
+        isUncertain: false,
+        modelClassName: inference.class_name,
+        status: mapping.status,
+        grapeNotice: isComingSoon,
+        pestNotice: isPest,
+      };
+    } catch (err) {
+      console.error('[PredictionService] Inference failed:', err);
+      // Fallback safe uncertain response, NEVER Early Blight
+      return {
+        id,
+        timestamp,
+        imageUrl,
+        crop: 'Crop leaf',
+        cropMl: 'വിളയുടെ ഇല',
+        diseaseId: 'uncertain',
+        diseaseName: 'I am not sure yet',
+        diseaseNameMl: 'ഇതുവരെ ഉറപ്പില്ല',
+        category: 'Inference error',
+        categoryMl: 'സ്കാൻ പിശക്',
+        confidence: 'low',
+        confidenceScore: 0.3,
+        affectedAreaPercent: 0,
+        severity: 'mild',
+        isUncertain: true,
+        uncertaintyReason: 'Analysis could not be completed. Please retake the photo.',
+        uncertaintyReasonMl: 'സ്കാൻ പൂർത്തിയാക്കാൻ കഴിഞ്ഞില്ല. വീണ്ടും ഫോട്ടോയെടുക്കുക.',
+      };
+    }
   }
 }
 

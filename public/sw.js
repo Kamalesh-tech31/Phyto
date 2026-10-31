@@ -1,10 +1,13 @@
 // Phyto PWA Service Worker - Offline-first agricultural assistant
-const CACHE_NAME = 'phyto-cache-v3';
+const CACHE_NAME = 'phyto-cache-v4';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icon.svg',
+  '/models/tfjs_model/model.json',
+  '/models/tfjs_model/group1-shard1of1.bin',
+  '/models/tfjs_model/labels.json',
   '/fonts/fraunces.woff2',
   '/fonts/plus-jakarta-sans-400.woff2',
   '/fonts/plus-jakarta-sans-600.woff2',

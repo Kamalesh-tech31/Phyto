@@ -73,3 +73,14 @@ The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`
 - `sources_label`: Header for official citations/sources
 
 **Review Status**: English (`en`) is canonical; Malayalam (`ml`), Tamil (`ta`), Hindi (`hi`), and Telugu (`te`) are machine-translated and marked for native speaker review.
+
+## TensorFlow.js Model Integration Strings (Added for abinav4 Model Integration)
+The following keys were added to all 5 locale dictionaries (`en.json`, `ml.json`, `ta.json`, `hi.json`, `te.json`):
+- `grape_coming_soon_title`: Notice title indicating grape crop support is in development.
+- `grape_coming_soon_desc`: Advisory explaining that while the on-device model can detect grape conditions, agronomic guidance and schemes are being curated.
+- `grape_no_healthy_note`: Notice clarifying that the model has no healthy class for grapes.
+- `pest_photo_notice_title`: Section title for insect visibility requirement.
+- `pest_photo_notice_desc`: Notice explaining that the pest classifier was trained on photos of the insect itself, not leaf damage alone.
+- `treatment_curating_note`: Advisory on Treatment screen when full chemical spray recommendations are being curated.
+- `not_sure_retake`: Notice displayed when model prediction confidence is below the threshold (< 0.60).
+- `treatment_coming_soon`: Button / badge label for coming soon treatment guidance.

@@ -174,5 +174,13 @@
   "no_guidance_available": "No specific prevention guidance available for this condition.",
   "prevention_title": "Prevention Guidance",
   "local_tip_label": "Farmer tip",
-  "sources_label": "Official Sources & References"
+  "sources_label": "Official Sources & References",
+  "grape_coming_soon_title": "Support for Grape is coming soon",
+  "grape_coming_soon_desc": "The on-device model can identify grape conditions, but treatment, prevention, and government schemes for grape are currently being curated.",
+  "grape_no_healthy_note": "Note: The model has no healthy option for grapes.",
+  "pest_photo_notice_title": "Pest Detection Notice",
+  "pest_photo_notice_desc": "The model was trained on photos of the insect, not just crop damage. Make sure the pest itself is visible in the frame.",
+  "treatment_curating_note": "Detailed agronomic treatment for this condition is being curated. Please consult your local Krishi Bhavan / agriculture extension officer for chemical recommendations.",
+  "not_sure_retake": "Not sure. Please retake the photo in good light.",
+  "treatment_coming_soon": "Treatment guidance coming soon"
 }

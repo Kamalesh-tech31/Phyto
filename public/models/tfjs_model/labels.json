@@ -1,0 +1,149 @@
+{
+  "input_size": 224,
+  "input_range": "raw 0-255 RGB, NO normalization (preprocessing is inside the model)",
+  "resize": "resize to 224x224 (no crop)",
+  "tfjs_loader": "graph",
+  "min_confidence": 0.6,
+  "low_confidence_message": "Not sure, retake photo.",
+  "ui_notes": {
+    "pest": "Pest classes are trained on insect photos: a real insect must be in frame, not just leaf damage.",
+    "no_pest_classes_for": [
+      "tomato",
+      "potato"
+    ]
+  },
+  "classes": [
+    {
+      "id": 0,
+      "name": "corn_common_rust",
+      "crop": "corn",
+      "kind": "disease"
+    },
+    {
+      "id": 1,
+      "name": "corn_gray_leaf_spot",
+      "crop": "corn",
+      "kind": "disease"
+    },
+    {
+      "id": 2,
+      "name": "corn_healthy",
+      "crop": "corn",
+      "kind": "healthy"
+    },
+    {
+      "id": 3,
+      "name": "corn_northern_leaf_blight",
+      "crop": "corn",
+      "kind": "disease"
+    },
+    {
+      "id": 4,
+      "name": "grape_black_rot",
+      "crop": "grape",
+      "kind": "disease"
+    },
+    {
+      "id": 5,
+      "name": "grape_esca",
+      "crop": "grape",
+      "kind": "disease"
+    },
+    {
+      "id": 6,
+      "name": "grape_leaf_blight",
+      "crop": "grape",
+      "kind": "disease"
+    },
+    {
+      "id": 7,
+      "name": "pest_armyworm",
+      "crop": "corn",
+      "kind": "pest"
+    },
+    {
+      "id": 8,
+      "name": "pest_asiatic_rice_borer",
+      "crop": "rice",
+      "kind": "pest"
+    },
+    {
+      "id": 9,
+      "name": "pest_brown_planthopper",
+      "crop": "rice",
+      "kind": "pest"
+    },
+    {
+      "id": 10,
+      "name": "pest_corn_borer",
+      "crop": "corn",
+      "kind": "pest"
+    },
+    {
+      "id": 11,
+      "name": "pest_rice_leaf_roller",
+      "crop": "rice",
+      "kind": "pest"
+    },
+    {
+      "id": 12,
+      "name": "potato_early_blight",
+      "crop": "potato",
+      "kind": "disease"
+    },
+    {
+      "id": 13,
+      "name": "potato_healthy",
+      "crop": "potato",
+      "kind": "healthy"
+    },
+    {
+      "id": 14,
+      "name": "potato_late_blight",
+      "crop": "potato",
+      "kind": "disease"
+    },
+    {
+      "id": 15,
+      "name": "tomato_bacterial_spot",
+      "crop": "tomato",
+      "kind": "disease"
+    },
+    {
+      "id": 16,
+      "name": "tomato_early_blight",
+      "crop": "tomato",
+      "kind": "disease"
+    },
+    {
+      "id": 17,
+      "name": "tomato_healthy",
+      "crop": "tomato",
+      "kind": "healthy"
+    },
+    {
+      "id": 18,
+      "name": "tomato_late_blight",
+      "crop": "tomato",
+      "kind": "disease"
+    },
+    {
+      "id": 19,
+      "name": "tomato_leaf_mold",
+      "crop": "tomato",
+      "kind": "disease"
+    },
+    {
+      "id": 20,
+      "name": "tomato_septoria_leaf_spot",
+      "crop": "tomato",
+      "kind": "disease"
+    },
+    {
+      "id": 21,
+      "name": "tomato_yellow_leaf_curl",
+      "crop": "tomato",
+      "kind": "disease"
+    }
+  ]
+}
